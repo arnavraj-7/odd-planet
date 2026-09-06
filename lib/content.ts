@@ -442,7 +442,7 @@ const realWork: WorkCard[] = [
     tagline: "Real Nutrition. Real People.",
     description:
       "Large-scale influencer marketing and UGC across fitness and lifestyle, showing how FitFeast fits real, everyday routines — from workouts to workdays.",
-    did: ["influencer", "ugc", "content", "amplification"],
+    did: ["influencer", "ugc", "content"],
     image: {
       src: "/campaigns/fitfeast.jpg",
       alt: "Fit Feast on the Shark Tank India set",
@@ -461,7 +461,7 @@ const realWork: WorkCard[] = [
     tagline: "Luxury, worn like it is nothing.",
     description:
       "A creator-led fashion narrative for Michael Kors with Vaibhav Arora, putting the label inside his own everyday style rather than beside it.",
-    did: ["celebrity", "content", "integration", "amplification"],
+    did: ["celebrity", "content", "integration"],
     resultsLabel: "Impact",
     image: {
       src: "/campaigns/vaibhav-michael-kors.jpg",
@@ -479,7 +479,7 @@ const realWork: WorkCard[] = [
     tagline: "Skin first, everything else after.",
     description:
       "A beauty integration for Pond's with Tanvi Malhara, shot close and kept honest — routine, not performance.",
-    did: ["celebrity", "content", "integration", "amplification"],
+    did: ["celebrity", "content", "integration"],
     resultsLabel: "Impact",
     image: {
       src: "/campaigns/tanvi-ponds.jpg",
@@ -494,7 +494,7 @@ const realWork: WorkCard[] = [
     tagline: "Shopping, told as a story.",
     description:
       "Creator-led content for Flipkart with Mohit Chettri, turning a shopping moment into something worth watching to the end.",
-    did: ["creator", "content", "integration", "amplification"],
+    did: ["creator", "content", "integration"],
     resultsLabel: "Impact",
     metrics: [{ value: "50K+", label: "Views" }],
   },
@@ -505,7 +505,7 @@ const realWork: WorkCard[] = [
     tagline: "Hair that carries the frame.",
     description:
       "A hair-care campaign for Sunsilk with Tanvi Malhara that travelled well past its own audience.",
-    did: ["celebrity", "content", "integration", "amplification"],
+    did: ["celebrity", "content", "integration"],
     resultsLabel: "Impact",
     image: {
       src: "/campaigns/tanvi-sunsilk.jpg",
@@ -520,7 +520,7 @@ const realWork: WorkCard[] = [
     tagline: "A phone, shown in use.",
     description:
       "A device integration for Oppo with Mohit Chettri, built around what the camera actually does rather than what the spec sheet says.",
-    did: ["creator", "content", "integration", "amplification"],
+    did: ["creator", "content", "integration"],
     resultsLabel: "Impact",
     metrics: [{ value: "450K+", label: "Views" }],
   },

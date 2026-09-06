@@ -128,7 +128,12 @@ export function CreatorCoverflow() {
       cancelAnimationFrame(frame.current);
       frame.current = null;
     }
-    frameRef.current?.setPointerCapture(e.pointerId);
+    // Capture can be refused (a pointer the browser has already claimed).
+    // Losing it only costs us moves outside the frame, so never let it throw
+    // before the drag state below is set.
+    try {
+      frameRef.current?.setPointerCapture(e.pointerId);
+    } catch {}
     target.current = pos.current;
     drag.current = {
       id: e.pointerId,
@@ -151,7 +156,11 @@ export function CreatorCoverflow() {
     const now = performance.now();
     const before = pos.current;
     pos.current = d.pos - (e.clientX - d.x) / pitch;
-    d.v = ((pos.current - before) / Math.max(now - d.t, 1)) * 1000;
+
+    // Smoothed, so a pointer that pauses for one frame before release does not
+    // report zero speed and swallow the whole gesture.
+    const instant = ((pos.current - before) / Math.max(now - d.t, 1)) * 1000;
+    d.v = d.v * 0.4 + instant * 0.6;
     d.t = now;
     paint();
   };
@@ -161,8 +170,17 @@ export function CreatorCoverflow() {
     if (!d || d.id !== e.pointerId) return;
     drag.current = null;
     if (frameRef.current) frameRef.current.style.cursor = "grab";
+    const from = Math.round(d.pos);
     const carried = Math.max(-2, Math.min(2, d.v * 0.18));
-    settle(Math.round(pos.current + carried));
+    let to = Math.round(pos.current + carried);
+
+    // Rounding alone sends anything under half a card back where it started,
+    // which reads as the drag having done nothing. A deliberate pull always
+    // lands on the next card.
+    const moved = pos.current - d.pos;
+    if (to === from && Math.abs(moved) > 0.12) to = from + Math.sign(moved);
+
+    settle(to);
   };
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
@@ -227,7 +245,7 @@ export function CreatorCoverflow() {
         onPointerUp={onPointerEnd}
         onPointerCancel={onPointerEnd}
         onKeyDown={onKeyDown}
-        className="cursor-grab touch-pan-y overflow-hidden pt-[clamp(24px,3.4vw,48px)] pb-[clamp(8px,1.4vw,18px)] [perspective:1400px]"
+        className="cursor-grab touch-pan-y overflow-hidden select-none pt-[clamp(24px,3.4vw,48px)] pb-[clamp(8px,1.4vw,18px)] [perspective:1400px]"
       >
         <div className="relative h-[clamp(280px,32vw,400px)] [transform-style:preserve-3d]">
           {creators.map((creator, i) => (
