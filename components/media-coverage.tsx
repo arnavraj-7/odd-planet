@@ -75,10 +75,10 @@ export function MediaCoverage() {
         ref={innerRef}
         className="sticky top-0 flex h-screen min-h-[min(600px,100vh)] flex-col overflow-hidden pt-[clamp(26px,4vw,54px)] pb-[clamp(22px,3vw,38px)]"
       >
-        <div className="mx-auto flex w-full max-w-[1400px] shrink-0 flex-wrap items-end justify-between gap-x-10 gap-y-3.5 px-gutter">
-          <div>
-            <div className="op-eyebrow mb-[18px]">Media coverage</div>
-            <h2 className="op-h2 text-h2-work">
+        <div className="mx-auto flex w-full max-w-[1400px] shrink-0 flex-wrap items-end justify-between gap-x-10 gap-y-2.5 px-gutter">
+          <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+            <div className="op-eyebrow">Media coverage</div>
+            <h2 className="op-h2 text-[clamp(24px,3vw,42px)]">
               Recognised by <em>industry leaders</em>
             </h2>
           </div>

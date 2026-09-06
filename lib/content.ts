@@ -209,7 +209,13 @@ export const services: Service[] = [
   },
 ];
 
-export type WorkMetric = { label: string; value: string; href?: string };
+export type WorkMetric = {
+  label: string;
+  value: string;
+  /** Optional qualifier under the label. */
+  note?: string;
+  href?: string;
+};
 
 /** Keys into the icon set the campaign card draws for "what we did". */
 export type WorkDiscipline =
@@ -220,6 +226,9 @@ export type WorkDiscipline =
   | "events"
   | "meme"
   | "ugc"
+  | "strategy"
+  | "onground"
+  | "buzz"
   | "commerce";
 
 export const disciplineLabels: Record<WorkDiscipline, string> = {
@@ -230,6 +239,9 @@ export const disciplineLabels: Record<WorkDiscipline, string> = {
   events: "Events & Experiences",
   meme: "Meme Marketing",
   ugc: "UGC Content Creation",
+  strategy: "Campaign Concept & Strategy",
+  onground: "On-Ground Activations",
+  buzz: "Buzz & Conversation Marketing",
   commerce: "Quick Commerce",
 };
 
@@ -276,17 +288,21 @@ const realWork: WorkCard[] = [
   },
   {
     index: "02",
-    category: "Brand movement",
-    title: "Men Skincare Janta Party",
-    tagline: "A launch disguised as a protest.",
+    category: "D2C / Personal Care",
+    title: "Fixderma",
+    tagline: "#SkincareKarLeBhai — starting a new conversation.",
     description:
-      "A three-phase guerrilla movement for Fixderma's men's range, staged as a street protest with the brand hidden until the reveal. #SkincareKarleBhai trended on Twitter.",
-    did: ["meme", "influencer", "content", "amplification"],
-    image: { src: "/campaigns/msjp.jpg", alt: "Men Skincare Janta Party campaign" },
+      "We conceptualised and executed the launch campaign for Menskincare Janta Party by Fixderma — a buzz-led movement to make skincare a mainstream, no-judgement conversation for men. Through on-ground activations, street interviews, creator content and bold messaging, we sparked real conversations and built massive awareness for the brand launch.",
+    did: ["strategy", "onground", "creator", "buzz"],
+    image: {
+      src: "/campaigns/fixderma-msjp.jpg",
+      alt: "Fixderma #SkincareKarLeBhai campaign",
+    },
     metrics: [
-      { label: "Views", value: "50M+" },
-      { label: "Engagement", value: "821K+" },
-      { label: "Deliverables", value: "649" },
+      { value: "10M+", label: "Campaign Reach", note: "Across digital & on-ground" },
+      { value: "100K+", label: "Organic Mentions", note: "#SkincareKarLeBhai" },
+      { value: "2.5M+", label: "Video Views", note: "Across creator & street content" },
+      { value: "High", label: "Brand Recall", note: "Strong positive sentiment" },
     ],
   },
   {
@@ -479,6 +495,7 @@ const realCreators: Creator[] = [
     role: "Talent partnership",
     city: "Delhi",
     socials: [{ label: "Instagram", href: ig("inishutiwari") }, { label: "YouTube", href: yt("inishutiwari") }],
+    image: "/creators/nishu-tiwari.jpg",
   },
   {
     name: "Major Rishabh Singh Sambyal",
@@ -490,6 +507,7 @@ const realCreators: Creator[] = [
     name: "Karan Kundrra",
     role: "Talent partnership",
     socials: [{ label: "Instagram", href: ig("kkundrra") }],
+    image: "/creators/karan-kundrra.jpg",
   },
   {
     name: "Tejasswi Prakash",

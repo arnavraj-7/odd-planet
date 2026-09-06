@@ -1,5 +1,6 @@
 import {
   Clapperboard,
+  Lightbulb,
   Laugh,
   Megaphone,
   PartyPopper,
@@ -24,6 +25,9 @@ const ICONS: Record<WorkDiscipline, LucideIcon> = {
   events: PartyPopper,
   meme: Laugh,
   ugc: Video,
+  strategy: Lightbulb,
+  onground: Users,
+  buzz: Megaphone,
   commerce: ShoppingBag,
 };
 
@@ -34,32 +38,19 @@ export function WorkCard({ card }: { card: WorkCardData }) {
       className="group flex w-[clamp(292px,29vw,404px)] shrink-0 flex-col overflow-hidden rounded-xl border border-ink-300 transition-[border-color,transform] duration-300 ease-out hover:-translate-y-1 hover:border-blue-500"
     >
       {/*
-        These creatives mix 16:9 stills with 9:16 reel frames, so the artwork is
-        contained whole over a blurred copy of itself — one shared landscape box
-        would cut the posters apart.
+        The artwork fills the box outright — no blurred backdrop behind it. The
+        crop is anchored to the top so a poster keeps its masthead, which is the
+        part that identifies the campaign.
       */}
-      <div className="relative aspect-[16/10] shrink-0 overflow-hidden bg-ink-100">
+      <div className="relative aspect-[16/9] shrink-0 overflow-hidden bg-ink-100">
         {card.image ? (
-          <>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={card.image.src}
-              alt=""
-              aria-hidden="true"
-              className="absolute inset-0 size-full scale-110 object-cover opacity-40 blur-[18px]"
-            />
-            <div
-              aria-hidden="true"
-              className="absolute inset-0 bg-[rgba(5,6,10,0.3)]"
-            />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={card.image.src}
-              alt={card.image.alt}
-              loading="lazy"
-              className="relative block size-full object-contain transition-transform duration-[600ms] ease-brand group-hover:scale-[1.04]"
-            />
-          </>
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={card.image.src}
+            alt={card.image.alt}
+            loading="lazy"
+            className="block size-full object-cover object-top transition-transform duration-[600ms] ease-brand group-hover:scale-[1.04]"
+          />
         ) : (
           <div className="flex size-full items-center justify-center">
             <span className="font-mono text-[11px] font-medium tracking-[0.18em] uppercase text-ink-500">
@@ -69,37 +60,37 @@ export function WorkCard({ card }: { card: WorkCardData }) {
         )}
       </div>
 
-      <div className="flex flex-1 flex-col p-[clamp(18px,1.9vw,26px)]">
+      <div className="flex flex-1 flex-col p-[clamp(16px,1.7vw,22px)]">
         <div className="font-mono text-[10px] leading-none font-medium tracking-[0.16em] uppercase text-ink-550">
           {card.index} · {card.category}
         </div>
 
-        <h3 className="mt-3 mb-0 font-serif text-[clamp(26px,2.4vw,34px)] leading-[1.05] font-normal tracking-[-0.02em] text-ink-900">
+        <h3 className="mt-2 mb-0 font-serif text-[clamp(23px,2.1vw,29px)] leading-[1.05] font-normal tracking-[-0.02em] text-ink-900">
           {card.title}
         </h3>
 
-        <p className="mt-1.5 mb-0 font-grotesk text-[clamp(15px,1.35vw,19px)] leading-[1.3] text-ink-600">
+        <p className="mt-1.5 mb-0 font-grotesk text-[clamp(14px,1.2vw,17px)] leading-[1.3] text-ink-600">
           {card.tagline}
         </p>
 
-        <p className="mt-3.5 mb-0 font-grotesk text-[13px] leading-[1.55] text-ink-600 [text-wrap:pretty]">
+        <p className="mt-3 mb-0 line-clamp-2 font-grotesk text-[12.5px] leading-[1.5] text-ink-600 [text-wrap:pretty]">
           {card.description}
         </p>
 
         {card.did.length ? (
           <>
-            <div className="mt-[clamp(18px,2vw,26px)] font-mono text-[10px] leading-none font-medium tracking-[0.16em] uppercase text-ink-550">
+            <div className="mt-[clamp(14px,1.6vw,20px)] font-mono text-[10px] leading-none font-medium tracking-[0.16em] uppercase text-ink-550">
               What we did
             </div>
-            <ul className="mt-3.5 mb-0 flex list-none flex-wrap gap-x-5 gap-y-4 p-0">
-              {card.did.map((key) => {
+            <ul className="mt-3 mb-0 grid list-none grid-cols-4 gap-x-1.5 p-0">
+              {card.did.slice(0, 4).map((key) => {
                 const Icon = ICONS[key];
                 return (
-                  <li key={key} className="flex w-[74px] flex-col items-center gap-2">
-                    <span className="flex size-10 items-center justify-center rounded-lg bg-ink-100 text-ink-900">
-                      <Icon size={18} strokeWidth={1.7} aria-hidden="true" />
+                  <li key={key} className="flex flex-col items-center gap-2">
+                    <span className="flex size-8 items-center justify-center rounded-lg bg-ink-100 text-ink-900">
+                      <Icon size={16} strokeWidth={1.7} aria-hidden="true" />
                     </span>
-                    <span className="text-center font-grotesk text-[11px] leading-[1.25] text-ink-600">
+                    <span className="text-center font-grotesk text-[10.5px] leading-[1.25] text-ink-600">
                       {disciplineLabels[key]}
                     </span>
                   </li>
@@ -111,27 +102,44 @@ export function WorkCard({ card }: { card: WorkCardData }) {
 
         {card.metrics.length ? (
           <>
-            <div className="mt-[clamp(18px,2vw,26px)] border-t border-ink-300 pt-[clamp(16px,1.8vw,22px)] font-mono text-[10px] leading-none font-medium tracking-[0.16em] uppercase text-ink-550">
+            <div className="mt-auto border-t border-ink-300 pt-[clamp(13px,1.5vw,18px)] font-mono text-[10px] leading-none font-medium tracking-[0.16em] uppercase text-ink-550">
               {card.resultsLabel ?? "Results"}
             </div>
 
-            <div className="mt-4 flex items-stretch gap-4">
+            <div
+              className={`mt-3 ${
+                card.metrics.length > 2
+                  ? "grid grid-cols-2 gap-x-3 gap-y-3.5"
+                  : "flex items-stretch gap-3"
+              }`}
+            >
               {card.metrics.map((metric, i) => {
                 const body = (
                   <>
-                    <span className="block font-grotesk text-[clamp(19px,1.9vw,26px)] leading-none font-medium tracking-[-0.02em] text-ink-900">
+                    <span className="block font-grotesk text-[clamp(17px,1.6vw,23px)] leading-[1.05] font-medium tracking-[-0.02em] text-ink-900">
                       {metric.value}
                     </span>
-                    <span className="mt-2 block font-grotesk text-[11px] leading-[1.35] text-ink-600">
+                    <span className="mt-1.5 block font-grotesk text-[10.5px] leading-[1.3] text-ink-900">
                       {metric.label}
                     </span>
+                    {metric.note ? (
+                      <span className="mt-1 block font-grotesk text-[10px] leading-[1.3] text-ink-550">
+                        {metric.note}
+                      </span>
+                    ) : null}
                   </>
                 );
 
                 return (
                   <div
                     key={metric.label}
-                    className={`min-w-0 flex-1 ${i > 0 ? "border-l border-ink-300 pl-4" : ""}`}
+                    className={`min-w-0 ${
+                      card.metrics.length > 2
+                        ? i % 2 === 1
+                          ? "border-l border-ink-300 pl-3"
+                          : ""
+                        : `flex-1 ${i > 0 ? "border-l border-ink-300 pl-3" : ""}`
+                    }`}
                   >
                     {metric.href ? (
                       <a
