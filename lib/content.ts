@@ -241,7 +241,12 @@ export type WorkDiscipline =
   | "celebrity"
   | "integration"
   | "execution"
-  | "commerce";
+  | "commerce"
+  | "filmconcept"
+  | "adfilm"
+  | "casting"
+  | "post"
+  | "video";
 
 export const disciplineLabels: Record<WorkDiscipline, string> = {
   content: "Content",
@@ -262,6 +267,11 @@ export const disciplineLabels: Record<WorkDiscipline, string> = {
   integration: "Integration",
   execution: "Execution",
   commerce: "Quick Commerce",
+  filmconcept: "Film Concept",
+  adfilm: "Ad Films",
+  casting: "Casting",
+  post: "Post-Production",
+  video: "Video Production",
 };
 
 export type WorkCard = {
@@ -277,6 +287,12 @@ export type WorkCard = {
   resultsLabel?: string;
   /** "themes" sets the entries as titled points rather than big figures. */
   resultsStyle?: "figures" | "themes";
+  /**
+   * Headline figures, shown above the results block. They exist for the cards
+   * whose results read as themes but that still have numbers worth leading
+   * with.
+   */
+  impact?: WorkMetric[];
   /**
    * Omitted on placeholder cards — the card then draws a hairline plate.
    * `fit: "contain"` shows the whole frame over a blurred copy of itself, for
@@ -366,6 +382,7 @@ const realWork: WorkCard[] = [
     description:
       "A lifestyle-led creator narrative for Allen Solly with Priyank Sharma, blending fashion, personality and everyday moments into an authentic brand integration.",
     did: ["celebrity", "content", "integration", "execution"],
+    impact: [{ label: "Views", value: "300K+" }],
     resultsLabel: "Campaign focus",
     resultsStyle: "themes",
     image: {
@@ -399,51 +416,66 @@ const realWork: WorkCard[] = [
   },
   {
     index: "07",
-    category: "Government",
+    category: "Government / Awareness",
     title: "Ministry of Textiles",
-    tagline: "Handloom, told to a new audience.",
+    tagline: "Real People. Real Craft. A Stronger Tomorrow.",
     description:
-      "National handloom and heritage storytelling for the Textiles Committee, delivered as creator-led reels built for reach.",
-    did: ["content", "creator", "amplification"],
+      "Three ad films for the Ministry of Textiles promoting the Handloom Mark — India's handloom heritage, the artisans behind it, and the value of choosing authentic handloom.",
+    did: ["filmconcept", "adfilm", "casting", "post"],
     image: {
       src: "/campaigns/textiles-logo.png",
       alt: "DCHL and Ministry of Textiles",
       fit: "logo",
     },
-    metrics: [
+    impact: [
       { label: "Reel 01", value: "423K+", href: "https://www.instagram.com/reel/DMuuOv1NrXv/" },
       { label: "Reel 02", value: "181K+", href: "https://www.instagram.com/reel/DM0BeCQt7H2/" },
       { label: "Reel 03", value: "309K+", href: "https://www.instagram.com/reel/DMpJRfZJ8hr/" },
     ],
+    resultsLabel: "Campaign outcomes",
+    resultsStyle: "themes",
+    metrics: [
+      { value: "Increased Awareness", label: "For the Handloom Mark and its value" },
+      { value: "Positive Public Sentiment", label: "Towards handloom and Indian artisans" },
+      { value: "Cultural Relevance", label: "Reinforced pride in India's textile heritage" },
+      { value: "Long-Term Brand Equity", label: "For the Handloom Mark initiative" },
+    ],
   },
   {
     index: "08",
-    category: "Experiential",
+    category: "Retail & F&B",
     title: "Starbucks",
-    tagline: "A store launch people turned up for.",
+    tagline: "A store opening, told the Starbucks way.",
     description:
-      "Launch campaign and on-ground activation, carried into social by creators in the surrounding neighbourhood.",
-    did: ["events", "influencer", "content"],
+      "On-ground content for the Starbucks store opening — two films showing the brand experience, the ambience and the community, bringing in-store energy to digital.",
+    did: ["onground", "video"],
     image: { src: "/work/starbucks.jpg", alt: "Starbucks campaign" },
+    resultsLabel: "The impact",
     metrics: [
-      { label: "Views", value: "100K+" },
-      { label: "Engagement", value: "3.1K+" },
+      { value: "2", label: "Signature Films", note: "Capturing the store experience" },
+      { value: "195K+", label: "Total Organic Views", note: "Across both videos" },
+      { value: "High", label: "Audience Sentiment", note: "Across comments and shares" },
+      { value: "In-Store Buzz", label: "Opening moment", note: "Content that amplified it" },
     ],
   },
   {
     index: "09",
-    category: "Creator network",
-    title: "Fit Feast",
-    tagline: "Always-on creator supply.",
+    category: "Nutrition / Influencer",
+    title: "FitFeast",
+    tagline: "Real Nutrition. Real People.",
     description:
-      "Lifestyle and fitness creators activated month on month for a growing nutrition brand.",
-    did: ["influencer", "creator", "content"],
+      "Large-scale influencer marketing and UGC across fitness and lifestyle, showing how FitFeast fits real, everyday routines — from workouts to workdays.",
+    did: ["influencer", "ugc", "content", "amplification"],
     image: {
       src: "/campaigns/fitfeast.jpg",
       alt: "Fit Feast on the Shark Tank India set",
       fit: "contain",
     },
-    metrics: [],
+    resultsLabel: "Impact (monthly)",
+    metrics: [
+      { label: "Creators activated every month", value: "Creator Network" },
+      { label: "Lifestyle · Fitness", value: "Multi-Category" },
+    ],
   },
   {
     index: "10",
