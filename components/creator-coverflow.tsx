@@ -278,12 +278,6 @@ export function CreatorCoverflow() {
                 <span>{current.brands}</span>
               </div>
             ) : null}
-            {current.language ? (
-              <div className="op-metric-row py-[11px]">
-                <span>LANGUAGE</span>
-                <span>{current.language}</span>
-              </div>
-            ) : null}
             {/* Profiles, not follower counts — the platform shows the live
                 figure, and nothing on the page goes stale. */}
             {current.socials.length ? (

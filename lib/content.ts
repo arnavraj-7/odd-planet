@@ -293,7 +293,6 @@ export type Creator = {
   name: string;
   role: string;
   city?: string;
-  language?: string;
   /** Brand collaborations. Unlike a follower count, this does not go stale. */
   brands?: string;
   /**
@@ -323,7 +322,6 @@ const realCreators: Creator[] = [
     name: "Afaik",
     role: "Music / Reaction",
     city: "Bangalore",
-    language: "Hindi / English",
     socials: [
       { label: "Instagram", href: ig("afaikyouknow") },
       { label: "YouTube", href: yt("AFAIKYouKnow") },
@@ -334,7 +332,6 @@ const realCreators: Creator[] = [
     name: "Pho",
     role: "Singer",
     city: "Delhi",
-    language: "Hindi / English",
     socials: [{ label: "Instagram", href: ig("phomusic") }],
     image: "/creators/pho.jpg",
   },
@@ -342,7 +339,6 @@ const realCreators: Creator[] = [
     name: "Asmita Arora",
     role: "Fashion / Lifestyle",
     city: "Delhi",
-    language: "Hindi / English",
     socials: [
       { label: "Instagram", href: ig("Asmitarora") },
       { label: "YouTube", href: yt("Asmitarora") },
@@ -353,7 +349,6 @@ const realCreators: Creator[] = [
     name: "Himanshi Sharma",
     role: "Fashion / Lifestyle / Travel",
     city: "Mumbai / Delhi",
-    language: "Hindi / English",
     socials: [{ label: "Instagram", href: ig("Himanshii21") }],
     image: "/creators/himanshi-sharma.jpg",
   },
@@ -361,7 +356,6 @@ const realCreators: Creator[] = [
     name: "Ishita Arora",
     role: "Fashion / Model",
     city: "Delhi / Bangalore",
-    language: "Hindi / English",
     socials: [{ label: "Instagram", href: ig("ishitaaroraaa") }],
     image: "/creators/ishita-arora.jpg",
   },
@@ -369,7 +363,6 @@ const realCreators: Creator[] = [
     name: "Kartik Vishal",
     role: "Bike / Moto / Lifestyle",
     city: "Delhi",
-    language: "Hindi / English",
     socials: [
       { label: "Instagram", href: ig("kartikcz") },
       { label: "YouTube", href: yt("kartikcustomz") },
@@ -380,7 +373,6 @@ const realCreators: Creator[] = [
     name: "Karun",
     role: "Rapper",
     city: "Delhi",
-    language: "Hindi / English",
     socials: [
       { label: "Instagram", href: ig("beingkarun") },
       { label: "YouTube", href: yt("beingkarun") },
