@@ -8,7 +8,7 @@ export function CountUp({ value, suffix }: { value: number; suffix: string }) {
 
   return (
     <span ref={ref}>
-      {value}
+      {value.toLocaleString("en-US")}
       {suffix}
     </span>
   );

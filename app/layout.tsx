@@ -65,7 +65,6 @@ const organisation = {
       name: site.name,
       url: "https://oddplanet.in",
       email: site.email,
-      telephone: site.phone,
       foundingDate: String(site.founded),
       address: {
         "@type": "PostalAddress",

@@ -6,6 +6,9 @@ import { prefersReducedMotion } from "@/hooks/use-reduced-motion";
 
 const DURATION = 1600;
 
+/** 1000 reads as "1,000" — grouped, and tabular-nums keeps it from jittering. */
+const format = (n: number) => n.toLocaleString("en-US");
+
 /**
  * Counts 0 → target on entry, 1600ms, ease-out cubic. Writes `textContent`
  * directly so the count never round-trips through React state.
@@ -18,7 +21,7 @@ export function useCountUp<T extends HTMLElement>(target: number, suffix = "") {
     if (!el) return;
 
     if (prefersReducedMotion()) {
-      el.textContent = `${target}${suffix}`;
+      el.textContent = `${format(target)}${suffix}`;
       return;
     }
 
@@ -36,7 +39,7 @@ export function useCountUp<T extends HTMLElement>(target: number, suffix = "") {
           const step = (now: number) => {
             const p = Math.min(1, (now - start) / DURATION);
             const eased = 1 - Math.pow(1 - p, 3);
-            el.textContent = `${Math.round(target * eased)}${suffix}`;
+            el.textContent = `${format(Math.round(target * eased))}${suffix}`;
             if (p < 1) frame = requestAnimationFrame(step);
           };
 

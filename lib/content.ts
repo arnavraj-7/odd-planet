@@ -15,8 +15,6 @@ export const site = {
   founded: 2023,
   city: "New Delhi, India",
   email: "tushar@oddplanet.in",
-  phone: "+91 93152 97782",
-  phoneHref: "https://wa.me/919315297782",
   instagram: "https://www.instagram.com/oddplanet.in/",
   linkedin: "https://www.linkedin.com/company/odd-planet",
   founderLinkedin: "https://www.linkedin.com/in/ojamaduji/",
@@ -32,24 +30,27 @@ export const navItems = [
 export type NavItem = (typeof navItems)[number];
 
 export const hero = {
-  line1: "BUILDING",
-  line2: "attention, influence",
-  line3Lead: "&",
-  line3Accent: "CULTURE.",
+  eyebrow: "Where odds align.",
+  lines: ["BUILDING", "ATTENTION,", "INFLUENCE &"],
+  accentLine: "CULTURE.",
+  disciplines: "Influencer Marketing · Content Production · Digital Amplification",
   body:
-    "Influencer campaigns, content and amplification for brands that need to be talked about.",
+    "We help brands connect with the right creators, produce impactful content and amplify it to the right audience.",
   // Hero renders only on "/", so these stay bare anchors — a root-relative
   // href in a plain <a> would trigger a full reload instead of a scroll.
-  primaryCta: { label: "View selected work", href: "#work" },
-  secondaryCta: { label: "Book a discovery call", href: "#contact" },
+  primaryCta: { label: "View Our Work", href: "#work" },
+  secondaryCta: { label: "Book a Discovery Call", href: "#contact" },
 } as const;
 
-/** Unconfirmed placeholders — confirm with the client before launch. */
+/**
+ * Client-confirmed figures. Written compactly to hold the type scale —
+ * 500,000,000+ set at 50px would break the four-up band.
+ */
 export const stats = [
-  { value: 150, suffix: "M+", label: "Views generated" },
-  { value: 40, suffix: "+", label: "Brands served" },
-  { value: 250, suffix: "+", label: "Creators / month" },
-  { value: 500, suffix: "+", label: "Event attendees" },
+  { value: 500, suffix: "M+", label: "Views generated" },
+  { value: 50, suffix: "+", label: "Brands served" },
+  { value: 100, suffix: "K+", label: "Creator network" },
+  { value: 1000, suffix: "+", label: "Campaigns executed" },
 ] as const;
 
 export type Stat = (typeof stats)[number];
@@ -125,6 +126,9 @@ export type Service = {
   description: string;
   model: string;
   bullets: string[];
+  /** Card artwork. Unset until the client supplies it — the card then draws
+   *  a hairline plate in its place. */
+  image?: string;
 };
 
 export const services: Service[] = [
@@ -399,15 +403,48 @@ export const creators: Creator[] = USE_REAL_CONTENT
 
 export const founder = {
   name: "Tushar Goyal",
-  title: "Founder & CEO · ex-Meta Gaming",
+  title: "Founder & CEO",
   image: `${IMG}/team/oja.jpg`,
+  // Icons render only for the URLs that exist. Instagram appears the moment
+  // the client sends the handle.
+  instagram: "",
+  linkedin: site.founderLinkedin,
 } as const;
+
+export type HeroTile = {
+  /** CSS aspect-ratio. Mixed proportions are what give the column its rhythm. */
+  ratio: string;
+  label: string;
+  src?: string;
+};
+
+/**
+ * The two vertical columns beside the hero copy. They scroll in opposite
+ * directions. Artwork is unset until the client supplies campaign stills, so
+ * each tile currently draws a labelled plate at its own proportion.
+ */
+export const heroTiles: [HeroTile[], HeroTile[]] = [
+  [
+    { ratio: "4 / 5", label: "Campaign 01" },
+    { ratio: "1 / 1", label: "Campaign 02" },
+    { ratio: "3 / 4", label: "Campaign 03" },
+    { ratio: "4 / 3", label: "Campaign 04" },
+    { ratio: "9 / 14", label: "Campaign 05" },
+  ],
+  [
+    { ratio: "9 / 16", label: "Creator 01" },
+    { ratio: "4 / 3", label: "Creator 02" },
+    { ratio: "1 / 1", label: "Creator 03" },
+    { ratio: "3 / 4", label: "Creator 04" },
+    { ratio: "4 / 5", label: "Creator 05" },
+  ],
+];
 
 export const footerLinks = {
   sections: [
     { label: "Media coverage", href: "/#media" },
     { label: "Services", href: "/#services" },
-    { label: "Selected work", href: "/#work" },
+    { label: "Our work", href: "/#work" },
     { label: "Creator network", href: "/#creators" },
   ],
   follow: [
