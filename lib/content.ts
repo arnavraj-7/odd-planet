@@ -467,10 +467,7 @@ const realWork: WorkCard[] = [
       src: "/campaigns/vaibhav-michael-kors.jpg",
       alt: "Vaibhav Arora for Michael Kors",
     },
-    metrics: [
-      { value: "2M+", label: "Views" },
-      { value: "710K+", label: "Views" },
-    ],
+    metrics: [{ value: "710K+", label: "Views" }],
   },
   {
     index: "11",
@@ -483,9 +480,9 @@ const realWork: WorkCard[] = [
     resultsLabel: "Impact",
     image: {
       src: "/campaigns/tanvi-ponds.jpg",
-      alt: "Tanvi Malhara for Pond's",
+      alt: "Tanvi Malhara with Pond's",
     },
-    metrics: [{ value: "220K+", label: "Views" }],
+    metrics: [{ value: "22.6M+", label: "Views" }],
   },
   {
     index: "12",
@@ -496,25 +493,44 @@ const realWork: WorkCard[] = [
       "Creator-led content for Flipkart with Mohit Chettri, turning a shopping moment into something worth watching to the end.",
     did: ["creator", "content", "integration"],
     resultsLabel: "Impact",
+    image: {
+      src: "/campaigns/mohit-flipkart.jpg",
+      alt: "Mohit Chettri for Flipkart",
+    },
     metrics: [{ value: "50K+", label: "Views" }],
   },
   {
     index: "13",
+    category: "Fashion / E-commerce",
+    title: "Vaibhav Arora × AJIO",
+    tagline: "A sale reel worth staying for.",
+    description:
+      "A creator-led film for AJIO's All Stars Sale with Vaibhav Arora, selling the season rather than the discount.",
+    did: ["celebrity", "content", "integration"],
+    resultsLabel: "Impact",
+    image: {
+      src: "/campaigns/vaibhav-ajio.jpg",
+      alt: "Vaibhav Arora for AJIO",
+    },
+    metrics: [{ value: "2M+", label: "Views" }],
+  },
+  {
+    index: "14",
     category: "Beauty",
     title: "Tanvi Malhara × Sunsilk",
     tagline: "Hair that carries the frame.",
     description:
-      "A hair-care campaign for Sunsilk with Tanvi Malhara that travelled well past its own audience.",
+      "A hair-care campaign for Sunsilk with Tanvi Malhara, built around the one thing the camera cannot fake.",
     did: ["celebrity", "content", "integration"],
     resultsLabel: "Impact",
     image: {
       src: "/campaigns/tanvi-sunsilk.jpg",
       alt: "Tanvi Malhara for Sunsilk",
     },
-    metrics: [{ value: "22.6M+", label: "Views" }],
+    metrics: [{ value: "220K+", label: "Views" }],
   },
   {
-    index: "14",
+    index: "15",
     category: "Tech",
     title: "Mohit Chettri × Oppo",
     tagline: "A phone, shown in use.",
@@ -522,6 +538,10 @@ const realWork: WorkCard[] = [
       "A device integration for Oppo with Mohit Chettri, built around what the camera actually does rather than what the spec sheet says.",
     did: ["creator", "content", "integration"],
     resultsLabel: "Impact",
+    image: {
+      src: "/campaigns/mohit-oppo.jpg",
+      alt: "Mohit Chettri for Oppo",
+    },
     metrics: [{ value: "450K+", label: "Views" }],
   },
 ];
