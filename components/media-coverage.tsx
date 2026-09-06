@@ -1,3 +1,4 @@
+import { LinkPreview } from "@/components/link-preview";
 import { Reveal, RevealGroup } from "@/components/reveal";
 import { press, type PressItem } from "@/lib/content";
 
@@ -69,14 +70,17 @@ export function MediaCoverage() {
         </div>
       </Reveal>
 
-      <RevealGroup>
-        {press.map((item, i) =>
+      <LinkPreview>
+        <RevealGroup>
+          {press.map((item, i) =>
           item.href ? (
             <a
               key={item.headline}
               href={item.href}
               target="_blank"
               rel="noopener"
+              data-preview-label={item.outlet}
+              data-preview-src={item.preview?.src}
               className={`${ROW} text-ink-900 hover:bg-ink-100 hover:text-ink-900 ${
                 i === press.length - 1 ? "border-b" : ""
               }`}
@@ -90,9 +94,10 @@ export function MediaCoverage() {
             >
               <RowBody item={item} />
             </div>
-          ),
-        )}
-      </RevealGroup>
+            ),
+          )}
+        </RevealGroup>
+      </LinkPreview>
     </section>
   );
 }
