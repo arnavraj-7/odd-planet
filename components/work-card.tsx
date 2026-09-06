@@ -63,8 +63,14 @@ export function WorkCard({ card }: { card: WorkCardData }) {
         opt into `fit: "contain"` and sit whole over a blurred copy of
         themselves instead of losing their top and bottom.
       */}
+      {/*
+        Cards are all one height, set by whichever has the most to say. Rather
+        than leave the quieter ones with a dead band above their bottom edge,
+        the artwork grows into the slack — capped, so a wide frame never gets
+        cropped to a square.
+      */}
       <div
-        className={`relative aspect-[16/9] shrink-0 overflow-hidden ${
+        className={`relative aspect-[16/9] max-h-[clamp(200px,24vw,330px)] shrink-0 grow overflow-hidden ${
           card.image?.fit === "logo" ? "bg-white" : "bg-ink-100"
         }`}
       >
@@ -116,7 +122,7 @@ export function WorkCard({ card }: { card: WorkCardData }) {
         )}
       </div>
 
-      <div className="flex flex-1 flex-col p-[clamp(16px,1.7vw,22px)]">
+      <div className="flex shrink-0 flex-col p-[clamp(16px,1.7vw,22px)]">
         <div className="font-mono text-[10px] leading-none font-medium tracking-[0.16em] uppercase text-ink-550">
           {card.index} · {card.category}
         </div>
@@ -157,60 +163,6 @@ export function WorkCard({ card }: { card: WorkCardData }) {
                 );
               })}
             </ul>
-          </>
-        ) : null}
-
-        {card.impact?.length ? (
-          <>
-            <div className="mt-[clamp(16px,1.8vw,22px)] border-t border-ink-300 pt-[clamp(13px,1.5vw,18px)] font-mono text-[10px] leading-none font-medium tracking-[0.16em] uppercase text-ink-550">
-              Impact
-            </div>
-            <div
-              className={`mt-3 ${
-                card.impact.length > 2
-                  ? "grid grid-cols-2 gap-x-3 gap-y-3.5"
-                  : "flex items-stretch gap-3"
-              }`}
-            >
-              {card.impact.map((metric, i) => {
-                const figure = (
-                  <>
-                    <span className="block font-grotesk text-[clamp(17px,1.6vw,23px)] leading-[1.05] font-medium tracking-[-0.02em] text-ink-900">
-                      {metric.value}
-                    </span>
-                    <span className="mt-1.5 block font-grotesk text-[10.5px] leading-[1.3] text-ink-900">
-                      {metric.label}
-                    </span>
-                  </>
-                );
-
-                return (
-                  <div
-                    key={`${metric.label}-${i}`}
-                    className={`min-w-0 ${
-                      card.impact!.length > 2
-                        ? i % 2 === 1
-                          ? "border-l border-ink-300 pl-3"
-                          : ""
-                        : `flex-1 ${i > 0 ? "border-l border-ink-300 pl-3" : ""}`
-                    }`}
-                  >
-                    {metric.href ? (
-                      <a
-                        href={metric.href}
-                        target="_blank"
-                        rel="noopener"
-                        className="block text-ink-900 hover:text-ink-900"
-                      >
-                        {figure}
-                      </a>
-                    ) : (
-                      figure
-                    )}
-                  </div>
-                );
-              })}
-            </div>
           </>
         ) : null}
 

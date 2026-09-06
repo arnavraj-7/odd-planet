@@ -288,12 +288,6 @@ export type WorkCard = {
   /** "themes" sets the entries as titled points rather than big figures. */
   resultsStyle?: "figures" | "themes";
   /**
-   * Headline figures, shown above the results block. They exist for the cards
-   * whose results read as themes but that still have numbers worth leading
-   * with.
-   */
-  impact?: WorkMetric[];
-  /**
    * Omitted on placeholder cards — the card then draws a hairline plate.
    * `fit: "contain"` shows the whole frame over a blurred copy of itself, for
    * artwork a landscape crop would destroy (a full-bleed portrait poster).
@@ -354,7 +348,7 @@ const realWork: WorkCard[] = [
     tagline: "Building visibility beyond the pitch.",
     description:
       "We managed Shaily Mehrotra's digital presence around her Shark Tank journey, driving content, audience engagement and PR-led visibility across platforms.",
-    did: ["pr", "social", "strategy", "engagement", "positioning"],
+    did: ["pr", "social", "strategy", "engagement"],
     image: { src: "/campaigns/shaily-mehrotra.jpg", alt: "Shaily Mehrotra, Fixderma" },
     metrics: [
       { value: "15M+", label: "Total Views" },
@@ -382,19 +376,12 @@ const realWork: WorkCard[] = [
     description:
       "A lifestyle-led creator narrative for Allen Solly with Priyank Sharma, blending fashion, personality and everyday moments into an authentic brand integration.",
     did: ["celebrity", "content", "integration", "execution"],
-    impact: [{ label: "Views", value: "300K+" }],
-    resultsLabel: "Campaign focus",
-    resultsStyle: "themes",
+    resultsLabel: "Impact",
     image: {
       src: "/campaigns/priyank-allen-solly.jpg",
       alt: "Priyank Sharma for Allen Solly",
     },
-    metrics: [
-      { value: "Fashion & Style", label: "Elevated everyday dressing" },
-      { value: "Creator-Led Storytelling", label: "Natural brand integration" },
-      { value: "Lifestyle Appeal", label: "Part of everyday moments" },
-      { value: "Brand Visibility", label: "A young, fashion-conscious audience" },
-    ],
+    metrics: [{ label: "Views", value: "300K+" }],
   },
   {
     index: "06",
@@ -427,18 +414,10 @@ const realWork: WorkCard[] = [
       alt: "DCHL and Ministry of Textiles",
       fit: "logo",
     },
-    impact: [
+    metrics: [
       { label: "Reel 01", value: "423K+", href: "https://www.instagram.com/reel/DMuuOv1NrXv/" },
       { label: "Reel 02", value: "181K+", href: "https://www.instagram.com/reel/DM0BeCQt7H2/" },
       { label: "Reel 03", value: "309K+", href: "https://www.instagram.com/reel/DMpJRfZJ8hr/" },
-    ],
-    resultsLabel: "Campaign outcomes",
-    resultsStyle: "themes",
-    metrics: [
-      { value: "Increased Awareness", label: "For the Handloom Mark and its value" },
-      { value: "Positive Public Sentiment", label: "Towards handloom and Indian artisans" },
-      { value: "Cultural Relevance", label: "Reinforced pride in India's textile heritage" },
-      { value: "Long-Term Brand Equity", label: "For the Handloom Mark initiative" },
     ],
   },
   {
@@ -454,8 +433,6 @@ const realWork: WorkCard[] = [
     metrics: [
       { value: "2", label: "Signature Films", note: "Capturing the store experience" },
       { value: "195K+", label: "Total Organic Views", note: "Across both videos" },
-      { value: "High", label: "Audience Sentiment", note: "Across comments and shares" },
-      { value: "In-Store Buzz", label: "Opening moment", note: "Content that amplified it" },
     ],
   },
   {
