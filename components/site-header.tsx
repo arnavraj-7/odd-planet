@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { navItems } from "@/lib/content";
@@ -42,7 +43,9 @@ export function SiteHeader() {
       }`}
     >
       <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-5 px-gutter py-4 max-[640px]:flex-wrap max-[640px]:gap-y-3">
-        <a href="#home" aria-label="Odd Planet — home" className="flex shrink-0">
+        {/* Root-relative hashes so every link works from /privacy too, where a
+            bare "#media" would only append a fragment that does not exist. */}
+        <Link href="/" aria-label="Odd Planet — home" className="flex shrink-0">
           <Image
             src="/odd-planet-mark.png"
             alt="Odd Planet"
@@ -51,7 +54,7 @@ export function SiteHeader() {
             priority
             className="block h-8 w-auto transition-opacity duration-200 ease-out hover:opacity-80"
           />
-        </a>
+        </Link>
 
         <nav
           aria-label="Sections"
@@ -60,9 +63,9 @@ export function SiteHeader() {
           {navItems.map((item) => {
             const on = active === item.id;
             return (
-              <a
+              <Link
                 key={item.id}
-                href={`#${item.id}`}
+                href={`/#${item.id}`}
                 aria-current={on ? "true" : undefined}
                 className={`shrink-0 rounded-full px-[13px] py-[9px] font-mono text-xs leading-none tracking-[0.06em] whitespace-nowrap uppercase transition-[color,background] duration-200 ease-out ${
                   on
@@ -71,13 +74,13 @@ export function SiteHeader() {
                 }`}
               >
                 {item.label}
-              </a>
+              </Link>
             );
           })}
         </nav>
 
-        <a
-          href="#contact"
+        <Link
+          href="/#contact"
           className="group inline-flex shrink-0 items-center gap-2 rounded-full bg-blue-500 py-2 pr-2 pl-[18px] font-grotesk text-[13px] leading-none font-semibold whitespace-nowrap text-white transition-[background,transform] duration-[240ms] ease-out hover:-translate-y-px hover:bg-blue-700"
         >
           Start a brief
@@ -87,7 +90,7 @@ export function SiteHeader() {
           >
             →
           </span>
-        </a>
+        </Link>
       </div>
     </header>
   );

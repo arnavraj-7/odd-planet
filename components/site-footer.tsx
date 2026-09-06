@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import { StrokeWordmark } from "@/components/stroke-wordmark";
 import { footerLinks, site } from "@/lib/content";
@@ -31,9 +32,9 @@ export function SiteFooter() {
           <div className={COLUMN_LABEL}>Sections</div>
           <div className="flex flex-col gap-3">
             {footerLinks.sections.map((link) => (
-              <a key={link.href} href={link.href} className={COLUMN_LINK}>
+              <Link key={link.href} href={link.href} className={COLUMN_LINK}>
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
         </div>
@@ -70,12 +71,12 @@ export function SiteFooter() {
               {site.phone}
             </a>
           </div>
-          <a
-            href="#contact"
+          <Link
+            href="/#contact"
             className="inline-flex items-center gap-2.5 rounded-full border border-ink-400 px-5 py-3.5 font-grotesk text-[13px] leading-none font-semibold text-ink-900 transition-[border-color,background] duration-200 ease-out hover:border-blue-500 hover:bg-ink-150 hover:text-ink-900"
           >
             Start a brief →
-          </a>
+          </Link>
         </div>
       </div>
 
@@ -89,14 +90,12 @@ export function SiteFooter() {
             © 2026 {site.wordmark} — {site.tagline}
           </span>
           <span className="flex gap-[22px]">
-            <a href="/privacy" className="text-ink-550 hover:text-ink-900">
+            <Link href="/privacy" className="text-ink-550 hover:text-ink-900">
               PRIVACY
-            </a>
-            {/* TODO: point at /terms once the client supplies the copy —
-                left inert rather than shipping a 404 or invented terms. */}
-            <a href="#" className="text-ink-550 hover:text-ink-900">
+            </Link>
+            <Link href="/terms" className="text-ink-550 hover:text-ink-900">
               TERMS
-            </a>
+            </Link>
           </span>
         </div>
       </div>

@@ -38,6 +38,8 @@ export const hero = {
   line3Accent: "CULTURE.",
   body:
     "Influencer campaigns, content and amplification for brands that need to be talked about.",
+  // Hero renders only on "/", so these stay bare anchors — a root-relative
+  // href in a plain <a> would trigger a full reload instead of a scroll.
   primaryCta: { label: "View selected work", href: "#work" },
   secondaryCta: { label: "Book a discovery call", href: "#contact" },
 } as const;
@@ -76,6 +78,12 @@ export type PressItem = {
   context?: string;
   href?: string;
   stats?: { value: string; label: string }[];
+  /**
+   * Artwork for the hover preview card. Left unset until the client supplies
+   * screenshots — a live <iframe> of these outlets is not an option, they all
+   * send X-Frame-Options / frame-ancestors and would render blank.
+   */
+  preview?: { src: string };
 };
 
 export const press: PressItem[] = [
@@ -275,12 +283,19 @@ const realWork: WorkCard[] = [
   },
 ];
 
+export type CreatorSocial = { label: string; href?: string };
+
 export type Creator = {
   name: string;
   role: string;
-  reach: string;
-  brands: string;
-  metric: string;
+  /** Brand collaborations. Unlike a follower count, this does not go stale. */
+  brands?: string;
+  /**
+   * Follower counts are deliberately not stored. A number baked into the page
+   * is wrong the day after it is written, and reads badly when a creator's
+   * audience moves. Link the profile and let the platform show the live figure.
+   */
+  socials: CreatorSocial[];
   /** Omitted on placeholder cards — the card then draws a hairline plate. */
   image?: string;
 };
@@ -289,65 +304,57 @@ const realCreators: Creator[] = [
   {
     name: "Siddharth Nigam",
     role: "Actor & creator",
-    reach: "10.5M+ followers",
     brands: "Domino's · Max Fashion",
-    metric: "800K+ campaign views",
+    socials: [], // TODO: profile URLs from the client
     image: `${IMG}/pdf_extracted/page6_img3.jpeg`,
   },
   {
     name: "Priyank Sharma",
     role: "Actor & creator",
-    reach: "3M+ followers",
     brands: "Allen Solly",
-    metric: "200K+ reel views",
+    socials: [], // TODO: profile URLs from the client
     image: `${IMG}/reels_showcase/priyank_creator.jpg`,
   },
   {
     name: "Vaibhav Arora",
     role: "Artist & creator",
-    reach: "2M+ followers",
     brands: "Michael Kors · AJIO",
-    metric: "710K+ reel views",
+    socials: [], // TODO: profile URLs from the client
     image: `${IMG}/reels_showcase/vaibhav_creator.jpg`,
   },
   {
     name: "Tanvi Malhara",
     role: "Fashion & dance",
-    reach: "590K+ followers",
     brands: "POND'S · Sunsilk",
-    metric: "22.6M+ total views",
+    socials: [], // TODO: profile URLs from the client
     image: `${IMG}/pdf_extracted/page10_img1.jpeg`,
   },
   {
     name: "Tisca Chopra",
     role: "Actor & creator",
-    reach: "Celebrity partnership",
     brands: "SoTrue",
-    metric: "57K+ reel views",
+    socials: [], // TODO: profile URLs from the client
     image: `${IMG}/reels_showcase/tisca_creator.jpg`,
   },
   {
     name: "Mohit Chhetri",
     role: "Lifestyle creator",
-    reach: "450K+ followers",
     brands: "Flipkart · OPPO",
-    metric: "50K+ reel views",
+    socials: [], // TODO: profile URLs from the client
     image: `${IMG}/reels_showcase/mohit_creator.jpg`,
   },
   {
     name: "Karun & Nanku",
     role: "Music artists",
-    reach: "3.9M+ streams",
     brands: "Converse",
-    metric: "Original IP",
+    socials: [], // TODO: profile URLs from the client
     image: `${IMG}/pdf_extracted/page9_img1.jpeg`,
   },
   {
     name: "Ishita Arora",
     role: "Food & lifestyle",
-    reach: "137K+ followers",
     brands: "Epigamia · Instamart",
-    metric: "32.3K+ reel views",
+    socials: [], // TODO: profile URLs from the client
     image: `${IMG}/pdf_extracted/page11_img1.jpeg`,
   },
 ];
@@ -381,9 +388,7 @@ const placeholderWork: WorkCard[] = Array.from({ length: 7 }, (_, i) => ({
 const placeholderCreators: Creator[] = Array.from({ length: 8 }, (_, i) => ({
   name: "Creator name",
   role: `Role ${String(i + 1).padStart(2, "0")}`,
-  reach: "—",
-  brands: "—",
-  metric: "—",
+  socials: [{ label: "Instagram" }, { label: "YouTube" }],
 }));
 
 export const work: WorkCard[] = USE_REAL_CONTENT ? realWork : placeholderWork;
@@ -400,10 +405,10 @@ export const founder = {
 
 export const footerLinks = {
   sections: [
-    { label: "Media coverage", href: "#media" },
-    { label: "Services", href: "#services" },
-    { label: "Selected work", href: "#work" },
-    { label: "Creator network", href: "#creators" },
+    { label: "Media coverage", href: "/#media" },
+    { label: "Services", href: "/#services" },
+    { label: "Selected work", href: "/#work" },
+    { label: "Creator network", href: "/#creators" },
   ],
   follow: [
     { label: "Instagram", href: site.instagram },
