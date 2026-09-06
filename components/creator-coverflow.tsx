@@ -266,17 +266,35 @@ export function CreatorCoverflow() {
           </div>
 
           <div className="mx-auto mt-[22px] w-full max-w-[340px] font-mono text-[11px] leading-none font-medium tracking-[0.06em]">
-            <div className="op-metric-row py-[11px]">
-              <span>REACH</span>
-              <span>{current.reach}</span>
-            </div>
-            <div className="op-metric-row py-[11px]">
-              <span>BRANDS</span>
-              <span>{current.brands}</span>
-            </div>
+            {current.brands ? (
+              <div className="op-metric-row py-[11px]">
+                <span>BRANDS</span>
+                <span>{current.brands}</span>
+              </div>
+            ) : null}
+            {/* Profiles, not follower counts — the platform shows the live
+                figure, and nothing on the page goes stale. */}
             <div className="op-metric-row border-b border-ink-300 py-[11px]">
-              <span>PERFORMANCE</span>
-              <span>{current.metric}</span>
+              <span>PROFILES</span>
+              <span className="flex gap-3.5">
+                {current.socials.map((social) =>
+                  social.href ? (
+                    <a
+                      key={social.label}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener"
+                      className="text-blue-200 hover:text-blue-100"
+                    >
+                      {social.label} →
+                    </a>
+                  ) : (
+                    <span key={social.label} className="text-ink-500">
+                      {social.label}
+                    </span>
+                  ),
+                )}
+              </span>
             </div>
           </div>
         </div>
