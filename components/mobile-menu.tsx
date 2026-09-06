@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { navItems } from "@/lib/content";
+import { lockScroll, unlockScroll } from "@/lib/scroll-lock";
 
 /**
  * Phone / tablet navigation. Opens a full-height sheet over the page with the
@@ -19,8 +20,7 @@ export function MobileMenu() {
   useEffect(() => {
     if (!open) return;
 
-    const previous = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+    lockScroll();
 
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setOpen(false);
@@ -28,7 +28,7 @@ export function MobileMenu() {
     window.addEventListener("keydown", onKey);
 
     return () => {
-      document.body.style.overflow = previous;
+      unlockScroll();
       window.removeEventListener("keydown", onKey);
     };
   }, [open]);

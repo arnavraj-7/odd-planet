@@ -141,6 +141,10 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    /* Keep the scrollbar's space reserved at all times. Locking the page for
+       the intro or the mobile menu otherwise removes the scrollbar, widens the
+       viewport, and shifts the whole layout sideways when it comes back. */
+    scrollbar-gutter: stable;
   }
 
   /* Height of the sticky header, so the hero can fill exactly the rest of the
