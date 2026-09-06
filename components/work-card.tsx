@@ -51,19 +51,43 @@ export function WorkCard({ card }: { card: WorkCardData }) {
       className="group flex w-[clamp(292px,29vw,404px)] shrink-0 flex-col overflow-hidden rounded-xl border border-ink-300 transition-[border-color,transform] duration-300 ease-out hover:-translate-y-1 hover:border-blue-500"
     >
       {/*
-        The artwork fills the box outright — no blurred backdrop behind it. The
-        crop is anchored to the top so a poster keeps its masthead, which is the
-        part that identifies the campaign.
+        Artwork fills the box on a top-anchored crop. A few creatives are
+        full-bleed portrait posters that a landscape crop would destroy — those
+        opt into `fit: "contain"` and sit whole over a blurred copy of
+        themselves instead of losing their top and bottom.
       */}
       <div className="relative aspect-[16/9] shrink-0 overflow-hidden bg-ink-100">
         {card.image ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={card.image.src}
-            alt={card.image.alt}
-            loading="lazy"
-            className="block size-full object-cover object-top transition-transform duration-[600ms] ease-brand group-hover:scale-[1.04]"
-          />
+          card.image.fit === "contain" ? (
+            <>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={card.image.src}
+                alt=""
+                aria-hidden="true"
+                className="absolute inset-0 size-full scale-110 object-cover opacity-45 blur-[20px]"
+              />
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 bg-[rgba(5,6,10,0.28)]"
+              />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={card.image.src}
+                alt={card.image.alt}
+                loading="lazy"
+                className="relative block size-full object-contain transition-transform duration-[600ms] ease-brand group-hover:scale-[1.04]"
+              />
+            </>
+          ) : (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={card.image.src}
+              alt={card.image.alt}
+              loading="lazy"
+              className="block size-full object-cover object-top transition-transform duration-[600ms] ease-brand group-hover:scale-[1.04]"
+            />
+          )
         ) : (
           <div className="flex size-full items-center justify-center">
             <span className="font-mono text-[11px] font-medium tracking-[0.18em] uppercase text-ink-500">

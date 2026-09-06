@@ -272,8 +272,12 @@ export type WorkCard = {
   resultsLabel?: string;
   /** "themes" sets the entries as titled points rather than big figures. */
   resultsStyle?: "figures" | "themes";
-  /** Omitted on placeholder cards — the card then draws a hairline plate. */
-  image?: { src: string; alt: string };
+  /**
+   * Omitted on placeholder cards — the card then draws a hairline plate.
+   * `fit: "contain"` shows the whole frame over a blurred copy of itself, for
+   * artwork a landscape crop would destroy (a full-bleed portrait poster).
+   */
+  image?: { src: string; alt: string; fit?: "cover" | "contain" };
   /** Logo cards render the image contained on a hairline plate instead of a cover crop. */
   variant?: "cover" | "logo";
   metrics: WorkMetric[];
@@ -396,8 +400,9 @@ const realWork: WorkCard[] = [
       "National handloom and heritage storytelling for the Textiles Committee, delivered as creator-led reels built for reach.",
     did: ["content", "creator", "amplification"],
     image: {
-      src: "/campaigns/textiles-handloom.jpg",
+      src: "/hero/textiles-handloom.jpg",
       alt: "Textiles Committee handloom campaign creative",
+      fit: "contain",
     },
     metrics: [
       { label: "Reel 01", value: "423K+", href: "https://www.instagram.com/reel/DMuuOv1NrXv/" },
@@ -427,7 +432,11 @@ const realWork: WorkCard[] = [
     description:
       "Lifestyle and fitness creators activated month on month for a growing nutrition brand.",
     did: ["influencer", "creator", "content"],
-    image: { src: "/campaigns/fitfeast.jpg", alt: "Fit Feast campaign creative" },
+    image: {
+      src: "/hero/fitfeast.jpg",
+      alt: "Fit Feast campaign creative",
+      fit: "contain",
+    },
     metrics: [],
   },
 ];
