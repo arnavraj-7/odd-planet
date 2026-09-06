@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 
 import { prefersReducedMotion } from "@/hooks/use-reduced-motion";
+import { lockScroll, unlockScroll } from "@/lib/scroll-lock";
 import { site } from "@/lib/content";
 
 /** Hold the mark at least this long, so the intro reads as intentional. */
@@ -11,17 +12,22 @@ const MIN_HOLD = 850;
 /** ...and never longer than this, however slow the network is. */
 const MAX_WAIT = 3000;
 const FLY_MS = 760;
-const OPEN_MS = 900;
+const FADE_MS = 520;
 
-type Phase = "hold" | "fly" | "open" | "done";
+type Phase = "hold" | "fly" | "fade" | "done";
 
 /**
  * Load intro: the mark holds centre while fonts and the hero's own assets
- * settle, flies into its place in the header, then the curtain parts.
+ * settle, then flies into its place in the header.
  *
- * The overlay ships in the server HTML so there is no flash of the page
- * underneath it, and CSS hides it outright when scripting is off. It plays on
- * every load; reduced motion skips straight past it.
+ * There is deliberately no curtain. A curtain reveals the page *over* the
+ * header, so the instant the flying mark handed over, the real one was still
+ * behind an opaque panel — the logo blinked out and came back a beat later.
+ * Fading the whole overlay instead lets the two marks cross in the same spot,
+ * which reads as a single object settling into place.
+ *
+ * The overlay ships in the server HTML so the page never flashes underneath
+ * it, CSS hides it outright when scripting is off, and it plays on every load.
  */
 export function IntroCurtain() {
   const [phase, setPhase] = useState<Phase>("hold");
@@ -30,7 +36,7 @@ export function IntroCurtain() {
   const finish = useCallback(() => {
     setPhase("done");
     document.documentElement.removeAttribute("data-intro");
-    document.body.style.overflow = "";
+    unlockScroll();
   }, []);
 
   // Skipped before first paint under reduced motion, so it never sees a frame
@@ -42,7 +48,7 @@ export function IntroCurtain() {
     }
 
     document.documentElement.setAttribute("data-intro", "running");
-    document.body.style.overflow = "hidden";
+    lockScroll();
     window.scrollTo(0, 0);
   }, [finish]);
 
@@ -54,23 +60,27 @@ export function IntroCurtain() {
     let cancelled = false;
     const timers: ReturnType<typeof setTimeout>[] = [];
 
-    // Last resort. A curtain that never lifts leaves the site unusable, so
+    // Last resort. An overlay that never lifts leaves the site unusable, so
     // nothing in the sequence is allowed to be load-bearing for the reveal.
-    const failsafe = setTimeout(() => {
-      if (!cancelled) finish();
-    }, MAX_WAIT + FLY_MS + OPEN_MS + 600);
-    timers.push(failsafe);
+    timers.push(
+      setTimeout(
+        () => {
+          if (!cancelled) finish();
+        },
+        MAX_WAIT + FLY_MS + FADE_MS + 600,
+      ),
+    );
 
     /** Fonts plus anything the hero paints first — capped, never open-ended. */
     const assetsReady = Promise.all([
       document.fonts?.ready ?? Promise.resolve(),
       ...Array.from(
-        document.querySelectorAll<HTMLImageElement>("[data-hero-asset] img, img[data-hero-asset]"),
+        document.querySelectorAll<HTMLImageElement>("img[data-hero-asset]"),
       ).map((img) => img.decode().catch(() => undefined)),
     ]);
 
-    const held = new Promise((resolve) => timers.push(setTimeout(resolve, MIN_HOLD)));
-    const capped = new Promise((resolve) => timers.push(setTimeout(resolve, MAX_WAIT)));
+    const held = new Promise((r) => timers.push(setTimeout(r, MIN_HOLD)));
+    const capped = new Promise((r) => timers.push(setTimeout(r, MAX_WAIT)));
 
     Promise.race([Promise.all([assetsReady, held]), capped]).then(() => {
       if (cancelled) return;
@@ -94,12 +104,11 @@ export function IntroCurtain() {
       timers.push(
         setTimeout(() => {
           if (cancelled) return;
-          // Hand the mark over to the real one in the header — same size, same
-          // place, so the swap is invisible.
+          // Uncover the real mark first — it is now directly underneath at the
+          // same size, so the overlay fade crosses one into the other.
           document.documentElement.removeAttribute("data-intro");
-          if (markRef.current) markRef.current.style.opacity = "0";
-          setPhase("open");
-          timers.push(setTimeout(finish, OPEN_MS));
+          setPhase("fade");
+          timers.push(setTimeout(finish, FADE_MS));
         }, FLY_MS),
       );
     });
@@ -112,30 +121,16 @@ export function IntroCurtain() {
 
   if (phase === "done") return null;
 
-  const opening = phase === "open";
-
   return (
     <div
       data-intro-overlay
       aria-hidden="true"
-      className="pointer-events-none fixed inset-0 z-[100]"
+      className={`pointer-events-none fixed inset-0 z-[100] bg-ink-000 transition-opacity duration-[520ms] ease-out ${
+        phase === "fade" ? "opacity-0" : "opacity-100"
+      }`}
     >
-      <div
-        className={`absolute inset-x-0 top-0 h-1/2 border-b border-ink-300 bg-ink-000 transition-transform duration-[900ms] ease-[cubic-bezier(.76,0,.24,1)] ${
-          opening ? "-translate-y-full" : "translate-y-0"
-        }`}
-      />
-      <div
-        className={`absolute inset-x-0 bottom-0 h-1/2 bg-ink-000 transition-transform duration-[900ms] ease-[cubic-bezier(.76,0,.24,1)] ${
-          opening ? "translate-y-full" : "translate-y-0"
-        }`}
-      />
-
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-5">
-        <div
-          ref={markRef}
-          className={`transition-opacity duration-150 ${opening ? "opacity-0" : "opacity-100"}`}
-        >
+        <div ref={markRef}>
           <Image
             src="/odd-planet-mark.png"
             alt=""
