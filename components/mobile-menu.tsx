@@ -71,7 +71,7 @@ export function MobileMenu() {
           <ul className="m-0 flex list-none flex-col p-0">
             {navItems.map((item, i) => (
               <li
-                key={item.id}
+                key={item.label}
                 style={{ transitionDelay: open ? `${90 + i * 65}ms` : "0ms" }}
                 className={`border-t border-ink-300 transition-[opacity,transform,filter] duration-[520ms] ease-brand last:border-b ${
                   open
@@ -80,7 +80,7 @@ export function MobileMenu() {
                 }`}
               >
                 <Link
-                  href={`/#${item.id}`}
+                  href={"id" in item ? `/#${item.id}` : item.href}
                   onClick={() => setOpen(false)}
                   className="flex items-center justify-between gap-5 py-[clamp(16px,2.6vh,24px)] text-ink-900 hover:text-ink-900"
                 >

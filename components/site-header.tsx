@@ -8,7 +8,7 @@ import { MobileMenu } from "@/components/mobile-menu";
 import { navItems, site } from "@/lib/content";
 import { useActiveSection } from "@/hooks/use-active-section";
 
-const NAV_IDS = navItems.map((item) => item.id);
+const NAV_IDS = navItems.flatMap((item) => ("id" in item ? [item.id] : []));
 
 export function SiteHeader() {
   const active = useActiveSection(NAV_IDS);
@@ -76,11 +76,11 @@ export function SiteHeader() {
           className="flex items-center gap-0.5 rounded-full border border-ink-300 p-[5px] max-[900px]:hidden"
         >
           {navItems.map((item) => {
-            const on = active === item.id;
+            const on = "id" in item && active === item.id;
             return (
               <Link
-                key={item.id}
-                href={`/#${item.id}`}
+                key={item.label}
+                href={"id" in item ? `/#${item.id}` : item.href}
                 aria-current={on ? "true" : undefined}
                 className={`shrink-0 rounded-full px-[13px] py-[9px] font-mono text-xs leading-none tracking-[0.06em] whitespace-nowrap uppercase transition-[color,background] duration-200 ease-out ${
                   on
