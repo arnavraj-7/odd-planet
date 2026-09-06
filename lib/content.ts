@@ -128,7 +128,6 @@ export type Service = {
   tagline: string;
   /** Revealed with the bullets. */
   description: string;
-  model: string;
   bullets: string[];
   /** Card artwork. Unset until the client supplies it — the card then draws
    *  a hairline plate in its place. */
@@ -141,7 +140,6 @@ export const services: Service[] = [
     name: "Influence",
     tagline: "Creators that move attention.",
     description: "Put the right people behind the brand.",
-    model: "Always-on",
     bullets: [
       "Influencer marketing",
       "Creator partnerships",
@@ -154,7 +152,6 @@ export const services: Service[] = [
     name: "Create",
     tagline: "Content people want to watch.",
     description: "Turn a brief into something worth watching.",
-    model: "Per project",
     bullets: [
       "Content production",
       "Brand films",
@@ -167,7 +164,6 @@ export const services: Service[] = [
     name: "Amplify",
     tagline: "Distribution that keeps it moving.",
     description: "Make good work travel further.",
-    model: "Monthly retainer",
     bullets: [
       "Narrative control",
       "Meme marketing",
@@ -182,7 +178,6 @@ export const services: Service[] = [
     tagline: "An always-on team for the brand.",
     description:
       "Build, manage and scale your brand across the new retail ecosystem.",
-    model: "Consult + manage",
     bullets: [
       "Quick-commerce strategy",
       "Marketplace management",

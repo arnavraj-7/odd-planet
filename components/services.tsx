@@ -57,13 +57,8 @@ export function Services() {
             />
 
             <div className="relative p-[clamp(16px,1.5vw,22px)]">
-              <div className="mb-2.5 flex items-center gap-2.5">
-                <span className="font-mono text-[11px] leading-none font-medium tracking-[0.14em] text-ink-550">
-                  {service.index}
-                </span>
-                <span className="font-mono text-[10px] leading-none font-medium tracking-[0.12em] uppercase text-blue-400">
-                  {service.model}
-                </span>
+              <div className="mb-2.5 font-mono text-[11px] leading-none font-medium tracking-[0.14em] text-ink-550">
+                {service.index}
               </div>
 
               <h3 className="m-0 font-serif text-[clamp(24px,2.1vw,32px)] leading-[1.05] font-normal tracking-[-0.02em] text-ink-900">
