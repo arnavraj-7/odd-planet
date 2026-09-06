@@ -1,0 +1,378 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ *
+ * Design tokens — Odd Planet brand kit.
+ * One background colour (ink/000). Separation comes from hairlines
+ * (ink/300) and the ribbon gradient field. No box-shadows.
+ * ------------------------------------------------------------------ */
+
+@theme {
+  --color-ink-000: #05060a; /* page background — the only background colour */
+  --color-ink-100: #0a0c15; /* row hover, coverflow card base */
+  --color-ink-150: #0c0f1a; /* ghost-button hover */
+  --color-ink-200: #0d0f17; /* form input fill */
+  --color-ink-250: #11141d; /* nav pill hover */
+  --color-ink-300: #191c26; /* hairline / divider */
+  --color-ink-400: #262b3a; /* border on interactive containers */
+  --color-ink-450: #1b2030; /* footer wordmark gradient ends */
+  --color-ink-500: #4a5065; /* input placeholder */
+  --color-ink-550: #565c72; /* tertiary text, mono meta labels */
+  --color-ink-600: #8a90a6; /* secondary body text — 6.2:1 */
+  --color-ink-900: #f4f5f8; /* primary text — 18.4:1 */
+
+  --color-blue-900: #03045e; /* gradient field only */
+  --color-blue-800: #0e1330; /* gradient field only */
+  --color-blue-700: #14169a; /* button hover, gradient field */
+  --color-blue-600: #2627a6; /* deck primary — reserve, never text */
+  --color-blue-500: #2d45f0; /* accent: CTA, active borders, bullets */
+  --color-blue-400: #5a6dff; /* eyebrows, hover text, icons */
+  --color-blue-200: #a9b4ff; /* links, serif italic accents */
+  --color-blue-100: #dee2ff; /* tints, badge text over media */
+
+  --font-serif: var(--font-instrument-serif), Georgia, serif;
+  --font-grotesk: var(--font-schibsted-grotesk), system-ui, sans-serif;
+  --font-sans: var(--font-schibsted-grotesk), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+
+  --spacing-gutter: clamp(16px, 3vw, 40px);
+  --spacing-section: clamp(48px, 7vw, 104px);
+
+  /* Fluid type scale */
+  --text-hero-caps: clamp(38px, 7.4vw, 104px);
+  --text-hero-serif: clamp(42px, 8.6vw, 124px);
+  --text-hero-body: clamp(15px, 1.4vw, 18px);
+  --text-h2: clamp(32px, 4.8vw, 68px);
+  --text-h2-services: clamp(40px, 6.4vw, 88px);
+  --text-h2-work: clamp(30px, 4.4vw, 62px);
+  --text-contact-caps: clamp(38px, 6vw, 86px);
+  --text-contact-serif: clamp(44px, 7vw, 104px);
+  --text-contact-body: clamp(15px, 1.4vw, 17px);
+  --text-service: clamp(26px, 3.4vw, 46px);
+  --text-stat: clamp(30px, 3.6vw, 50px);
+  --text-press: clamp(18px, 2.1vw, 27px);
+  --text-creator-name: clamp(24px, 2.8vw, 36px);
+
+  --ease-brand: cubic-bezier(0.16, 0.84, 0.44, 1);
+
+  --animate-marquee: op-marquee 46s linear infinite;
+  --animate-rim: op-rim 3.6s linear infinite;
+  --animate-caption: op-caption 0.3s ease;
+}
+
+/* Coverflow caption blur-swaps whenever the centred card changes. */
+@keyframes op-caption {
+  from {
+    opacity: 0;
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+
+@keyframes op-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes op-rim {
+  to {
+    --op-a: 360deg;
+  }
+}
+
+@property --op-a {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+/* ------------------------------------------------------------------ *
+ * Base
+ * ------------------------------------------------------------------ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-ink-000);
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  color: var(--color-ink-900);
+  font-family: var(--font-grotesk);
+}
+
+a {
+  color: var(--color-blue-200);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-blue-100);
+}
+
+::selection {
+  background: var(--color-blue-500);
+  color: #fff;
+}
+
+input,
+textarea,
+button {
+  font-family: inherit;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-ink-500);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-blue-400);
+  outline-offset: 3px;
+}
+
+/* Horizontal rails hide their scrollbar but stay scrollable. */
+.op-hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.op-hide-scrollbar::-webkit-scrollbar {
+  height: 0;
+  width: 0;
+}
+
+/* ------------------------------------------------------------------ *
+ * Reveal: fade + rise + de-blur, 0.75s, fires once.
+ * The hidden start state is scoped to `scripting: enabled` so the page
+ * is fully readable without JS and degrades to no animation on older
+ * engines that do not know the query.
+ * ------------------------------------------------------------------ */
+
+[data-reveal],
+[data-reveal-group] > * {
+  transition:
+    opacity 0.75s var(--ease-brand),
+    transform 0.75s var(--ease-brand),
+    filter 0.75s var(--ease-brand);
+}
+
+@media (scripting: enabled) {
+  [data-reveal]:not([data-revealed]),
+  [data-reveal-group]:not([data-revealed]) > * {
+    opacity: 0;
+    filter: blur(9px);
+    transform: translateY(22px);
+  }
+}
+
+[data-reveal][data-revealed],
+[data-reveal-group][data-revealed] > * {
+  opacity: 1;
+  filter: blur(0px);
+  transform: none;
+}
+
+/* ------------------------------------------------------------------ *
+ * Component recipes — repeated typographic and structural patterns.
+ * ------------------------------------------------------------------ */
+
+@layer components {
+  /* Mono eyebrow above section headings */
+  .op-eyebrow {
+    font:
+      500 11px/1 var(--font-mono);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-blue-400);
+  }
+
+  /* Mono meta label — indices, table meta, legal */
+  .op-meta {
+    font:
+      500 11px/1 var(--font-mono);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-ink-550);
+  }
+
+  /* Serif section heading */
+  .op-h2 {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: var(--text-h2);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--color-ink-900);
+    text-wrap: balance;
+  }
+
+  .op-h2 em,
+  .op-h2 i {
+    font-style: italic;
+    color: var(--color-blue-200);
+  }
+
+  /* Hairline metric row used by Work cards and the coverflow caption */
+  .op-metric-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 9px 0;
+    border-top: 1px solid var(--color-ink-300);
+  }
+
+  .op-metric-row > :first-child {
+    color: var(--color-ink-550);
+  }
+
+  .op-metric-row > :last-child {
+    color: var(--color-ink-900);
+  }
+
+  /* Primary pill button */
+  .op-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-blue-500);
+    color: #ffffff;
+    font:
+      600 14px/1 var(--font-grotesk);
+    padding: 17px 26px;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    transition:
+      background 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .op-btn:hover {
+    background: var(--color-blue-700);
+    color: #ffffff;
+    transform: translateY(-2px);
+  }
+
+  .op-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  /* Animated conic rim around the secondary CTA */
+  .op-rim {
+    position: relative;
+    display: inline-block;
+    padding: 1.5px;
+    border-radius: 100px;
+    background: conic-gradient(
+      from var(--op-a),
+      rgba(45, 69, 240, 0) 0deg,
+      rgba(45, 69, 240, 0) 200deg,
+      #2d45f0 268deg,
+      #a9b4ff 312deg,
+      #f2f4ff 336deg,
+      #a9b4ff 348deg,
+      rgba(45, 69, 240, 0) 360deg
+    );
+    animation: var(--animate-rim);
+  }
+
+  .op-rim-inner {
+    position: relative;
+    display: block;
+    background: var(--color-ink-000);
+    color: var(--color-ink-900);
+    font:
+      600 14px/1 var(--font-grotesk);
+    padding: 16px 25px;
+    border-radius: 100px;
+    text-align: center;
+    transition:
+      background 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .op-rim-inner:hover {
+    background: var(--color-ink-150);
+    color: var(--color-blue-100);
+  }
+
+  /* Form field */
+  .op-input {
+    background: var(--color-ink-200);
+    border: 1px solid var(--color-ink-400);
+    border-radius: 100px;
+    color: var(--color-ink-900);
+    font:
+      400 15px/1 var(--font-grotesk);
+    padding: 16px 20px;
+    outline: none;
+    width: 100%;
+    transition: border-color 0.2s ease;
+  }
+
+  textarea.op-input {
+    border-radius: 18px;
+    line-height: 1.55;
+    resize: vertical;
+  }
+
+  .op-input:focus {
+    border-color: var(--color-blue-500);
+  }
+
+  .op-input[aria-invalid="true"] {
+    border-color: #ff6b6b;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion: render final states, stop every loop.
+ * ------------------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  [data-reveal],
+  [data-reveal-group] > * {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .op-rim {
+    animation: none;
+    background: var(--color-ink-300);
+  }
+
+  [data-marquee] {
+    animation: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
