@@ -4,53 +4,83 @@ import { services } from "@/lib/content";
 export function Services() {
   return (
     <section id="services" className="mx-auto max-w-[1400px] px-gutter py-section">
-      <div className="grid grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] items-start gap-[clamp(28px,5vw,80px)] max-[880px]:grid-cols-[minmax(0,1fr)] max-[880px]:gap-[clamp(26px,4vw,40px)]">
-        <Reveal className="sticky top-30 max-[1024px]:top-24 max-[880px]:static">
-          <div className="op-eyebrow mb-6">What we do</div>
-          <h2 className="op-h2 text-h2-services leading-[0.96]">Services</h2>
-          <div className="mt-4 font-mono text-[15px] leading-none text-ink-550">
-            ({services.length})
-          </div>
-          <p className="mt-[clamp(24px,3vw,40px)] max-w-[34ch] font-grotesk text-[15px] leading-[1.65] text-ink-600 [text-wrap:pretty]">
-            Four pillars, delivered as standalone engagements or as one
-            integrated programme under a single team.
-          </p>
-          <a
-            href="#contact"
-            className="mt-[clamp(22px,3vw,34px)] inline-flex items-center gap-2.5 font-grotesk text-[13px] leading-none font-semibold text-blue-200"
-          >
-            Request capabilities deck →
-          </a>
-        </Reveal>
+      <Reveal className="mb-[clamp(30px,4vw,56px)] flex flex-wrap items-end justify-between gap-x-10 gap-y-[18px]">
+        <div>
+          <div className="op-eyebrow mb-5">What we do</div>
+          <h2 className="op-h2">
+            Four ways we <em>move</em> a brand
+          </h2>
+        </div>
+        <p className="m-0 max-w-[34ch] font-grotesk text-[15px] leading-[1.65] text-ink-600 [text-wrap:pretty]">
+          Delivered as standalone engagements or as one integrated programme
+          under a single team.
+        </p>
+      </Reveal>
 
-        <RevealGroup>
-          {services.map((service, i) => (
+      {/*
+        Four cards across. Hovering lifts a card, blurs its artwork back and
+        opens the sub-services underneath the name — the list animates on
+        grid-template-rows, which is the only way to transition to auto height.
+      */}
+      <RevealGroup className="grid grid-cols-4 gap-[clamp(12px,1.4vw,20px)] max-[1100px]:grid-cols-2 max-[560px]:grid-cols-1">
+        {services.map((service) => (
+          <article
+            key={service.index}
+            tabIndex={0}
+            className="group relative isolate flex aspect-[3/4] flex-col justify-end overflow-hidden rounded-lg border border-ink-300 outline-none transition-[transform,border-color] duration-[420ms] ease-brand hover:z-10 hover:scale-[1.035] hover:border-blue-500 focus-visible:z-10 focus-visible:scale-[1.035] focus-visible:border-blue-500 max-[560px]:aspect-[4/3]"
+          >
+            {/* Artwork layer — blurs back on hover so the copy can sit on it */}
             <div
-              key={service.index}
-              className={`group grid grid-cols-[minmax(0,1fr)_auto] items-start gap-[clamp(16px,3vw,44px)] border-t border-ink-300 px-[clamp(6px,1vw,14px)] py-[clamp(24px,3vw,40px)] transition-[background] duration-[250ms] ease-out hover:bg-ink-100 max-[760px]:grid-cols-[minmax(0,1fr)] max-[760px]:gap-y-4 ${
-                i === services.length - 1 ? "border-b" : ""
-              }`}
+              aria-hidden="true"
+              className="absolute inset-0 -z-10 bg-ink-100 transition-[filter,transform] duration-[560ms] ease-brand group-hover:scale-[1.08] group-hover:blur-[7px] group-focus-visible:scale-[1.08] group-focus-visible:blur-[7px]"
             >
-              <div className="grid grid-cols-[46px_minmax(0,1fr)] gap-[clamp(12px,2vw,26px)] max-[640px]:grid-cols-[32px_minmax(0,1fr)]">
-                <span className="pt-2.5 font-mono text-xs leading-[1.5] font-medium text-ink-550">
+              {service.image ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={service.image}
+                  alt=""
+                  className="block size-full object-cover"
+                />
+              ) : (
+                <div className="flex size-full items-center justify-center">
+                  <span className="font-mono text-[10px] font-medium tracking-[0.18em] uppercase text-ink-500">
+                    Image {service.index}
+                  </span>
+                </div>
+              )}
+            </div>
+
+            {/* Scrim, deepened on hover so the bullets stay readable */}
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 -z-10 bg-[linear-gradient(to_top,rgba(5,6,10,0.92)_0%,rgba(5,6,10,0.68)_38%,rgba(5,6,10,0.12)_78%)] transition-opacity duration-[420ms] ease-out group-hover:opacity-100 group-focus-visible:opacity-100"
+            />
+
+            <div className="relative p-[clamp(16px,1.5vw,22px)]">
+              <div className="mb-2.5 flex items-center gap-2.5">
+                <span className="font-mono text-[11px] leading-none font-medium tracking-[0.14em] text-ink-550">
                   {service.index}
                 </span>
-                <div>
-                  <h3 className="mt-0 mb-3.5 font-serif text-service leading-[1.02] font-normal tracking-[-0.02em] text-ink-900">
-                    {service.name}
-                  </h3>
-                  <p className="mt-0 mb-[18px] max-w-[46ch] font-grotesk text-[15px] leading-[1.6] text-ink-600 [text-wrap:pretty]">
-                    {service.description}
-                  </p>
-                  <ul className="m-0 flex list-none flex-col gap-[9px] p-0">
+                <span className="font-mono text-[10px] leading-none font-medium tracking-[0.12em] uppercase text-blue-400">
+                  {service.model}
+                </span>
+              </div>
+
+              <h3 className="m-0 font-serif text-[clamp(24px,2.1vw,32px)] leading-[1.05] font-normal tracking-[-0.02em] text-ink-900">
+                {service.name}
+              </h3>
+
+              <div className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-[460ms] ease-brand group-hover:grid-rows-[1fr] group-focus-visible:grid-rows-[1fr]">
+                <div className="overflow-hidden">
+                  <ul className="mt-3.5 mb-0 flex list-none flex-col gap-2 p-0">
                     {service.bullets.map((bullet) => (
                       <li
                         key={bullet}
-                        className="flex items-baseline gap-[11px] font-grotesk text-sm leading-[1.45] text-ink-600"
+                        className="flex items-baseline gap-2.5 font-grotesk text-[13px] leading-[1.4] text-ink-600"
                       >
                         <span
                           aria-hidden="true"
-                          className="text-[11px] leading-[1.6] text-blue-500"
+                          className="text-[9px] text-blue-500"
                         >
                           ◆
                         </span>
@@ -60,20 +90,10 @@ export function Services() {
                   </ul>
                 </div>
               </div>
-
-              <div className="flex items-center gap-3 pt-3 font-mono text-[11px] leading-none font-medium tracking-[0.12em] whitespace-nowrap uppercase text-ink-600 max-[760px]:pt-0 max-[760px]:pl-[58px] max-[640px]:pl-[44px]">
-                {service.model}
-                <span
-                  aria-hidden="true"
-                  className="text-ink-550 transition-[transform,color] duration-[250ms] ease-out group-hover:translate-x-[7px] group-hover:text-blue-400"
-                >
-                  →
-                </span>
-              </div>
             </div>
-          ))}
-        </RevealGroup>
-      </div>
+          </article>
+        ))}
+      </RevealGroup>
     </section>
   );
 }
