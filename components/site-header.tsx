@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
+import { MobileMenu } from "@/components/mobile-menu";
 import { navItems } from "@/lib/content";
 import { useActiveSection } from "@/hooks/use-active-section";
 
@@ -42,7 +43,7 @@ export function SiteHeader() {
           : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-5 px-gutter py-4 max-[640px]:flex-wrap max-[640px]:gap-y-3">
+      <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-5 px-gutter py-4">
         {/* Root-relative hashes so every link works from /privacy too, where a
             bare "#media" would only append a fragment that does not exist. */}
         <Link href="/" aria-label="Odd Planet — home" className="flex shrink-0">
@@ -58,7 +59,7 @@ export function SiteHeader() {
 
         <nav
           aria-label="Sections"
-          className="op-hide-scrollbar flex items-center gap-0.5 rounded-full border border-ink-300 p-[5px] max-[900px]:min-w-0 max-[900px]:overflow-x-auto max-[640px]:order-3 max-[640px]:w-full max-[640px]:justify-start"
+          className="flex items-center gap-0.5 rounded-full border border-ink-300 p-[5px] max-[900px]:hidden"
         >
           {navItems.map((item) => {
             const on = active === item.id;
@@ -81,7 +82,7 @@ export function SiteHeader() {
 
         <Link
           href="/#contact"
-          className="group inline-flex shrink-0 items-center gap-2 rounded-full bg-blue-500 py-2 pr-2 pl-[18px] font-grotesk text-[13px] leading-none font-semibold whitespace-nowrap text-white transition-[background,transform] duration-[240ms] ease-out hover:-translate-y-px hover:bg-blue-700"
+          className="group inline-flex shrink-0 max-[900px]:hidden items-center gap-2 rounded-full bg-blue-500 py-2 pr-2 pl-[18px] font-grotesk text-[13px] leading-none font-semibold whitespace-nowrap text-white transition-[background,transform] duration-[240ms] ease-out hover:-translate-y-px hover:bg-blue-700"
         >
           Start a brief
           <span
@@ -91,6 +92,8 @@ export function SiteHeader() {
             →
           </span>
         </Link>
+
+        <MobileMenu />
       </div>
     </header>
   );

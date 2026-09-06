@@ -36,7 +36,7 @@ export function Hero() {
           </span>
         </Reveal>
 
-        <Reveal className="mt-[clamp(26px,3.4vw,40px)] flex flex-wrap items-center justify-center gap-3 max-[440px]:flex-col max-[440px]:items-stretch max-[440px]:[&>*]:w-full max-[440px]:[&>*]:text-center">
+        <Reveal className="mt-[clamp(26px,3.4vw,40px)] flex flex-wrap items-center justify-center gap-3 max-[520px]:gap-2.5 max-[520px]:[&_a]:px-5 max-[520px]:[&_a]:py-3.5 max-[520px]:[&_a]:text-[13px]">
           <a href={hero.primaryCta.href} className="op-btn text-white">
             {hero.primaryCta.label}
           </a>
