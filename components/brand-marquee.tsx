@@ -15,14 +15,15 @@ function LogoRow({ hidden = false }: { hidden?: boolean }) {
       {brands.map((brand) => (
         <span
           key={`${brand.name}-${hidden ? "b" : "a"}`}
-          className="flex h-[clamp(58px,5.6vw,76px)] w-[clamp(132px,12vw,168px)] shrink-0 items-center justify-center rounded-lg bg-ink-900 px-5 transition-transform duration-300 ease-out hover:scale-[1.04]"
+          className="flex h-[clamp(78px,7.2vw,104px)] w-[clamp(172px,15.5vw,224px)] shrink-0 items-center justify-center rounded-xl bg-ink-900 px-6 transition-transform duration-300 ease-out hover:scale-[1.04]"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={brand.src}
             alt={hidden ? "" : brand.name}
             loading="lazy"
-            className="max-h-[clamp(26px,2.6vw,34px)] w-auto max-w-full object-contain"
+            style={{ maxHeight: brand.cap }}
+            className="w-auto max-w-full object-contain"
           />
         </span>
       ))}
@@ -40,7 +41,7 @@ export function BrandMarquee() {
         className="pointer-events-none absolute inset-x-0 top-[-140px] h-[200px] bg-[radial-gradient(72%_100%_at_50%_0%,rgba(45,69,240,0.14)_0%,rgba(45,69,240,0.04)_46%,rgba(5,6,10,0)_78%)]"
       />
       <div className="relative mx-auto mb-[22px] max-w-[1400px] px-gutter font-mono text-[11px] leading-none font-medium tracking-[0.18em] uppercase text-ink-550">
-        Selected brand partners
+        Brands we moved with
       </div>
 
       <MarqueeTrack>

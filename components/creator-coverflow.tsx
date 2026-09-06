@@ -181,11 +181,20 @@ export function CreatorCoverflow() {
   return (
     <section id="creators" className="overflow-hidden py-section">
       <Reveal className="mx-auto mb-[clamp(6px,1.4vw,18px)] flex max-w-[1400px] flex-wrap items-end justify-between gap-x-10 gap-y-4 px-gutter">
-        <div>
+        <div className="max-w-[52ch]">
           <div className="op-eyebrow mb-5">Talent &amp; partnerships</div>
-          <h2 className="op-h2">
-            The <em>creator</em> network
+          <h2 className="m-0 text-ink-900">
+            <span className="block font-grotesk text-[clamp(28px,4vw,56px)] leading-[0.98] font-extrabold tracking-[-0.03em]">
+              100,000+ CREATORS.
+            </span>
+            <span className="block font-grotesk text-[clamp(28px,4vw,56px)] leading-[1.02] font-extrabold tracking-[-0.03em] text-blue-400">
+              ONE NETWORK.
+            </span>
           </h2>
+          <p className="mt-5 mb-0 max-w-[46ch] font-grotesk text-[15px] leading-[1.6] text-ink-600 [text-wrap:pretty]">
+            From emerging voices to category leaders, we connect brands with
+            creators who actually move attention.
+          </p>
         </div>
         <div className="flex items-center gap-2.5">
           <button

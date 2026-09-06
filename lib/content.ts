@@ -31,11 +31,12 @@ export type NavItem = (typeof navItems)[number];
 
 export const hero = {
   eyebrow: "Where odds align.",
-  lines: ["BUILDING", "ATTENTION,", "INFLUENCE &"],
-  accentLine: "CULTURE.",
-  disciplines: "Influencer Marketing · Content Production · Digital Amplification",
+  lines: ["WE MAKE BRANDS"],
+  accentLine: "HARD TO IGNORE.",
+  disciplines:
+    "Influencer Marketing · Creator Partnerships · Content · Digital Amplification",
   body:
-    "We help brands connect with the right creators, produce impactful content and amplify it to the right audience.",
+    "Influence, content & distribution built for brands that want attention and know what to do with it.",
   // Hero renders only on "/", so these stay bare anchors — a root-relative
   // href in a plain <a> would trigger a full reload instead of a scroll.
   primaryCta: { label: "View Our Work", href: "#work" },
@@ -47,32 +48,33 @@ export const hero = {
  * 500,000,000+ set at 50px would break the four-up band.
  */
 export const stats = [
-  { value: 500, suffix: "M+", label: "Views generated" },
-  { value: 50, suffix: "+", label: "Brands served" },
-  { value: 100, suffix: "K+", label: "Creator network" },
-  { value: 1000, suffix: "+", label: "Campaigns executed" },
+  { value: 500, suffix: "M+", label: "Content views" },
+  { value: 50, suffix: "+", label: "Brands partnered" },
+  { value: 100, suffix: "K+", label: "Creators in network" },
+  { value: 1000, suffix: "+", label: "Campaigns delivered" },
 ] as const;
 
 export type Stat = (typeof stats)[number];
 
+/** `cap` is the logo's max height on its plate, banded by aspect. */
 export const brands = [
-  { name: "Starbucks", src: "/brands/starbucks.png" },
-  { name: "Michael Kors", src: "/brands/michael-kors.png" },
-  { name: "Converse", src: "/brands/converse.png" },
-  { name: "Domino's", src: "/brands/dominos.png" },
-  { name: "POND'S", src: "/brands/ponds.png" },
-  { name: "MG Motor", src: "/brands/mg-motor.png" },
-  { name: "KFC", src: "/brands/kfc.png" },
-  { name: "Swiggy Instamart", src: "/brands/instamart.png" },
-  { name: "Embassy of Sweden", src: "/brands/embassy-of-sweden.png" },
-  { name: "Max Fashion", src: "/brands/max-fashion.png" },
-  { name: "Allen Solly", src: "/brands/allen-solly.png" },
-  { name: "Sunsilk", src: "/brands/sunsilk.png" },
-  { name: "Epigamia", src: "/brands/epigamia.png" },
-  { name: "Bevzilla", src: "/brands/bevzilla.png" },
-  { name: "SoTrue", src: "/brands/sotrue.png" },
-  { name: "Scitron", src: "/brands/scitron.png" },
-  { name: "Fixderma", src: "/brands/fixderma.png" },
+  { name: "Starbucks", src: "/brands/starbucks.png", cap: "70%" },
+  { name: "Michael Kors", src: "/brands/michael-kors.png", cap: "70%" },
+  { name: "Converse", src: "/brands/converse.png", cap: "70%" },
+  { name: "Domino's", src: "/brands/dominos.png", cap: "72%" },
+  { name: "POND'S", src: "/brands/ponds.png", cap: "42%" },
+  { name: "MG Motor", src: "/brands/mg-motor.png", cap: "72%" },
+  { name: "KFC", src: "/brands/kfc.png", cap: "50%" },
+  { name: "Swiggy Instamart", src: "/brands/instamart.png", cap: "72%" },
+  { name: "Embassy of Sweden", src: "/brands/embassy-of-sweden.png", cap: "50%" },
+  { name: "Max Fashion", src: "/brands/max-fashion.png", cap: "42%" },
+  { name: "Allen Solly", src: "/brands/allen-solly.png", cap: "72%" },
+  { name: "Sunsilk", src: "/brands/sunsilk.png", cap: "72%" },
+  { name: "Epigamia", src: "/brands/epigamia.png", cap: "42%" },
+  { name: "Bevzilla", src: "/brands/bevzilla.png", cap: "70%" },
+  { name: "SoTrue", src: "/brands/sotrue.png", cap: "42%" },
+  { name: "Scitron", src: "/brands/scitron.png", cap: "42%" },
+  { name: "Fixderma", src: "/brands/fixderma.png", cap: "72%" },
 ] as const;
 
 export type Brand = (typeof brands)[number];
@@ -122,6 +124,9 @@ export const press: PressItem[] = [
 export type Service = {
   index: string;
   name: string;
+  /** Always on the card. */
+  tagline: string;
+  /** Revealed with the bullets. */
   description: string;
   model: string;
   bullets: string[];
@@ -134,8 +139,8 @@ export const services: Service[] = [
   {
     index: "01",
     name: "Influence",
-    description:
-      "Influencer marketing, creator partnerships, celebrity endorsements and long-term talent management.",
+    tagline: "Creators that move attention.",
+    description: "Put the right people behind the brand.",
     model: "Always-on",
     bullets: [
       "Influencer marketing",
@@ -147,8 +152,8 @@ export const services: Service[] = [
   {
     index: "02",
     name: "Create",
-    description:
-      "Content production, brand films, events and experiences, plus original IPs and series built for owned channels.",
+    tagline: "Content people want to watch.",
+    description: "Turn a brief into something worth watching.",
     model: "Per project",
     bullets: [
       "Content production",
@@ -160,27 +165,29 @@ export const services: Service[] = [
   {
     index: "03",
     name: "Amplify",
-    description:
-      "Social strategy, meme marketing, paid and organic digital campaigns, community building and PR outreach.",
+    tagline: "Distribution that keeps it moving.",
+    description: "Make good work travel further.",
     model: "Monthly retainer",
     bullets: [
-      "Social media strategy",
+      "Narrative control",
       "Meme marketing",
-      "Digital campaigns",
+      "Buzz marketing",
       "Community building",
       "PR & outreach",
     ],
   },
   {
     index: "04",
-    name: "Quick commerce",
+    name: "Manage",
+    tagline: "An always-on team for the brand.",
     description:
-      "Consultancy and end-to-end management across marketplaces and dark stores, from listing to demand generation.",
+      "Build, manage and scale your brand across the new retail ecosystem.",
     model: "Consult + manage",
     bullets: [
-      "Consultancy & management",
-      "End-to-end solutions",
-      "Marketplace & dark-store growth",
+      "Quick-commerce strategy",
+      "Marketplace management",
+      "Catalogue optimisation",
+      "Dark-store growth",
     ],
   },
 ];
@@ -332,13 +339,6 @@ const yt = (handle: string) => `https://www.youtube.com/@${handle}`;
  */
 const realCreators: Creator[] = [
   {
-    name: "Pho",
-    role: "Singer",
-    city: "Delhi",
-    socials: [{ label: "Instagram", href: ig("phomusic") }],
-    image: "/creators/pho.jpg",
-  },
-  {
     name: "Asmita Arora",
     role: "Fashion / Lifestyle",
     city: "Delhi",
@@ -360,32 +360,11 @@ const realCreators: Creator[] = [
     image: "/creators/ishita-arora.jpg",
   },
   {
-    name: "Kartik Vishal",
-    role: "Bike / Moto / Lifestyle / Fitness",
-    city: "Delhi",
-    socials: [{ label: "Instagram", href: ig("kartikcz") }, { label: "YouTube", href: yt("kartikcustomz") }],
-    image: "/creators/kartik-vishal.jpg",
-  },
-  {
-    name: "Karun",
-    role: "Rapper",
-    city: "Delhi",
-    socials: [{ label: "Instagram", href: ig("beingkarun") }, { label: "YouTube", href: yt("beingkarun") }],
-    image: "/creators/karun.jpg",
-  },
-  {
-    name: "ManjulKhattar",
+    name: "Manjul Khattar",
     role: "Fashion / Lifestyle",
     city: "Delhi NCR",
     socials: [{ label: "Instagram", href: ig("Manjullll") }, { label: "YouTube", href: yt("Manjullll") }],
-    image: "/creators/manjulkhattar.jpg",
-  },
-  {
-    name: "Mohit Chettri",
-    role: "Entertainment",
-    city: "Delhi NCR",
-    socials: [{ label: "Instagram", href: ig("Mohitchettri01") }, { label: "YouTube", href: yt("Mohit_Chettri") }],
-    image: "/creators/mohit-chettri.jpg",
+    image: "/creators/manjul-khattar.jpg",
   },
   {
     name: "Piyush Manwani",
@@ -395,11 +374,11 @@ const realCreators: Creator[] = [
     image: "/creators/piyush-manwani.jpg",
   },
   {
-    name: "God Praveen",
+    name: "Praveen Chaudhary",
     role: "Gaming / Lifestyle",
     city: "Delhi",
     socials: [{ label: "Instagram", href: ig("godpraveenfb") }, { label: "YouTube", href: yt("godpraveenyt1") }],
-    image: "/creators/god-praveen.jpg",
+    image: "/creators/praveen-chaudhary.jpg",
   },
   {
     name: "Ranvir Narula",
@@ -430,25 +409,11 @@ const realCreators: Creator[] = [
     image: "/creators/tanvi-malhara.jpg",
   },
   {
-    name: "Tanya Mehra",
-    role: "Skincare / Nutrition / Fitness / Mom",
-    city: "Gurgaon",
-    socials: [{ label: "Instagram", href: ig("tannzymommy") }],
-    image: "/creators/tanya-mehra.jpg",
-  },
-  {
     name: "Tisca Chopra",
     role: "Actor",
     city: "Mumbai",
     socials: [{ label: "Instagram", href: ig("Tiscaofficial") }],
     image: "/creators/tisca-chopra.jpg",
-  },
-  {
-    name: "Nanku",
-    role: "Rapper",
-    city: "Delhi",
-    socials: [{ label: "Instagram", href: ig("tumharananku") }, { label: "YouTube", href: yt("TUMHARANANKU") }],
-    image: "/creators/nanku.jpg",
   },
   {
     name: "Vaibhav Arora",
@@ -458,23 +423,103 @@ const realCreators: Creator[] = [
     image: "/creators/vaibhav-arora.jpg",
   },
   {
-    name: "Varun Suryavanshi",
+    name: "Varun Verma",
     role: "Fashion / Fitness / Lifestyle",
     city: "Delhi / Mumbai",
     socials: [{ label: "Instagram", href: ig("Varunverma") }],
-    image: "/creators/varun-suryavanshi.jpg",
+    image: "/creators/varun-verma.jpg",
   },
   {
     name: "Nishu Tiwari",
-    role: "",
+    role: "Talent partnership",
     city: "Delhi",
     socials: [{ label: "Instagram", href: ig("inishutiwari") }, { label: "YouTube", href: yt("inishutiwari") }],
   },
   {
-    name: "Major RS Sambyal",
+    name: "Major Rishabh Singh Sambyal",
     role: "Fitness / Lifestyle / Adventure",
     city: "Delhi",
     socials: [{ label: "Instagram", href: ig("major_rs_sambyal") }, { label: "YouTube", href: yt("ferrox_4sam") }],
+  },
+  {
+    name: "Karan Kundrra",
+    role: "Talent partnership",
+    socials: [{ label: "Instagram", href: ig("kkundrra") }],
+  },
+  {
+    name: "Tejasswi Prakash",
+    role: "Talent partnership",
+    socials: [{ label: "Instagram", href: ig("tejasswiprakash") }],
+  },
+  {
+    name: "Aly Goni",
+    role: "Talent partnership",
+    socials: [{ label: "Instagram", href: ig("alygoni") }],
+  },
+  {
+    name: "Jasmin Bhasin",
+    role: "Talent partnership",
+    socials: [{ label: "Instagram", href: ig("jasminbhasin2806") }],
+  },
+  {
+    name: "Abhishek Kumar",
+    role: "Talent partnership",
+    socials: [{ label: "Instagram", href: ig("aebyborntoshine") }],
+  },
+  {
+    name: "Samarth Jurel",
+    role: "Talent partnership",
+    socials: [{ label: "Instagram", href: ig("samarthjurel") }],
+  },
+  {
+    name: "Prince Narula",
+    role: "Talent partnership",
+    socials: [{ label: "Instagram", href: ig("princenarula") }],
+  },
+  {
+    name: "Yuvika Chaudhary",
+    role: "Talent partnership",
+    socials: [{ label: "Instagram", href: ig("yuvikachaudhary") }],
+  },
+  {
+    name: "Sanjay Dutt",
+    role: "Talent partnership",
+    socials: [],
+  },
+  {
+    name: "Sonu Sood",
+    role: "Talent partnership",
+    socials: [],
+  },
+  {
+    name: "Bella",
+    role: "Talent partnership",
+    socials: [],
+  },
+  {
+    name: "Bali",
+    role: "Talent partnership",
+    socials: [],
+  },
+  {
+    name: "Krystle Dsouza",
+    role: "Talent partnership",
+    socials: [{ label: "Instagram", href: ig("krystledsouza") }],
+  },
+  {
+    name: "Ridhi Dogra",
+    role: "Talent partnership",
+    socials: [],
+  },
+  {
+    name: "Sanaya Irani",
+    role: "Talent partnership",
+    socials: [],
+  },
+  {
+    name: "Niki Walia",
+    role: "Talent partnership",
+    socials: [],
   },
 ];
 

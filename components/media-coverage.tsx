@@ -5,6 +5,14 @@ import { press, type PressItem } from "@/lib/content";
 const years = press.map((p) => Number(p.year)).filter(Boolean);
 const RANGE = `${Math.min(...years)}–${Math.max(...years)}`;
 
+/**
+ * A looping track needs enough cards to outrun the viewport; below that the
+ * duplicate copy is on screen at the same time as the original and the whole
+ * thing reads as repeated. With fewer, the rail simply sits still — and
+ * becomes a marquee again on its own once the client adds more coverage.
+ */
+const LOOPS = press.length >= 5;
+
 function Card({ item, hidden }: { item: PressItem; hidden?: boolean }) {
   const Tag = item.href ? "a" : "div";
 
@@ -100,14 +108,23 @@ export function MediaCoverage() {
         </div>
       </Reveal>
 
-      {/* Runs edge to edge and fades out at both ends, so the loop has no seam
-          to notice. It pauses on hover, which is what makes it readable. */}
-      <div className="[mask-image:linear-gradient(to_right,transparent_0%,#000_6%,#000_94%,transparent_100%)]">
-        <MarqueeTrack>
-          <Row />
-          <Row hidden />
-        </MarqueeTrack>
-      </div>
+      {LOOPS ? (
+        <div className="[mask-image:linear-gradient(to_right,transparent_0%,#000_6%,#000_94%,transparent_100%)]">
+          <MarqueeTrack>
+            <Row />
+            <Row hidden />
+          </MarqueeTrack>
+        </div>
+      ) : (
+        // Swipeable where it does not fit, centred where it does.
+        <div className="op-hide-scrollbar snap-x snap-mandatory overflow-x-auto overscroll-x-contain">
+          <div className="mx-auto flex w-max max-w-[1400px] items-stretch gap-[clamp(12px,1.4vw,20px)] px-gutter [&>*]:snap-start">
+            {press.map((item) => (
+              <Card key={item.headline} item={item} />
+            ))}
+          </div>
+        </div>
+      )}
     </section>
   );
 }

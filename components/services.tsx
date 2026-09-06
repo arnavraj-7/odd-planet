@@ -70,12 +70,19 @@ export function Services() {
                 {service.name}
               </h3>
 
+              <p className="mt-2 mb-0 font-grotesk text-[13px] leading-[1.45] text-ink-600 [text-wrap:pretty]">
+                {service.tagline}
+              </p>
+
               {/* Open by default, and only collapsed where a pointer can
                   actually reveal them again — a touch device never fires
                   hover, so gating these on it hid the whole card's content. */}
               <div className="grid grid-rows-[1fr] transition-[grid-template-rows] duration-[460ms] ease-brand [@media(hover:hover)]:grid-rows-[0fr] [@media(hover:hover)]:group-hover:grid-rows-[1fr] [@media(hover:hover)]:group-focus-visible:grid-rows-[1fr]">
                 <div className="overflow-hidden">
-                  <ul className="mt-3.5 mb-0 flex list-none flex-col gap-2 p-0">
+                  <p className="mt-3 mb-0 font-grotesk text-[13px] leading-[1.5] text-ink-900 [text-wrap:pretty]">
+                    {service.description}
+                  </p>
+                  <ul className="mt-3 mb-0 flex list-none flex-col gap-2 p-0">
                     {service.bullets.map((bullet) => (
                       <li
                         key={bullet}

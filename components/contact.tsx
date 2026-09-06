@@ -140,7 +140,7 @@ export function Contact() {
           </h2>
           <p className="mt-[clamp(22px,3vw,34px)] mb-[clamp(26px,3.4vw,40px)] max-w-[44ch] font-grotesk text-contact-body leading-[1.65] text-ink-600 [text-wrap:pretty]">
             Share your brief and we will respond with a strategy, a creator
-            roster and a costed plan — usually within one working day.
+            roster and a costed plan.
           </p>
 
           <div className="flex flex-col gap-3.5 font-mono text-xs leading-none font-medium tracking-[0.06em]">
@@ -301,10 +301,10 @@ export function Contact() {
             }`}
           >
             {status === "success"
-              ? "Thanks — we will come back to you within one working day"
+              ? "Thanks — your brief is with us"
               : status === "error"
                 ? `Something went wrong — email us at ${site.email}`
-                : "We reply to every brief within one working day"}
+                : ""}
             </div>
           </form>
         </Reveal>

@@ -3,8 +3,6 @@
 import { usePinnedTrack } from "@/hooks/use-pinned-track";
 import { work } from "@/lib/content";
 
-const MEDIA_HEIGHT = "h-[clamp(140px,19vh,208px)]";
-
 export function WorkPinned() {
   const { sectionRef, innerRef, scrollerRef, trackRef, barRef, countRef } =
     usePinnedTrack(work.length);
@@ -38,24 +36,40 @@ export function WorkPinned() {
                 <article
                   key={card.index}
                   data-work-card
-                  className="group flex shrink-0 basis-[clamp(258px,25vw,368px)] flex-col overflow-hidden rounded-lg border border-ink-300 transition-[border-color] duration-300 ease-out hover:border-blue-500"
+                  className="group flex shrink-0 basis-[clamp(258px,24vw,344px)] flex-col overflow-hidden rounded-lg border border-ink-300 transition-[border-color,transform] duration-300 ease-out hover:-translate-y-1 hover:border-blue-500"
                 >
-                  <div className="relative overflow-hidden">
+                  <div className="relative aspect-square shrink-0 overflow-hidden border-b border-ink-300 bg-ink-100">
                     {card.image ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
-                        src={card.image.src}
-                        alt={card.image.alt}
-                        className={`block w-full ${MEDIA_HEIGHT} ${
-                          card.variant === "logo"
-                            ? "object-contain p-10 opacity-85 brightness-0 invert"
-                            : "object-cover transition-transform duration-[600ms] ease-brand group-hover:scale-[1.055]"
-                        }`}
-                      />
+                      <>
+                        {/*
+                          These creatives are a mix of 16:9 stills and 9:16
+                          reel frames. Cropping them to one landscape box cut
+                          the posters apart, so the artwork is contained whole
+                          and a blurred copy of itself fills the rest.
+                        */}
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={card.image.src}
+                          alt=""
+                          aria-hidden="true"
+                          className="absolute inset-0 size-full scale-110 object-cover opacity-40 blur-[18px]"
+                        />
+                        <div
+                          aria-hidden="true"
+                          className="absolute inset-0 bg-[rgba(5,6,10,0.34)]"
+                        />
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={card.image.src}
+                          alt={card.image.alt}
+                          loading="lazy"
+                          className="relative block size-full object-contain transition-transform duration-[600ms] ease-brand group-hover:scale-[1.04]"
+                        />
+                      </>
                     ) : (
                       <div
                         aria-hidden="true"
-                        className={`flex w-full items-center justify-center border-b border-ink-300 bg-ink-100 ${MEDIA_HEIGHT}`}
+                        className="flex size-full items-center justify-center"
                       >
                         <span className="font-mono text-[11px] font-medium tracking-[0.18em] uppercase text-ink-500">
                           Image {card.index}
@@ -63,7 +77,7 @@ export function WorkPinned() {
                       </div>
                     )}
 
-                    <span className="absolute top-3.5 left-3.5 rounded-full bg-[rgba(5,6,10,0.66)] px-2.5 py-[7px] font-mono text-[10px] leading-none font-medium tracking-[0.14em] uppercase text-blue-100 backdrop-blur-[6px]">
+                    <span className="absolute top-3.5 left-3.5 z-10 rounded-full bg-[rgba(5,6,10,0.7)] px-2.5 py-[7px] font-mono text-[10px] leading-none font-medium tracking-[0.14em] uppercase text-blue-100 backdrop-blur-[6px]">
                       {card.index} · {card.category}
                     </span>
                   </div>
