@@ -9,8 +9,10 @@ next-env.d.ts
 # Design handoff bundle (reference only)
 Marketing agency brand kit.zip
 
-# Scratch screenshots dropped in the project root
+# Scratch screenshots and references dropped in the project root
 image.png
+1.png
+2.png
 
 .vercel
 .env*
