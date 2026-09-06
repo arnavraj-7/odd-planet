@@ -602,6 +602,7 @@ const realCreators: Creator[] = [
     name: "Jasmin Bhasin",
     role: "Talent partnership",
     socials: [{ label: "Instagram", href: ig("jasminbhasin2806") }],
+    image: "/creators/jasmin-bhasin.jpg",
   },
   {
     name: "Abhishek Kumar",
