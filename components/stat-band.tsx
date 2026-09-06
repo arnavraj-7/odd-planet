@@ -1,5 +1,5 @@
 import { CountUp } from "@/components/count-up";
-import { RevealGroup } from "@/components/reveal";
+import { Reveal } from "@/components/reveal";
 import { stats } from "@/lib/content";
 
 export function StatBand() {
@@ -11,22 +11,29 @@ export function StatBand() {
         className="pointer-events-none absolute inset-x-0 top-[-140px] h-[200px] bg-[radial-gradient(72%_100%_at_50%_0%,rgba(45,69,240,0.14)_0%,rgba(45,69,240,0.04)_46%,rgba(5,6,10,0)_78%)]"
       />
 
-      {/* The 1px gap is the divider. */}
-      <RevealGroup className="relative grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-px overflow-hidden rounded-lg border border-ink-300 bg-ink-300">
-        {stats.map((stat) => (
+      {/*
+        The band arrives as one solid object — frame, ground and the 1px gap
+        that forms the dividers all together. The cells themselves are never
+        transparent, so the divider colour behind them can never flash through;
+        only the figures inside stagger in.
+      */}
+      <Reveal className="relative grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-px overflow-hidden rounded-lg border border-ink-300 bg-ink-300">
+        {stats.map((stat, i) => (
           <div
             key={stat.label}
             className="bg-ink-000 p-[clamp(22px,2.6vw,34px)]"
           >
-            <div className="font-grotesk text-stat leading-none font-extrabold tracking-[-0.04em] tabular-nums text-ink-900">
-              <CountUp value={stat.value} suffix={stat.suffix} />
-            </div>
-            <div className="mt-3.5 font-mono text-[11px] leading-[1.4] font-medium tracking-[0.12em] uppercase text-ink-600">
-              {stat.label}
-            </div>
+            <Reveal delay={120 + i * 90}>
+              <div className="font-grotesk text-stat leading-none font-extrabold tracking-[-0.04em] tabular-nums text-ink-900">
+                <CountUp value={stat.value} suffix={stat.suffix} />
+              </div>
+              <div className="mt-3.5 font-mono text-[11px] leading-[1.4] font-medium tracking-[0.12em] uppercase text-ink-600">
+                {stat.label}
+              </div>
+            </Reveal>
           </div>
         ))}
-      </RevealGroup>
+      </Reveal>
     </section>
   );
 }

@@ -8,6 +8,8 @@ type RevealProps = HTMLAttributes<HTMLElement> & {
   as?: ElementType;
   threshold?: number;
   rootMargin?: string;
+  /** ms to hold before this element reveals — for hand-rolled stagger. */
+  delay?: number;
 };
 
 /** Fades, rises and de-blurs its subtree once, when it enters the viewport. */
@@ -15,14 +17,21 @@ export function Reveal({
   as,
   threshold,
   rootMargin,
+  delay,
   children,
+  style,
   ...rest
 }: RevealProps) {
   const ref = useReveal<HTMLElement>({ threshold, rootMargin });
   const Tag = (as ?? "div") as ElementType;
 
   return (
-    <Tag ref={ref} data-reveal="" {...rest}>
+    <Tag
+      ref={ref}
+      data-reveal=""
+      style={delay ? { transitionDelay: `${delay}ms`, ...style } : style}
+      {...rest}
+    >
       {children}
     </Tag>
   );
