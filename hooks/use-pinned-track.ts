@@ -26,6 +26,13 @@ export function usePinnedTrack(total: number) {
   const countRef = useRef<HTMLSpanElement>(null);
 
   const overflowRef = useRef(0);
+  /**
+   * A short laptop cannot fit a full-height card between the section heading
+   * and the progress rail, and `overflow: hidden` would take the crop out of
+   * the artwork at the top of every card. The track is scaled down to fit
+   * instead, so the whole card is always on screen.
+   */
+  const scaleRef = useRef(1);
   const frameRef = useRef<number | null>(null);
 
   const paintProgress = useCallback(
@@ -46,9 +53,10 @@ export function usePinnedTrack(total: number) {
     const track = trackRef.current;
     if (!section || !track) return;
 
+    const scale = scaleRef.current;
     const overflow = overflowRef.current;
     if (!overflow) {
-      track.style.transform = "none";
+      track.style.transform = scale === 1 ? "none" : `scale(${scale})`;
       return;
     }
 
@@ -56,7 +64,9 @@ export function usePinnedTrack(total: number) {
       0,
       Math.min(1, -section.getBoundingClientRect().top / overflow),
     );
-    track.style.transform = `translate3d(${-p * overflow}px,0,0)`;
+    // `translate` sits left of `scale`, so it applies after it: the distance
+    // is already in visual pixels and needs no correction.
+    track.style.transform = `translate3d(${-p * overflow}px,0,0) scale(${scale})`;
     paintProgress(p);
   }, [paintProgress]);
 
@@ -83,6 +93,8 @@ export function usePinnedTrack(total: number) {
         card.style.scrollSnapAlign = "start";
       });
       track.style.transform = "none";
+      track.style.transformOrigin = "";
+      scaleRef.current = 1;
       overflowRef.current = 0;
 
       // Keep the rail and NN / 07 counter live in the unpinned mode too.
@@ -104,7 +116,22 @@ export function usePinnedTrack(total: number) {
         ? "100dvh"
         : "100vh";
 
-    overflowRef.current = Math.max(0, track.scrollWidth - scroller.clientWidth);
+    // The row between the heading and the rail is what a card has to fit in.
+    const row = scroller.parentElement;
+    const rowHeight = row ? row.clientHeight : track.offsetHeight;
+    const cardHeight = track.offsetHeight;
+    const scale =
+      cardHeight > 0
+        ? Math.min(1, Math.max(0.62, rowHeight / cardHeight))
+        : 1;
+
+    scaleRef.current = scale;
+    track.style.transformOrigin = "left center";
+
+    overflowRef.current = Math.max(
+      0,
+      track.scrollWidth * scale - scroller.clientWidth,
+    );
     section.style.height = `${window.innerHeight + overflowRef.current}px`;
   }, [paintProgress]);
 
@@ -181,7 +208,10 @@ export function usePinnedTrack(total: number) {
       const card = target?.closest("[data-work-card]") as HTMLElement | null;
       if (!card) return;
 
-      const p = Math.max(0, Math.min(1, card.offsetLeft / overflow));
+      const p = Math.max(
+        0,
+        Math.min(1, (card.offsetLeft * scaleRef.current) / overflow),
+      );
       const top = section.offsetTop + p * overflow;
       window.scrollTo({ top, behavior: "instant" as ScrollBehavior });
     };
