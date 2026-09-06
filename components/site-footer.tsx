@@ -89,10 +89,12 @@ export function SiteFooter() {
             © 2026 {site.wordmark} — {site.tagline}
           </span>
           <span className="flex gap-[22px]">
-            <a href="#" className="text-ink-550">
+            <a href="/privacy" className="text-ink-550 hover:text-ink-900">
               PRIVACY
             </a>
-            <a href="#" className="text-ink-550">
+            {/* TODO: point at /terms once the client supplies the copy —
+                left inert rather than shipping a 404 or invented terms. */}
+            <a href="#" className="text-ink-550 hover:text-ink-900">
               TERMS
             </a>
           </span>
