@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,600&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+<style>
+  html, body { margin:0; padding:0; background:#05060A; }
+  body { -webkit-font-smoothing:antialiased; }
+  * { box-sizing:border-box; }
+  a { color:#A9B4FF; text-decoration:none; }
+  a:hover { color:#DEE2FF; }
+  ::selection { background:#2D45F0; color:#fff; }
+</style>
+</helmet>
+
+<div style="background:#05060A; color:#F4F5F8; font-family:'Instrument Sans', system-ui, sans-serif; padding:0 clamp(20px,5vw,72px) 120px; overflow-x:hidden;">
+
+  <div style="max-width:1180px; margin:0 auto;">
+
+    <div style="display:flex; flex-wrap:wrap; gap:24px; align-items:flex-end; justify-content:space-between; padding:clamp(48px,8vw,110px) 0 0;">
+      <div style="max-width:760px;">
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:28px;">
+          <div style="width:26px; height:26px; border-radius:50%; background:#2D45F0; box-shadow:0 0 0 1px #5A6DFF inset;"></div>
+          <span style="font:600 12px/1 'Instrument Sans', sans-serif; letter-spacing:0.22em; text-transform:uppercase; color:#8A90A6;">Odd Planet</span>
+        </div>
+        <h1 style="font-family:Archivo, sans-serif; font-weight:900; font-size:clamp(44px,9vw,104px); line-height:0.9; letter-spacing:-0.035em; margin:0; color:#F4F5F8; text-wrap:balance;">Brand Kit<br /><span style="color:#5A6DFF;">Dark Theme</span></h1>
+        <p style="font-size:clamp(16px,1.5vw,19px); line-height:1.55; color:#8A90A6; margin:28px 0 0; max-width:56ch; text-wrap:pretty;">Colour and type pulled directly out of the Odd Planet pitch deck — every hex below is a fill that already exists in the file. This is the foundation layer: palette, ramps, typography and component treatment for the website.</p>
+      </div>
+      <div style="font:500 12px/1.7 ui-monospace, SFMono-Regular, Menlo, monospace; color:#565C72; letter-spacing:0.04em; text-align:right;">
+        <div>v1.0 · Sept 2026</div>
+        <div>Source: ODD Planet Deck (22pp)</div>
+        <div style="color:#A9B4FF;">Where ODDS Align.</div>
+      </div>
+    </div>
+
+    <section style="margin-top:clamp(64px,10vw,130px); border-top:1px solid #1A1E2B; padding-top:32px;">
+      <div style="display:flex; flex-wrap:wrap; gap:16px 32px; align-items:baseline; justify-content:space-between; margin-bottom:40px;">
+        <div>
+          <div style="font:600 11px/1 'Instrument Sans', sans-serif; letter-spacing:0.2em; text-transform:uppercase; color:#565C72; margin-bottom:14px;">01 — Extraction</div>
+          <h2 style="font-family:Archivo, sans-serif; font-weight:800; font-size:clamp(26px,3.4vw,40px); line-height:1.02; letter-spacing:-0.025em; margin:0;">Found in the deck</h2>
+        </div>
+        <p style="font-size:15px; line-height:1.5; color:#8A90A6; margin:0; max-width:38ch;">Vector fills counted across all 22 pages. Frequency tells us what the brand actually leans on.</p>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:14px;">
+        <div style="background:#0A0C14; border:1px solid #1A1E2B; border-radius:4px; padding:18px; display:flex; flex-direction:column; gap:16px;">
+          <div style="height:96px; border-radius:2px; background:#2627A6;"></div>
+          <div>
+            <div style="font:700 15px/1.2 'Instrument Sans', sans-serif; margin-bottom:6px;">Odd Indigo</div>
+            <div style="font:500 12px/1.6 ui-monospace, Menlo, monospace; color:#8A90A6;">#2627A6<br />65 fills · dominant</div>
+          </div>
+        </div>
+        <div style="background:#0A0C14; border:1px solid #1A1E2B; border-radius:4px; padding:18px; display:flex; flex-direction:column; gap:16px;">
+          <div style="height:96px; border-radius:2px; background:#03045E;"></div>
+          <div>
+            <div style="font:700 15px/1.2 'Instrument Sans', sans-serif; margin-bottom:6px;">Deep Orbit</div>
+            <div style="font:500 12px/1.6 ui-monospace, Menlo, monospace; color:#8A90A6;">#03045E<br />24 fills · grounds</div>
+          </div>
+        </div>
+        <div style="background:#0A0C14; border:1px solid #1A1E2B; border-radius:4px; padding:18px; display:flex; flex-direction:column; gap:16px;">
+          <div style="height:96px; border-radius:2px; background:#2D45F0;"></div>
+          <div>
+            <div style="font:700 15px/1.2 'Instrument Sans', sans-serif; margin-bottom:6px;">Signal Blue</div>
+            <div style="font:500 12px/1.6 ui-monospace, Menlo, monospace; color:#8A90A6;">#2D45F0<br />6 fills · highlight</div>
+          </div>
+        </div>
+        <div style="background:#0A0C14; border:1px solid #1A1E2B; border-radius:4px; padding:18px; display:flex; flex-direction:column; gap:16px;">
+          <div style="height:96px; border-radius:2px; background:#DEE2FF;"></div>
+          <div>
+            <div style="font:700 15px/1.2 'Instrument Sans', sans-serif; margin-bottom:6px;">Haze</div>
+            <div style="font:500 12px/1.6 ui-monospace, Menlo, monospace; color:#8A90A6;">#DEE2FF<br />2 fills · tint</div>
+          </div>
+        </div>
+        <div style="background:#0A0C14; border:1px solid #1A1E2B; border-radius:4px; padding:18px; display:flex; flex-direction:column; gap:16px;">
+          <div style="height:96px; border-radius:2px; background:#000000; border:1px solid #1A1E2B;"></div>
+          <div>
+            <div style="font:700 15px/1.2 'Instrument Sans', sans-serif; margin-bottom:6px;">Black / Ink</div>
+            <div style="font:500 12px/1.6 ui-monospace, Menlo, monospace; color:#8A90A6;">#000000 · #212121<br />555 fills · structure</div>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:14px; line-height:1.6; color:#565C72; margin:22px 0 0; max-width:70ch;">Verdict: the brand is already black + indigo-blue + white. No green, no orange, no gradient — the few stray reds and greens in the deck are platform logos, not brand colour.</p>
+    </section>
+
+    <section style="margin-top:clamp(64px,10vw,130px); border-top:1px solid #1A1E2B; padding-top:32px;">
+      <div style="font:600 11px/1 'Instrument Sans', sans-serif; letter-spacing:0.2em; text-transform:uppercase; color:#565C72; margin-bottom:14px;">02 — Ramps</div>
+      <h2 style="font-family:Archivo, sans-serif; font-weight:800; font-size:clamp(26px,3.4vw,40px); line-height:1.02; letter-spacing:-0.025em; margin:0 0 40px;">The working palette</h2>
+
+      <div style="font:600 11px/1 'Instrument Sans', sans-serif; letter-spacing:0.16em; text-transform:uppercase; color:#8A90A6; margin-bottom:16px;">Ink — blue-black neutrals (hue 265)</div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(124px,1fr)); gap:8px; margin-bottom:48px;">
+        <div style="border:1px solid #1A1E2B; border-radius:3px; overflow:hidden;">
+          <div style="height:104px; background:#05060A;"></div>
+          <div style="padding:12px; background:#0A0C14; font:500 11px/1.5 ui-monospace, Menlo, monospace; color:#8A90A6;"><span style="display:block; color:#F4F5F8; font-weight:600;">ink/000</span>#05060A<sc-if value="{{ showOklch }}" hint-placeholder-val="{{ true }}"><span style="display:block; color:#565C72;">oklch(11% .01 265)</span></sc-if><span style="display:block; margin-top:6px; color:#565C72;">Page</span></div>
+        </div>
+        <div style="border:1px solid #1A1E2B; border-radius:3px; overflow:hidden;">
+          <div style="height:104px; background:#0A0C14;"></div>
+          <div style="padding:12px; background:#0A0C14; font:500 11px/1.5 ui-monospace, Menlo, monospace; color:#8A90A6;"><span style="display:block; color:#F4F5F8; font-weight:600;">ink/100</span>#0A0C14<sc-if value="{{ showOklch }}" hint-placeholder-val="{{ true }}"><span style="display:block; color:#565C72;">oklch(15% .015 265)</span></sc-if><span style="display:block; margin-top:6px; color:#565C72;">Surface</span></div>
+        </div>
+        <div style="border:1px solid #1A1E2B; border-radius:3px; overflow:hidden;">
+          <div style="height:104px; background:#11141F;"></div>
+          <div style="padding:12px; background:#0A0C14; font:500 11px/1.5 ui-monospace, Menlo, monospace; color:#8A90A6;"><span style="display:block; color:#F4F5F8; font-weight:600;">ink/200</span>#11141F<sc-if value="{{ showOklch }}" hint-placeholder-val="{{ true }}"><span style="display:block; color:#565C72;">oklch(19% .02 265)</span></sc-if><span style="display:block; margin-top:6px; color:#565C72;">Raised</span></div>
+        </div>
+        <div style="border:1px solid #1A1E2B; border-radius:3px; overflow:hidden;">
+          <div style="height:104px; background:#1A1E2B;"></div>
+          <div style="padding:12px; background:#0A0C14; font:500 11px/1.5 ui-monospace, Menlo, monospace; color:#8A90A6;"><span style="display:block; color:#F4F5F8; font-weight:600;">ink/300</span>#1A1E2B<sc-if value="{{ showOklch }}" hint-placeholder-val="{{ true }}"><span style="display:block; color:#565C72;">oklch(25% .02 265)</span></sc-if><span style="display:block; margin-top:6px; color:#565C72;">Hairline</span></div>
+        </div>
+        <div style="border:1px solid #1A1E2B; border-radius:3px; overflow:hidden;">
+          <div style="height:104px; background:#2A2F40;"></div>
+          <div style="padding:12px; background:#0A0C14; font:500 11px/1.5 ui-monospace, Menlo, monospace; color:#8A90A6;"><span style="display:block; color:#F4F5F8; font-weight:600;">ink/400</span>#2A2F40<sc-if value="{{ showOklch }}" hint-placeholder-val="{{ true }}"><span style="display:block; color:#565C72;">oklch(33% .025 265)</span></sc-if><span style="display:block; margin-top:6px; color:#565C72;">Border</span></div>
+        </div>
+        <div style="border:1px solid #1A1E2B; border-radius:3px; overflow:hidden;">
+          <div style="height:104px; background:#565C72;"></div>
+          <div style="padding:12px; background:#0A0C14; font:500 11px/1.5 ui-monospace, Menlo, monospace; color:#8A90A6;"><span style="display:block; color:#F4F5F8; font-weight:600;">ink/500</span>#565C72<sc-if value="{{ showOklch }}" hint-placeholder-val="{{ true }}"><span style="display:block; color:#565C72;">oklch(50% .03 265)</span></sc-if><span style="display:block; margin-top:6px; color:#565C72;">Disabled</span></div>
+        </div>
+        <div style="border:1px solid #1A1E2B; border-radius:3px; overflow:hidden;">
+          <div style="height:104px; background:#8A90A6;"></div>
+          <div style="padding:12px; background:#0A0C14; font:500 11px/1.5 ui-monospace, Menlo, monospace; color:#8A90A6;"><span style="display:block; color:#F4F5F8; font-weight:600;">ink/600</span>#8A90A6<sc-if value="{{ showOklch }}" hint-placeholder-val="{{ true }}"><span style="display:block; color:#565C72;">oklch(66% .028 265)</span></sc-if><span style="display:block; margin-top:6px; color:#565C72;">Body 2°</span></div>
+        </div>
+        <div style="border:1px solid #1A1E2B; border-radius:3px; overflow:hidden;">
+          <div style="height:104px; background:#F4F5F8;"></div>
+          <div style="padding:12px; background:#0A0C14; font:500 11px/1.5 ui-monospace, Menlo, monospace; color:#8A90A6;"><span style="display:block; color:#F4F5F8; font-weight:600;">ink/900</span>#F4F5F8<sc-if value="{{ showOklch }}" hint-placeholder-val="{{ true }}"><span style="display:block; color:#565C72;">oklch(97% .003 265)</span></sc-if><span style="display:block; margin-top:6px; color:#565C72;">Headline</span></div>
+        </div>
+      </div>
+
+      <div style="font:600 11px/1 'Instrument Sans', sans-serif; letter-spacing:0.16em; text-transform:uppercase; color:#8A90A6; margin-bottom:16px;">Blue — brand ramp (deck hexes marked ✳)</div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(124px,1fr)); gap:8px;">
+        <div style="border:1px solid #1A1E2B; border-radius:3px; overflow:hidden;">
+          <div style="height:104px; background:#03045E;"></div>
+          <div style="padding:12px; background:#0A0C14; font:500 11px/1.5 ui-monospace, Menlo, monospace; color:#8A90A6;"><span style="display:block; color:#F4F5F8; font-weight:600;">blue/900 ✳</span>#03045E<span style="display:block; margin-top:6px; color:#565C72;">Deep panels</span></div>
+        </div>
+        <div style="border:1px solid #1A1E2B; border-radius:3px; overflow:hidden;">
+          <div style="height:104px; background:#14169A;"></div>
+          <div style="padding:12px; background:#0A0C14; font:500 11px/1.5 ui-monospace, Menlo, monospace; color:#8A90A6;"><span style="display:block; color:#F4F5F8; font-weight:600;">blue/700</span>#14169A<span style="display:block; margin-top:6px; color:#565C72;">Hover fill</span></div>
+        </div>
+        <div style="border:1px solid #1A1E2B; border-radius:3px; overflow:hidden;">
+          <div style="height:104px; background:#2627A6;"></div>
+          <div style="padding:12px; background:#0A0C14; font:500 11px/1.5 ui-monospace, Menlo, monospace; color:#8A90A6;"><span style="display:block; color:#F4F5F8; font-weight:600;">blue/600 ✳</span>#2627A6<span style="display:block; margin-top:6px; color:#565C72;">Primary</span></div>
+        </div>
+        <div style="border:1px solid #1A1E2B; border-radius:3px; overflow:hidden;">
+          <div style="height:104px; background:#2D45F0;"></div>
+          <div style="padding:12px; background:#0A0C14; font:500 11px/1.5 ui-monospace, Menlo, monospace; color:#8A90A6;"><span style="display:block; color:#F4F5F8; font-weight:600;">blue/500 ✳</span>#2D45F0<span style="display:block; margin-top:6px; color:#565C72;">Accent · CTA</span></div>
+        </div>
+        <div style="border:1px solid #1A1E2B; border-radius:3px; overflow:hidden;">
+          <div style="height:104px; background:#5A6DFF;"></div>
+          <div style="padding:12px; background:#0A0C14; font:500 11px/1.5 ui-monospace, Menlo, monospace; color:#8A90A6;"><span style="display:block; color:#F4F5F8; font-weight:600;">blue/400</span>#5A6DFF<span style="display:block; margin-top:6px; color:#565C72;">Link · icon</span></div>
+        </div>
+        <div style="border:1px solid #1A1E2B; border-radius:3px; overflow:hidden;">
+          <div style="height:104px; background:#A9B4FF;"></div>
+          <div style="padding:12px; background:#0A0C14; font:500 11px/1.5 ui-monospace, Menlo, monospace; color:#8A90A6;"><span style="display:block; color:#F4F5F8; font-weight:600;">blue/200</span>#A9B4FF<span style="display:block; margin-top:6px; color:#565C72;">Blue text</span></div>
+        </div>
+        <div style="border:1px solid #1A1E2B; border-radius:3px; overflow:hidden;">
+          <div style="height:104px; background:#DEE2FF;"></div>
+          <div style="padding:12px; background:#0A0C14; font:500 11px/1.5 ui-monospace, Menlo, monospace; color:#8A90A6;"><span style="display:block; color:#F4F5F8; font-weight:600;">blue/100 ✳</span>#DEE2FF<span style="display:block; margin-top:6px; color:#565C72;">Tint · quotes</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section style="margin-top:clamp(64px,10vw,130px); border-top:1px solid #1A1E2B; padding-top:32px;">
+      <div style="display:flex; flex-wrap:wrap; gap:16px 32px; align-items:baseline; justify-content:space-between; margin-bottom:40px;">
+        <div>
+          <div style="font:600 11px/1 'Instrument Sans', sans-serif; letter-spacing:0.2em; text-transform:uppercase; color:#565C72; margin-bottom:14px;">03 — Direction</div>
+          <h2 style="font-family:Archivo, sans-serif; font-weight:800; font-size:clamp(26px,3.4vw,40px); line-height:1.02; letter-spacing:-0.025em; margin:0;">Which blue leads?</h2>
+        </div>
+        <p style="font-size:15px; line-height:1.5; color:#8A90A6; margin:0; max-width:40ch;">All three are in the deck. Same black-and-white frame, different lead blue — pick one and the rest become supporting.</p>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:18px;">
+        <div style="border:1px solid #1A1E2B; border-radius:5px; overflow:hidden; background:#0A0C14;">
+          <div style="padding:36px 28px 32px; background:#05060A; border-bottom:1px solid #1A1E2B;">
+            <div style="display:inline-flex; align-items:center; gap:8px; border:1px solid #2A2F40; border-radius:100px; padding:6px 12px; font:600 10px/1 'Instrument Sans', sans-serif; letter-spacing:0.14em; text-transform:uppercase; color:#8A90A6; margin-bottom:22px;"><span style="width:6px; height:6px; border-radius:50%; background:#2627A6;"></span>Influence</div>
+            <div style="font-family:Archivo, sans-serif; font-weight:900; font-size:34px; line-height:0.94; letter-spacing:-0.03em; color:#F4F5F8;">Where <span style="color:#2627A6;">ODDS</span><br />align.</div>
+            <div style="display:flex; gap:10px; margin-top:26px;">
+              <div style="background:#2627A6; color:#fff; font:600 13px/1 'Instrument Sans', sans-serif; padding:13px 18px; border-radius:3px;">Start a campaign</div>
+              <div style="border:1px solid #2A2F40; color:#F4F5F8; font:600 13px/1 'Instrument Sans', sans-serif; padding:13px 18px; border-radius:3px;">Our work</div>
+            </div>
+          </div>
+          <div style="padding:20px 24px; display:flex; align-items:center; justify-content:space-between; gap:12px;">
+            <div>
+              <div style="font:700 14px/1.3 'Instrument Sans', sans-serif;">A · Odd Indigo</div>
+              <div style="font:500 11px/1.5 ui-monospace, Menlo, monospace; color:#8A90A6;">#2627A6 · confident, institutional</div>
+            </div>
+            <sc-if value="{{ pickA }}" hint-placeholder-val="{{ true }}"><span style="font:700 9px/1 'Instrument Sans', sans-serif; letter-spacing:0.14em; text-transform:uppercase; color:#05060A; background:#DEE2FF; padding:7px 9px; border-radius:2px; white-space:nowrap;">Picked</span></sc-if>
+          </div>
+        </div>
+
+        <div style="border:1px solid #1A1E2B; border-radius:5px; overflow:hidden; background:#0A0C14;">
+          <div style="padding:36px 28px 32px; background:#05060A; border-bottom:1px solid #1A1E2B;">
+            <div style="display:inline-flex; align-items:center; gap:8px; border:1px solid #2A2F40; border-radius:100px; padding:6px 12px; font:600 10px/1 'Instrument Sans', sans-serif; letter-spacing:0.14em; text-transform:uppercase; color:#8A90A6; margin-bottom:22px;"><span style="width:6px; height:6px; border-radius:50%; background:#2D45F0;"></span>Influence</div>
+            <div style="font-family:Archivo, sans-serif; font-weight:900; font-size:34px; line-height:0.94; letter-spacing:-0.03em; color:#F4F5F8;">Where <span style="color:#5A6DFF;">ODDS</span><br />align.</div>
+            <div style="display:flex; gap:10px; margin-top:26px;">
+              <div style="background:#2D45F0; color:#fff; font:600 13px/1 'Instrument Sans', sans-serif; padding:13px 18px; border-radius:3px;">Start a campaign</div>
+              <div style="border:1px solid #2A2F40; color:#F4F5F8; font:600 13px/1 'Instrument Sans', sans-serif; padding:13px 18px; border-radius:3px;">Our work</div>
+            </div>
+          </div>
+          <div style="padding:20px 24px; display:flex; align-items:center; justify-content:space-between; gap:12px;">
+            <div>
+              <div style="font:700 14px/1.3 'Instrument Sans', sans-serif;">B · Signal Blue</div>
+              <div style="font:500 11px/1.5 ui-monospace, Menlo, monospace; color:#8A90A6;">#2D45F0 · loud, culture-first</div>
+            </div>
+            <sc-if value="{{ pickB }}" hint-placeholder-val="{{ false }}"><span style="font:700 9px/1 'Instrument Sans', sans-serif; letter-spacing:0.14em; text-transform:uppercase; color:#05060A; background:#DEE2FF; padding:7px 9px; border-radius:2px; white-space:nowrap;">Picked</span></sc-if>
+          </div>
+        </div>
+
+        <div style="border:1px solid #1A1E2B; border-radius:5px; overflow:hidden; background:#0A0C14;">
+          <div style="padding:36px 28px 32px; background:#03045E; border-bottom:1px solid #1A1E2B;">
+            <div style="display:inline-flex; align-items:center; gap:8px; border:1px solid #5A6DFF; border-radius:100px; padding:6px 12px; font:600 10px/1 'Instrument Sans', sans-serif; letter-spacing:0.14em; text-transform:uppercase; color:#DEE2FF; margin-bottom:22px;"><span style="width:6px; height:6px; border-radius:50%; background:#A9B4FF;"></span>Influence</div>
+            <div style="font-family:Archivo, sans-serif; font-weight:900; font-size:34px; line-height:0.94; letter-spacing:-0.03em; color:#FFFFFF;">Where <span style="color:#A9B4FF;">ODDS</span><br />align.</div>
+            <div style="display:flex; gap:10px; margin-top:26px;">
+              <div style="background:#FFFFFF; color:#03045E; font:600 13px/1 'Instrument Sans', sans-serif; padding:13px 18px; border-radius:3px;">Start a campaign</div>
+              <div style="border:1px solid #5A6DFF; color:#DEE2FF; font:600 13px/1 'Instrument Sans', sans-serif; padding:13px 18px; border-radius:3px;">Our work</div>
+            </div>
+          </div>
+          <div style="padding:20px 24px; display:flex; align-items:center; justify-content:space-between; gap:12px;">
+            <div>
+              <div style="font:700 14px/1.3 'Instrument Sans', sans-serif;">C · Deep Orbit ground</div>
+              <div style="font:500 11px/1.5 ui-monospace, Menlo, monospace; color:#8A90A6;">#03045E · premium, editorial</div>
+            </div>
+            <sc-if value="{{ pickC }}" hint-placeholder-val="{{ false }}"><span style="font:700 9px/1 'Instrument Sans', sans-serif; letter-spacing:0.14em; text-transform:uppercase; color:#05060A; background:#DEE2FF; padding:7px 9px; border-radius:2px; white-space:nowrap;">Picked</span></sc-if>
+          </div>
+        </div>
+      </div>
+
+      <p style="font-size:14px; line-height:1.6; color:#565C72; margin:22px 0 0; max-width:74ch;">Recommendation: <span style="color:#F4F5F8;">A as primary, B as the accent</span>. Indigo carries the brand and reads as an agency with real clients; Signal Blue stays rare — CTAs, live counters, hovers — so it keeps its punch. Deep Orbit becomes the section ground for case studies.</p>
+    </section>
+
+    <section style="margin-top:clamp(64px,10vw,130px); border-top:1px solid #1A1E2B; padding-top:32px;">
+      <div style="font:600 11px/1 'Instrument Sans', sans-serif; letter-spacing:0.2em; text-transform:uppercase; color:#565C72; margin-bottom:14px;">04 — Typography</div>
+      <h2 style="font-family:Archivo, sans-serif; font-weight:800; font-size:clamp(26px,3.4vw,40px); line-height:1.02; letter-spacing:-0.025em; margin:0 0 12px;">Archivo &amp; Instrument Sans</h2>
+      <p style="font-size:15px; line-height:1.6; color:#8A90A6; margin:0 0 40px; max-width:64ch; text-wrap:pretty;">Both are already embedded in the pitch deck, so the website inherits the brand rather than inventing one. Archivo is a grotesque with a genuine Black weight — tight, editorial, built for big statements. Instrument Sans handles everything readable.</p>
+
+      <div style="border:1px solid #1A1E2B; border-radius:5px; background:#0A0C14; padding:clamp(24px,4vw,44px); margin-bottom:18px; overflow:hidden;">
+        <div style="font:500 11px/1 ui-monospace, Menlo, monospace; color:#565C72; margin-bottom:22px;">Archivo Black · display · tracking −3.5%</div>
+        <div style="font-family:Archivo, sans-serif; font-weight:900; font-size:clamp(38px,7.4vw,86px); line-height:0.86; letter-spacing:-0.035em; color:#F4F5F8;">CULTURAL<br />RELEVANCE,<br /><span style="color:#5A6DFF;">MEASURED.</span></div>
+        <div style="display:flex; flex-wrap:wrap; gap:10px 26px; margin-top:30px; font:500 12px/1 ui-monospace, Menlo, monospace; color:#565C72;"><span>400 Regular</span><span>600 SemiBold</span><span>700 Bold</span><span>800 ExtraBold</span><span style="color:#A9B4FF;">900 Black</span></div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:18px;">
+        <div style="border:1px solid #1A1E2B; border-radius:5px; background:#0A0C14; padding:clamp(22px,3vw,34px);">
+          <div style="font:500 11px/1 ui-monospace, Menlo, monospace; color:#565C72; margin-bottom:24px;">Type scale · desktop</div>
+          <div style="display:flex; flex-direction:column; gap:20px;">
+            <div style="display:flex; gap:18px; align-items:baseline;"><span style="font:500 11px/1 ui-monospace, Menlo, monospace; color:#565C72; min-width:74px;">96/900</span><span style="font-family:Archivo, sans-serif; font-weight:900; font-size:44px; line-height:0.9; letter-spacing:-0.035em;">Display</span></div>
+            <div style="display:flex; gap:18px; align-items:baseline;"><span style="font:500 11px/1 ui-monospace, Menlo, monospace; color:#565C72; min-width:74px;">44/800</span><span style="font-family:Archivo, sans-serif; font-weight:800; font-size:30px; line-height:1; letter-spacing:-0.025em;">Section head</span></div>
+            <div style="display:flex; gap:18px; align-items:baseline;"><span style="font:500 11px/1 ui-monospace, Menlo, monospace; color:#565C72; min-width:74px;">24/700</span><span style="font:700 22px/1.15 'Instrument Sans', sans-serif; letter-spacing:-0.01em;">Card title</span></div>
+            <div style="display:flex; gap:18px; align-items:baseline;"><span style="font:500 11px/1 ui-monospace, Menlo, monospace; color:#565C72; min-width:74px;">17/400</span><span style="font:400 17px/1.55 'Instrument Sans', sans-serif; color:#8A90A6;">Body copy</span></div>
+            <div style="display:flex; gap:18px; align-items:baseline;"><span style="font:500 11px/1 ui-monospace, Menlo, monospace; color:#565C72; min-width:74px;">11/600</span><span style="font:600 11px/1 'Instrument Sans', sans-serif; letter-spacing:0.2em; text-transform:uppercase; color:#8A90A6;">Eyebrow label</span></div>
+          </div>
+        </div>
+        <div style="border:1px solid #1A1E2B; border-radius:5px; background:#0A0C14; padding:clamp(22px,3vw,34px);">
+          <div style="font:500 11px/1 ui-monospace, Menlo, monospace; color:#565C72; margin-bottom:24px;">Instrument Sans · text</div>
+          <p style="font:400 17px/1.6 'Instrument Sans', sans-serif; color:#F4F5F8; margin:0 0 18px; text-wrap:pretty;">Odd Planet, founded in 2023, is a full-service marketing agency delivering influencer marketing, celebrity endorsements, content production, digital amplification and quick-commerce solutions.</p>
+          <p style="font:400 15px/1.65 'Instrument Sans', sans-serif; color:#8A90A6; margin:0; text-wrap:pretty;">Secondary copy sits at ink/600 — still 6.2:1 on the page black, so it passes without going grey-on-grey. Never take body text below <span style="color:#F4F5F8;">#8A90A6</span> on a dark ground.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:10px 24px; margin-top:26px; font:500 12px/1 ui-monospace, Menlo, monospace; color:#565C72;"><span>400</span><span>500</span><span>600</span><span style="color:#A9B4FF;">700</span></div>
+        </div>
+      </div>
+      <p style="font-size:14px; line-height:1.6; color:#565C72; margin:22px 0 0; max-width:74ch;">Numbers and metrics use Archivo ExtraBold with tabular figures — the deck lives on stats like 22.6M+ views, so they get display treatment, not body treatment.</p>
+    </section>
+
+    <section style="margin-top:clamp(64px,10vw,130px); border-top:1px solid #1A1E2B; padding-top:32px;">
+      <div style="font:600 11px/1 'Instrument Sans', sans-serif; letter-spacing:0.2em; text-transform:uppercase; color:#565C72; margin-bottom:14px;">05 — Applied</div>
+      <h2 style="font-family:Archivo, sans-serif; font-weight:800; font-size:clamp(26px,3.4vw,40px); line-height:1.02; letter-spacing:-0.025em; margin:0 0 40px;">Components in the dark</h2>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:18px;">
+        <div style="border:1px solid #1A1E2B; border-radius:5px; background:#0A0C14; padding:28px;">
+          <div style="font:500 11px/1 ui-monospace, Menlo, monospace; color:#565C72; margin-bottom:24px;">Buttons</div>
+          <div style="display:flex; flex-wrap:wrap; gap:12px; align-items:center;">
+            <button type="button" style="background:#2D45F0; color:#FFFFFF; border:none; font:600 14px/1 'Instrument Sans', sans-serif; padding:15px 22px; border-radius:3px; cursor:pointer; transition:background .18s ease;" style-hover="background:#14169A">Book a call</button>
+            <button type="button" style="background:transparent; color:#F4F5F8; border:1px solid #2A2F40; font:600 14px/1 'Instrument Sans', sans-serif; padding:15px 22px; border-radius:3px; cursor:pointer; transition:border-color .18s ease, color .18s ease;" style-hover="border-color:#5A6DFF; color:#A9B4FF">See the work</button>
+            <button type="button" style="background:transparent; color:#8A90A6; border:none; font:600 14px/1 'Instrument Sans', sans-serif; padding:15px 6px; border-radius:3px; cursor:pointer; transition:color .18s ease;" style-hover="color:#F4F5F8">Download deck →</button>
+          </div>
+          <div style="height:1px; background:#1A1E2B; margin:26px 0;"></div>
+          <div style="display:flex; flex-wrap:wrap; gap:8px;">
+            <span style="border:1px solid #2A2F40; color:#8A90A6; font:600 11px/1 'Instrument Sans', sans-serif; letter-spacing:0.1em; text-transform:uppercase; padding:9px 13px; border-radius:100px;">Influence</span>
+            <span style="border:1px solid #2A2F40; color:#8A90A6; font:600 11px/1 'Instrument Sans', sans-serif; letter-spacing:0.1em; text-transform:uppercase; padding:9px 13px; border-radius:100px;">Create</span>
+            <span style="background:#2627A6; color:#FFFFFF; font:600 11px/1 'Instrument Sans', sans-serif; letter-spacing:0.1em; text-transform:uppercase; padding:9px 13px; border-radius:100px;">Amplify</span>
+            <span style="border:1px solid #2A2F40; color:#8A90A6; font:600 11px/1 'Instrument Sans', sans-serif; letter-spacing:0.1em; text-transform:uppercase; padding:9px 13px; border-radius:100px;">Q-Commerce</span>
+          </div>
+        </div>
+
+        <div style="border:1px solid #1A1E2B; border-radius:5px; background:#0A0C14; padding:28px;">
+          <div style="font:500 11px/1 ui-monospace, Menlo, monospace; color:#565C72; margin-bottom:24px;">Metrics — Archivo ExtraBold, tabular</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px 18px;">
+            <div>
+              <div style="font-family:Archivo, sans-serif; font-weight:800; font-size:38px; line-height:1; letter-spacing:-0.03em; color:#F4F5F8; font-variant-numeric:tabular-nums;">15M<span style="color:#5A6DFF;">+</span></div>
+              <div style="font:500 11px/1 'Instrument Sans', sans-serif; letter-spacing:0.14em; text-transform:uppercase; color:#8A90A6; margin-top:10px;">Total views</div>
+            </div>
+            <div>
+              <div style="font-family:Archivo, sans-serif; font-weight:800; font-size:38px; line-height:1; letter-spacing:-0.03em; color:#F4F5F8; font-variant-numeric:tabular-nums;">200K<span style="color:#5A6DFF;">+</span></div>
+              <div style="font:500 11px/1 'Instrument Sans', sans-serif; letter-spacing:0.14em; text-transform:uppercase; color:#8A90A6; margin-top:10px;">Engagement</div>
+            </div>
+            <div>
+              <div style="font-family:Archivo, sans-serif; font-weight:800; font-size:38px; line-height:1; letter-spacing:-0.03em; color:#F4F5F8; font-variant-numeric:tabular-nums;">150<span style="color:#5A6DFF;">+</span></div>
+              <div style="font:500 11px/1 'Instrument Sans', sans-serif; letter-spacing:0.14em; text-transform:uppercase; color:#8A90A6; margin-top:10px;">Deliverables</div>
+            </div>
+            <div>
+              <div style="font-family:Archivo, sans-serif; font-weight:800; font-size:38px; line-height:1; letter-spacing:-0.03em; color:#F4F5F8; font-variant-numeric:tabular-nums;">2023</div>
+              <div style="font:500 11px/1 'Instrument Sans', sans-serif; letter-spacing:0.14em; text-transform:uppercase; color:#8A90A6; margin-top:10px;">Founded</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="border:1px solid #1A1E2B; border-radius:5px; background:#0A0C14; overflow:hidden;">
+          <div style="padding:28px 28px 0;">
+            <div style="font:500 11px/1 ui-monospace, Menlo, monospace; color:#565C72; margin-bottom:24px;">Case-study card</div>
+          </div>
+          <div style="margin:0 28px; height:150px; border:1px solid #1A1E2B; border-radius:3px; background:repeating-linear-gradient(135deg,#0E1119 0 8px,#11141F 8px 16px); display:flex; align-items:center; justify-content:center;">
+            <span style="font:500 11px/1 ui-monospace, Menlo, monospace; color:#565C72; letter-spacing:0.08em;">campaign still / 16:9</span>
+          </div>
+          <div style="padding:22px 28px 28px;">
+            <div style="font:600 11px/1 'Instrument Sans', sans-serif; letter-spacing:0.16em; text-transform:uppercase; color:#5A6DFF; margin-bottom:12px;">Amplify · Music</div>
+            <div style="font:700 20px/1.2 'Instrument Sans', sans-serif; letter-spacing:-0.01em; color:#F4F5F8; margin-bottom:10px;">Spotify #1 viral song in India</div>
+            <p style="font:400 14px/1.55 'Instrument Sans', sans-serif; color:#8A90A6; margin:0 0 18px;">42M+ views · 7.5M+ streams across a coordinated creator push.</p>
+            <a href="#" style="font:600 13px/1 'Instrument Sans', sans-serif; color:#A9B4FF;">Read the case study →</a>
+          </div>
+        </div>
+
+        <div style="border:1px solid #1A1E2B; border-radius:5px; background:#03045E; padding:28px; display:flex; flex-direction:column; justify-content:space-between; gap:28px;">
+          <div>
+            <div style="font:500 11px/1 ui-monospace, Menlo, monospace; color:#A9B4FF; margin-bottom:24px;">Deep Orbit panel — quotes, contact, footer CTA</div>
+            <div style="font-family:Archivo, sans-serif; font-weight:800; font-size:clamp(24px,3vw,32px); line-height:1.05; letter-spacing:-0.025em; color:#FFFFFF; text-wrap:balance;">Let's make something amazing together.</div>
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:12px; align-items:center;">
+            <span style="background:#FFFFFF; color:#03045E; font:600 14px/1 'Instrument Sans', sans-serif; padding:15px 22px; border-radius:3px;">tushar@oddplanet.in</span>
+            <span style="font:500 14px/1 ui-monospace, Menlo, monospace; color:#DEE2FF;">+91 93152 97782</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="margin-top:clamp(64px,10vw,130px); border-top:1px solid #1A1E2B; padding-top:32px;">
+      <div style="font:600 11px/1 'Instrument Sans', sans-serif; letter-spacing:0.2em; text-transform:uppercase; color:#565C72; margin-bottom:14px;">06 — Rules</div>
+      <h2 style="font-family:Archivo, sans-serif; font-weight:800; font-size:clamp(26px,3.4vw,40px); line-height:1.02; letter-spacing:-0.025em; margin:0 0 40px;">How not to break it</h2>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px;">
+        <div style="border:1px solid #1A1E2B; border-radius:5px; background:#0A0C14; padding:26px;">
+          <div style="font:700 15px/1.2 'Instrument Sans', sans-serif; color:#A9B4FF; margin-bottom:18px;">Contrast pairs that pass</div>
+          <div style="display:flex; flex-direction:column; gap:12px; font:500 12px/1.5 ui-monospace, Menlo, monospace; color:#8A90A6;">
+            <div>#F4F5F8 on #05060A — <span style="color:#F4F5F8;">18.4:1</span></div>
+            <div>#8A90A6 on #05060A — <span style="color:#F4F5F8;">6.2:1</span></div>
+            <div>#FFFFFF on #2D45F0 — <span style="color:#F4F5F8;">6.5:1</span></div>
+            <div>#FFFFFF on #2627A6 — <span style="color:#F4F5F8;">10.9:1</span></div>
+            <div>#DEE2FF on #03045E — <span style="color:#F4F5F8;">11.8:1</span></div>
+          </div>
+        </div>
+        <div style="border:1px solid #1A1E2B; border-radius:5px; background:#0A0C14; padding:26px;">
+          <div style="font:700 15px/1.2 'Instrument Sans', sans-serif; color:#A9B4FF; margin-bottom:18px;">Do</div>
+          <ul style="margin:0; padding-left:18px; font:400 14px/1.65 'Instrument Sans', sans-serif; color:#8A90A6;">
+            <li>Let black carry 80% of the page; blue is punctuation.</li>
+            <li>Hairline borders (#1A1E2B) instead of drop shadows.</li>
+            <li>Blue text only at blue/200 or lighter.</li>
+            <li>Radii 3–5px. Flat, sharp, agency — not soft SaaS.</li>
+          </ul>
+        </div>
+        <div style="border:1px solid #1A1E2B; border-radius:5px; background:#0A0C14; padding:26px;">
+          <div style="font:700 15px/1.2 'Instrument Sans', sans-serif; color:#8A90A6; margin-bottom:18px;">Don't</div>
+          <ul style="margin:0; padding-left:18px; font:400 14px/1.65 'Instrument Sans', sans-serif; color:#565C72;">
+            <li>Blue-to-purple gradients or glow blooms.</li>
+            <li>#2627A6 as text on black — it fails at 2.1:1.</li>
+            <li>A third accent hue. Blue and neutrals only.</li>
+            <li>Archivo for paragraphs, Instrument Sans for display.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div style="margin-top:clamp(56px,8vw,100px); border-top:1px solid #1A1E2B; padding-top:24px; display:flex; flex-wrap:wrap; gap:12px 32px; justify-content:space-between; font:500 12px/1.6 ui-monospace, Menlo, monospace; color:#565C72;">
+      <span>Odd Planet · brand kit v1 · extracted from source deck</span>
+      <span style="color:#A9B4FF;">Where ODDS Align.</span>
+    </div>
+
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;leadBlue&quot;: {
+    &quot;editor&quot;: &quot;enum&quot;,
+    &quot;options&quot;: [&quot;A · Odd Indigo #2627A6&quot;, &quot;B · Signal Blue #2D45F0&quot;, &quot;C · Deep Orbit #03045E&quot;],
+    &quot;default&quot;: &quot;A · Odd Indigo #2627A6&quot;,
+    &quot;tsType&quot;: &quot;string&quot;,
+    &quot;section&quot;: &quot;Direction&quot;
+  },
+  &quot;showOklch&quot;: {
+    &quot;editor&quot;: &quot;boolean&quot;,
+    &quot;default&quot;: true,
+    &quot;tsType&quot;: &quot;boolean&quot;,
+    &quot;section&quot;: &quot;Ramps&quot;
+  }
+}">
+class Component extends DCLogic {
+  renderVals() {
+    const pick = this.props.leadBlue ?? "A · Odd Indigo #2627A6";
+    return {
+      showOklch: this.props.showOklch ?? true,
+      pickA: pick.indexOf("A ") === 0,
+      pickB: pick.indexOf("B ") === 0,
+      pickC: pick.indexOf("C ") === 0
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  html { scroll-behavior:smooth; }
+  html, body { margin:0; padding:0; background:#05060A; }
+  body { -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  * { box-sizing:border-box; }
+  a { color:#A9B4FF; text-decoration:none; }
+  a:hover { color:#DEE2FF; }
+  ::selection { background:#2D45F0; color:#fff; }
+  input, textarea, button { font-family:inherit; }
+  input::placeholder, textarea::placeholder { color:#4A5065; }
+  @keyframes op-marquee { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+  @keyframes op-pulse { 0%,100% { opacity:1; } 50% { opacity:.2; } }
+  @keyframes op-spin { to { transform:rotate(1turn); } }
+  @property --op-a { syntax:"<angle>"; inherits:false; initial-value:0deg; }
+
+  header nav::-webkit-scrollbar { height:0; }
+  [data-rail]::-webkit-scrollbar { height:0; }
+
+  @media (max-width: 900px) {
+    header nav { overflow-x:auto; scrollbar-width:none; min-width:0; }
+  }
+  @media (max-width: 880px) {
+    #services > div { grid-template-columns:minmax(0,1fr) !important; gap:clamp(26px,4vw,40px) !important; }
+    #services [data-sticky] { position:static !important; top:auto !important; }
+  }
+  @media (max-width: 760px) {
+    #media [data-row] { grid-template-columns:52px minmax(0,1fr) !important; row-gap:10px !important; align-items:start !important; }
+    #media [data-row] > span:nth-child(3) { grid-column:2; }
+    #media [data-row] > span:nth-child(4) { display:none !important; }
+    #services [data-row] { grid-template-columns:minmax(0,1fr) !important; row-gap:16px !important; }
+    #services [data-row] > div:last-child { padding-top:0 !important; padding-left:58px; }
+  }
+  @media (max-width: 640px) {
+    header > div { flex-wrap:wrap; row-gap:12px !important; }
+    header nav { order:3; width:100%; justify-content:flex-start; }
+    header nav a { flex:0 0 auto; }
+    #services [data-row] > div:first-child { grid-template-columns:32px minmax(0,1fr) !important; }
+    #services [data-row] > div:last-child { padding-left:44px; }
+  }
+  @media (max-width: 440px) {
+    [data-hero-cta] { flex-direction:column; align-items:stretch !important; }
+    [data-hero-cta] > a, [data-hero-cta] > span { width:100%; text-align:center; }
+  }
+</style>
+<script src="./image-slot.js"></script>
+</helmet>
+
+<div style="background:#05060A; color:#F4F5F8; font-family:'Schibsted Grotesk', system-ui, sans-serif;">
+
+  <header style="position:sticky; top:0; z-index:80; background:rgba(5,6,10,0.7); backdrop-filter:blur(16px);">
+    <div style="max-width:1400px; margin:0 auto; padding:16px clamp(16px,3vw,40px); display:flex; align-items:center; gap:20px; justify-content:space-between;">
+      <a href="#home" style="display:flex; align-items:center; gap:10px; flex-shrink:0; color:#F4F5F8;">
+        <span style="width:9px; height:9px; border-radius:50%; background:#2D45F0; display:block;"></span>
+        <span style="font:800 15px/1 'Schibsted Grotesk', sans-serif; letter-spacing:0.02em;">ODD PLANET</span>
+      </a>
+      <nav style="display:flex; align-items:center; gap:2px; border:1px solid #191C26; border-radius:100px; padding:5px;">
+        <a href="#media" style="font:500 12px/1 'JetBrains Mono', monospace; letter-spacing:0.06em; text-transform:uppercase; color:#8A90A6; padding:9px 13px; border-radius:100px; white-space:nowrap; transition:color .2s ease, background .2s ease;" style-hover="color:#F4F5F8; background:#11141D">Media</a>
+        <a href="#services" style="font:500 12px/1 'JetBrains Mono', monospace; letter-spacing:0.06em; text-transform:uppercase; color:#8A90A6; padding:9px 13px; border-radius:100px; white-space:nowrap; transition:color .2s ease, background .2s ease;" style-hover="color:#F4F5F8; background:#11141D">Services</a>
+        <a href="#work" style="font:500 12px/1 'JetBrains Mono', monospace; letter-spacing:0.06em; text-transform:uppercase; color:#8A90A6; padding:9px 13px; border-radius:100px; white-space:nowrap; transition:color .2s ease, background .2s ease;" style-hover="color:#F4F5F8; background:#11141D">Work</a>
+        <a href="#creators" style="font:500 12px/1 'JetBrains Mono', monospace; letter-spacing:0.06em; text-transform:uppercase; color:#8A90A6; padding:9px 13px; border-radius:100px; white-space:nowrap; transition:color .2s ease, background .2s ease;" style-hover="color:#F4F5F8; background:#11141D">Creators</a>
+      </nav>
+      <a href="#contact" data-brief style="flex-shrink:0; position:relative; display:inline-flex; align-items:center; gap:10px; background:#F4F5F8; color:#05060A; font:600 13px/1 'Schibsted Grotesk', sans-serif; padding:14px 8px 14px 20px; border-radius:100px; white-space:nowrap; overflow:hidden; transition:background .24s ease, color .24s ease, padding .24s ease;" style-hover="background:#2D45F0; color:#FFFFFF; padding-right:8px">
+        <span style="position:relative;">Start a brief</span>
+        <span data-brief-dot style="position:relative; width:26px; height:26px; border-radius:50%; background:#05060A; color:#F4F5F8; display:flex; align-items:center; justify-content:center; font-size:12px; line-height:1; flex-shrink:0; transition:background .24s ease, color .24s ease, transform .24s ease;">→</span>
+      </a>
+    </div>
+  </header>
+
+  <section id="home" style="position:relative; overflow:hidden;">
+    <canvas data-ribbon="hero" aria-hidden="true" style="position:absolute; left:-14%; top:-24%; width:128%; height:112%; display:block; opacity:0.4; mix-blend-mode:screen; -webkit-mask-image:radial-gradient(74% 56% at 50% 44%, #000 0%, rgba(0,0,0,0.42) 40%, rgba(0,0,0,0) 68%); mask-image:radial-gradient(74% 56% at 50% 44%, #000 0%, rgba(0,0,0,0.42) 40%, rgba(0,0,0,0) 68%);"></canvas>
+    <div style="position:relative; max-width:1120px; margin:0 auto; padding:clamp(46px,7vw,104px) clamp(16px,3vw,40px) 0; text-align:center;">
+      <h1 data-reveal style="margin:clamp(6px,1vw,14px) 0 0; color:#F4F5F8;">
+        <span style="display:block; font:800 clamp(38px,7.4vw,104px)/0.94 'Schibsted Grotesk', sans-serif; letter-spacing:-0.04em;">BUILDING</span>
+        <span style="display:block; font-family:'Instrument Serif', Georgia, serif; font-style:italic; font-weight:400; font-size:clamp(42px,8.6vw,124px); line-height:0.92; letter-spacing:-0.02em; color:#DEE2FF;">attention, influence</span>
+        <span style="display:block; font:800 clamp(38px,7.4vw,104px)/0.98 'Schibsted Grotesk', sans-serif; letter-spacing:-0.04em;">&amp; <span style="color:#5A6DFF;">CULTURE.</span></span>
+      </h1>
+      <p data-reveal style="font:400 clamp(15px,1.4vw,18px)/1.6 'Schibsted Grotesk', sans-serif; color:#8A90A6; margin:clamp(22px,2.6vw,32px) auto 0; max-width:34ch; text-wrap:pretty;">Influencer campaigns, content and amplification for brands that need to be talked about.</p>
+      <div data-reveal data-hero-cta style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center; align-items:center; margin:clamp(26px,3.4vw,40px) 0 0;">
+        <a href="#work" style="background:#2D45F0; color:#FFFFFF; font:600 14px/1 'Schibsted Grotesk', sans-serif; padding:17px 26px; border-radius:100px; transition:background .2s ease, transform .2s ease;" style-hover="background:#14169A; color:#FFFFFF; transform:translateY(-2px)">View selected work</a>
+        <span style="position:relative; display:inline-block; border-radius:100px; padding:1.5px; overflow:hidden; background:#191C26;">
+          <span aria-hidden="true" style="position:absolute; left:50%; top:50%; width:280%; aspect-ratio:1; margin:-140% 0 0 -140%; background:conic-gradient(from 0deg, rgba(45,69,240,0) 0deg, rgba(45,69,240,0) 200deg, #2D45F0 268deg, #A9B4FF 312deg, #F2F4FF 336deg, #A9B4FF 348deg, rgba(45,69,240,0) 360deg); animation:op-spin 3.6s linear infinite;"></span>
+          <a href="#contact" style="position:relative; display:block; background:#05060A; color:#F4F5F8; font:600 14px/1 'Schibsted Grotesk', sans-serif; padding:16px 25px; border-radius:100px; transition:background .2s ease, color .2s ease;" style-hover="background:#0C0F1A; color:#DEE2FF">Book a discovery call</a>
+        </span>
+      </div>
+
+      <div style="position:relative; margin-top:clamp(34px,5vw,68px); height:clamp(200px,27vw,340px);">
+        <div data-reveal style="position:absolute; left:50%; top:0; transform:translateX(-50%); width:clamp(180px,26vw,320px); height:clamp(54px,7.4vw,96px); z-index:3;">
+          <image-slot id="op-hero-logo-v2" shape="rect" fit="contain" placeholder="Drop the ODD PLANET logo lockup (transparent PNG)"></image-slot>
+        </div>
+        <svg viewBox="0 0 1200 420" preserveAspectRatio="none" aria-hidden="true" style="position:absolute; left:50%; bottom:0; transform:translateX(-50%); width:150%; height:92%; display:block; z-index:2;">
+          <defs>
+            <linearGradient id="opLimb2" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#2D45F0" stop-opacity="0"></stop>
+              <stop offset="0.24" stop-color="#5A6DFF" stop-opacity="0.65"></stop>
+              <stop offset="0.5" stop-color="#F2F4FF" stop-opacity="1"></stop>
+              <stop offset="0.76" stop-color="#5A6DFF" stop-opacity="0.65"></stop>
+              <stop offset="1" stop-color="#2D45F0" stop-opacity="0"></stop>
+            </linearGradient>
+            <filter id="opBloom2" x="-20%" y="-320%" width="140%" height="740%">
+              <feGaussianBlur stdDeviation="20"></feGaussianBlur>
+            </filter>
+          </defs>
+          <circle cx="600" cy="980" r="820" fill="none" stroke="url(#opLimb2)" stroke-width="46" filter="url(#opBloom2)" opacity="0.62"></circle>
+          <circle cx="600" cy="980" r="820" fill="none" stroke="url(#opLimb2)" stroke-width="4.5"></circle>
+        </svg>
+      </div>
+    </div>
+    <div aria-hidden="true" style="position:absolute; left:0; right:0; bottom:0; height:34%; background:linear-gradient(to bottom, rgba(5,6,10,0) 0%, rgba(5,6,10,0.18) 44%, rgba(5,6,10,0.62) 78%, #05060A 100%); pointer-events:none; z-index:5;"></div>
+  </section>
+
+  <section style="position:relative; z-index:6; max-width:1400px; margin:calc(clamp(16px,3vw,40px) * -1) auto 0; padding:0 clamp(16px,3vw,40px);">
+    <div aria-hidden="true" style="position:absolute; left:0; right:0; top:-140px; height:200px; background:radial-gradient(72% 100% at 50% 0%, rgba(45,69,240,0.14) 0%, rgba(45,69,240,0.04) 46%, rgba(5,6,10,0) 78%); pointer-events:none;"></div>
+    <div data-reveal-group style="position:relative; display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:1px; background:#191C26; border:1px solid #191C26; border-radius:8px; overflow:hidden;">
+      <div style="background:#05060A; padding:clamp(22px,2.6vw,34px);">
+        <div style="font:800 clamp(30px,3.6vw,50px)/1 'Schibsted Grotesk', sans-serif; letter-spacing:-0.04em; color:#F4F5F8; font-variant-numeric:tabular-nums;"><span data-count="150" data-suffix="M+">150M+</span></div>
+        <div style="font:500 11px/1.4 'JetBrains Mono', monospace; letter-spacing:0.12em; text-transform:uppercase; color:#8A90A6; margin-top:14px;">Views generated</div>
+      </div>
+      <div style="background:#05060A; padding:clamp(22px,2.6vw,34px);">
+        <div style="font:800 clamp(30px,3.6vw,50px)/1 'Schibsted Grotesk', sans-serif; letter-spacing:-0.04em; color:#F4F5F8; font-variant-numeric:tabular-nums;"><span data-count="40" data-suffix="+">40+</span></div>
+        <div style="font:500 11px/1.4 'JetBrains Mono', monospace; letter-spacing:0.12em; text-transform:uppercase; color:#8A90A6; margin-top:14px;">Brands served</div>
+      </div>
+      <div style="background:#05060A; padding:clamp(22px,2.6vw,34px);">
+        <div style="font:800 clamp(30px,3.6vw,50px)/1 'Schibsted Grotesk', sans-serif; letter-spacing:-0.04em; color:#F4F5F8; font-variant-numeric:tabular-nums;"><span data-count="250" data-suffix="+">250+</span></div>
+        <div style="font:500 11px/1.4 'JetBrains Mono', monospace; letter-spacing:0.12em; text-transform:uppercase; color:#8A90A6; margin-top:14px;">Creators / month</div>
+      </div>
+      <div style="background:#05060A; padding:clamp(22px,2.6vw,34px);">
+        <div style="font:800 clamp(30px,3.6vw,50px)/1 'Schibsted Grotesk', sans-serif; letter-spacing:-0.04em; color:#F4F5F8; font-variant-numeric:tabular-nums;"><span data-count="500" data-suffix="+">500+</span></div>
+        <div style="font:500 11px/1.4 'JetBrains Mono', monospace; letter-spacing:0.12em; text-transform:uppercase; color:#8A90A6; margin-top:14px;">Event attendees</div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:clamp(34px,5vw,62px) 0; overflow:hidden;">
+    <div style="max-width:1400px; margin:0 auto 22px; padding:0 clamp(16px,3vw,40px); font:500 11px/1 'JetBrains Mono', monospace; letter-spacing:0.18em; text-transform:uppercase; color:#565C72;">Selected brand partners</div>
+    <div style="display:flex; width:max-content; animation:op-marquee 46s linear infinite;">
+      <div style="display:flex; align-items:center; gap:clamp(38px,5.4vw,84px); padding-right:clamp(38px,5.4vw,84px);">
+        <img src="https://ajaystark.github.io/odd_planet/ad-agency/img/brands_extracted/starbucks.png" alt="Starbucks" style="height:28px; width:auto; filter:brightness(0) invert(1); opacity:.42;" />
+        <img src="https://ajaystark.github.io/odd_planet/ad-agency/img/brands_extracted/michael_kors.png" alt="Michael Kors" style="height:21px; width:auto; filter:brightness(0) invert(1); opacity:.42;" />
+        <img src="https://ajaystark.github.io/odd_planet/ad-agency/img/brands_extracted/converse.png" alt="Converse" style="height:24px; width:auto; filter:brightness(0) invert(1); opacity:.42;" />
+        <img src="https://ajaystark.github.io/odd_planet/ad-agency/img/brands_extracted/dominos.png" alt="Domino's" style="height:26px; width:auto; filter:brightness(0) invert(1); opacity:.42;" />
+        <img src="https://ajaystark.github.io/odd_planet/ad-agency/img/brands_extracted/ponds.png" alt="POND'S" style="height:24px; width:auto; filter:brightness(0) invert(1); opacity:.42;" />
+        <img src="https://ajaystark.github.io/odd_planet/ad-agency/img/brands_extracted/mg_motor.png" alt="MG Motor" style="height:28px; width:auto; filter:brightness(0) invert(1); opacity:.42;" />
+        <img src="https://ajaystark.github.io/odd_planet/ad-agency/img/brands_extracted/flipkart.png" alt="Flipkart" style="height:22px; width:auto; filter:brightness(0) invert(1); opacity:.42;" />
+        <img src="https://ajaystark.github.io/odd_planet/ad-agency/img/brands_extracted/kfc.png" alt="KFC" style="height:28px; width:auto; filter:brightness(0) invert(1); opacity:.42;" />
+        <img src="https://ajaystark.github.io/odd_planet/ad-agency/img/brands_extracted/oppo.png" alt="OPPO" style="height:21px; width:auto; filter:brightness(0) invert(1); opacity:.42;" />
+        <img src="https://ajaystark.github.io/odd_planet/ad-agency/img/brands_extracted/instamart.png" alt="Swiggy Instamart" style="height:24px; width:auto; filter:brightness(0) invert(1); opacity:.42;" />
+        <img src="https://ajaystark.github.io/odd_planet/ad-agency/img/brands_extracted/embassy_of_sweden.png" alt="Embassy of Sweden" style="height:32px; width:auto; filter:brightness(0) invert(1); opacity:.42;" />
+        <img src="https://ajaystark.github.io/odd_planet/ad-agency/img/brands_extracted/ministry_of_textiles.png" alt="Ministry of Textiles" style="height:32px; width:auto; filter:brightness(0) invert(1); opacity:.42;" />
+      </div>
+      <div style="display:flex; align-items:center; gap:clamp(38px,5.4vw,84px); padding-right:clamp(38px,5.4vw,84px);" aria-hidden="true">
+        <img src="https://ajaystark.github.io/odd_planet/ad-agency/img/brands_extracted/starbucks.png" alt="" style="height:28px; width:auto; filter:brightness(0) invert(1); opacity:.42;" />
+        <img src="https://ajaystark.github.io/odd_planet/ad-agency/img/brands_extracted/michael_kors.png" alt="" style="height:21px; width:auto; filter:brightness(0) invert(1); opacity:.42;" />
+        <img src="https://ajaystark.github.io/odd_planet/ad-agency/img/brands_extracted/converse.png" alt="" style="height:24px; width:auto; filter:brightness(0) invert(1); opacity:.42;" />
+        <img src="https://ajaystark.github.io/odd_planet/ad-agency/img/brands_extracted/dominos.png" alt="" style="height:26px; width:auto; filter:brightness(0) invert(1); opacity:.42;" />
+        <img src="https://ajaystark.github.io/odd_planet/ad-agency/img/brands_extracted/ponds.png" alt="" style="height:24px; width:auto; filter:brightness(0) invert(1); opacity:.42;" />
+        <img src="https://ajaystark.github.io/odd_planet/ad-agency/img/brands_extracted/mg_motor.png" alt="" style="height:28px; width:auto; filter:brightness(0) invert(1); opacity:.42;" />
+        <img src="https://ajaystark.github.io/odd_planet/ad-agency/img/brands_extracted/flipkart.png" alt="" style="height:22px; width:auto; filter:brightness(0) invert(1); opacity:.42;" />
+        <img src="https://ajaystark.github.io/odd_planet/ad-agency/img/brands_extracted/kfc.png" alt="" style="height:28px; width:auto; filter:brightness(0) invert(1); opacity:.42;" />
+        <img src="https://ajaystark.github.io/odd_planet/ad-agency/img/brands_extracted/oppo.png" alt="" style="height:21px; width:auto; filter:brightness(0) invert(1); opacity:.42;" />
+        <img src="https://ajaystark.github.io/odd_planet/ad-agency/img/brands_extracted/instamart.png" alt="" style="height:24px; width:auto; filter:brightness(0) invert(1); opacity:.42;" />
+        <img src="https://ajaystark.github.io/odd_planet/ad-agency/img/brands_extracted/embassy_of_sweden.png" alt="" style="height:32px; width:auto; filter:brightness(0) invert(1); opacity:.42;" />
+        <img src="https://ajaystark.github.io/odd_planet/ad-agency/img/brands_extracted/ministry_of_textiles.png" alt="" style="height:32px; width:auto; filter:brightness(0) invert(1); opacity:.42;" />
+      </div>
+    </div>
+  </section>
+
+  <section id="media" style="max-width:1400px; margin:0 auto; padding:clamp(48px,7vw,104px) clamp(16px,3vw,40px);">
+    <div data-reveal style="display:flex; flex-wrap:wrap; gap:18px 40px; align-items:flex-end; justify-content:space-between; margin-bottom:clamp(28px,4vw,52px);">
+      <div>
+        <div style="font:500 11px/1 'JetBrains Mono', monospace; letter-spacing:0.18em; text-transform:uppercase; color:#5A6DFF; margin-bottom:20px;">Media coverage</div>
+        <h2 style="margin:0; font-family:'Instrument Serif', Georgia, serif; font-weight:400; font-size:clamp(32px,4.8vw,68px); line-height:1; letter-spacing:-0.02em; color:#F4F5F8;">Recognised by <span style="font-style:italic; color:#A9B4FF;">industry leaders</span></h2>
+      </div>
+      <div style="font:400 14px/1.6 'Schibsted Grotesk', sans-serif; color:#8A90A6; max-width:34ch;">Coverage across national press, industry publications and enterprise brand campaigns.</div>
+    </div>
+
+    <div data-reveal-group>
+      <a href="https://www.indiatodaygaming.com/amp/news/national/story/sweden-india-gaming-day-unites-nations-in-a-virtual-gaming-spectacle-3232" target="_blank" rel="noopener" data-row style="display:grid; grid-template-columns:76px minmax(0,1fr) auto 34px; gap:clamp(14px,2.4vw,34px); align-items:center; padding:clamp(22px,2.8vw,34px) clamp(10px,1.4vw,18px); border-top:1px solid #191C26; color:#F4F5F8; transition:background .25s ease;" style-hover="background:#0A0C15; color:#F4F5F8">
+        <span style="font:500 11px/1 'JetBrains Mono', monospace; letter-spacing:0.1em; color:#565C72;">2025</span>
+        <span>
+          <span style="display:block; font:500 11px/1 'JetBrains Mono', monospace; letter-spacing:0.14em; text-transform:uppercase; color:#5A6DFF; margin-bottom:12px;">India Today Gaming</span>
+          <span style="display:block; font:600 clamp(18px,2.1vw,27px)/1.3 'Schibsted Grotesk', sans-serif; letter-spacing:-0.02em; color:#F4F5F8; text-wrap:pretty;">Sweden–India Gaming Day unites nations in a virtual gaming spectacle</span>
+        </span>
+        <span style="font:500 11px/1 'JetBrains Mono', monospace; letter-spacing:0.1em; text-transform:uppercase; color:#8A90A6; white-space:nowrap;">Embassy of Sweden</span>
+        <span data-arrow style="font:400 20px/1 'Schibsted Grotesk', sans-serif; color:#565C72; justify-self:end; transition:transform .25s ease, color .25s ease;">→</span>
+      </a>
+      <a href="https://www.indianstartuptimes.com/news/trailblazing-founders-powering-influencer-agencies-2026-edition/" target="_blank" rel="noopener" data-row style="display:grid; grid-template-columns:76px minmax(0,1fr) auto 34px; gap:clamp(14px,2.4vw,34px); align-items:center; padding:clamp(22px,2.8vw,34px) clamp(10px,1.4vw,18px); border-top:1px solid #191C26; color:#F4F5F8; transition:background .25s ease;" style-hover="background:#0A0C15; color:#F4F5F8">
+        <span style="font:500 11px/1 'JetBrains Mono', monospace; letter-spacing:0.1em; color:#565C72;">2026</span>
+        <span>
+          <span style="display:block; font:500 11px/1 'JetBrains Mono', monospace; letter-spacing:0.14em; text-transform:uppercase; color:#5A6DFF; margin-bottom:12px;">Indian Startup Times</span>
+          <span style="display:block; font:600 clamp(18px,2.1vw,27px)/1.3 'Schibsted Grotesk', sans-serif; letter-spacing:-0.02em; color:#F4F5F8; text-wrap:pretty;">Trailblazing founders powering influencer agencies</span>
+        </span>
+        <span style="font:500 11px/1 'JetBrains Mono', monospace; letter-spacing:0.1em; text-transform:uppercase; color:#8A90A6; white-space:nowrap;">Founder feature</span>
+        <span data-arrow style="font:400 20px/1 'Schibsted Grotesk', sans-serif; color:#565C72; justify-self:end; transition:transform .25s ease, color .25s ease;">→</span>
+      </a>
+      <a href="https://www.linkedin.com/posts/ojamaduji_rozbanatehainnayakal-msmeday-rozbanatehainnayakal-activity-7476900293880737792-0oM1" target="_blank" rel="noopener" data-row style="display:grid; grid-template-columns:76px minmax(0,1fr) auto 34px; gap:clamp(14px,2.4vw,34px); align-items:center; padding:clamp(22px,2.8vw,34px) clamp(10px,1.4vw,18px); border-top:1px solid #191C26; color:#F4F5F8; transition:background .25s ease;" style-hover="background:#0A0C15; color:#F4F5F8">
+        <span style="font:500 11px/1 'JetBrains Mono', monospace; letter-spacing:0.1em; color:#565C72;">2025</span>
+        <span>
+          <span style="display:block; font:500 11px/1 'JetBrains Mono', monospace; letter-spacing:0.14em; text-transform:uppercase; color:#5A6DFF; margin-bottom:12px;">Tata Tele Business Services</span>
+          <span style="display:block; font:600 clamp(18px,2.1vw,27px)/1.3 'Schibsted Grotesk', sans-serif; letter-spacing:-0.02em; color:#F4F5F8; text-wrap:pretty;">Spotlighted in the #RozBanateHainNayaKal campaign</span>
+        </span>
+        <span style="font:500 11px/1 'JetBrains Mono', monospace; letter-spacing:0.1em; text-transform:uppercase; color:#8A90A6; white-space:nowrap;">MSME Day</span>
+        <span data-arrow style="font:400 20px/1 'Schibsted Grotesk', sans-serif; color:#565C72; justify-self:end; transition:transform .25s ease, color .25s ease;">→</span>
+      </a>
+      <div data-row style="display:grid; grid-template-columns:76px minmax(0,1fr) auto 34px; gap:clamp(14px,2.4vw,34px); align-items:center; padding:clamp(22px,2.8vw,34px) clamp(10px,1.4vw,18px); border-top:1px solid #191C26; border-bottom:1px solid #191C26;">
+        <span style="font:500 11px/1 'JetBrains Mono', monospace; letter-spacing:0.1em; color:#565C72;">2024</span>
+        <span>
+          <span style="display:block; font:500 11px/1 'JetBrains Mono', monospace; letter-spacing:0.14em; text-transform:uppercase; color:#5A6DFF; margin-bottom:12px;">Shark Tank India · PR mandate</span>
+          <span style="display:block; font:600 clamp(18px,2.1vw,27px)/1.3 'Schibsted Grotesk', sans-serif; letter-spacing:-0.02em; color:#F4F5F8; text-wrap:pretty;">Shaily Mehrotra, Fixderma — founder PR programme</span>
+        </span>
+        <span style="display:flex; gap:22px; font-family:'Schibsted Grotesk', sans-serif; white-space:nowrap;">
+          <span><span style="display:block; font-weight:800; font-size:20px; line-height:1; letter-spacing:-0.03em; color:#F4F5F8;">15M+</span><span style="display:block; font:500 10px/1 'JetBrains Mono', monospace; letter-spacing:0.12em; text-transform:uppercase; color:#8A90A6; margin-top:8px;">Views</span></span>
+          <span><span style="display:block; font-weight:800; font-size:20px; line-height:1; letter-spacing:-0.03em; color:#F4F5F8;">150+</span><span style="display:block; font:500 10px/1 'JetBrains Mono', monospace; letter-spacing:0.12em; text-transform:uppercase; color:#8A90A6; margin-top:8px;">Deliverables</span></span>
+        </span>
+        <span></span>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" style="max-width:1400px; margin:0 auto; padding:clamp(48px,7vw,104px) clamp(16px,3vw,40px);">
+    <div style="display:grid; grid-template-columns:minmax(0,0.72fr) minmax(0,1.28fr); gap:clamp(28px,5vw,80px); align-items:start;">
+      <div data-reveal data-sticky style="position:sticky; top:120px;">
+        <div style="font:500 11px/1 'JetBrains Mono', monospace; letter-spacing:0.18em; text-transform:uppercase; color:#5A6DFF; margin-bottom:24px;">What we do</div>
+        <h2 style="margin:0; font-family:'Instrument Serif', Georgia, serif; font-weight:400; font-size:clamp(40px,6.4vw,88px); line-height:0.96; letter-spacing:-0.02em; color:#F4F5F8;">Services</h2>
+        <div style="font:400 15px/1 'JetBrains Mono', monospace; color:#565C72; margin:16px 0 0;">(4)</div>
+        <p style="font:400 15px/1.65 'Schibsted Grotesk', sans-serif; color:#8A90A6; margin:clamp(24px,3vw,40px) 0 0; max-width:34ch; text-wrap:pretty;">Four pillars, delivered as standalone engagements or as one integrated programme under a single team.</p>
+        <a href="#contact" style="display:inline-flex; align-items:center; gap:10px; font:600 13px/1 'Schibsted Grotesk', sans-serif; color:#A9B4FF; margin-top:clamp(22px,3vw,34px);">Request capabilities deck →</a>
+      </div>
+
+      <div data-reveal-group>
+        <div data-row style="display:grid; grid-template-columns:minmax(0,1fr) auto; gap:clamp(16px,3vw,44px); align-items:start; padding:clamp(24px,3vw,40px) clamp(6px,1vw,14px); border-top:1px solid #191C26; transition:background .25s ease;" style-hover="background:#0A0C15">
+          <div style="display:grid; grid-template-columns:46px minmax(0,1fr); gap:clamp(12px,2vw,26px);">
+            <span style="font:500 12px/1.5 'JetBrains Mono', monospace; color:#565C72; padding-top:10px;">01</span>
+            <div>
+              <h3 style="margin:0 0 14px; font-family:'Instrument Serif', Georgia, serif; font-weight:400; font-size:clamp(26px,3.4vw,46px); line-height:1.02; letter-spacing:-0.02em; color:#F4F5F8;">Influence</h3>
+              <p style="font:400 15px/1.6 'Schibsted Grotesk', sans-serif; color:#8A90A6; margin:0 0 18px; max-width:46ch; text-wrap:pretty;">Influencer marketing, creator partnerships, celebrity endorsements and long-term talent management.</p>
+              <ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:9px;">
+                <li style="display:flex; align-items:baseline; gap:11px; font:400 14px/1.45 'Schibsted Grotesk', sans-serif; color:#8A90A6;"><span style="color:#2D45F0; font-size:11px; line-height:1.6;">◆</span>Influencer marketing</li>
+                <li style="display:flex; align-items:baseline; gap:11px; font:400 14px/1.45 'Schibsted Grotesk', sans-serif; color:#8A90A6;"><span style="color:#2D45F0; font-size:11px; line-height:1.6;">◆</span>Creator partnerships</li>
+                <li style="display:flex; align-items:baseline; gap:11px; font:400 14px/1.45 'Schibsted Grotesk', sans-serif; color:#8A90A6;"><span style="color:#2D45F0; font-size:11px; line-height:1.6;">◆</span>Celebrity endorsements</li>
+                <li style="display:flex; align-items:baseline; gap:11px; font:400 14px/1.45 'Schibsted Grotesk', sans-serif; color:#8A90A6;"><span style="color:#2D45F0; font-size:11px; line-height:1.6;">◆</span>Talent management</li>
+              </ul>
+            </div>
+          </div>
+          <div style="display:flex; align-items:center; gap:12px; font:500 11px/1 'JetBrains Mono', monospace; letter-spacing:0.12em; text-transform:uppercase; color:#8A90A6; white-space:nowrap; padding-top:12px;">Always-on <span data-arrow style="transition:transform .25s ease, color .25s ease; color:#565C72;">→</span></div>
+        </div>
+
+        <div data-row style="display:grid; grid-template-columns:minmax(0,1fr) auto; gap:clamp(16px,3vw,44px); align-items:start; padding:clamp(24px,3vw,40px) clamp(6px,1vw,14px); border-top:1px solid #191C26; transition:background .25s ease;" style-hover="background:#0A0C15">
+          <div style="display:grid; grid-template-columns:46px minmax(0,1fr); gap:clamp(12px,2vw,26px);">
+            <span style="font:500 12px/1.5 'JetBrains Mono', monospace; color:#565C72; padding-top:10px;">02</span>
+            <div>
+              <h3 style="margin:0 0 14px; font-family:'Instrument Serif', Georgia, serif; font-weight:400; font-size:clamp(26px,3.4vw,46px); line-height:1.02; letter-spacing:-0.02em; color:#F4F5F8;">Create</h3>
+              <p style="font:400 15px/1.6 'Schibsted Grotesk', sans-serif; color:#8A90A6; margin:0 0 18px; max-width:46ch; text-wrap:pretty;">Content production, brand films, events and experiences, plus original IPs and series built for owned channels.</p>
+              <ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:9px;">
+                <li style="display:flex; align-items:baseline; gap:11px; font:400 14px/1.45 'Schibsted Grotesk', sans-serif; color:#8A90A6;"><span style="color:#2D45F0; font-size:11px; line-height:1.6;">◆</span>Content production</li>
+                <li style="display:flex; align-items:baseline; gap:11px; font:400 14px/1.45 'Schibsted Grotesk', sans-serif; color:#8A90A6;"><span style="color:#2D45F0; font-size:11px; line-height:1.6;">◆</span>Brand films</li>
+                <li style="display:flex; align-items:baseline; gap:11px; font:400 14px/1.45 'Schibsted Grotesk', sans-serif; color:#8A90A6;"><span style="color:#2D45F0; font-size:11px; line-height:1.6;">◆</span>Events &amp; experiences</li>
+                <li style="display:flex; align-items:baseline; gap:11px; font:400 14px/1.45 'Schibsted Grotesk', sans-serif; color:#8A90A6;"><span style="color:#2D45F0; font-size:11px; line-height:1.6;">◆</span>Original IPs &amp; series</li>
+              </ul>
+            </div>
+          </div>
+          <div style="display:flex; align-items:center; gap:12px; font:500 11px/1 'JetBrains Mono', monospace; letter-spacing:0.12em; text-transform:uppercase; color:#8A90A6; white-space:nowrap; padding-top:12px;">Per project <span data-arrow style="transition:transform .25s ease, color .25s ease; color:#565C72;">→</span></div>
+        </div>
+
+        <div data-row style="display:grid; grid-template-columns:minmax(0,1fr) auto; gap:clamp(16px,3vw,44px); align-items:start; padding:clamp(24px,3vw,40px) clamp(6px,1vw,14px); border-top:1px solid #191C26; transition:background .25s ease;" style-hover="background:#0A0C15">
+          <div style="display:grid; grid-template-columns:46px minmax(0,1fr); gap:clamp(12px,2vw,26px);">
+            <span style="font:500 12px/1.5 'JetBrains Mono', monospace; color:#565C72; padding-top:10px;">03</span>
+            <div>
+              <h3 style="margin:0 0 14px; font-family:'Instrument Serif', Georgia, serif; font-weight:400; font-size:clamp(26px,3.4vw,46px); line-height:1.02; letter-spacing:-0.02em; color:#F4F5F8;">Amplify</h3>
+              <p style="font:400 15px/1.6 'Schibsted Grotesk', sans-serif; color:#8A90A6; margin:0 0 18px; max-width:46ch; text-wrap:pretty;">Social strategy, meme marketing, paid and organic digital campaigns, community building and PR outreach.</p>
+              <ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:9px;">
+                <li style="display:flex; align-items:baseline; gap:11px; font:400 14px/1.45 'Schibsted Grotesk', sans-serif; color:#8A90A6;"><span style="color:#2D45F0; font-size:11px; line-height:1.6;">◆</span>Social media strategy</li>
+                <li style="display:flex; align-items:baseline; gap:11px; font:400 14px/1.45 'Schibsted Grotesk', sans-serif; color:#8A90A6;"><span style="color:#2D45F0; font-size:11px; line-height:1.6;">◆</span>Meme marketing</li>
+                <li style="display:flex; align-items:baseline; gap:11px; font:400 14px/1.45 'Schibsted Grotesk', sans-serif; color:#8A90A6;"><span style="color:#2D45F0; font-size:11px; line-height:1.6;">◆</span>Digital campaigns</li>
+                <li style="display:flex; align-items:baseline; gap:11px; font:400 14px/1.45 'Schibsted Grotesk', sans-serif; color:#8A90A6;"><span style="color:#2D45F0; font-size:11px; line-height:1.6;">◆</span>Community building</li>
+                <li style="display:flex; align-items:baseline; gap:11px; font:400 14px/1.45 'Schibsted Grotesk', sans-serif; color:#8A90A6;"><span style="color:#2D45F0; font-size:11px; line-height:1.6;">◆</span>PR &amp; outreach</li>
+              </ul>
+            </div>
+          </div>
+          <div style="display:flex; align-items:center; gap:12px; font:500 11px/1 'JetBrains Mono', monospace; letter-spacing:0.12em; text-transform:uppercase; color:#8A90A6; white-space:nowrap; padding-top:12px;">Monthly retainer <span data-arrow style="transition:transform .25s ease, color .25s ease; color:#565C72;">→</span></div>
+        </div>
+
+        <div data-row style="display:grid; grid-template-columns:minmax(0,1fr) auto; gap:clamp(16px,3vw,44px); align-items:start; padding:clamp(24px,3vw,40px) clamp(6px,1vw,14px); border-top:1px solid #191C26; border-bottom:1px solid #191C26; transition:background .25s ease;" style-hover="background:#0A0C15">
+          <div style="display:grid; grid-template-columns:46px minmax(0,1fr); gap:clamp(12px,2vw,26px);">
+            <span style="font:500 12px/1.5 'JetBrains Mono', monospace; color:#565C72; padding-top:10px;">04</span>
+            <div>
+              <h3 style="margin:0 0 14px; font-family:'Instrument Serif', Georgia, serif; font-weight:400; font-size:clamp(26px,3.4vw,46px); line-height:1.02; letter-spacing:-0.02em; color:#F4F5F8;">Quick commerce</h3>
+              <p style="font:400 15px/1.6 'Schibsted Grotesk', sans-serif; color:#8A90A6; margin:0 0 18px; max-width:46ch; text-wrap:pretty;">Consultancy and end-to-end management across marketplaces and dark stores, from listing to demand generation.</p>
+              <ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:9px;">
+                <li style="display:flex; align-items:baseline; gap:11px; font:400 14px/1.45 'Schibsted Grotesk', sans-serif; color:#8A90A6;"><span style="color:#2D45F0; font-size:11px; line-height:1.6;">◆</span>Consultancy &amp; management</li>
+                <li style="display:flex; align-items:baseline; gap:11px; font:400 14px/1.45 'Schibsted Grotesk', sans-serif; color:#8A90A6;"><span style="color:#2D45F0; font-size:11px; line-height:1.6;">◆</span>End-to-end solutions</li>
+                <li style="display:flex; align-items:baseline; gap:11px; font:400 14px/1.45 'Schibsted Grotesk', sans-serif; color:#8A90A6;"><span style="color:#2D45F0; font-size:11px; line-height:1.6;">◆</span>Marketplace &amp; dark-store growth</li>
+              </ul>
+            </div>
+          </div>
+          <div style="display:flex; align-items:center; gap:12px; font:500 11px/1 'JetBrains Mono', monospace; letter-spacing:0.12em; text-transform:uppercase; color:#8A90A6; white-space:nowrap; padding-top:12px;">Consult + manage <span data-arrow style="transition:transform .25s ease, color .25s ease; color:#565C72;">→</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work" data-pin style="position:relative;">
+    <div data-pin-inner style="position:sticky; top:0; height:100vh; min-height:min(600px,100vh); overflow:hidden; display:flex; flex-direction:column; padding:clamp(26px,4vw,54px) 0 clamp(22px,3vw,38px);">
+      <div style="max-width:1400px; width:100%; margin:0 auto; padding:0 clamp(16px,3vw,40px); display:flex; flex-wrap:wrap; gap:14px 40px; align-items:flex-end; justify-content:space-between; flex-shrink:0;">
+        <div>
+          <div style="font:500 11px/1 'JetBrains Mono', monospace; letter-spacing:0.18em; text-transform:uppercase; color:#5A6DFF; margin-bottom:18px;">Selected work</div>
+          <h2 style="margin:0; font-family:'Instrument Serif', Georgia, serif; font-weight:400; font-size:clamp(30px,4.4vw,62px); line-height:1; letter-spacing:-0.02em; color:#F4F5F8;">Campaigns that <span style="font-style:italic; color:#A9B4FF;">travelled</span></h2>
+        </div>
+        <div style="font:500 11px/1.6 'JetBrains Mono', monospace; letter-spacing:0.12em; text-transform:uppercase; color:#565C72;">Scroll to advance →</div>
+      </div>
+      <div style="flex:1; display:flex; align-items:center; overflow:hidden; margin-top:clamp(18px,2.6vw,32px);">
+        <div data-pin-track style="display:flex; gap:clamp(12px,1.4vw,20px); padding:0 clamp(16px,3vw,40px); will-change:transform;">
+          <article data-card style="flex:0 0 clamp(258px,25vw,368px); border:1px solid #191C26; border-radius:8px; overflow:hidden; display:flex; flex-direction:column; transition:border-color .3s ease;" style-hover="border-color:#2D45F0">
+            <div style="position:relative; overflow:hidden;">
+              <img src="https://ajaystark.github.io/odd_planet/ad-agency/img/pdf_extracted/page13_img3.jpeg" alt="Maharani music video" data-zoom style="width:100%; height:clamp(140px,19vh,208px); object-fit:cover; display:block; transition:transform .6s cubic-bezier(.16,.84,.44,1);" />
+              <span style="position:absolute; top:14px; left:14px; font:500 10px/1 'JetBrains Mono', monospace; letter-spacing:0.14em; text-transform:uppercase; color:#DEE2FF; background:rgba(5,6,10,0.66); backdrop-filter:blur(6px); padding:7px 10px; border-radius:100px;">01 · Music</span>
+            </div>
+            <div style="padding:clamp(18px,2vw,24px); display:flex; flex-direction:column; gap:16px; flex:1;">
+              <div>
+                <h3 style="margin:0 0 8px; font-family:'Instrument Serif', Georgia, serif; font-weight:400; font-size:26px; line-height:1.06; letter-spacing:-0.02em; color:#F4F5F8;">Maharani</h3>
+                <p style="font:400 14px/1.5 'Schibsted Grotesk', sans-serif; color:#8A90A6; margin:0;">Spotify #1 viral song in India.</p>
+              </div>
+              <div style="margin-top:auto; font:500 11px/1 'JetBrains Mono', monospace; letter-spacing:0.06em;">
+                <div style="display:flex; justify-content:space-between; padding:9px 0; border-top:1px solid #191C26;"><span style="color:#565C72;">YOUTUBE</span><span style="color:#F4F5F8;">42M+</span></div>
+                <div style="display:flex; justify-content:space-between; padding:9px 0; border-top:1px solid #191C26;"><span style="color:#565C72;">INSTAGRAM</span><span style="color:#F4F5F8;">37M+</span></div>
+                <div style="display:flex; justify-content:space-between; padding:9px 0; border-top:1px solid #191C26;"><span style="color:#565C72;">STREAMS</span><span style="color:#F4F5F8;">7.5M+</span></div>
+              </div>
+            </div>
+          </article>
+
+          <article data-card style="flex:0 0 clamp(258px,25vw,368px); border:1px solid #191C26; border-radius:8px; overflow:hidden; display:flex; flex-direction:column; transition:border-color .3s ease;" style-hover="border-color:#2D45F0">
+            <div style="position:relative; overflow:hidden;">
+              <img src="https://ajaystark.github.io/odd_planet/ad-agency/img/pdf_extracted/page18_img4.jpeg" alt="Sweden India Gaming Day" data-zoom style="width:100%; height:clamp(140px,19vh,208px); object-fit:cover; display:block; transition:transform .6s cubic-bezier(.16,.84,.44,1);" />
+              <span style="position:absolute; top:14px; left:14px; font:500 10px/1 'JetBrains Mono', monospace; letter-spacing:0.14em; text-transform:uppercase; color:#DEE2FF; background:rgba(5,6,10,0.66); backdrop-filter:blur(6px); padding:7px 10px; border-radius:100px;">02 · Government</span>
+            </div>
+            <div style="padding:clamp(18px,2vw,24px); display:flex; flex-direction:column; gap:16px; flex:1;">
+              <div>
+                <h3 style="margin:0 0 8px; font-family:'Instrument Serif', Georgia, serif; font-weight:400; font-size:26px; line-height:1.06; letter-spacing:-0.02em; color:#F4F5F8;">Embassy of Sweden</h3>
+                <p style="font:400 14px/1.5 'Schibsted Grotesk', sans-serif; color:#8A90A6; margin:0;">Sweden–India Gaming Day with a live influencer tournament.</p>
+              </div>
+              <div style="margin-top:auto; font:500 11px/1 'JetBrains Mono', monospace; letter-spacing:0.06em;">
+                <div style="display:flex; justify-content:space-between; padding:9px 0; border-top:1px solid #191C26;"><span style="color:#565C72;">ATTENDEES</span><span style="color:#F4F5F8;">500+</span></div>
+                <div style="display:flex; justify-content:space-between; padding:9px 0; border-top:1px solid #191C26;"><span style="color:#565C72;">PRESS</span><span style="color:#F4F5F8;">India Today</span></div>
+                <div style="display:flex; justify-content:space-between; padding:9px 0; border-top:1px solid #191C26;"><span style="color:#565C72;">FORMAT</span><span style="color:#F4F5F8;">On-ground</span></div>
+              </div>
+            </div>
+          </article>
+
+          <article data-card style="flex:0 0 clamp(258px,25vw,368px); border:1px solid #191C26; border-radius:8px; overflow:hidden; display:flex; flex-direction:column; transition:border-color .3s ease;" style-hover="border-color:#2D45F0">
+            <div style="position:relative; overflow:hidden;">
+              <img src="https://ajaystark.github.io/odd_planet/ad-agency/img/reels_showcase/bevzilla_case.jpg" alt="Bevzilla campaign" data-zoom style="width:100%; height:clamp(140px,19vh,208px); object-fit:cover; display:block; transition:transform .6s cubic-bezier(.16,.84,.44,1);" />
+              <span style="position:absolute; top:14px; left:14px; font:500 10px/1 'JetBrains Mono', monospace; letter-spacing:0.14em; text-transform:uppercase; color:#DEE2FF; background:rgba(5,6,10,0.66); backdrop-filter:blur(6px); padding:7px 10px; border-radius:100px;">03 · Creator network</span>
+            </div>
+            <div style="padding:clamp(18px,2vw,24px); display:flex; flex-direction:column; gap:16px; flex:1;">
+              <div>
+                <h3 style="margin:0 0 8px; font-family:'Instrument Serif', Georgia, serif; font-weight:400; font-size:26px; line-height:1.06; letter-spacing:-0.02em; color:#F4F5F8;">Bevzilla</h3>
+                <p style="font:400 14px/1.5 'Schibsted Grotesk', sans-serif; color:#8A90A6; margin:0;">Podcast, lifestyle and coffee creators activated at scale.</p>
+              </div>
+              <div style="margin-top:auto; font:500 11px/1 'JetBrains Mono', monospace; letter-spacing:0.06em;">
+                <div style="display:flex; justify-content:space-between; padding:9px 0; border-top:1px solid #191C26;"><span style="color:#565C72;">CREATORS / MO</span><span style="color:#F4F5F8;">250+</span></div>
+                <div style="display:flex; justify-content:space-between; padding:9px 0; border-top:1px solid #191C26;"><span style="color:#565C72;">NICHES</span><span style="color:#F4F5F8;">5+</span></div>
+                <div style="display:flex; justify-content:space-between; padding:9px 0; border-top:1px solid #191C26;"><span style="color:#565C72;">MODEL</span><span style="color:#F4F5F8;">Retainer</span></div>
+              </div>
+            </div>
+          </article>
+
+          <article data-card style="flex:0 0 clamp(258px,25vw,368px); border:1px solid #191C26; border-radius:8px; overflow:hidden; display:flex; flex-direction:column; transition:border-color .3s ease;" style-hover="border-color:#2D45F0">
+            <div style="position:relative; overflow:hidden;">
+              <img src="https://ajaystark.github.io/odd_planet/ad-agency/img/pdf_extracted/page14_img4.jpeg" alt="Starbucks campaign" data-zoom style="width:100%; height:clamp(140px,19vh,208px); object-fit:cover; display:block; transition:transform .6s cubic-bezier(.16,.84,.44,1);" />
+              <span style="position:absolute; top:14px; left:14px; font:500 10px/1 'JetBrains Mono', monospace; letter-spacing:0.14em; text-transform:uppercase; color:#DEE2FF; background:rgba(5,6,10,0.66); backdrop-filter:blur(6px); padding:7px 10px; border-radius:100px;">04 · Experiential</span>
+            </div>
+            <div style="padding:clamp(18px,2vw,24px); display:flex; flex-direction:column; gap:16px; flex:1;">
+              <div>
+                <h3 style="margin:0 0 8px; font-family:'Instrument Serif', Georgia, serif; font-weight:400; font-size:26px; line-height:1.06; letter-spacing:-0.02em; color:#F4F5F8;">Starbucks</h3>
+                <p style="font:400 14px/1.5 'Schibsted Grotesk', sans-serif; color:#8A90A6; margin:0;">Store launch campaign and social resonance.</p>
+              </div>
+              <div style="margin-top:auto; font:500 11px/1 'JetBrains Mono', monospace; letter-spacing:0.06em;">
+                <div style="display:flex; justify-content:space-between; padding:9px 0; border-top:1px solid #191C26;"><span style="color:#565C72;">VIEWS</span><span style="color:#F4F5F8;">100K+</span></div>
+                <div style="display:flex; justify-content:space-between; padding:9px 0; border-top:1px solid #191C26;"><span style="color:#565C72;">ENGAGEMENT</span><span style="color:#F4F5F8;">3.1K+</span></div>
+                <div style="display:flex; justify-content:space-between; padding:9px 0; border-top:1px solid #191C26;"><span style="color:#565C72;">FORMAT</span><span style="color:#F4F5F8;">Launch</span></div>
+              </div>
+            </div>
+          </article>
+
+          <article data-card style="flex:0 0 clamp(258px,25vw,368px); border:1px solid #191C26; border-radius:8px; overflow:hidden; display:flex; flex-direction:column; transition:border-color .3s ease;" style-hover="border-color:#2D45F0">
+            <div style="position:relative; overflow:hidden;">
+              <img src="https://ajaystark.github.io/odd_planet/ad-agency/img/culture_collegerivals.jpg" alt="College Rivals" data-zoom style="width:100%; height:clamp(140px,19vh,208px); object-fit:cover; display:block; transition:transform .6s cubic-bezier(.16,.84,.44,1);" />
+              <span style="position:absolute; top:14px; left:14px; font:500 10px/1 'JetBrains Mono', monospace; letter-spacing:0.14em; text-transform:uppercase; color:#DEE2FF; background:rgba(5,6,10,0.66); backdrop-filter:blur(6px); padding:7px 10px; border-radius:100px;">05 · Gaming</span>
+            </div>
+            <div style="padding:clamp(18px,2vw,24px); display:flex; flex-direction:column; gap:16px; flex:1;">
+              <div>
+                <h3 style="margin:0 0 8px; font-family:'Instrument Serif', Georgia, serif; font-weight:400; font-size:26px; line-height:1.06; letter-spacing:-0.02em; color:#F4F5F8;">College Rivals</h3>
+                <p style="font:400 14px/1.5 'Schibsted Grotesk', sans-serif; color:#8A90A6; margin:0;">Gaming creators plugged into student communities nationwide.</p>
+              </div>
+              <div style="margin-top:auto; font:500 11px/1 'JetBrains Mono', monospace; letter-spacing:0.06em;">
+                <div style="display:flex; justify-content:space-between; padding:9px 0; border-top:1px solid #191C26;"><span style="color:#565C72;">VIEWS</span><span style="color:#F4F5F8;">10M+</span></div>
+                <div style="display:flex; justify-content:space-between; padding:9px 0; border-top:1px solid #191C26;"><span style="color:#565C72;">LIKES</span><span style="color:#F4F5F8;">80K+</span></div>
+                <div style="display:flex; justify-content:space-between; padding:9px 0; border-top:1px solid #191C26;"><span style="color:#565C72;">CAMPUSES</span><span style="color:#F4F5F8;">Multi-city</span></div>
+              </div>
+            </div>
+          </article>
+
+          <article data-card style="flex:0 0 clamp(258px,25vw,368px); border:1px solid #191C26; border-radius:8px; overflow:hidden; display:flex; flex-direction:column; transition:border-color .3s ease;" style-hover="border-color:#2D45F0">
+            <div style="position:relative; overflow:hidden;">
+              <img src="https://ajaystark.github.io/odd_planet/ad-agency/img/culture_comiccon.jpg" alt="Comic Con India" data-zoom style="width:100%; height:clamp(140px,19vh,208px); object-fit:cover; display:block; transition:transform .6s cubic-bezier(.16,.84,.44,1);" />
+              <span style="position:absolute; top:14px; left:14px; font:500 10px/1 'JetBrains Mono', monospace; letter-spacing:0.14em; text-transform:uppercase; color:#DEE2FF; background:rgba(5,6,10,0.66); backdrop-filter:blur(6px); padding:7px 10px; border-radius:100px;">06 · On-ground</span>
+            </div>
+            <div style="padding:clamp(18px,2vw,24px); display:flex; flex-direction:column; gap:16px; flex:1;">
+              <div>
+                <h3 style="margin:0 0 8px; font-family:'Instrument Serif', Georgia, serif; font-weight:400; font-size:26px; line-height:1.06; letter-spacing:-0.02em; color:#F4F5F8;">Comic Con India</h3>
+                <p style="font:400 14px/1.5 'Schibsted Grotesk', sans-serif; color:#8A90A6; margin:0;">Booth production, brand activations and creator integrations.</p>
+              </div>
+              <div style="margin-top:auto; font:500 11px/1 'JetBrains Mono', monospace; letter-spacing:0.06em;">
+                <div style="display:flex; justify-content:space-between; padding:9px 0; border-top:1px solid #191C26;"><span style="color:#565C72;">SCOPE</span><span style="color:#F4F5F8;">Build + talent</span></div>
+                <div style="display:flex; justify-content:space-between; padding:9px 0; border-top:1px solid #191C26;"><span style="color:#565C72;">FORMAT</span><span style="color:#F4F5F8;">Festival</span></div>
+              </div>
+            </div>
+          </article>
+
+          <article data-card style="flex:0 0 clamp(258px,25vw,368px); border:1px solid #191C26; border-radius:8px; overflow:hidden; display:flex; flex-direction:column; transition:border-color .3s ease;" style-hover="border-color:#2D45F0">
+            <div style="height:clamp(140px,19vh,208px); border-bottom:1px solid #191C26; display:flex; align-items:center; justify-content:center; position:relative;">
+              <img src="https://ajaystark.github.io/odd_planet/ad-agency/img/brands_extracted/ministry_of_textiles.png" alt="Ministry of Textiles" style="height:66px; width:auto; filter:brightness(0) invert(1); opacity:.85;" />
+              <span style="position:absolute; top:14px; left:14px; font:500 10px/1 'JetBrains Mono', monospace; letter-spacing:0.14em; text-transform:uppercase; color:#8A90A6;">07 · Government</span>
+            </div>
+            <div style="padding:clamp(18px,2vw,24px); display:flex; flex-direction:column; gap:16px; flex:1;">
+              <div>
+                <h3 style="margin:0 0 8px; font-family:'Instrument Serif', Georgia, serif; font-weight:400; font-size:26px; line-height:1.06; letter-spacing:-0.02em; color:#F4F5F8;">Ministry of Textiles</h3>
+                <p style="font:400 14px/1.5 'Schibsted Grotesk', sans-serif; color:#8A90A6; margin:0;">National handloom and heritage storytelling at scale.</p>
+              </div>
+              <div style="margin-top:auto; font:500 11px/1 'JetBrains Mono', monospace; letter-spacing:0.06em;">
+                <a href="https://www.instagram.com/reel/DMuuOv1NrXv/" target="_blank" rel="noopener" style="display:flex; justify-content:space-between; padding:9px 0; border-top:1px solid #191C26; color:#A9B4FF;"><span style="color:#565C72;">REEL 01</span><span>423K+ →</span></a>
+                <a href="https://www.instagram.com/reel/DM0BeCQt7H2/" target="_blank" rel="noopener" style="display:flex; justify-content:space-between; padding:9px 0; border-top:1px solid #191C26; color:#A9B4FF;"><span style="color:#565C72;">REEL 02</span><span>181K+ →</span></a>
+                <a href="https://www.instagram.com/reel/DMpJRfZJ8hr/" target="_blank" rel="noopener" style="display:flex; justify-content:space-between; padding:9px 0; border-top:1px solid #191C26; color:#A9B4FF;"><span style="color:#565C72;">REEL 03</span><span>309K+ →</span></a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+      <div style="max-width:1400px; width:100%; margin:0 auto; padding:0 clamp(16px,3vw,40px); flex-shrink:0; display:flex; align-items:center; gap:18px;">
+        <div style="flex:1; height:1px; background:#191C26; overflow:hidden;"><div data-pin-bar style="height:100%; width:0%; background:linear-gradient(90deg,#2D45F0,#A9B4FF);"></div></div>
+        <div data-pin-count style="font:500 11px/1 'JetBrains Mono', monospace; letter-spacing:0.12em; color:#565C72;">01 / 07</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="creators" style="padding:clamp(48px,7vw,104px) 0; overflow:hidden;">
+    <div data-reveal style="max-width:1400px; margin:0 auto clamp(6px,1.4vw,18px); padding:0 clamp(16px,3vw,40px); display:flex; flex-wrap:wrap; gap:16px 40px; align-items:flex-end; justify-content:space-between;">
+      <div>
+        <div style="font:500 11px/1 'JetBrains Mono', monospace; letter-spacing:0.18em; text-transform:uppercase; color:#5A6DFF; margin-bottom:20px;">Talent &amp; partnerships</div>
+        <h2 style="margin:0; font-family:'Instrument Serif', Georgia, serif; font-weight:400; font-size:clamp(32px,4.8vw,68px); line-height:1; letter-spacing:-0.02em; color:#F4F5F8;">The <span style="font-style:italic; color:#A9B4FF;">creator</span> network</h2>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px;">
+        <button type="button" data-cf-prev aria-label="Previous creator" style="width:44px; height:44px; border-radius:50%; border:1px solid #262B3A; background:transparent; color:#F4F5F8; font-size:16px; cursor:pointer; transition:border-color .2s ease, background .2s ease;" style-hover="border-color:#5A6DFF; background:#0C0F1A">←</button>
+        <button type="button" data-cf-next aria-label="Next creator" style="width:44px; height:44px; border-radius:50%; border:1px solid #262B3A; background:transparent; color:#F4F5F8; font-size:16px; cursor:pointer; transition:border-color .2s ease, background .2s ease;" style-hover="border-color:#5A6DFF; background:#0C0F1A">→</button>
+      </div>
+    </div>
+
+    <div data-cf-frame tabindex="0" style="cursor:grab; overflow:hidden; padding:clamp(24px,3.4vw,48px) 0 clamp(8px,1.4vw,18px); outline:none; touch-action:pan-y; perspective:1400px;">
+      <div data-cf-stage style="position:relative; height:clamp(280px,32vw,400px); transform-style:preserve-3d;">
+        <div data-cf-card data-name="Siddharth Nigam" data-role="Actor &amp; creator" data-reach="10.5M+ followers" data-brands="Domino's · Max Fashion" data-metric="800K+ campaign views" style="position:absolute; left:50%; top:0; width:clamp(200px,23vw,286px); height:clamp(280px,32vw,400px); border-radius:10px; overflow:hidden; border:1px solid #191C26; will-change:transform; background:#0A0C15;">
+          <img src="https://ajaystark.github.io/odd_planet/ad-agency/img/pdf_extracted/page6_img3.jpeg" alt="Siddharth Nigam" draggable="false" style="width:100%; height:100%; object-fit:cover; object-position:top; display:block; user-select:none;" />
+        </div>
+        <div data-cf-card data-name="Priyank Sharma" data-role="Actor &amp; creator" data-reach="3M+ followers" data-brands="Allen Solly" data-metric="200K+ reel views" style="position:absolute; left:50%; top:0; width:clamp(200px,23vw,286px); height:clamp(280px,32vw,400px); border-radius:10px; overflow:hidden; border:1px solid #191C26; will-change:transform; background:#0A0C15;">
+          <img src="https://ajaystark.github.io/odd_planet/ad-agency/img/reels_showcase/priyank_creator.jpg" alt="Priyank Sharma" draggable="false" style="width:100%; height:100%; object-fit:cover; object-position:top; display:block; user-select:none;" />
+        </div>
+        <div data-cf-card data-name="Vaibhav Arora" data-role="Artist &amp; creator" data-reach="2M+ followers" data-brands="Michael Kors · AJIO" data-metric="710K+ reel views" style="position:absolute; left:50%; top:0; width:clamp(200px,23vw,286px); height:clamp(280px,32vw,400px); border-radius:10px; overflow:hidden; border:1px solid #191C26; will-change:transform; background:#0A0C15;">
+          <img src="https://ajaystark.github.io/odd_planet/ad-agency/img/reels_showcase/vaibhav_creator.jpg" alt="Vaibhav Arora" draggable="false" style="width:100%; height:100%; object-fit:cover; object-position:top; display:block; user-select:none;" />
+        </div>
+        <div data-cf-card data-name="Tanvi Malhara" data-role="Fashion &amp; dance" data-reach="590K+ followers" data-brands="POND'S · Sunsilk" data-metric="22.6M+ total views" style="position:absolute; left:50%; top:0; width:clamp(200px,23vw,286px); height:clamp(280px,32vw,400px); border-radius:10px; overflow:hidden; border:1px solid #191C26; will-change:transform; background:#0A0C15;">
+          <img src="https://ajaystark.github.io/odd_planet/ad-agency/img/pdf_extracted/page10_img1.jpeg" alt="Tanvi Malhara" draggable="false" style="width:100%; height:100%; object-fit:cover; object-position:top; display:block; user-select:none;" />
+        </div>
+        <div data-cf-card data-name="Tisca Chopra" data-role="Actor &amp; creator" data-reach="Celebrity partnership" data-brands="SoTrue" data-metric="57K+ reel views" style="position:absolute; left:50%; top:0; width:clamp(200px,23vw,286px); height:clamp(280px,32vw,400px); border-radius:10px; overflow:hidden; border:1px solid #191C26; will-change:transform; background:#0A0C15;">
+          <img src="https://ajaystark.github.io/odd_planet/ad-agency/img/reels_showcase/tisca_creator.jpg" alt="Tisca Chopra" draggable="false" style="width:100%; height:100%; object-fit:cover; object-position:top; display:block; user-select:none;" />
+        </div>
+        <div data-cf-card data-name="Mohit Chhetri" data-role="Lifestyle creator" data-reach="450K+ followers" data-brands="Flipkart · OPPO" data-metric="50K+ reel views" style="position:absolute; left:50%; top:0; width:clamp(200px,23vw,286px); height:clamp(280px,32vw,400px); border-radius:10px; overflow:hidden; border:1px solid #191C26; will-change:transform; background:#0A0C15;">
+          <img src="https://ajaystark.github.io/odd_planet/ad-agency/img/reels_showcase/mohit_creator.jpg" alt="Mohit Chhetri" draggable="false" style="width:100%; height:100%; object-fit:cover; object-position:top; display:block; user-select:none;" />
+        </div>
+        <div data-cf-card data-name="Karun &amp; Nanku" data-role="Music artists" data-reach="3.9M+ streams" data-brands="Converse" data-metric="Original IP" style="position:absolute; left:50%; top:0; width:clamp(200px,23vw,286px); height:clamp(280px,32vw,400px); border-radius:10px; overflow:hidden; border:1px solid #191C26; will-change:transform; background:#0A0C15;">
+          <img src="https://ajaystark.github.io/odd_planet/ad-agency/img/pdf_extracted/page9_img1.jpeg" alt="Karun and Nanku" draggable="false" style="width:100%; height:100%; object-fit:cover; object-position:top; display:block; user-select:none;" />
+        </div>
+        <div data-cf-card data-name="Ishita Arora" data-role="Food &amp; lifestyle" data-reach="137K+ followers" data-brands="Epigamia · Instamart" data-metric="32.3K+ reel views" style="position:absolute; left:50%; top:0; width:clamp(200px,23vw,286px); height:clamp(280px,32vw,400px); border-radius:10px; overflow:hidden; border:1px solid #191C26; will-change:transform; background:#0A0C15;">
+          <img src="https://ajaystark.github.io/odd_planet/ad-agency/img/pdf_extracted/page11_img1.jpeg" alt="Ishita Arora" draggable="false" style="width:100%; height:100%; object-fit:cover; object-position:top; display:block; user-select:none;" />
+        </div>
+      </div>
+    </div>
+
+    <div style="max-width:1400px; margin:0 auto; padding:0 clamp(16px,3vw,40px); display:flex; flex-direction:column; align-items:center; gap:22px;">
+      <div style="text-align:center;">
+        <div data-cf-name style="font-family:'Instrument Serif', Georgia, serif; font-weight:400; font-size:clamp(24px,2.8vw,36px); line-height:1.1; letter-spacing:-0.02em; color:#F4F5F8;">Siddharth Nigam</div>
+        <div data-cf-role style="font:500 11px/1 'JetBrains Mono', monospace; letter-spacing:0.14em; text-transform:uppercase; color:#8A90A6; margin-top:12px;">Actor &amp; creator</div>
+      </div>
+      <div style="width:100%; max-width:340px; font:500 11px/1 'JetBrains Mono', monospace; letter-spacing:0.06em;">
+        <div style="display:flex; justify-content:space-between; padding:11px 0; border-top:1px solid #191C26;"><span style="color:#565C72;">REACH</span><span data-cf-reach style="color:#F4F5F8;">10.5M+ followers</span></div>
+        <div style="display:flex; justify-content:space-between; padding:11px 0; border-top:1px solid #191C26;"><span style="color:#565C72;">BRANDS</span><span data-cf-brands style="color:#F4F5F8;">Domino's · Max Fashion</span></div>
+        <div style="display:flex; justify-content:space-between; padding:11px 0; border-top:1px solid #191C26; border-bottom:1px solid #191C26;"><span style="color:#565C72;">PERFORMANCE</span><span data-cf-metric style="color:#F4F5F8;">800K+ campaign views</span></div>
+      </div>
+      <div data-cf-dots style="display:flex; gap:8px; align-items:center;"></div>
+    </div>
+  </section>
+
+  <section id="contact" style="position:relative; overflow:hidden; padding:clamp(48px,7vw,110px) 0 clamp(40px,6vw,80px);">
+    <canvas data-ribbon="contact" aria-hidden="true" style="position:absolute; left:-12%; top:-14%; width:124%; height:128%; display:block; opacity:0.24; mix-blend-mode:screen; -webkit-mask-image:radial-gradient(56% 44% at 26% 46%, #000 0%, rgba(0,0,0,0.34) 40%, rgba(0,0,0,0) 66%); mask-image:radial-gradient(56% 44% at 26% 46%, #000 0%, rgba(0,0,0,0.34) 40%, rgba(0,0,0,0) 66%);"></canvas>
+    <div style="position:relative; max-width:1400px; margin:0 auto; padding:0 clamp(16px,3vw,40px); display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:clamp(30px,5vw,72px); align-items:center;">
+      <div data-reveal>
+        <div style="font:500 11px/1 'JetBrains Mono', monospace; letter-spacing:0.18em; text-transform:uppercase; color:#5A6DFF; margin-bottom:24px;">Contact us</div>
+        <h2 style="margin:0; color:#F4F5F8;">
+          <span style="display:block; font:800 clamp(38px,6vw,86px)/0.94 'Schibsted Grotesk', sans-serif; letter-spacing:-0.04em;">LET'S</span>
+          <span style="display:block; font-family:'Instrument Serif', Georgia, serif; font-style:italic; font-weight:400; font-size:clamp(44px,7vw,104px); line-height:0.92; letter-spacing:-0.02em; color:#A9B4FF;">talk.</span>
+        </h2>
+        <p style="font:400 clamp(15px,1.4vw,17px)/1.65 'Schibsted Grotesk', sans-serif; color:#8A90A6; margin:clamp(22px,3vw,34px) 0 clamp(26px,3.4vw,40px); max-width:44ch; text-wrap:pretty;">Share your brief and we will respond with a strategy, a creator roster and a costed plan — usually within one working day.</p>
+        <div style="display:flex; flex-direction:column; gap:14px; font:500 12px/1 'JetBrains Mono', monospace; letter-spacing:0.06em;">
+          <a href="mailto:tushar@oddplanet.in" style="color:#F4F5F8;">tushar@oddplanet.in</a>
+          <a href="https://wa.me/919315297782" target="_blank" rel="noopener" style="color:#F4F5F8;">+91 93152 97782</a>
+          <span style="color:#565C72;">NEW DELHI, INDIA · <span data-clock>--:--:--</span> IST</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:16px; margin-top:clamp(26px,3.4vw,40px); padding-top:clamp(22px,3vw,32px); border-top:1px solid #191C26;">
+          <img src="https://ajaystark.github.io/odd_planet/ad-agency/img/team/oja.jpg" alt="Tushar Goyal" style="width:56px; height:56px; border-radius:50%; object-fit:cover; display:block;" />
+          <div>
+            <div style="font:600 15px/1.2 'Schibsted Grotesk', sans-serif; color:#F4F5F8;">Tushar Goyal</div>
+            <div style="font:500 10px/1.4 'JetBrains Mono', monospace; letter-spacing:0.12em; text-transform:uppercase; color:#8A90A6; margin-top:7px;">Founder &amp; CEO · ex-Meta Gaming</div>
+          </div>
+        </div>
+      </div>
+
+      <form data-form data-reveal style="border:1px solid #262B3A; border-radius:14px; background:rgba(10,12,21,0.72); backdrop-filter:blur(10px); padding:clamp(22px,3vw,38px); display:flex; flex-direction:column; gap:18px;">
+        <label style="display:flex; flex-direction:column; gap:10px;">
+          <span style="font:500 10px/1 'JetBrains Mono', monospace; letter-spacing:0.14em; text-transform:uppercase; color:#8A90A6;">Name</span>
+          <input type="text" name="name" placeholder="Your name" required="required" style="background:#0D0F17; border:1px solid #262B3A; border-radius:100px; color:#F4F5F8; font:400 15px/1 'Schibsted Grotesk', sans-serif; padding:16px 20px; outline:none; transition:border-color .2s ease;" style-focus="border-color:#2D45F0" />
+        </label>
+        <label style="display:flex; flex-direction:column; gap:10px;">
+          <span style="font:500 10px/1 'JetBrains Mono', monospace; letter-spacing:0.14em; text-transform:uppercase; color:#8A90A6;">Email</span>
+          <input type="email" name="email" placeholder="you@company.com" required="required" style="background:#0D0F17; border:1px solid #262B3A; border-radius:100px; color:#F4F5F8; font:400 15px/1 'Schibsted Grotesk', sans-serif; padding:16px 20px; outline:none; transition:border-color .2s ease;" style-focus="border-color:#2D45F0" />
+        </label>
+        <label style="display:flex; flex-direction:column; gap:10px;">
+          <span style="font:500 10px/1 'JetBrains Mono', monospace; letter-spacing:0.14em; text-transform:uppercase; color:#8A90A6;">Brief</span>
+          <textarea name="message" rows="4" placeholder="Category, objective, timeline and budget range." required="required" style="background:#0D0F17; border:1px solid #262B3A; border-radius:18px; color:#F4F5F8; font:400 15px/1.55 'Schibsted Grotesk', sans-serif; padding:16px 20px; outline:none; resize:vertical; transition:border-color .2s ease;" style-focus="border-color:#2D45F0"></textarea>
+        </label>
+        <button type="submit" style="background:#2D45F0; color:#FFFFFF; border:none; font:600 15px/1 'Schibsted Grotesk', sans-serif; padding:18px 24px; border-radius:100px; cursor:pointer; transition:background .2s ease, transform .2s ease;" style-hover="background:#14169A; transform:translateY(-2px)">Send brief</button>
+        <div data-form-note style="font:500 10px/1.6 'JetBrains Mono', monospace; letter-spacing:0.1em; text-transform:uppercase; color:#565C72; text-align:center;">Design prototype — no submission is sent</div>
+      </form>
+    </div>
+  </section>
+
+  <footer style="position:relative; border-top:1px solid #191C26; overflow:hidden;">
+    <div style="max-width:1400px; margin:0 auto; padding:clamp(40px,5.4vw,76px) clamp(16px,3vw,40px) clamp(26px,3.4vw,44px); display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:clamp(26px,4vw,52px);">
+      <div>
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:18px;">
+          <span style="width:9px; height:9px; border-radius:50%; background:#2D45F0; display:block;"></span>
+          <span style="font:800 15px/1 'Schibsted Grotesk', sans-serif; letter-spacing:0.02em; color:#F4F5F8;">ODD PLANET</span>
+        </div>
+        <p style="font:400 14px/1.65 'Schibsted Grotesk', sans-serif; color:#8A90A6; margin:0; max-width:30ch; text-wrap:pretty;">Founded 2023. Influencer, content and amplification partner for brands and government organisations.</p>
+      </div>
+      <div>
+        <div style="font:500 10px/1 'JetBrains Mono', monospace; letter-spacing:0.16em; text-transform:uppercase; color:#565C72; margin-bottom:20px;">Sections</div>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <a href="#media" style="font:500 14px/1 'Schibsted Grotesk', sans-serif; color:#DEE2FF;">Media coverage</a>
+          <a href="#services" style="font:500 14px/1 'Schibsted Grotesk', sans-serif; color:#DEE2FF;">Services</a>
+          <a href="#work" style="font:500 14px/1 'Schibsted Grotesk', sans-serif; color:#DEE2FF;">Selected work</a>
+          <a href="#creators" style="font:500 14px/1 'Schibsted Grotesk', sans-serif; color:#DEE2FF;">Creator network</a>
+        </div>
+      </div>
+      <div>
+        <div style="font:500 10px/1 'JetBrains Mono', monospace; letter-spacing:0.16em; text-transform:uppercase; color:#565C72; margin-bottom:20px;">Follow</div>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <a href="https://www.instagram.com/oddplanet.in/" target="_blank" rel="noopener" style="font:500 14px/1 'Schibsted Grotesk', sans-serif; color:#DEE2FF;">Instagram</a>
+          <a href="https://www.linkedin.com/company/odd-planet" target="_blank" rel="noopener" style="font:500 14px/1 'Schibsted Grotesk', sans-serif; color:#DEE2FF;">LinkedIn</a>
+          <a href="https://www.linkedin.com/in/ojamaduji/" target="_blank" rel="noopener" style="font:500 14px/1 'Schibsted Grotesk', sans-serif; color:#DEE2FF;">Founder</a>
+        </div>
+      </div>
+      <div>
+        <div style="font:500 10px/1 'JetBrains Mono', monospace; letter-spacing:0.16em; text-transform:uppercase; color:#565C72; margin-bottom:20px;">Enquiries</div>
+        <div style="display:flex; flex-direction:column; gap:12px; margin-bottom:22px;">
+          <a href="mailto:tushar@oddplanet.in" style="font:500 14px/1 'Schibsted Grotesk', sans-serif; color:#DEE2FF;">tushar@oddplanet.in</a>
+          <a href="https://wa.me/919315297782" target="_blank" rel="noopener" style="font:500 14px/1 'Schibsted Grotesk', sans-serif; color:#DEE2FF;">+91 93152 97782</a>
+        </div>
+        <a href="#contact" style="display:inline-flex; align-items:center; gap:10px; border:1px solid #262B3A; color:#F4F5F8; font:600 13px/1 'Schibsted Grotesk', sans-serif; padding:14px 20px; border-radius:100px; transition:border-color .2s ease, background .2s ease;" style-hover="border-color:#2D45F0; background:#0C0F1A; color:#F4F5F8">Start a brief →</a>
+      </div>
+    </div>
+
+    <div style="max-width:1400px; margin:0 auto; padding:0 clamp(16px,3vw,40px);">
+      <svg data-stroketext viewBox="0 0 1000 116" preserveAspectRatio="none" role="img" aria-label="Odd Planet" style="width:100%; height:auto; display:block; overflow:visible;">
+        <defs>
+          <linearGradient id="opWord" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#1B2030"></stop>
+            <stop offset="0.52" stop-color="#2D45F0" stop-opacity="0.72"></stop>
+            <stop offset="1" stop-color="#1B2030"></stop>
+          </linearGradient>
+          <linearGradient id="opWordStroke" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#2D45F0"></stop>
+            <stop offset="0.5" stop-color="#A9B4FF"></stop>
+            <stop offset="1" stop-color="#2D45F0"></stop>
+          </linearGradient>
+          <clipPath id="opWipe">
+            <rect data-stroketext-wipe x="0" y="-40" width="1000" height="200" style="transform:scaleX(0); transform-origin:0 0; transition:transform 1.15s cubic-bezier(.16,.84,.44,1);"></rect>
+          </clipPath>
+        </defs>
+        <text data-stroketext-stroke x="0" y="112" textLength="1000" lengthAdjust="spacingAndGlyphs" style="font-family:'Schibsted Grotesk', sans-serif; font-weight:900; font-size:152px; letter-spacing:-0.04em; fill:none; stroke:url(#opWordStroke); stroke-width:1.4; stroke-dasharray:2600; stroke-dashoffset:2600; transition:stroke-dashoffset 1.6s cubic-bezier(.33,1,.68,1), opacity .6s ease .9s;">ODD PLANET</text>
+        <text data-stroketext-fill x="0" y="112" textLength="1000" lengthAdjust="spacingAndGlyphs" clip-path="url(#opWipe)" style="font-family:'Schibsted Grotesk', sans-serif; font-weight:900; font-size:152px; letter-spacing:-0.04em; fill:url(#opWord);">ODD PLANET</text>
+      </svg>
+    </div>
+
+    <div style="border-top:1px solid #191C26;">
+      <div style="max-width:1400px; margin:0 auto; padding:18px clamp(16px,3vw,40px); display:flex; flex-wrap:wrap; gap:10px 28px; justify-content:space-between; font:500 11px/1.6 'JetBrains Mono', monospace; letter-spacing:0.06em; color:#565C72;">
+        <span>© 2026 ODD PLANET — WHERE ODDS ALIGN</span>
+        <span style="display:flex; gap:22px;"><a href="#" style="color:#565C72;">PRIVACY</a><a href="#" style="color:#565C72;">TERMS</a></span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: { &quot;width&quot;: 1440 },
+  &quot;gradientMotion&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Motion&quot; },
+  &quot;reveals&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Motion&quot; }
+}">
+class Component extends DCLogic {
+  componentDidMount() {
+    this._reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    this._onScroll = () => {
+      if (this._raf) return;
+      this._raf = requestAnimationFrame(() => { this._raf = null; this.updatePins(); });
+    };
+    this._onResize = () => { this.measure(); this.updatePins(); this.cfMeasure(); this.ribbonMeasure(); };
+    window.addEventListener("scroll", this._onScroll, { passive: true });
+    window.addEventListener("resize", this._onResize);
+    this.setup();
+    this._timers = [setTimeout(() => this.setup(), 400), setTimeout(() => this.setup(), 1400), setTimeout(() => this.setup(), 3000)];
+    this._clock = setInterval(() => this.tick(), 1000);
+    this.tick();
+    this.ribbonStart();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this._onScroll);
+    window.removeEventListener("resize", this._onResize);
+    (this._timers || []).forEach(clearTimeout);
+    clearInterval(this._clock);
+    if (this._ribbonRaf) cancelAnimationFrame(this._ribbonRaf);
+    if (this._cfRaf) cancelAnimationFrame(this._cfRaf);
+  }
+
+  guard(fn) {
+    try { fn(); } catch (err) { if (window.console) console.warn("op:", err && err.message); }
+  }
+
+  setupCounters() {
+    document.querySelectorAll("[data-count]:not([data-c-init])").forEach(el => {
+      el.setAttribute("data-c-init", "1");
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (!e.isIntersecting) return;
+          io.disconnect();
+          this.countTo(el);
+        });
+      }, { threshold: 0.35 });
+      io.observe(el);
+    });
+  }
+
+  countTo(el) {
+    const target = parseFloat(el.getAttribute("data-count")) || 0;
+    const suffix = el.getAttribute("data-suffix") || "";
+    if (this._reduced) { el.textContent = target + suffix; return; }
+    const dur = 1600, t0 = performance.now();
+    const step = now => {
+      const p = Math.min(1, (now - t0) / dur);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    };
+    el.textContent = "0" + suffix;
+    requestAnimationFrame(step);
+  }
+
+  setup() {
+    this.guard(() => this.setupCounters());
+    this.guard(() => this.setupReveals());
+    this.guard(() => this.setupRows());
+    this.guard(() => this.setupCards());
+    this.guard(() => this.setupNav());
+    this.guard(() => this.setupStrokeText());
+    this.guard(() => this.setupBrief());
+    this.guard(() => this.setupForm());
+    this.guard(() => this.setupCoverflow());
+    this.guard(() => this.measure());
+    this.guard(() => this.updatePins());
+    this.guard(() => this.ribbonMeasure());
+  }
+
+  tick() {
+    const s = new Date().toLocaleTimeString("en-GB", { timeZone: "Asia/Kolkata", hour12: false });
+    document.querySelectorAll("[data-clock]").forEach(el => { el.textContent = s; });
+  }
+
+  /* ---------- reveals: blur + rise + fade, staggered ---------- */
+
+  setupReveals() {
+    if (this.props.reveals === false || this._reduced) return;
+    const prep = el => {
+      el.style.opacity = "0";
+      el.style.filter = "blur(9px)";
+      el.style.transform = "translateY(22px)";
+      el.style.transition = "opacity .75s cubic-bezier(.16,.84,.44,1), transform .75s cubic-bezier(.16,.84,.44,1), filter .75s cubic-bezier(.16,.84,.44,1)";
+    };
+    const show = (el, delay) => {
+      setTimeout(() => {
+        el.style.opacity = "1";
+        el.style.filter = "blur(0px)";
+        el.style.transform = "none";
+      }, delay);
+    };
+    document.querySelectorAll("[data-reveal]:not([data-rev-init])").forEach(el => {
+      el.setAttribute("data-rev-init", "1");
+      prep(el);
+      const io = new IntersectionObserver(es => {
+        es.forEach(e => { if (e.isIntersecting) { io.disconnect(); show(el, 0); } });
+      }, { threshold: 0.15, rootMargin: "0px 0px -8% 0px" });
+      io.observe(el);
+    });
+    document.querySelectorAll("[data-reveal-group]:not([data-rev-init])").forEach(group => {
+      group.setAttribute("data-rev-init", "1");
+      const kids = Array.from(group.children);
+      kids.forEach(prep);
+      const io = new IntersectionObserver(es => {
+        es.forEach(e => {
+          if (!e.isIntersecting) return;
+          io.disconnect();
+          kids.forEach((k, i) => show(k, i * 90));
+        });
+      }, { threshold: 0.1, rootMargin: "0px 0px -6% 0px" });
+      io.observe(group);
+    });
+  }
+
+  setupRows() {
+    document.querySelectorAll("[data-row]:not([data-row-init])").forEach(row => {
+      row.setAttribute("data-row-init", "1");
+      const arrow = row.querySelector("[data-arrow]");
+      if (!arrow) return;
+      row.addEventListener("pointerenter", () => { arrow.style.transform = "translateX(7px)"; arrow.style.color = "#5A6DFF"; });
+      row.addEventListener("pointerleave", () => { arrow.style.transform = "none"; arrow.style.color = "#565C72"; });
+    });
+  }
+
+  setupCards() {
+    document.querySelectorAll("[data-card]:not([data-card-init])").forEach(card => {
+      card.setAttribute("data-card-init", "1");
+      const img = card.querySelector("[data-zoom]");
+      if (!img) return;
+      card.addEventListener("pointerenter", () => { img.style.transform = "scale(1.055)"; });
+      card.addEventListener("pointerleave", () => { img.style.transform = "none"; });
+    });
+  }
+
+  setupNav() {
+    const nav = document.querySelector("header nav");
+    if (!nav || nav.hasAttribute("data-nav-init")) return;
+    nav.setAttribute("data-nav-init", "1");
+    const links = Array.from(nav.querySelectorAll("a[href^='#']"));
+    const map = links.map(a => ({ a, id: a.getAttribute("href").slice(1) }));
+    const paint = id => {
+      map.forEach(m => {
+        const on = m.id === id;
+        m.a.style.color = on ? "#F4F5F8" : "#8A90A6";
+        m.a.style.background = on ? "#11141D" : "transparent";
+        if (on) m.a.setAttribute("aria-current", "true"); else m.a.removeAttribute("aria-current");
+      });
+    };
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) paint(e.target.id); });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    map.forEach(m => {
+      const sec = document.getElementById(m.id);
+      if (sec) io.observe(sec);
+    });
+  }
+
+  setupStrokeText() {
+    document.querySelectorAll("[data-stroketext]:not([data-st-init])").forEach(svg => {
+      svg.setAttribute("data-st-init", "1");
+      const stroke = svg.querySelector("[data-stroketext-stroke]");
+      const wipe = svg.querySelector("[data-stroketext-wipe]");
+      if (!stroke || !wipe) return;
+      if (this._reduced || this.props.reveals === false) {
+        stroke.style.transition = "none";
+        stroke.style.strokeDashoffset = "0";
+        stroke.style.opacity = "0";
+        wipe.style.transition = "none";
+        wipe.style.transform = "scaleX(1)";
+        return;
+      }
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (!e.isIntersecting) return;
+          io.disconnect();
+          stroke.style.strokeDashoffset = "0";
+          setTimeout(() => { wipe.style.transform = "scaleX(1)"; }, 1000);
+          setTimeout(() => { stroke.style.opacity = "0"; }, 1700);
+        });
+      }, { threshold: 0.3 });
+      io.observe(svg);
+    });
+  }
+
+  setupBrief() {
+    document.querySelectorAll("[data-brief]:not([data-brief-init])").forEach(btn => {
+      btn.setAttribute("data-brief-init", "1");
+      const dot = btn.querySelector("[data-brief-dot]");
+      if (!dot) return;
+      btn.addEventListener("pointerenter", () => {
+        dot.style.background = "#FFFFFF";
+        dot.style.color = "#2D45F0";
+        dot.style.transform = "translateX(3px)";
+      });
+      btn.addEventListener("pointerleave", () => {
+        dot.style.background = "#05060A";
+        dot.style.color = "#F4F5F8";
+        dot.style.transform = "none";
+      });
+    });
+  }
+
+  setupForm() {
+    document.querySelectorAll("[data-form]:not([data-form-init])").forEach(form => {
+      form.setAttribute("data-form-init", "1");
+      form.addEventListener("submit", e => {
+        e.preventDefault();
+        const btn = form.querySelector("button[type=submit]");
+        const note = form.querySelector("[data-form-note]");
+        if (btn) { btn.textContent = "Brief received ✓"; btn.style.background = "#14169A"; }
+        if (note) { note.textContent = "Prototype only — wire to a real endpoint at build"; note.style.color = "#A9B4FF"; }
+      });
+    });
+  }
+
+  /* ---------- pinned horizontal (Work) ---------- */
+
+  measure() {
+    document.querySelectorAll("[data-pin]").forEach(section => {
+      const inner = section.querySelector("[data-pin-inner]");
+      const track = section.querySelector("[data-pin-track]");
+      if (!inner || !track) return;
+      const scroller = track.parentElement;
+      if (this._reduced || window.innerWidth < 700) {
+        section.style.height = "auto";
+        inner.style.position = "static";
+        inner.style.height = "auto";
+        scroller.style.overflowX = "auto";
+        scroller.style.scrollSnapType = "x mandatory";
+        scroller.style.webkitOverflowScrolling = "touch";
+        scroller.setAttribute("data-rail", "1");
+        Array.from(track.children).forEach(c => { c.style.scrollSnapAlign = "start"; });
+        track.style.transform = "none";
+        section.setAttribute("data-overflow", "0");
+        if (!scroller.hasAttribute("data-rail-bound")) {
+          scroller.setAttribute("data-rail-bound", "1");
+          scroller.addEventListener("scroll", () => {
+            const bar = section.querySelector("[data-pin-bar]");
+            const count = section.querySelector("[data-pin-count]");
+            const max = scroller.scrollWidth - scroller.clientWidth;
+            const p = max > 0 ? scroller.scrollLeft / max : 0;
+            const total = track.children.length;
+            if (bar) bar.style.width = (6 + p * 94) + "%";
+            if (count) {
+              const i = Math.min(total, Math.round(p * (total - 1)) + 1);
+              count.textContent = String(i).padStart(2, "0") + " / " + String(total).padStart(2, "0");
+            }
+          }, { passive: true });
+        }
+        return;
+      }
+      scroller.style.overflowX = "hidden";
+      scroller.style.scrollSnapType = "";
+      inner.style.position = "sticky";
+      inner.style.height = window.CSS && CSS.supports("height", "100dvh") ? "100dvh" : "100vh";
+      const overflow = Math.max(0, track.scrollWidth - scroller.clientWidth);
+      section.style.height = (window.innerHeight + overflow) + "px";
+      section.setAttribute("data-overflow", String(overflow));
+    });
+  }
+
+  updatePins() {
+    document.querySelectorAll("[data-pin]").forEach(section => {
+      const track = section.querySelector("[data-pin-track]");
+      const bar = section.querySelector("[data-pin-bar]");
+      const count = section.querySelector("[data-pin-count]");
+      if (!track) return;
+      const overflow = parseFloat(section.getAttribute("data-overflow") || "0");
+      const total = track.children.length;
+      if (!overflow) {
+        track.style.transform = "none";
+        if (bar) bar.style.width = "100%";
+        return;
+      }
+      const rect = section.getBoundingClientRect();
+      const p = Math.max(0, Math.min(1, -rect.top / overflow));
+      track.style.transform = "translate3d(" + (-p * overflow) + "px,0,0)";
+      if (bar) bar.style.width = (6 + p * 94) + "%";
+      if (count) {
+        const i = Math.min(total, Math.round(p * (total - 1)) + 1);
+        count.textContent = String(i).padStart(2, "0") + " / " + String(total).padStart(2, "0");
+      }
+    });
+  }
+
+  /* ---------- coverflow (Creators) ---------- */
+
+  setupCoverflow() {
+    const frame = document.querySelector("[data-cf-frame]");
+    if (!frame || frame.hasAttribute("data-cf-init")) return;
+    frame.setAttribute("data-cf-init", "1");
+    this._cf = {
+      frame,
+      cards: Array.from(document.querySelectorAll("[data-cf-card]")),
+      pos: 0, target: 0, width: 0, drag: null, selected: -1
+    };
+    const cf = this._cf;
+    const dots = document.querySelector("[data-cf-dots]");
+    if (dots && !dots.children.length) {
+      cf.cards.forEach((_, i) => {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.setAttribute("aria-label", "Go to creator " + (i + 1));
+        b.style.cssText = "width:44px;height:44px;border:none;padding:0;margin:0 -8px;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent";
+        const dot = document.createElement("span");
+        dot.setAttribute("data-cf-dot", "1");
+        dot.style.cssText = "width:7px;height:7px;border-radius:50%;background:#F4F5F8;opacity:.25;transition:opacity .25s ease,transform .25s ease;display:block";
+        b.appendChild(dot);
+        b.addEventListener("click", () => this.cfGoTo(i));
+        dots.appendChild(b);
+      });
+    }
+    const prev = document.querySelector("[data-cf-prev]");
+    const next = document.querySelector("[data-cf-next]");
+    if (prev) prev.addEventListener("click", () => this.cfNudge(-1));
+    if (next) next.addEventListener("click", () => this.cfNudge(1));
+    frame.addEventListener("keydown", e => {
+      if (e.key === "ArrowLeft") { e.preventDefault(); this.cfNudge(-1); }
+      if (e.key === "ArrowRight") { e.preventDefault(); this.cfNudge(1); }
+    });
+    frame.addEventListener("pointerdown", e => {
+      if (this._cfRaf) { cancelAnimationFrame(this._cfRaf); this._cfRaf = null; }
+      frame.setPointerCapture(e.pointerId);
+      cf.target = cf.pos;
+      cf.drag = { id: e.pointerId, x: e.clientX, pos: cf.pos, v: 0, t: performance.now() };
+      frame.style.cursor = "grabbing";
+    });
+    frame.addEventListener("pointermove", e => {
+      const d = cf.drag;
+      if (!d || d.id !== e.pointerId) return;
+      const pitch = cf.width * 1.05;
+      if (!pitch) return;
+      const now = performance.now();
+      const before = cf.pos;
+      cf.pos = d.pos - (e.clientX - d.x) / pitch;
+      d.v = ((cf.pos - before) / Math.max(now - d.t, 1)) * 1000;
+      d.t = now;
+      this.cfPaint();
+    });
+    const end = e => {
+      const d = cf.drag;
+      if (!d || (e && d.id !== e.pointerId)) return;
+      cf.drag = null;
+      frame.style.cursor = "grab";
+      const carried = Math.max(-2, Math.min(2, d.v * 0.18));
+      this.cfSettle(Math.round(cf.pos + carried));
+    };
+    frame.addEventListener("pointerup", end);
+    frame.addEventListener("pointercancel", end);
+    this.cfMeasure();
+  }
+
+  cfIndexAt(pos) {
+    const n = this._cf.cards.length;
+    return ((Math.round(pos) % n) + n) % n;
+  }
+
+  cfMeasure() {
+    const cf = this._cf;
+    if (!cf || !cf.cards[0]) return;
+    cf.width = cf.cards[0].offsetWidth;
+    this.cfPaint();
+  }
+
+  cfPaint() {
+    const cf = this._cf;
+    if (!cf || !cf.width) return;
+    const n = cf.cards.length;
+    const small = window.innerWidth < 700;
+    const rot = small ? 34 : 44;
+    const depth = small ? 0.5 : 0.6;
+    const pitch = cf.width * (small ? 1.12 : 1.05);
+    cf.cards.forEach((card, i) => {
+      let offset = i - cf.pos;
+      offset = ((offset % n) + n) % n;
+      if (offset > n / 2) offset -= n;
+      const dist = Math.abs(offset);
+      const ramp = Math.pow(dist, 0.56);
+      const tilt = Math.min(rot * ramp, 82) * Math.sign(offset);
+      card.style.transform = "translateX(calc(-50% + " + (offset * pitch) + "px)) translateZ(" + (-depth * cf.width * ramp) + "px) rotateY(" + (-tilt) + "deg)";
+      const edge = Math.min(1, Math.max(0, n / 2 - dist));
+      card.style.opacity = String(Math.max(0, 1 - 0.14 * dist) * edge);
+      card.style.zIndex = String(100 - Math.round(dist));
+      card.style.borderColor = dist < 0.5 ? "#2D45F0" : "#191C26";
+    });
+    const idx = this.cfIndexAt(cf.pos);
+    if (idx !== cf.selected) { cf.selected = idx; this.cfCaption(idx); }
+  }
+
+  cfCaption(i) {
+    const card = this._cf.cards[i];
+    if (!card) return;
+    const set = (sel, attr) => {
+      const el = document.querySelector(sel);
+      if (el) {
+        el.textContent = card.getAttribute(attr) || "";
+        el.style.transition = "opacity .3s ease, filter .3s ease";
+        el.style.opacity = "0";
+        el.style.filter = "blur(4px)";
+        requestAnimationFrame(() => { el.style.opacity = "1"; el.style.filter = "blur(0px)"; });
+      }
+    };
+    set("[data-cf-name]", "data-name");
+    set("[data-cf-role]", "data-role");
+    set("[data-cf-reach]", "data-reach");
+    set("[data-cf-brands]", "data-brands");
+    set("[data-cf-metric]", "data-metric");
+    const dots = document.querySelector("[data-cf-dots]");
+    if (dots) Array.from(dots.children).forEach((btn, j) => {
+      const d = btn.querySelector("[data-cf-dot]") || btn;
+      d.style.opacity = j === i ? "1" : "0.25";
+      d.style.transform = j === i ? "scale(1.3)" : "none";
+      btn.setAttribute("aria-current", j === i ? "true" : "false");
+    });
+  }
+
+  cfSettle(target) {
+    const cf = this._cf;
+    if (!cf) return;
+    if (this._cfRaf) cancelAnimationFrame(this._cfRaf);
+    cf.target = target;
+    const step = () => {
+      const remaining = cf.target - cf.pos;
+      if (Math.abs(remaining) < 0.0004) {
+        cf.pos = cf.target;
+        this.cfPaint();
+        this._cfRaf = null;
+        return;
+      }
+      cf.pos += remaining * 0.16;
+      this.cfPaint();
+      this._cfRaf = requestAnimationFrame(step);
+    };
+    this._cfRaf = requestAnimationFrame(step);
+  }
+
+  cfNudge(by) {
+    const cf = this._cf;
+    if (cf) this.cfSettle(Math.round(cf.target) + by);
+  }
+
+  cfGoTo(index) {
+    const cf = this._cf;
+    if (!cf) return;
+    const n = cf.cards.length;
+    this.cfSettle(index + Math.round((cf.target - index) / n) * n);
+  }
+
+  /* ---------- ribbon gradient field ---------- */
+
+  ribbonMeasure() {
+    document.querySelectorAll("canvas[data-ribbon]").forEach(c => {
+      const dpr = Math.min(window.innerWidth < 700 ? 1.4 : 2, window.devicePixelRatio || 1);
+      const w = c.clientWidth, h = c.clientHeight;
+      if (!w || !h) return;
+      if (c.width !== Math.round(w * dpr) || c.height !== Math.round(h * dpr)) {
+        c.width = Math.round(w * dpr);
+        c.height = Math.round(h * dpr);
+      }
+    });
+  }
+
+  ribbonStart() {
+    const t0 = performance.now();
+    const draw = now => {
+      const t = (now - t0) / 1000;
+      const moving = this.props.gradientMotion !== false && !this._reduced;
+      document.querySelectorAll("canvas[data-ribbon]").forEach(c => {
+        const r = c.getBoundingClientRect();
+        const onScreen = r.bottom > -200 && r.top < window.innerHeight + 200;
+        if (!onScreen) return;
+        if (!moving && c.hasAttribute("data-ribbon-static")) return;
+        if (!moving) c.setAttribute("data-ribbon-static", "1");
+        this.ribbonDraw(c, moving ? t : 0);
+      });
+      this._ribbonRaf = requestAnimationFrame(draw);
+    };
+    this._ribbonRaf = requestAnimationFrame(draw);
+  }
+
+  ribbonDraw(canvas, t) {
+    const ctx = canvas.getContext("2d");
+    if (!ctx || !canvas.width) return;
+    const W = canvas.width, H = canvas.height;
+    const stops = [
+      { p: 0.00, c: "#05060A" },
+      { p: 0.20, c: "#0E1330" },
+      { p: 0.46, c: "#14169A" },
+      { p: 0.68, c: "#2D45F0" },
+      { p: 0.86, c: "#5A6DFF" },
+      { p: 1.00, c: "#A9B4FF" }
+    ];
+    ctx.clearRect(0, 0, W, H);
+    ctx.save();
+    ctx.filter = "blur(" + Math.round(Math.min(W, H) * 0.045) + "px)";
+    ctx.translate(W / 2, H / 2);
+    ctx.rotate((32 * Math.PI) / 180);
+    const L = Math.hypot(W, H);
+    const clock = 20.75 + t * 1.2;
+    const segs = 26;
+    for (let i = 0; i < stops.length - 1; i++) {
+      const a = stops[i], b = stops[i + 1];
+      const x0 = -L / 2 + a.p * L, x1 = -L / 2 + b.p * L;
+      const grad = ctx.createLinearGradient(x0, 0, x1, 0);
+      grad.addColorStop(0, a.c);
+      grad.addColorStop(1, b.c);
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      for (let s = 0; s <= segs; s++) {
+        const y = -L / 2 + (s / segs) * L;
+        const cross = (y + L / 2) / L;
+        const bend = 0.14 * 0.35 * Math.sin(cross * 2.4 * Math.PI * 2 + clock) * L * 0.5;
+        const px = x0 + bend;
+        if (s === 0) ctx.moveTo(px, y); else ctx.lineTo(px, y);
+      }
+      for (let s = segs; s >= 0; s--) {
+        const y = -L / 2 + (s / segs) * L;
+        const cross = (y + L / 2) / L;
+        const bend = 0.14 * 0.35 * Math.sin(cross * 2.4 * Math.PI * 2 + clock) * L * 0.5;
+        ctx.lineTo(x1 + bend, y);
+      }
+      ctx.closePath();
+      ctx.fill();
+    }
+    ctx.restore();
+  }
+
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
