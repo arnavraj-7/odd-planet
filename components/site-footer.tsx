@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { StrokeWordmark } from "@/components/stroke-wordmark";
 import { footerLinks, site } from "@/lib/content";
 
@@ -12,15 +14,13 @@ export function SiteFooter() {
     <footer className="relative overflow-hidden border-t border-ink-300">
       <div className="mx-auto grid max-w-[1400px] grid-cols-[repeat(auto-fit,minmax(190px,1fr))] gap-[clamp(26px,4vw,52px)] px-gutter pt-[clamp(40px,5.4vw,76px)] pb-[clamp(26px,3.4vw,44px)]">
         <div>
-          <div className="mb-[18px] flex items-center gap-2.5">
-            <span
-              aria-hidden="true"
-              className="block size-[9px] rounded-full bg-blue-500"
-            />
-            <span className="font-grotesk text-[15px] leading-none font-extrabold tracking-[0.02em] text-ink-900">
-              {site.wordmark}
-            </span>
-          </div>
+          <Image
+            src="/odd-planet-mark.png"
+            alt="Odd Planet"
+            width={54}
+            height={36}
+            className="mb-[18px] block h-9 w-auto"
+          />
           <p className="m-0 max-w-[30ch] font-grotesk text-sm leading-[1.65] text-ink-600 [text-wrap:pretty]">
             Founded {site.founded}. Influencer, content and amplification
             partner for brands and government organisations.

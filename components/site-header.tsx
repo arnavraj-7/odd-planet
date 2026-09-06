@@ -1,8 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
-import { navItems, site } from "@/lib/content";
+import { navItems } from "@/lib/content";
 import { useActiveSection } from "@/hooks/use-active-section";
 
 const NAV_IDS = navItems.map((item) => item.id);
@@ -41,17 +42,15 @@ export function SiteHeader() {
       }`}
     >
       <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-5 px-gutter py-4 max-[640px]:flex-wrap max-[640px]:gap-y-3">
-        <a
-          href="#home"
-          className="flex shrink-0 items-center gap-2.5 text-ink-900 hover:text-ink-900"
-        >
-          <span
-            aria-hidden="true"
-            className="block size-[9px] rounded-full bg-blue-500"
+        <a href="#home" aria-label="Odd Planet — home" className="flex shrink-0">
+          <Image
+            src="/odd-planet-mark.png"
+            alt="Odd Planet"
+            width={48}
+            height={32}
+            priority
+            className="block h-8 w-auto transition-opacity duration-200 ease-out hover:opacity-80"
           />
-          <span className="font-grotesk text-[15px] leading-none font-extrabold tracking-[0.02em]">
-            {site.wordmark}
-          </span>
         </a>
 
         <nav
@@ -79,12 +78,12 @@ export function SiteHeader() {
 
         <a
           href="#contact"
-          className="group relative inline-flex shrink-0 items-center gap-2.5 overflow-hidden rounded-full bg-ink-900 py-3.5 pr-2 pl-5 font-grotesk text-[13px] leading-none font-semibold whitespace-nowrap text-ink-000 transition-[background,color] duration-[240ms] ease-out hover:bg-blue-500 hover:text-white"
+          className="group inline-flex shrink-0 items-center gap-2 rounded-full bg-blue-500 py-2 pr-2 pl-[18px] font-grotesk text-[13px] leading-none font-semibold whitespace-nowrap text-white transition-[background,transform] duration-[240ms] ease-out hover:-translate-y-px hover:bg-blue-700"
         >
-          <span className="relative">Start a brief</span>
+          Start a brief
           <span
             aria-hidden="true"
-            className="relative flex size-[26px] shrink-0 items-center justify-center rounded-full bg-ink-000 text-xs leading-none text-ink-900 transition-[background,color,transform] duration-[240ms] ease-out group-hover:translate-x-[3px] group-hover:bg-white group-hover:text-blue-500"
+            className="flex size-7 shrink-0 items-center justify-center rounded-full bg-white text-[13px] leading-none text-blue-500 transition-transform duration-[240ms] ease-out group-hover:translate-x-[3px]"
           >
             →
           </span>
