@@ -62,14 +62,6 @@ export function SiteFooter() {
             <a href={`mailto:${site.email}`} className={COLUMN_LINK}>
               {site.email}
             </a>
-            <a
-              href={site.phoneHref}
-              target="_blank"
-              rel="noopener"
-              className={COLUMN_LINK}
-            >
-              {site.phone}
-            </a>
           </div>
           <Link
             href="/#contact"

@@ -17,7 +17,7 @@ export function WorkPinned() {
       >
         <div className="mx-auto flex w-full max-w-[1400px] shrink-0 flex-wrap items-end justify-between gap-x-10 gap-y-3.5 px-gutter">
           <div>
-            <div className="op-eyebrow mb-[18px]">Selected work</div>
+            <div className="op-eyebrow mb-[18px]">Our work</div>
             <h2 className="op-h2 text-h2-work">
               Campaigns that <em>travelled</em>
             </h2>
