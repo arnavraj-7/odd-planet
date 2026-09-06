@@ -42,10 +42,11 @@ export const hero = {
     "Influencer Marketing · Creator Partnerships · Content · Digital Amplification",
   body:
     "Influence, content & distribution built for brands that want attention and know what to do with it.",
-  // Hero renders only on "/", so these stay bare anchors — a root-relative
-  // href in a plain <a> would trigger a full reload instead of a scroll.
+  // Hero renders only on "/", so a hash href stays a bare anchor — a plain <a>
+  // to a root-relative path would reload instead of scrolling. The secondary
+  // CTA leaves the page, so the hero routes that one through <Link>.
   primaryCta: { label: "View Our Work", href: "#work" },
-  secondaryCta: { label: "Book a Discovery Call", href: "#contact" },
+  secondaryCta: { label: "About Us", href: "/about" },
 } as const;
 
 /**

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { HeroMarquee } from "@/components/hero-marquee";
 import { Reveal } from "@/components/reveal";
 import { RibbonField } from "@/components/ribbon-field";
@@ -62,7 +64,7 @@ export function Hero() {
               </span>
             </a>
             <span className="op-rim">
-              <a
+              <Link
                 href={hero.secondaryCta.href}
                 className="op-rim-inner group gap-2.5"
               >
@@ -73,7 +75,7 @@ export function Hero() {
                 >
                   →
                 </span>
-              </a>
+              </Link>
             </span>
           </Reveal>
         </div>
