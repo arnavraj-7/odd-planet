@@ -4,13 +4,7 @@ import { stats } from "@/lib/content";
 
 export function StatBand() {
   return (
-    <section className="relative z-6 mx-auto -mt-gutter max-w-[1400px] px-gutter">
-      {/* Continuation of the hero glow, behind the band's top edge */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-[-140px] h-[200px] bg-[radial-gradient(72%_100%_at_50%_0%,rgba(45,69,240,0.14)_0%,rgba(45,69,240,0.04)_46%,rgba(5,6,10,0)_78%)]"
-      />
-
+    <section className="relative mx-auto max-w-[1400px] px-gutter">
       {/*
         The band arrives as one solid object — frame, ground and the 1px gap
         that forms the dividers all together. The cells themselves are never

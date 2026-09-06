@@ -20,8 +20,8 @@ export default function Home() {
       <SiteHeader />
       <main>
         <Hero />
-        <StatBand />
         <BrandMarquee />
+        <StatBand />
         <MediaCoverage />
         <Services />
         <ErrorBoundary>
