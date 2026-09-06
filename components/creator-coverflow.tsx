@@ -266,41 +266,49 @@ export function CreatorCoverflow() {
           </div>
 
           <div className="mx-auto mt-[22px] w-full max-w-[340px] font-mono text-[11px] leading-none font-medium tracking-[0.06em]">
+            {current.city ? (
+              <div className="op-metric-row py-[11px]">
+                <span>BASED IN</span>
+                <span>{current.city}</span>
+              </div>
+            ) : null}
             {current.brands ? (
-              <div
-                className={`op-metric-row py-[11px] ${
-                  current.socials.length ? "" : "border-b border-ink-300"
-                }`}
-              >
+              <div className="op-metric-row py-[11px]">
                 <span>BRANDS</span>
                 <span>{current.brands}</span>
+              </div>
+            ) : null}
+            {current.language ? (
+              <div className="op-metric-row py-[11px]">
+                <span>LANGUAGE</span>
+                <span>{current.language}</span>
               </div>
             ) : null}
             {/* Profiles, not follower counts — the platform shows the live
                 figure, and nothing on the page goes stale. */}
             {current.socials.length ? (
-            <div className="op-metric-row border-b border-ink-300 py-[11px]">
-              <span>PROFILES</span>
-              <span className="flex gap-3.5">
-                {current.socials.map((social) =>
-                  social.href ? (
-                    <a
-                      key={social.label}
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener"
-                      className="text-blue-200 hover:text-blue-100"
-                    >
-                      {social.label} →
-                    </a>
-                  ) : (
-                    <span key={social.label} className="text-ink-500">
-                      {social.label}
-                    </span>
-                  ),
-                )}
-              </span>
-            </div>
+              <div className="op-metric-row border-b border-ink-300 py-[11px]">
+                <span>PROFILES</span>
+                <span className="flex gap-3.5">
+                  {current.socials.map((social) =>
+                    social.href ? (
+                      <a
+                        key={social.label}
+                        href={social.href}
+                        target="_blank"
+                        rel="noopener"
+                        className="text-blue-200 hover:text-blue-100"
+                      >
+                        {social.label} →
+                      </a>
+                    ) : (
+                      <span key={social.label} className="text-ink-500">
+                        {social.label}
+                      </span>
+                    ),
+                  )}
+                </span>
+              </div>
             ) : null}
           </div>
         </div>

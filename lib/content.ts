@@ -292,6 +292,8 @@ export type CreatorSocial = { label: string; href?: string };
 export type Creator = {
   name: string;
   role: string;
+  city?: string;
+  language?: string;
   /** Brand collaborations. Unlike a follower count, this does not go stale. */
   brands?: string;
   /**
@@ -304,64 +306,78 @@ export type Creator = {
   image?: string;
 };
 
+const ig = (handle: string) => `https://www.instagram.com/${handle}/`;
+const yt = (handle: string) => `https://www.youtube.com/@${handle}`;
+
+/**
+ * Top 7 of the client's creator roster sheet.
+ *
+ * Display names follow whichever of the sheet's NAME / SCREEN NAME columns the
+ * Instagram handle actually matches — the two columns disagree on some rows.
+ * Follower counts are in the sheet but deliberately not rendered; the profile
+ * links carry the live figure instead.
+ */
 const realCreators: Creator[] = [
   {
-    name: "Tisca Chopra",
-    role: "Actor / Creator",
-    brands: "SoTrue",
-    socials: [],
-    image: `${IMG}/reels_showcase/tisca_creator.jpg`,
+    name: "Afaik",
+    role: "Music / Reaction",
+    city: "Bangalore",
+    language: "Hindi / English",
+    socials: [
+      { label: "Instagram", href: ig("afaikyouknow") },
+      { label: "YouTube", href: yt("AFAIKYouKnow") },
+    ],
   },
   {
-    name: "Priyank Sharma",
-    role: "Actor / Creator",
-    brands: "Allen Solly",
-    socials: [],
-    image: `${IMG}/reels_showcase/priyank_creator.jpg`,
+    name: "Pho",
+    role: "Singer",
+    city: "Delhi",
+    language: "Hindi / English",
+    socials: [{ label: "Instagram", href: ig("phomusic") }],
   },
   {
-    name: "Vaibhav Arora",
-    role: "Artist / Creator",
-    brands: "Michael Kors · AJIO",
-    socials: [],
-    image: `${IMG}/reels_showcase/vaibhav_creator.jpg`,
+    name: "Asmita Arora",
+    role: "Fashion / Lifestyle",
+    city: "Delhi",
+    language: "Hindi / English",
+    socials: [
+      { label: "Instagram", href: ig("Asmitarora") },
+      { label: "YouTube", href: yt("Asmitarora") },
+    ],
   },
   {
-    name: "Mohit Chhetri",
-    role: "Creator",
-    brands: "Flipkart · OPPO",
-    socials: [],
-    image: `${IMG}/reels_showcase/mohit_creator.jpg`,
-  },
-  {
-    name: "Siddharth Nigam",
-    role: "Actor / Creator",
-    brands: "Domino's · Max Fashion",
-    socials: [],
-    image: `${IMG}/pdf_extracted/page6_img3.jpeg`,
-  },
-  {
-    name: "Tanvi Malhara",
-    role: "Fashion / Dancer",
-    brands: "POND'S · Sunsilk",
-    socials: [],
-    image: `${IMG}/pdf_extracted/page10_img1.jpeg`,
-  },
-  {
-    name: "Karun & Nanku",
-    role: "Music / Artists",
-    brands: "Converse",
-    socials: [],
-    image: `${IMG}/pdf_extracted/page9_img1.jpeg`,
+    name: "Himanshi Sharma",
+    role: "Fashion / Lifestyle / Travel",
+    city: "Mumbai / Delhi",
+    language: "Hindi / English",
+    socials: [{ label: "Instagram", href: ig("Himanshii21") }],
   },
   {
     name: "Ishita Arora",
-    role: "Creator",
-    brands: "Epigamia · Instamart",
-    socials: [],
-    // The reference site uses page11_img1.jpeg here, but that file is an
-    // Epigamia product shot, not a portrait. Left unset so the card draws its
-    // plate until a real photo arrives.
+    role: "Fashion / Model",
+    city: "Delhi / Bangalore",
+    language: "Hindi / English",
+    socials: [{ label: "Instagram", href: ig("ishitaaroraaa") }],
+  },
+  {
+    name: "Kartik Vishal",
+    role: "Bike / Moto / Lifestyle",
+    city: "Delhi",
+    language: "Hindi / English",
+    socials: [
+      { label: "Instagram", href: ig("kartikcz") },
+      { label: "YouTube", href: yt("kartikcustomz") },
+    ],
+  },
+  {
+    name: "Karun",
+    role: "Rapper",
+    city: "Delhi",
+    language: "Hindi / English",
+    socials: [
+      { label: "Instagram", href: ig("beingkarun") },
+      { label: "YouTube", href: yt("beingkarun") },
+    ],
   },
 ];
 
@@ -392,7 +408,7 @@ const placeholderWork: WorkCard[] = Array.from({ length: 7 }, (_, i) => ({
   ],
 }));
 
-const placeholderCreators: Creator[] = Array.from({ length: 8 }, (_, i) => ({
+const placeholderCreators: Creator[] = Array.from({ length: 7 }, (_, i) => ({
   name: "Creator name",
   role: `Role ${String(i + 1).padStart(2, "0")}`,
   socials: [{ label: "Instagram" }, { label: "YouTube" }],
