@@ -82,13 +82,16 @@ export function MobileMenu() {
                 <Link
                   href={`/#${item.id}`}
                   onClick={() => setOpen(false)}
-                  className="flex items-baseline gap-5 py-[clamp(16px,2.6vh,24px)] text-ink-900 hover:text-ink-900"
+                  className="flex items-center justify-between gap-5 py-[clamp(16px,2.6vh,24px)] text-ink-900 hover:text-ink-900"
                 >
-                  <span className="font-mono text-[11px] font-medium tracking-[0.14em] text-ink-550">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
                   <span className="font-serif text-[clamp(30px,9vw,46px)] leading-[1.05] tracking-[-0.02em]">
                     {item.label}
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    className="font-grotesk text-lg leading-none text-ink-550"
+                  >
+                    →
                   </span>
                 </Link>
               </li>
@@ -98,7 +101,7 @@ export function MobileMenu() {
 
         <div
           style={{ transitionDelay: open ? "360ms" : "0ms" }}
-          className={`flex flex-col gap-5 transition-[opacity,transform] duration-[520ms] ease-brand ${
+          className={`transition-[opacity,transform] duration-[520ms] ease-brand ${
             open ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
           }`}
         >
@@ -115,9 +118,6 @@ export function MobileMenu() {
               →
             </span>
           </Link>
-          <p className="m-0 text-center font-mono text-[10px] leading-none font-medium tracking-[0.16em] uppercase text-ink-550">
-            New Delhi, India
-          </p>
         </div>
       </div>
     </div>
