@@ -11,3 +11,7 @@ Marketing agency brand kit.zip
 
 # Scratch screenshots dropped in the project root
 image.png
+
+.vercel
+.env*
+!.env.example
