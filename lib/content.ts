@@ -150,6 +150,7 @@ export const services: Service[] = [
   {
     index: "02",
     name: "Create",
+    image: "/services/create.jpg",
     tagline: "Content people want to watch.",
     description: "Turn a brief into something worth watching.",
     bullets: [
@@ -275,6 +276,19 @@ const realWork: WorkCard[] = [
   },
   {
     index: "07",
+    category: "Brand movement",
+    title: "Men Skincare Janta Party",
+    description:
+      "A three-phase guerrilla movement for Fixderma's men's range, staged as a protest with the brand hidden until the reveal. #SkincareKarleBhai trended on Twitter.",
+    image: { src: "/campaigns/msjp.jpg", alt: "Men Skincare Janta Party campaign" },
+    metrics: [
+      { label: "VIEWS", value: "50M+" },
+      { label: "ENGAGEMENT", value: "821K+" },
+      { label: "DELIVERABLES", value: "649" },
+    ],
+  },
+  {
+    index: "08",
     category: "Creator network",
     title: "Fit Feast",
     description: "Lifestyle and fitness creators activated month on month.",
@@ -286,7 +300,7 @@ const realWork: WorkCard[] = [
     ],
   },
   {
-    index: "08",
+    index: "09",
     category: "Government",
     title: "Ministry of Textiles",
     description: "National handloom and heritage storytelling at scale.",

@@ -72,7 +72,7 @@ function Column({
  * Edges are masked to the page ground so tiles dissolve rather than clip.
  */
 export function HeroMarquee() {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLAnchorElement>(null);
 
   // A pair of infinite compositor animations is not worth running off-screen.
   useEffect(() => {
@@ -95,15 +95,16 @@ export function HeroMarquee() {
   }, []);
 
   return (
-    <div
+    <a
       ref={ref}
-      aria-hidden="true"
-      className="relative h-[clamp(320px,64svh,660px)] [mask-image:linear-gradient(to_bottom,transparent_0%,#000_13%,#000_87%,transparent_100%)] max-[900px]:h-[38svh]"
+      href="#work"
+      aria-label="View our work"
+      className="relative block cursor-pointer h-[clamp(320px,64svh,660px)] [mask-image:linear-gradient(to_bottom,transparent_0%,#000_13%,#000_87%,transparent_100%)] max-[900px]:h-[38svh]"
     >
       <div className="grid h-full grid-cols-2 gap-[clamp(10px,1.1vw,16px)]">
         <Column tiles={heroTiles[0]} direction="up" duration={38} />
         <Column tiles={heroTiles[1]} direction="down" duration={46} />
       </div>
-    </div>
+    </a>
   );
 }

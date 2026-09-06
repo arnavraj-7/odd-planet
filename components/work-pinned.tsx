@@ -78,7 +78,7 @@ export function WorkPinned() {
                     )}
 
                     <span className="absolute top-3.5 left-3.5 z-10 rounded-full bg-[rgba(5,6,10,0.7)] px-2.5 py-[7px] font-mono text-[10px] leading-none font-medium tracking-[0.14em] uppercase text-blue-100 backdrop-blur-[6px]">
-                      {card.index} · {card.category}
+                      {card.category}
                     </span>
                   </div>
 
