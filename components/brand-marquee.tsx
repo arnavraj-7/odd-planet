@@ -1,3 +1,4 @@
+import { MarqueeTrack } from "@/components/marquee-track";
 import { brands } from "@/lib/content";
 
 /* Logos render silhouetted, so they only need to be single-colour art.
@@ -32,13 +33,10 @@ export function BrandMarquee() {
         Selected brand partners
       </div>
 
-      <div
-        data-marquee
-        className="flex w-max animate-marquee hover:[animation-play-state:paused]"
-      >
+      <MarqueeTrack>
         <LogoRow />
         <LogoRow hidden />
-      </div>
+      </MarqueeTrack>
     </section>
   );
 }

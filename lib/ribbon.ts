@@ -70,16 +70,29 @@ export function drawRibbon(canvas: HTMLCanvasElement, t: number) {
   ctx.restore();
 }
 
-/** DPR is capped hard on small screens — it is a blurred field, nobody can tell. */
+/**
+ * The field is drawn into a deliberately small backing store and scaled up by
+ * CSS. Everything about it is blurred by `min(W,H) * 0.045`, so the blur scales
+ * with the buffer and the result is indistinguishable — while the per-frame
+ * fill and blur cost drops by an order of magnitude. Canvas2D `filter: blur()`
+ * over a full-size hero surface is what makes this effect expensive.
+ */
+const MAX_EDGE_DESKTOP = 640;
+const MAX_EDGE_MOBILE = 420;
+
 export function sizeRibbon(canvas: HTMLCanvasElement) {
-  const cap = window.innerWidth < 700 ? 1.4 : 2;
-  const dpr = Math.min(cap, window.devicePixelRatio || 1);
   const w = canvas.clientWidth;
   const h = canvas.clientHeight;
   if (!w || !h) return false;
 
-  const width = Math.round(w * dpr);
-  const height = Math.round(h * dpr);
+  const small = window.innerWidth < 700;
+  const dpr = Math.min(small ? 1.4 : 2, window.devicePixelRatio || 1);
+  const maxEdge = small ? MAX_EDGE_MOBILE : MAX_EDGE_DESKTOP;
+
+  const scale = Math.min(1, maxEdge / (Math.max(w, h) * dpr));
+  const width = Math.max(1, Math.round(w * dpr * scale));
+  const height = Math.max(1, Math.round(h * dpr * scale));
+
   if (canvas.width !== width || canvas.height !== height) {
     canvas.width = width;
     canvas.height = height;
@@ -97,9 +110,19 @@ const painted = new WeakSet<HTMLCanvasElement>();
 
 let frame: number | null = null;
 let startedAt = 0;
+let lastDraw = 0;
 let animating = true;
 
+/** The field drifts at 1.2 units/s — 30fps is imperceptible and halves the cost. */
+const FRAME_MS = 1000 / 30;
+
 function tick(now: number) {
+  if (animating && now - lastDraw < FRAME_MS) {
+    frame = requestAnimationFrame(tick);
+    return;
+  }
+  lastDraw = now;
+
   const t = (now - startedAt) / 1000;
 
   for (const canvas of canvases) {

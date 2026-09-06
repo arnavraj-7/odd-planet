@@ -113,9 +113,16 @@ export function usePinnedTrack(total: number) {
     measure();
     update();
 
+    // Re-measuring writes layout, so coalesce every trigger into one frame —
+    // a ResizeObserver that measures synchronously will thrash.
+    let pending = 0;
     const onResize = () => {
-      measure();
-      update();
+      if (pending) return;
+      pending = requestAnimationFrame(() => {
+        pending = 0;
+        measure();
+        update();
+      });
     };
 
     const onScroll = () => {
@@ -139,6 +146,7 @@ export function usePinnedTrack(total: number) {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onResize);
       observer.disconnect();
+      if (pending) cancelAnimationFrame(pending);
       if (frameRef.current) cancelAnimationFrame(frameRef.current);
     };
   }, [measure, update]);
