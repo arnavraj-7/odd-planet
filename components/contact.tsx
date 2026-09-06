@@ -12,8 +12,7 @@ const CONTACT_MASK =
 /**
  * Briefs arrive by email rather than through a form — the button hands the
  * visitor's own mail client (Gmail, Outlook, Mail) a pre-addressed draft.
- * The old form, its API route and the Sheets plumbing are still in the repo,
- * unused, if it is ever wanted back.
+ * There is no endpoint behind this, and nothing to store.
  */
 const MAIL_HREF = `mailto:${site.email}?subject=${encodeURIComponent(
   "New brief for Odd Planet",

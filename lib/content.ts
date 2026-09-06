@@ -465,28 +465,6 @@ const realWork: WorkCard[] = [
   },
   {
     index: "11",
-    category: "E-commerce",
-    title: "Mohit Chettri × Flipkart",
-    tagline: "Shopping, told as a story.",
-    description:
-      "Creator-led content for Flipkart with Mohit Chettri, turning a shopping moment into something worth watching to the end.",
-    did: ["creator", "content", "integration", "amplification"],
-    resultsLabel: "Impact",
-    metrics: [{ value: "50K+", label: "Views" }],
-  },
-  {
-    index: "12",
-    category: "Tech",
-    title: "Mohit Chettri × Oppo",
-    tagline: "A phone, shown in use.",
-    description:
-      "A device integration for Oppo with Mohit Chettri, built around what the camera actually does rather than what the spec sheet says.",
-    did: ["creator", "content", "integration", "amplification"],
-    resultsLabel: "Impact",
-    metrics: [{ value: "450K+", label: "Views" }],
-  },
-  {
-    index: "13",
     category: "Beauty",
     title: "Tanvi Malhara × Pond's",
     tagline: "Skin first, everything else after.",
@@ -501,7 +479,18 @@ const realWork: WorkCard[] = [
     metrics: [{ value: "220K+", label: "Views" }],
   },
   {
-    index: "14",
+    index: "12",
+    category: "E-commerce",
+    title: "Mohit Chettri × Flipkart",
+    tagline: "Shopping, told as a story.",
+    description:
+      "Creator-led content for Flipkart with Mohit Chettri, turning a shopping moment into something worth watching to the end.",
+    did: ["creator", "content", "integration", "amplification"],
+    resultsLabel: "Impact",
+    metrics: [{ value: "50K+", label: "Views" }],
+  },
+  {
+    index: "13",
     category: "Beauty",
     title: "Tanvi Malhara × Sunsilk",
     tagline: "Hair that carries the frame.",
@@ -514,6 +503,17 @@ const realWork: WorkCard[] = [
       alt: "Tanvi Malhara for Sunsilk",
     },
     metrics: [{ value: "22.6M+", label: "Views" }],
+  },
+  {
+    index: "14",
+    category: "Tech",
+    title: "Mohit Chettri × Oppo",
+    tagline: "A phone, shown in use.",
+    description:
+      "A device integration for Oppo with Mohit Chettri, built around what the camera actually does rather than what the spec sheet says.",
+    did: ["creator", "content", "integration", "amplification"],
+    resultsLabel: "Impact",
+    metrics: [{ value: "450K+", label: "Views" }],
   },
 ];
 
