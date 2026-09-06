@@ -57,6 +57,43 @@
   --animate-marquee: op-marquee 46s linear infinite;
   --animate-rim: op-rim 3.6s linear infinite;
   --animate-caption: op-caption 0.3s ease;
+  /* Duration is set per column on the element. */
+  --animate-column-up: op-column-up 40s linear infinite;
+  --animate-column-down: op-column-down 40s linear infinite;
+  --animate-breathe: op-breathe 14s ease-in-out infinite;
+}
+
+/* Vertical hero columns. The track holds two copies, so -50% is one full loop. */
+@keyframes op-column-up {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes op-column-down {
+  from {
+    transform: translateY(-50%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Slow swell on the gradient field so the hero ground never sits still.
+   Opacity and transform only — both stay on the compositor. */
+@keyframes op-breathe {
+  0%,
+  100% {
+    opacity: 0.34;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.48;
+    transform: scale(1.055);
+  }
 }
 
 /* Coverflow caption blur-swaps whenever the centred card changes. */
@@ -310,7 +347,9 @@
 
   .op-rim-inner {
     position: relative;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: var(--color-ink-000);
     color: var(--color-ink-900);
     font:
@@ -381,6 +420,11 @@
 
   [data-marquee] {
     animation: none !important;
+  }
+
+  .animate-breathe {
+    animation: none !important;
+    opacity: 0.4;
   }
 
   *,
