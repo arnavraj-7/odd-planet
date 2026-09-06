@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { MobileMenu } from "@/components/mobile-menu";
-import { navItems } from "@/lib/content";
+import { navItems, site } from "@/lib/content";
 import { useActiveSection } from "@/hooks/use-active-section";
 
 const NAV_IDS = navItems.map((item) => item.id);
@@ -46,15 +46,28 @@ export function SiteHeader() {
       <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-5 px-gutter py-4">
         {/* Root-relative hashes so every link works from /privacy too, where a
             bare "#media" would only append a fragment that does not exist. */}
-        <Link href="/" aria-label="Odd Planet — home" className="flex shrink-0">
+        <Link
+          href="/"
+          aria-label="Odd Planet — home"
+          className="group flex shrink-0 items-center gap-3"
+        >
           <Image
             src="/odd-planet-mark.png"
             alt="Odd Planet"
             width={48}
             height={32}
             priority
-            className="block h-8 w-auto transition-opacity duration-200 ease-out hover:opacity-80"
+            className="block h-8 w-auto transition-opacity duration-200 ease-out group-hover:opacity-80"
           />
+          {/* Hidden only in the band where the desktop nav and CTA crowd it —
+              below 900px the hamburger frees the room again. */}
+          <span
+            aria-hidden="true"
+            className="block h-4 w-px bg-ink-300 max-[1100px]:hidden max-[900px]:block"
+          />
+          <span className="block font-mono text-[10px] leading-none font-medium tracking-[0.16em] whitespace-nowrap text-ink-550 uppercase max-[1100px]:hidden max-[900px]:block">
+            {site.tagline}
+          </span>
         </Link>
 
         <nav

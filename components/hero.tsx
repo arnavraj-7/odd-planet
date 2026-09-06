@@ -39,14 +39,14 @@ export function Hero() {
 
           <Reveal
             as="p"
-            className="mt-[clamp(22px,2.6vw,32px)] mb-0 font-grotesk text-[clamp(14px,1.3vw,17px)] leading-[1.5] text-ink-550 [text-wrap:pretty]"
+            className="mt-[clamp(18px,2.2vw,26px)] mb-0 font-grotesk text-[clamp(11px,0.95vw,13px)] leading-[1.5] tracking-[0.01em] text-ink-550 [text-wrap:pretty]"
           >
             {hero.disciplines}
           </Reveal>
 
           <Reveal
             as="p"
-            className="mt-3.5 mb-0 max-w-[46ch] font-grotesk text-hero-body leading-[1.6] text-ink-600 [text-wrap:pretty]"
+            className="mt-3 mb-0 max-w-[52ch] font-grotesk text-hero-body leading-[1.6] text-ink-600 [text-wrap:pretty]"
           >
             {hero.body}
           </Reveal>

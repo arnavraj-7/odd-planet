@@ -42,7 +42,7 @@
      the row with the image columns. */
   --text-hero-caps: clamp(34px, 5.2vw, 74px);
   --text-hero-serif: clamp(42px, 8.6vw, 124px);
-  --text-hero-body: clamp(15px, 1.4vw, 18px);
+  --text-hero-body: clamp(13px, 1.05vw, 15px);
   --text-h2: clamp(32px, 4.8vw, 68px);
   --text-h2-services: clamp(40px, 6.4vw, 88px);
   --text-h2-work: clamp(30px, 4.4vw, 62px);
