@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
 import { navItems, site } from "@/lib/content";
 import { useActiveSection } from "@/hooks/use-active-section";
 
@@ -7,9 +9,37 @@ const NAV_IDS = navItems.map((item) => item.id);
 
 export function SiteHeader() {
   const active = useActiveSection(NAV_IDS);
+  const [scrolled, setScrolled] = useState(false);
+
+  // Transparent over the hero — a tinted bar there cuts a hard seam across the
+  // gradient field. The frost only arrives once there is content behind it,
+  // which also keeps a backdrop-filter off the compositor while idle.
+  useEffect(() => {
+    let frame = 0;
+    const onScroll = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        setScrolled(window.scrollY > 8);
+      });
+    };
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, []);
 
   return (
-    <header className="sticky top-0 z-80 bg-[rgba(5,6,10,0.7)] backdrop-blur-[16px]">
+    <header
+      className={`sticky top-0 z-80 transition-[background-color] duration-300 ease-out ${
+        scrolled
+          ? "bg-[rgba(5,6,10,0.62)] backdrop-blur-[16px]"
+          : "bg-transparent"
+      }`}
+    >
       <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-5 px-gutter py-4 max-[640px]:flex-wrap max-[640px]:gap-y-3">
         <a
           href="#home"

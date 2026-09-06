@@ -9,18 +9,22 @@ const HERO_MASK =
 
 export function Hero() {
   return (
-    <section id="home" className="relative overflow-hidden">
+    // Fills exactly the rest of the first screen, so the planet limb always
+    // lands in view. Clipped horizontally only — the gradient field has to
+    // reach up behind the transparent header, or the header cuts a hard seam
+    // across it.
+    <section
+      id="home"
+      className="relative flex min-h-[calc(100svh-var(--op-header))] flex-col overflow-x-clip"
+    >
       {/* Layer A — animated ribbon gradient field */}
       <RibbonField
         mask={HERO_MASK}
         className="absolute top-[-24%] left-[-14%] block h-[112%] w-[128%] opacity-40 mix-blend-screen"
       />
 
-      <div className="relative mx-auto max-w-[1120px] px-gutter pt-[clamp(46px,7vw,104px)] text-center">
-        <Reveal
-          as="h1"
-          className="mt-[clamp(6px,1vw,14px)] mb-0 text-ink-900"
-        >
+      <div className="relative mx-auto flex w-full max-w-[1120px] flex-1 flex-col justify-center px-gutter pt-[clamp(24px,4vw,64px)] pb-[clamp(12px,2vw,28px)] text-center">
+        <Reveal as="h1" className="m-0 text-ink-900">
           <span className="block font-grotesk text-hero-caps leading-[0.94] font-extrabold tracking-[-0.04em]">
             {hero.line1}
           </span>
@@ -30,13 +34,6 @@ export function Hero() {
           <span className="block font-grotesk text-hero-caps leading-[0.98] font-extrabold tracking-[-0.04em]">
             {hero.line3Lead} <span className="text-blue-400">{hero.line3Accent}</span>
           </span>
-        </Reveal>
-
-        <Reveal
-          as="p"
-          className="mx-auto mt-[clamp(22px,2.6vw,32px)] max-w-[34ch] font-grotesk text-hero-body leading-[1.6] text-ink-600 [text-wrap:pretty]"
-        >
-          {hero.body}
         </Reveal>
 
         <Reveal className="mt-[clamp(26px,3.4vw,40px)] flex flex-wrap items-center justify-center gap-3 max-[440px]:flex-col max-[440px]:items-stretch max-[440px]:[&>*]:w-full max-[440px]:[&>*]:text-center">
@@ -49,59 +46,59 @@ export function Hero() {
             </a>
           </span>
         </Reveal>
+      </div>
 
-        <div className="relative mt-[clamp(34px,5vw,68px)] h-[clamp(200px,27vw,340px)]">
-          {/* Logo lockup */}
-          <Reveal className="absolute top-0 left-1/2 z-3 h-[clamp(54px,7.4vw,96px)] w-[clamp(180px,26vw,320px)] -translate-x-1/2">
-            <Image
-              src="/odd-planet-lockup.png"
-              alt="Odd Planet"
-              fill
-              priority
-              sizes="(max-width: 1230px) 26vw, 320px"
-              className="object-contain"
-            />
-          </Reveal>
+      <div className="relative mx-auto h-[min(clamp(200px,27vw,340px),34svh)] w-full max-w-[1120px] shrink-0 px-gutter">
+        {/* Logo lockup — above the dissolve, so the fade cannot grey it out */}
+        <Reveal className="absolute top-0 left-1/2 z-20 h-[clamp(54px,7.4vw,96px)] w-[clamp(180px,26vw,320px)] -translate-x-1/2">
+          <Image
+            src="/odd-planet-lockup.png"
+            alt="Odd Planet"
+            fill
+            priority
+            sizes="(max-width: 1230px) 26vw, 320px"
+            className="object-contain"
+          />
+        </Reveal>
 
-          {/* Layer B — planet limb */}
-          <svg
-            viewBox="0 0 1200 420"
-            preserveAspectRatio="none"
-            aria-hidden="true"
-            className="absolute bottom-0 left-1/2 z-2 block h-[92%] w-[150%] -translate-x-1/2 max-[700px]:w-[220%]"
-          >
-            <defs>
-              <linearGradient id="opLimb" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0" stopColor="#2D45F0" stopOpacity="0" />
-                <stop offset="0.24" stopColor="#5A6DFF" stopOpacity="0.65" />
-                <stop offset="0.5" stopColor="#F2F4FF" stopOpacity="1" />
-                <stop offset="0.76" stopColor="#5A6DFF" stopOpacity="0.65" />
-                <stop offset="1" stopColor="#2D45F0" stopOpacity="0" />
-              </linearGradient>
-              <filter id="opBloom" x="-20%" y="-320%" width="140%" height="740%">
-                <feGaussianBlur stdDeviation="20" />
-              </filter>
-            </defs>
-            <circle
-              cx="600"
-              cy="980"
-              r="820"
-              fill="none"
-              stroke="url(#opLimb)"
-              strokeWidth="46"
-              filter="url(#opBloom)"
-              opacity="0.62"
-            />
-            <circle
-              cx="600"
-              cy="980"
-              r="820"
-              fill="none"
-              stroke="url(#opLimb)"
-              strokeWidth="4.5"
-            />
-          </svg>
-        </div>
+        {/* Layer B — planet limb */}
+        <svg
+          viewBox="0 0 1200 420"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+          className="absolute bottom-0 left-1/2 z-2 block h-[92%] w-[150%] -translate-x-1/2 max-[700px]:w-[220%]"
+        >
+          <defs>
+            <linearGradient id="opLimb" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stopColor="#2D45F0" stopOpacity="0" />
+              <stop offset="0.24" stopColor="#5A6DFF" stopOpacity="0.65" />
+              <stop offset="0.5" stopColor="#F2F4FF" stopOpacity="1" />
+              <stop offset="0.76" stopColor="#5A6DFF" stopOpacity="0.65" />
+              <stop offset="1" stopColor="#2D45F0" stopOpacity="0" />
+            </linearGradient>
+            <filter id="opBloom" x="-20%" y="-320%" width="140%" height="740%">
+              <feGaussianBlur stdDeviation="20" />
+            </filter>
+          </defs>
+          <circle
+            cx="600"
+            cy="980"
+            r="820"
+            fill="none"
+            stroke="url(#opLimb)"
+            strokeWidth="46"
+            filter="url(#opBloom)"
+            opacity="0.62"
+          />
+          <circle
+            cx="600"
+            cy="980"
+            r="820"
+            fill="none"
+            stroke="url(#opLimb)"
+            strokeWidth="4.5"
+          />
+        </svg>
       </div>
 
       {/* Layer C — bottom dissolve into the stat band */}

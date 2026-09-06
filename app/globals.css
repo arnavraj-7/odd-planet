@@ -100,6 +100,22 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Height of the sticky header, so the hero can fill exactly the rest of the
+   first screen. It grows when the nav wraps to its own line. */
+:root {
+  --op-header: 86px;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --op-header: 122px;
+  }
+}
+
+section[id] {
+  scroll-margin-top: calc(var(--op-header) + 12px);
+}
+
 html,
 body {
   margin: 0;
