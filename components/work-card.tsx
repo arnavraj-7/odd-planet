@@ -195,7 +195,7 @@ export function WorkCard({ card }: { card: WorkCardData }) {
 
                 return (
                   <div
-                    key={metric.label}
+                    key={`${metric.label}-${i}`}
                     className={`min-w-0 ${
                       card.metrics.length > 2
                         ? i % 2 === 1

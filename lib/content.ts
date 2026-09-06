@@ -439,11 +439,81 @@ const realWork: WorkCard[] = [
       "Lifestyle and fitness creators activated month on month for a growing nutrition brand.",
     did: ["influencer", "creator", "content"],
     image: {
-      src: "/hero/fitfeast.jpg",
-      alt: "Fit Feast campaign creative",
+      src: "/campaigns/fitfeast.jpg",
+      alt: "Fit Feast on the Shark Tank India set",
       fit: "contain",
     },
     metrics: [],
+  },
+  {
+    index: "10",
+    category: "Fashion / Luxury",
+    title: "Vaibhav Arora × Michael Kors",
+    tagline: "Luxury, worn like it is nothing.",
+    description:
+      "A creator-led fashion narrative for Michael Kors with Vaibhav Arora, putting the label inside his own everyday style rather than beside it.",
+    did: ["celebrity", "content", "integration", "amplification"],
+    resultsLabel: "Impact",
+    image: {
+      src: "/campaigns/vaibhav-michael-kors.jpg",
+      alt: "Vaibhav Arora for Michael Kors",
+    },
+    metrics: [
+      { value: "2M+", label: "Views" },
+      { value: "710K+", label: "Views" },
+    ],
+  },
+  {
+    index: "11",
+    category: "E-commerce",
+    title: "Mohit Chettri × Flipkart",
+    tagline: "Shopping, told as a story.",
+    description:
+      "Creator-led content for Flipkart with Mohit Chettri, turning a shopping moment into something worth watching to the end.",
+    did: ["creator", "content", "integration", "amplification"],
+    resultsLabel: "Impact",
+    metrics: [{ value: "50K+", label: "Views" }],
+  },
+  {
+    index: "12",
+    category: "Tech",
+    title: "Mohit Chettri × Oppo",
+    tagline: "A phone, shown in use.",
+    description:
+      "A device integration for Oppo with Mohit Chettri, built around what the camera actually does rather than what the spec sheet says.",
+    did: ["creator", "content", "integration", "amplification"],
+    resultsLabel: "Impact",
+    metrics: [{ value: "450K+", label: "Views" }],
+  },
+  {
+    index: "13",
+    category: "Beauty",
+    title: "Tanvi Malhara × Pond's",
+    tagline: "Skin first, everything else after.",
+    description:
+      "A beauty integration for Pond's with Tanvi Malhara, shot close and kept honest — routine, not performance.",
+    did: ["celebrity", "content", "integration", "amplification"],
+    resultsLabel: "Impact",
+    image: {
+      src: "/campaigns/tanvi-ponds.jpg",
+      alt: "Tanvi Malhara for Pond's",
+    },
+    metrics: [{ value: "220K+", label: "Views" }],
+  },
+  {
+    index: "14",
+    category: "Beauty",
+    title: "Tanvi Malhara × Sunsilk",
+    tagline: "Hair that carries the frame.",
+    description:
+      "A hair-care campaign for Sunsilk with Tanvi Malhara that travelled well past its own audience.",
+    did: ["celebrity", "content", "integration", "amplification"],
+    resultsLabel: "Impact",
+    image: {
+      src: "/campaigns/tanvi-sunsilk.jpg",
+      alt: "Tanvi Malhara for Sunsilk",
+    },
+    metrics: [{ value: "22.6M+", label: "Views" }],
   },
 ];
 
@@ -766,7 +836,7 @@ export const heroTiles: [HeroTile[], HeroTile[]] = [
   [
     { ratio: "9 / 16", label: "Bevzilla", src: "/hero/bevzilla.jpg" },
     { ratio: "16 / 9", label: "Maharani", src: "/hero/maharani.jpg" },
-    { ratio: "9 / 16", label: "Fit Feast", src: "/hero/fitfeast.jpg" },
+    { ratio: "4 / 3", label: "Fit Feast", src: "/hero/fitfeast.jpg" },
     { ratio: "16 / 9", label: "Shaily Mehrotra", src: "/hero/shaily.jpg" },
   ],
 ];
