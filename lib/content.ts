@@ -119,6 +119,24 @@ export const press: PressItem[] = [
     preview: { src: "/press/tata-tele.jpg" },
     href: "https://www.linkedin.com/posts/ojamaduji_rozbanatehainnayakal-msmeday-rozbanatehainnayakal-activity-7476900293880737792-0oM1",
   },
+  {
+    year: "2024",
+    outlet: "India Today Gaming",
+    headline:
+      "Gaming fusion with music at the ‘Baapji’ music launch",
+    context: "Mohito · Music launch",
+    preview: { src: "/press/baapji-launch.jpg" },
+    href: "https://www.indiatodaygaming.com/news/national/story/gaming-fusion-with-music-at-baapji-music-launch-event-featuring-mc-square-godpraveen-ytmackle-tv-odd-planet-full-power-and-more-1-3760",
+  },
+  {
+    year: "2024",
+    outlet: "India Today Gaming",
+    headline:
+      "Delhi’s thrilling FIFA 11:11 event: sports, gaming and excitement at Belisario",
+    context: "Belisario · On-ground",
+    preview: { src: "/press/fifa-belisario.jpg" },
+    href: "https://www.indiatodaygaming.com/news/story/delhis-thrilling-fifa-1111-event-sports-gaming-and-excitement-at-belisario-4030",
+  },
 ];
 
 export type Service = {
@@ -217,18 +235,6 @@ const realWork: WorkCard[] = [
   },
   {
     index: "02",
-    category: "Government",
-    title: "Embassy of Sweden",
-    description: "Sweden–India Gaming Day with a live influencer tournament.",
-    image: { src: "/work/embassy-of-sweden.jpg", alt: "Sweden India Gaming Day" },
-    metrics: [
-      { label: "ATTENDEES", value: "500+" },
-      { label: "PRESS", value: "India Today" },
-      { label: "FORMAT", value: "On-ground" },
-    ],
-  },
-  {
-    index: "03",
     category: "Creator network",
     title: "Bevzilla",
     description: "Podcast, lifestyle and coffee creators activated at scale.",
@@ -240,7 +246,7 @@ const realWork: WorkCard[] = [
     ],
   },
   {
-    index: "04",
+    index: "03",
     category: "Experiential",
     title: "Starbucks",
     description: "Store launch campaign and social resonance.",
@@ -252,30 +258,7 @@ const realWork: WorkCard[] = [
     ],
   },
   {
-    index: "05",
-    category: "Gaming",
-    title: "College Rivals",
-    description: "Gaming creators plugged into student communities nationwide.",
-    image: { src: "/work/college-rivals.jpg", alt: "College Rivals" },
-    metrics: [
-      { label: "VIEWS", value: "10M+" },
-      { label: "LIKES", value: "80K+" },
-      { label: "CAMPUSES", value: "Multi-city" },
-    ],
-  },
-  {
-    index: "06",
-    category: "On-ground",
-    title: "Comic Con India",
-    description: "Booth production, brand activations and creator integrations.",
-    image: { src: "/work/comic-con.jpg", alt: "Comic Con India" },
-    metrics: [
-      { label: "SCOPE", value: "Build + talent" },
-      { label: "FORMAT", value: "Festival" },
-    ],
-  },
-  {
-    index: "07",
+    index: "04",
     category: "Brand movement",
     title: "Men Skincare Janta Party",
     description:
@@ -288,7 +271,7 @@ const realWork: WorkCard[] = [
     ],
   },
   {
-    index: "08",
+    index: "05",
     category: "Creator network",
     title: "Fit Feast",
     description: "Lifestyle and fitness creators activated month on month.",
@@ -300,7 +283,7 @@ const realWork: WorkCard[] = [
     ],
   },
   {
-    index: "09",
+    index: "06",
     category: "Government",
     title: "Ministry of Textiles",
     description: "National handloom and heritage storytelling at scale.",

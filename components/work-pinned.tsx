@@ -77,9 +77,6 @@ export function WorkPinned() {
                       </div>
                     )}
 
-                    <span className="absolute top-3.5 left-3.5 z-10 rounded-full bg-[rgba(5,6,10,0.7)] px-2.5 py-[7px] font-mono text-[10px] leading-none font-medium tracking-[0.14em] uppercase text-blue-100 backdrop-blur-[6px]">
-                      {card.category}
-                    </span>
                   </div>
 
                   <div className="flex flex-1 flex-col gap-4 p-[clamp(18px,2vw,24px)]">

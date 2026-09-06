@@ -1,19 +1,9 @@
-import { MarqueeTrack } from "@/components/marquee-track";
-import { Reveal } from "@/components/reveal";
+"use client";
+
+import { usePinnedTrack } from "@/hooks/use-pinned-track";
 import { press, type PressItem } from "@/lib/content";
 
-const years = press.map((p) => Number(p.year)).filter(Boolean);
-const RANGE = `${Math.min(...years)}–${Math.max(...years)}`;
-
-/**
- * A looping track needs enough cards to outrun the viewport; below that the
- * duplicate copy is on screen at the same time as the original and the whole
- * thing reads as repeated. With fewer, the rail simply sits still — and
- * becomes a marquee again on its own once the client adds more coverage.
- */
-const LOOPS = press.length >= 5;
-
-function Card({ item, hidden }: { item: PressItem; hidden?: boolean }) {
+function Card({ item }: { item: PressItem }) {
   const Tag = item.href ? "a" : "div";
 
   return (
@@ -21,13 +11,11 @@ function Card({ item, hidden }: { item: PressItem; hidden?: boolean }) {
       {...(item.href
         ? { href: item.href, target: "_blank", rel: "noopener" }
         : {})}
-      {...(hidden ? { tabIndex: -1, "aria-hidden": true } : {})}
-      className="group flex w-[clamp(272px,24vw,352px)] shrink-0 flex-col overflow-hidden rounded-lg border border-ink-300 text-ink-900 transition-[border-color] duration-[320ms] ease-out hover:border-blue-500 hover:text-ink-900"
+      data-work-card
+      className="group flex w-[clamp(258px,23vw,336px)] shrink-0 flex-col overflow-hidden rounded-lg border border-ink-300 text-ink-900 transition-[border-color] duration-[320ms] ease-out hover:border-blue-500 hover:text-ink-900"
     >
-      {/* Near-portrait and centred. Two of these three are portrait posters —
-          a shallow landscape box cropped the subject clean off the bottom,
-          whatever the object-position. At 5:6 they lose only a sliver of width
-          and keep their full height. */}
+      {/* Near-portrait and centred. Some of these are portrait posters, and a
+          shallow landscape box cropped the subject clean off the bottom. */}
       <div className="relative aspect-[5/6] shrink-0 overflow-hidden border-b border-ink-300 bg-ink-100">
         {item.preview ? (
           // eslint-disable-next-line @next/next/no-img-element
@@ -44,17 +32,15 @@ function Card({ item, hidden }: { item: PressItem; hidden?: boolean }) {
             </span>
           </div>
         )}
-        <span className="absolute top-3.5 left-3.5 rounded-full bg-[rgba(5,6,10,0.7)] px-2.5 py-[7px] font-mono text-[10px] leading-none font-medium tracking-[0.14em] text-blue-100 backdrop-blur-[6px]">
-          {item.year}
-        </span>
       </div>
 
       <div className="flex flex-1 flex-col gap-3 p-[clamp(16px,1.6vw,22px)]">
-        <div className="font-mono text-[10px] leading-none font-medium tracking-[0.14em] uppercase text-blue-400">
-          {item.outlet}
+        <div className="flex items-center gap-2.5 font-mono text-[10px] leading-none font-medium tracking-[0.14em] uppercase">
+          <span className="truncate text-blue-400">{item.outlet}</span>
+          <span className="shrink-0 text-ink-550">{item.year}</span>
         </div>
 
-        <h3 className="m-0 font-grotesk text-[clamp(15px,1.2vw,18px)] leading-[1.35] font-semibold tracking-[-0.01em] text-ink-900 [text-wrap:pretty]">
+        <h3 className="m-0 font-grotesk text-[clamp(14px,1.15vw,17px)] leading-[1.35] font-semibold tracking-[-0.01em] text-ink-900 [text-wrap:pretty]">
           {item.headline}
         </h3>
 
@@ -74,57 +60,58 @@ function Card({ item, hidden }: { item: PressItem; hidden?: boolean }) {
   );
 }
 
-function Row({ hidden = false }: { hidden?: boolean }) {
-  return (
-    <div
-      aria-hidden={hidden || undefined}
-      className="flex items-stretch gap-[clamp(12px,1.4vw,20px)] pr-[clamp(12px,1.4vw,20px)]"
-    >
-      {press.map((item) => (
-        <Card key={`${item.headline}-${hidden ? "b" : "a"}`} item={item} hidden={hidden} />
-      ))}
-    </div>
-  );
-}
-
+/**
+ * Scroll-driven horizontal rail, on the same mechanic as Our Work: vertical
+ * scroll converts to horizontal travel while the frame is pinned, and it
+ * unpins into a native snap rail below 700px.
+ */
 export function MediaCoverage() {
-  return (
-    <section id="media" className="overflow-hidden py-section">
-      <Reveal className="mx-auto mb-[clamp(28px,4vw,52px)] flex max-w-[1400px] flex-wrap items-end justify-between gap-x-10 gap-y-[18px] px-gutter">
-        <div>
-          <div className="op-eyebrow mb-5">Media coverage</div>
-          <h2 className="op-h2">
-            Recognised by <em>industry leaders</em>
-          </h2>
-        </div>
-        <div className="flex flex-col items-start gap-3">
-          <div className="max-w-[34ch] font-grotesk text-sm leading-[1.6] text-ink-600">
-            Coverage across national press, industry publications and enterprise
-            brand campaigns.
-          </div>
-          <div className="op-meta">
-            {String(press.length).padStart(2, "0")} features · {RANGE}
-          </div>
-        </div>
-      </Reveal>
+  const { sectionRef, innerRef, scrollerRef, trackRef, barRef, countRef } =
+    usePinnedTrack(press.length);
 
-      {LOOPS ? (
-        <div className="[mask-image:linear-gradient(to_right,transparent_0%,#000_6%,#000_94%,transparent_100%)]">
-          <MarqueeTrack>
-            <Row />
-            <Row hidden />
-          </MarqueeTrack>
+  return (
+    <section id="media" ref={sectionRef} className="relative">
+      <div
+        ref={innerRef}
+        className="sticky top-0 flex h-screen min-h-[min(600px,100vh)] flex-col overflow-hidden pt-[clamp(26px,4vw,54px)] pb-[clamp(22px,3vw,38px)]"
+      >
+        <div className="mx-auto flex w-full max-w-[1400px] shrink-0 flex-wrap items-end justify-between gap-x-10 gap-y-3.5 px-gutter">
+          <div>
+            <div className="op-eyebrow mb-[18px]">Media coverage</div>
+            <h2 className="op-h2 text-h2-work">
+              Recognised by <em>industry leaders</em>
+            </h2>
+          </div>
+          <div className="op-meta leading-[1.6]">Scroll to advance →</div>
         </div>
-      ) : (
-        // Swipeable where it does not fit, centred where it does.
-        <div className="op-hide-scrollbar snap-x snap-mandatory overflow-x-auto overscroll-x-contain">
-          <div className="mx-auto flex w-max max-w-[1400px] items-stretch gap-[clamp(12px,1.4vw,20px)] px-gutter [&>*]:snap-start">
-            {press.map((item) => (
-              <Card key={item.headline} item={item} />
-            ))}
+
+        <div className="mt-[clamp(18px,2.6vw,32px)] flex flex-1 items-center overflow-hidden">
+          <div ref={scrollerRef} className="flex w-full items-center overflow-hidden">
+            <div
+              ref={trackRef}
+              className="flex items-stretch gap-[clamp(12px,1.4vw,20px)] px-gutter will-change-transform"
+            >
+              {press.map((item) => (
+                <Card key={item.headline} item={item} />
+              ))}
+            </div>
           </div>
         </div>
-      )}
+
+        <div className="mx-auto flex w-full max-w-[1400px] shrink-0 items-center gap-[18px] px-gutter">
+          <div className="h-px flex-1 overflow-hidden bg-ink-300">
+            <div
+              ref={barRef}
+              className="h-full w-[6%] bg-[linear-gradient(90deg,#2D45F0,#A9B4FF)]"
+            />
+          </div>
+          <div className="op-meta tracking-[0.12em]">
+            <span ref={countRef}>
+              01 / {String(press.length).padStart(2, "0")}
+            </span>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
