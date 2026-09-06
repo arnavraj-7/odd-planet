@@ -79,7 +79,7 @@ export function SiteFooter() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-[1400px] px-gutter">
+      <div className="mx-auto max-w-[1400px] px-gutter pb-[clamp(8px,1.2vw,18px)]">
         <StrokeWordmark text={site.wordmark} />
       </div>
 

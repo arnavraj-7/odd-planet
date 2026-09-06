@@ -40,15 +40,14 @@ export function StrokeWordmark({ text = "ODD PLANET" }: { text?: string }) {
           if (!entry.isIntersecting) continue;
           io.disconnect();
           stroke.style.strokeDashoffset = "0";
+          // The outline dissolves on the same curve and duration as the fill
+          // wipe, so the two passes never sit on top of each other as a
+          // doubled edge — the stroke hands the letter over to the fill.
           timers.push(
             setTimeout(() => {
               wipe.style.transform = "scaleX(1)";
-            }, 1000),
-          );
-          timers.push(
-            setTimeout(() => {
               stroke.style.opacity = "0";
-            }, 1700),
+            }, 1000),
           );
         }
       },
@@ -116,7 +115,7 @@ export function StrokeWordmark({ text = "ODD PLANET" }: { text?: string }) {
           strokeDasharray: 2600,
           strokeDashoffset: 2600,
           transition:
-            "stroke-dashoffset 1.6s cubic-bezier(.33,1,.68,1), opacity .6s ease .9s",
+            "stroke-dashoffset 1.6s cubic-bezier(.33,1,.68,1), opacity 1.15s cubic-bezier(.16,.84,.44,1)",
         }}
       >
         {text}
