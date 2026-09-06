@@ -1,0 +1,10 @@
+node_modules
+.next
+out
+.env*.local
+next-env.d.ts
+*.tsbuildinfo
+.DS_Store
+
+# Design handoff bundle (reference only)
+Marketing agency brand kit.zip
