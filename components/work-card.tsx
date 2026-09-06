@@ -56,7 +56,11 @@ export function WorkCard({ card }: { card: WorkCardData }) {
         opt into `fit: "contain"` and sit whole over a blurred copy of
         themselves instead of losing their top and bottom.
       */}
-      <div className="relative aspect-[16/9] shrink-0 overflow-hidden bg-ink-100">
+      <div
+        className={`relative aspect-[16/9] shrink-0 overflow-hidden ${
+          card.image?.fit === "logo" ? "bg-white" : "bg-ink-100"
+        }`}
+      >
         {card.image ? (
           card.image.fit === "logo" ? (
             // eslint-disable-next-line @next/next/no-img-element
@@ -64,7 +68,7 @@ export function WorkCard({ card }: { card: WorkCardData }) {
               src={card.image.src}
               alt={card.image.alt}
               loading="lazy"
-              className="block size-full object-contain p-[clamp(26px,3.4vw,46px)] transition-transform duration-[600ms] ease-brand group-hover:scale-[1.04]"
+              className="block size-full object-contain transition-transform duration-[600ms] ease-brand group-hover:scale-[1.04]"
             />
           ) : card.image.fit === "contain" ? (
             <>
@@ -118,7 +122,9 @@ export function WorkCard({ card }: { card: WorkCardData }) {
           {card.tagline}
         </p>
 
-        <p className="mt-3 mb-0 line-clamp-2 min-h-[38px] font-grotesk text-[12.5px] leading-[1.5] text-ink-600 [text-wrap:pretty]">
+        {/* Clamped so every card keeps the same rhythm; the narrower phone
+            card fits fewer characters per line, so it gets a fourth. */}
+        <p className="mt-3 mb-0 line-clamp-3 min-h-[57px] font-grotesk text-[12.5px] leading-[1.5] text-ink-600 [text-wrap:pretty] max-[560px]:line-clamp-4 max-[560px]:min-h-[76px]">
           {card.description}
         </p>
 
