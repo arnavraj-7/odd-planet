@@ -38,7 +38,9 @@
   --spacing-section: clamp(48px, 7vw, 104px);
 
   /* Fluid type scale */
-  --text-hero-caps: clamp(38px, 7.4vw, 104px);
+  /* Sized against the hero copy column, not the full viewport — it shares
+     the row with the image columns. */
+  --text-hero-caps: clamp(34px, 5.2vw, 74px);
   --text-hero-serif: clamp(42px, 8.6vw, 124px);
   --text-hero-body: clamp(15px, 1.4vw, 18px);
   --text-h2: clamp(32px, 4.8vw, 68px);
@@ -332,16 +334,20 @@
     display: inline-block;
     padding: 1.5px;
     border-radius: 100px;
-    background: conic-gradient(
-      from var(--op-a),
-      rgba(45, 69, 240, 0) 0deg,
-      rgba(45, 69, 240, 0) 200deg,
-      #2d45f0 268deg,
-      #a9b4ff 312deg,
-      #f2f4ff 336deg,
-      #a9b4ff 348deg,
-      rgba(45, 69, 240, 0) 360deg
-    );
+    /* Travelling light over a constant hairline — without the ink/300 base
+       the pill has no outline anywhere the conic gradient is transparent. */
+    background:
+      conic-gradient(
+        from var(--op-a),
+        rgba(45, 69, 240, 0) 0deg,
+        rgba(45, 69, 240, 0) 200deg,
+        #2d45f0 268deg,
+        #a9b4ff 312deg,
+        #f2f4ff 336deg,
+        #a9b4ff 348deg,
+        rgba(45, 69, 240, 0) 360deg
+      ),
+      var(--color-ink-300);
     animation: var(--animate-rim);
   }
 
