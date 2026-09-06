@@ -646,16 +646,19 @@ const realCreators: Creator[] = [
     name: "Bali",
     role: "Talent partnership",
     socials: [],
+    image: "/creators/bali.jpg",
   },
   {
     name: "Krystle Dsouza",
     role: "Talent partnership",
     socials: [{ label: "Instagram", href: ig("krystledsouza") }],
+    image: "/creators/krystle-dsouza.jpg",
   },
   {
     name: "Ridhi Dogra",
     role: "Talent partnership",
     socials: [],
+    image: "/creators/ridhi-dogra.jpg",
   },
   {
     name: "Sanaya Irani",
@@ -666,6 +669,7 @@ const realCreators: Creator[] = [
     name: "Niki Walia",
     role: "Talent partnership",
     socials: [],
+    image: "/creators/niki-walia.jpg",
   },
 ];
 
