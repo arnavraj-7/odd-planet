@@ -50,10 +50,17 @@ export function Services() {
               )}
             </div>
 
-            {/* Scrim, deepened on hover so the bullets stay readable */}
+            {/* Scrim. Now that real photography sits behind the copy this has
+                to carry the contrast, and on phones the card is taller with the
+                bullets always open — so a flat wash is layered under the
+                gradient there rather than relying on the gradient alone. */}
             <div
               aria-hidden="true"
-              className="absolute inset-0 -z-10 bg-[linear-gradient(to_top,rgba(5,6,10,0.92)_0%,rgba(5,6,10,0.68)_38%,rgba(5,6,10,0.12)_78%)] transition-opacity duration-[420ms] ease-out group-hover:opacity-100 group-focus-visible:opacity-100"
+              className="absolute inset-0 -z-10 bg-[linear-gradient(to_top,rgba(5,6,10,0.95)_0%,rgba(5,6,10,0.82)_42%,rgba(5,6,10,0.45)_72%,rgba(5,6,10,0.2)_100%)]"
+            />
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 -z-10 hidden bg-[rgba(5,6,10,0.55)] max-[560px]:block"
             />
 
             <div className="relative p-[clamp(16px,1.5vw,22px)]">

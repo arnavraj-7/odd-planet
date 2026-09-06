@@ -156,6 +156,7 @@ export const services: Service[] = [
   {
     index: "01",
     name: "Influence",
+    image: "/services/influence.jpg",
     tagline: "Creators that move attention.",
     description: "Put the right people behind the brand.",
     bullets: [
@@ -181,6 +182,7 @@ export const services: Service[] = [
   {
     index: "03",
     name: "Amplify",
+    image: "/services/amplify.jpg",
     tagline: "Distribution that keeps it moving.",
     description: "Make good work travel further.",
     bullets: [
@@ -194,6 +196,7 @@ export const services: Service[] = [
   {
     index: "04",
     name: "Manage",
+    image: "/services/manage.jpg",
     tagline: "An always-on team for the brand.",
     description:
       "Build, manage and scale your brand across the new retail ecosystem.",
@@ -208,11 +211,39 @@ export const services: Service[] = [
 
 export type WorkMetric = { label: string; value: string; href?: string };
 
+/** Keys into the icon set the campaign card draws for "what we did". */
+export type WorkDiscipline =
+  | "content"
+  | "influencer"
+  | "creator"
+  | "amplification"
+  | "events"
+  | "meme"
+  | "ugc"
+  | "commerce";
+
+export const disciplineLabels: Record<WorkDiscipline, string> = {
+  content: "Content Production",
+  influencer: "Influencer Marketing",
+  creator: "Creator Partnerships",
+  amplification: "Digital Amplification",
+  events: "Events & Experiences",
+  meme: "Meme Marketing",
+  ugc: "UGC Content Creation",
+  commerce: "Quick Commerce",
+};
+
 export type WorkCard = {
   index: string;
   category: string;
   title: string;
+  /** One line under the title. */
+  tagline: string;
   description: string;
+  /** Drawn as the "what we did" icon row. */
+  did: WorkDiscipline[];
+  /** Heading over the figures — "Results", "Impact (monthly)", and so on. */
+  resultsLabel?: string;
   /** Omitted on placeholder cards — the card then draws a hairline plate. */
   image?: { src: string; alt: string };
   /** Logo cards render the image contained on a hairline plate instead of a cover crop. */
@@ -220,82 +251,104 @@ export type WorkCard = {
   metrics: WorkMetric[];
 };
 
+/**
+ * Campaign case cards.
+ *
+ * Metrics come from the client's deck and campaign reports. Taglines and the
+ * longer descriptions are written to the same shape as the Maharani card the
+ * client supplied — worth a read-through before launch.
+ */
 const realWork: WorkCard[] = [
   {
     index: "01",
     category: "Music",
     title: "Maharani",
-    description: "Spotify #1 viral song in India.",
+    tagline: "A release built to travel.",
+    description:
+      "From content production to creator-led amplification, we helped take Maharani from release to massive digital attention.",
+    did: ["content", "influencer", "creator", "amplification"],
     image: { src: "/work/maharani.jpg", alt: "Maharani music video" },
     metrics: [
-      { label: "YOUTUBE", value: "42M+" },
-      { label: "INSTAGRAM", value: "37M+" },
-      { label: "STREAMS", value: "7.5M+" },
+      { label: "YouTube Views", value: "42M+" },
+      { label: "Instagram Views", value: "37M+" },
+      { label: "Streams", value: "7.5M+" },
     ],
   },
   {
     index: "02",
-    category: "Creator network",
-    title: "Bevzilla",
-    description: "Podcast, lifestyle and coffee creators activated at scale.",
-    image: { src: "/campaigns/bevzilla.jpg", alt: "Bevzilla campaign creative" },
+    category: "Brand movement",
+    title: "Men Skincare Janta Party",
+    tagline: "A launch disguised as a protest.",
+    description:
+      "A three-phase guerrilla movement for Fixderma's men's range, staged as a street protest with the brand hidden until the reveal. #SkincareKarleBhai trended on Twitter.",
+    did: ["meme", "influencer", "content", "amplification"],
+    image: { src: "/campaigns/msjp.jpg", alt: "Men Skincare Janta Party campaign" },
     metrics: [
-      { label: "CREATORS / MO", value: "250+" },
-      { label: "NICHES", value: "5+" },
-      { label: "MODEL", value: "Retainer" },
+      { label: "Views", value: "50M+" },
+      { label: "Engagement", value: "821K+" },
+      { label: "Deliverables", value: "649" },
     ],
   },
   {
     index: "03",
-    category: "Experiential",
-    title: "Starbucks",
-    description: "Store launch campaign and social resonance.",
-    image: { src: "/work/starbucks.jpg", alt: "Starbucks campaign" },
+    category: "FMCG",
+    title: "Bevzilla",
+    tagline: "Creators brewing real impact.",
+    description:
+      "We executed large-scale influencer marketing and UGC content creation for Bevzilla, collaborating with 250+ creators every month across multiple categories to drive awareness, engagement and sales.",
+    did: ["influencer", "ugc"],
+    resultsLabel: "Impact (monthly)",
+    image: { src: "/campaigns/bevzilla.jpg", alt: "Bevzilla campaign creative" },
     metrics: [
-      { label: "VIEWS", value: "100K+" },
-      { label: "ENGAGEMENT", value: "3.1K+" },
-      { label: "FORMAT", value: "Launch" },
+      { label: "Creators Onboarded", value: "250+" },
+      {
+        label: "Lifestyle · Fitness · Food · Comics & more",
+        value: "Multi-Category",
+      },
     ],
   },
   {
     index: "04",
-    category: "Brand movement",
-    title: "Men Skincare Janta Party",
-    description:
-      "A three-phase guerrilla movement for Fixderma's men's range, staged as a protest with the brand hidden until the reveal. #SkincareKarleBhai trended on Twitter.",
-    image: { src: "/campaigns/msjp.jpg", alt: "Men Skincare Janta Party campaign" },
-    metrics: [
-      { label: "VIEWS", value: "50M+" },
-      { label: "ENGAGEMENT", value: "821K+" },
-      { label: "DELIVERABLES", value: "649" },
-    ],
-  },
-  {
-    index: "05",
-    category: "Creator network",
-    title: "Fit Feast",
-    description: "Lifestyle and fitness creators activated month on month.",
-    image: { src: "/campaigns/fitfeast.jpg", alt: "Fit Feast campaign creative" },
-    metrics: [
-      { label: "MODEL", value: "Creators / month" },
-      { label: "NICHES", value: "Lifestyle · Fitness" },
-      { label: "SCOPE", value: "Always-on" },
-    ],
-  },
-  {
-    index: "06",
     category: "Government",
     title: "Ministry of Textiles",
-    description: "National handloom and heritage storytelling at scale.",
+    tagline: "Handloom, told to a new audience.",
+    description:
+      "National handloom and heritage storytelling for the Textiles Committee, delivered as creator-led reels built for reach.",
+    did: ["content", "creator", "amplification"],
     image: {
       src: "/campaigns/textiles-handloom.jpg",
       alt: "Textiles Committee handloom campaign creative",
     },
     metrics: [
-      { label: "REEL 01", value: "423K+", href: "https://www.instagram.com/reel/DMuuOv1NrXv/" },
-      { label: "REEL 02", value: "181K+", href: "https://www.instagram.com/reel/DM0BeCQt7H2/" },
-      { label: "REEL 03", value: "309K+", href: "https://www.instagram.com/reel/DMpJRfZJ8hr/" },
+      { label: "Reel 01", value: "423K+", href: "https://www.instagram.com/reel/DMuuOv1NrXv/" },
+      { label: "Reel 02", value: "181K+", href: "https://www.instagram.com/reel/DM0BeCQt7H2/" },
+      { label: "Reel 03", value: "309K+", href: "https://www.instagram.com/reel/DMpJRfZJ8hr/" },
     ],
+  },
+  {
+    index: "05",
+    category: "Experiential",
+    title: "Starbucks",
+    tagline: "A store launch people turned up for.",
+    description:
+      "Launch campaign and on-ground activation, carried into social by creators in the surrounding neighbourhood.",
+    did: ["events", "influencer", "content"],
+    image: { src: "/work/starbucks.jpg", alt: "Starbucks campaign" },
+    metrics: [
+      { label: "Views", value: "100K+" },
+      { label: "Engagement", value: "3.1K+" },
+    ],
+  },
+  {
+    index: "06",
+    category: "Creator network",
+    title: "Fit Feast",
+    tagline: "Always-on creator supply.",
+    description:
+      "Lifestyle and fitness creators activated month on month for a growing nutrition brand.",
+    did: ["influencer", "creator", "content"],
+    image: { src: "/campaigns/fitfeast.jpg", alt: "Fit Feast campaign creative" },
+    metrics: [],
   },
 ];
 
@@ -534,7 +587,9 @@ const placeholderWork: WorkCard[] = Array.from({ length: 7 }, (_, i) => ({
   index: String(i + 1).padStart(2, "0"),
   category: "Category",
   title: "Campaign title",
+  tagline: "A line about the campaign.",
   description: "One line on what the campaign did and where it travelled.",
+  did: ["content", "influencer", "creator"],
   metrics: [
     { label: "METRIC 01", value: "—" },
     { label: "METRIC 02", value: "—" },

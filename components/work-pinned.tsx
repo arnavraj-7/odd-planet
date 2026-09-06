@@ -1,5 +1,6 @@
 "use client";
 
+import { WorkCard } from "@/components/work-card";
 import { usePinnedTrack } from "@/hooks/use-pinned-track";
 import { work } from "@/lib/content";
 
@@ -33,87 +34,7 @@ export function WorkPinned() {
               className="flex gap-[clamp(12px,1.4vw,20px)] px-gutter will-change-transform"
             >
               {work.map((card) => (
-                <article
-                  key={card.index}
-                  data-work-card
-                  className="group flex shrink-0 basis-[clamp(258px,24vw,344px)] flex-col overflow-hidden rounded-lg border border-ink-300 transition-[border-color,transform] duration-300 ease-out hover:-translate-y-1 hover:border-blue-500"
-                >
-                  <div className="relative aspect-square shrink-0 overflow-hidden border-b border-ink-300 bg-ink-100">
-                    {card.image ? (
-                      <>
-                        {/*
-                          These creatives are a mix of 16:9 stills and 9:16
-                          reel frames. Cropping them to one landscape box cut
-                          the posters apart, so the artwork is contained whole
-                          and a blurred copy of itself fills the rest.
-                        */}
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                          src={card.image.src}
-                          alt=""
-                          aria-hidden="true"
-                          className="absolute inset-0 size-full scale-110 object-cover opacity-40 blur-[18px]"
-                        />
-                        <div
-                          aria-hidden="true"
-                          className="absolute inset-0 bg-[rgba(5,6,10,0.34)]"
-                        />
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                          src={card.image.src}
-                          alt={card.image.alt}
-                          loading="lazy"
-                          className="relative block size-full object-contain transition-transform duration-[600ms] ease-brand group-hover:scale-[1.04]"
-                        />
-                      </>
-                    ) : (
-                      <div
-                        aria-hidden="true"
-                        className="flex size-full items-center justify-center"
-                      >
-                        <span className="font-mono text-[11px] font-medium tracking-[0.18em] uppercase text-ink-500">
-                          Image {card.index}
-                        </span>
-                      </div>
-                    )}
-
-                  </div>
-
-                  <div className="flex flex-1 flex-col gap-4 p-[clamp(18px,2vw,24px)]">
-                    <div>
-                      <h3 className="mt-0 mb-2 font-serif text-[26px] leading-[1.06] font-normal tracking-[-0.02em] text-ink-900">
-                        {card.title}
-                      </h3>
-                      <p className="m-0 font-grotesk text-sm leading-[1.5] text-ink-600">
-                        {card.description}
-                      </p>
-                    </div>
-
-                    <div className="mt-auto font-mono text-[11px] leading-none font-medium tracking-[0.06em]">
-                      {card.metrics.map((metric) =>
-                        metric.href ? (
-                          <a
-                            key={metric.label}
-                            href={metric.href}
-                            target="_blank"
-                            rel="noopener"
-                            className="op-metric-row text-blue-200"
-                          >
-                            <span>{metric.label}</span>
-                            <span className="!text-blue-200">
-                              {metric.value} →
-                            </span>
-                          </a>
-                        ) : (
-                          <div key={metric.label} className="op-metric-row">
-                            <span>{metric.label}</span>
-                            <span>{metric.value}</span>
-                          </div>
-                        ),
-                      )}
-                    </div>
-                  </div>
-                </article>
+                <WorkCard key={card.index} card={card} />
               ))}
             </div>
           </div>
