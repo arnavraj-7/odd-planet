@@ -19,6 +19,40 @@ function parse(body: unknown): Brief | null {
   };
 }
 
+/**
+ * Appends the brief to the Google Sheet behind an Apps Script Web App.
+ * See docs/google-sheet-webhook.md for the script and how to deploy it.
+ */
+async function sendToSheet(brief: Brief) {
+  const url = process.env.SHEETS_WEBHOOK_URL;
+  if (!url) return { delivered: false, reason: "not configured" as const };
+
+  const response = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      ...brief,
+      token: process.env.SHEETS_WEBHOOK_TOKEN ?? "",
+      receivedAt: new Date().toISOString(),
+      source: "oddplanet.in",
+    }),
+    // Apps Script answers from a different host than the /exec URL.
+    redirect: "follow",
+  });
+
+  if (!response.ok) {
+    throw new Error(`sheet webhook responded ${response.status}`);
+  }
+
+  // Apps Script returns 200 with a JSON body even for its own failures.
+  const text = await response.text();
+  if (text.includes('"ok":false')) {
+    throw new Error(`sheet webhook rejected the row: ${text.slice(0, 200)}`);
+  }
+
+  return { delivered: true, reason: null };
+}
+
 export async function POST(request: Request) {
   let payload: unknown;
   try {
@@ -35,14 +69,24 @@ export async function POST(request: Request) {
     );
   }
 
-  // TODO: deliver the brief — transactional email, CRM webhook or a
-  // Marketplace integration. Until one is wired up the submission is only
-  // recorded in the function log.
-  console.info("[contact] brief received", {
-    name: brief.name,
-    email: brief.email,
-    length: brief.message.length,
-  });
+  try {
+    const result = await sendToSheet(brief);
 
-  return NextResponse.json({ ok: true });
+    if (!result.delivered) {
+      // No webhook configured yet — keep local development working, but never
+      // report success for a brief that was not actually recorded anywhere.
+      console.warn("[contact] SHEETS_WEBHOOK_URL is not set; brief not stored", {
+        email: brief.email,
+      });
+      return NextResponse.json({ ok: true, stored: false });
+    }
+
+    return NextResponse.json({ ok: true, stored: true });
+  } catch (error) {
+    console.error("[contact] could not record the brief", error);
+    return NextResponse.json(
+      { error: "We could not record your brief. Please email us instead." },
+      { status: 502 },
+    );
+  }
 }
