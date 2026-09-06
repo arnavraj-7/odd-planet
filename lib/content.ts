@@ -56,18 +56,24 @@ export const stats = [
 export type Stat = (typeof stats)[number];
 
 export const brands = [
-  { name: "Starbucks", src: `${IMG}/brands_extracted/starbucks.png`, height: 28 },
-  { name: "Michael Kors", src: `${IMG}/brands_extracted/michael_kors.png`, height: 21 },
-  { name: "Converse", src: `${IMG}/brands_extracted/converse.png`, height: 24 },
-  { name: "Domino's", src: `${IMG}/brands_extracted/dominos.png`, height: 26 },
-  { name: "POND'S", src: `${IMG}/brands_extracted/ponds.png`, height: 24 },
-  { name: "MG Motor", src: `${IMG}/brands_extracted/mg_motor.png`, height: 28 },
-  { name: "Flipkart", src: `${IMG}/brands_extracted/flipkart.png`, height: 22 },
-  { name: "KFC", src: `${IMG}/brands_extracted/kfc.png`, height: 28 },
-  { name: "OPPO", src: `${IMG}/brands_extracted/oppo.png`, height: 21 },
-  { name: "Swiggy Instamart", src: `${IMG}/brands_extracted/instamart.png`, height: 24 },
-  { name: "Embassy of Sweden", src: `${IMG}/brands_extracted/embassy_of_sweden.png`, height: 32 },
-  { name: "Ministry of Textiles", src: `${IMG}/brands_extracted/ministry_of_textiles.png`, height: 32 },
+  { name: "Starbucks", src: "/brands/starbucks.png" },
+  { name: "Michael Kors", src: "/brands/michael-kors.png" },
+  { name: "Converse", src: "/brands/converse.png" },
+  { name: "Domino's", src: "/brands/dominos.png" },
+  { name: "POND'S", src: "/brands/ponds.png" },
+  { name: "MG Motor", src: "/brands/mg-motor.png" },
+  { name: "KFC", src: "/brands/kfc.png" },
+  { name: "Swiggy Instamart", src: "/brands/instamart.png" },
+  { name: "Embassy of Sweden", src: "/brands/embassy-of-sweden.png" },
+  { name: "Max Fashion", src: "/brands/max-fashion.png" },
+  { name: "Allen Solly", src: "/brands/allen-solly.png" },
+  { name: "Sunsilk", src: "/brands/sunsilk.png" },
+  { name: "Epigamia", src: "/brands/epigamia.png" },
+  { name: "Bevzilla", src: "/brands/bevzilla.png" },
+  { name: "SoTrue", src: "/brands/sotrue.png" },
+  { name: "Scitron", src: "/brands/scitron.png" },
+  { name: "Fixderma", src: "/brands/fixderma.png" },
+  { name: "India's Got Latent", src: "/brands/indias-got-latent.png" },
 ] as const;
 
 export type Brand = (typeof brands)[number];

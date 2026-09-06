@@ -1,26 +1,30 @@
 import { MarqueeTrack } from "@/components/marquee-track";
 import { brands } from "@/lib/content";
 
-/* Logos render silhouetted, so they only need to be single-colour art.
-   They come from a placeholder host and have no known intrinsic size —
-   a fixed height with auto width keeps them CLS-free until the client
-   supplies SVGs. */
+/* The client supplied these in colour, so each sits on a light plate: on the
+   #05060A ground the black marks — MG, Converse, Michael Kors, Bevzilla,
+   Allen Solly — would otherwise be invisible. The plate is the one place the
+   brand kit's single-background rule gives way, and it is what the client's
+   own reference site does. */
 function LogoRow({ hidden = false }: { hidden?: boolean }) {
   return (
     <div
       aria-hidden={hidden || undefined}
-      className="flex items-center gap-[clamp(38px,5.4vw,84px)] pr-[clamp(38px,5.4vw,84px)]"
+      className="flex items-center gap-[clamp(12px,1.3vw,20px)] pr-[clamp(12px,1.3vw,20px)]"
     >
       {brands.map((brand) => (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
+        <span
           key={`${brand.name}-${hidden ? "b" : "a"}`}
-          src={brand.src}
-          alt={hidden ? "" : brand.name}
-          height={brand.height}
-          style={{ height: brand.height }}
-          className="w-auto opacity-[0.42] brightness-0 invert"
-        />
+          className="flex h-[clamp(58px,5.6vw,76px)] w-[clamp(132px,12vw,168px)] shrink-0 items-center justify-center rounded-lg bg-ink-900 px-5 transition-transform duration-300 ease-out hover:scale-[1.04]"
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={brand.src}
+            alt={hidden ? "" : brand.name}
+            loading="lazy"
+            className="max-h-[clamp(26px,2.6vw,34px)] w-auto max-w-full object-contain"
+          />
+        </span>
       ))}
     </div>
   );
