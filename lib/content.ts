@@ -500,21 +500,6 @@ const realWork: WorkCard[] = [
   },
   {
     index: "13",
-    category: "Fashion / E-commerce",
-    title: "Vaibhav Arora × AJIO",
-    tagline: "A sale reel worth staying for.",
-    description:
-      "A creator-led film for AJIO's All Stars Sale with Vaibhav Arora, selling the season rather than the discount.",
-    did: ["celebrity", "content", "integration"],
-    resultsLabel: "Impact",
-    image: {
-      src: "/campaigns/vaibhav-ajio.jpg",
-      alt: "Vaibhav Arora for AJIO",
-    },
-    metrics: [{ value: "2M+", label: "Views" }],
-  },
-  {
-    index: "14",
     category: "Beauty",
     title: "Tanvi Malhara × Sunsilk",
     tagline: "Hair that carries the frame.",
@@ -529,7 +514,7 @@ const realWork: WorkCard[] = [
     metrics: [{ value: "220K+", label: "Views" }],
   },
   {
-    index: "15",
+    index: "14",
     category: "Tech",
     title: "Mohit Chettri × Oppo",
     tagline: "A phone, shown in use.",
