@@ -73,7 +73,6 @@ export const brands = [
   { name: "SoTrue", src: "/brands/sotrue.png" },
   { name: "Scitron", src: "/brands/scitron.png" },
   { name: "Fixderma", src: "/brands/fixderma.png" },
-  { name: "India's Got Latent", src: "/brands/indias-got-latent.png" },
 ] as const;
 
 export type Brand = (typeof brands)[number];
@@ -99,6 +98,7 @@ export const press: PressItem[] = [
     outlet: "India Today Gaming",
     headline: "Sweden–India Gaming Day unites nations in a virtual gaming spectacle",
     context: "Embassy of Sweden",
+    preview: { src: "/press/india-today-gaming.jpg" },
     href: "https://www.indiatodaygaming.com/amp/news/national/story/sweden-india-gaming-day-unites-nations-in-a-virtual-gaming-spectacle-3232",
   },
   {
@@ -106,6 +106,7 @@ export const press: PressItem[] = [
     outlet: "Indian Startup Times",
     headline: "Trailblazing founders powering influencer agencies",
     context: "Founder feature",
+    preview: { src: "/press/indian-startup-times.jpg" },
     href: "https://www.indianstartuptimes.com/news/trailblazing-founders-powering-influencer-agencies-2026-edition/",
   },
   {
@@ -113,6 +114,7 @@ export const press: PressItem[] = [
     outlet: "Tata Tele Business Services",
     headline: "Spotlighted in the #RozBanateHainNayaKal campaign",
     context: "MSME Day",
+    preview: { src: "/press/tata-tele.jpg" },
     href: "https://www.linkedin.com/posts/ojamaduji_rozbanatehainnayakal-msmeday-rozbanatehainnayakal-activity-7476900293880737792-0oM1",
   },
   {

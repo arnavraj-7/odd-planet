@@ -1,56 +1,72 @@
-import { LinkPreview } from "@/components/link-preview";
 import { Reveal, RevealGroup } from "@/components/reveal";
 import { press, type PressItem } from "@/lib/content";
 
-const ROW =
-  "group grid grid-cols-[76px_minmax(0,1fr)_auto_34px] items-center gap-[clamp(14px,2.4vw,34px)] border-t border-ink-300 px-[clamp(10px,1.4vw,18px)] py-[clamp(22px,2.8vw,34px)] transition-[background] duration-[250ms] ease-out max-[760px]:grid-cols-[52px_minmax(0,1fr)] max-[760px]:items-start max-[760px]:gap-y-2.5";
+const CARD =
+  "group flex h-full flex-col overflow-hidden rounded-lg border border-ink-300 transition-[border-color,transform] duration-[320ms] ease-out hover:border-blue-500";
 
-function RowBody({ item }: { item: PressItem }) {
+function Media({ item }: { item: PressItem }) {
   return (
-    <>
-      <span className="font-mono text-[11px] leading-none font-medium tracking-[0.1em] text-ink-550">
+    <div className="relative h-[clamp(150px,13vw,190px)] shrink-0 overflow-hidden border-b border-ink-300 bg-ink-100">
+      {item.preview ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={item.preview.src}
+          alt=""
+          loading="lazy"
+          className="block size-full object-cover object-top transition-transform duration-[600ms] ease-brand group-hover:scale-[1.055]"
+        />
+      ) : (
+        <div className="flex size-full items-center justify-center">
+          <span className="font-mono text-[10px] font-medium tracking-[0.18em] uppercase text-ink-500">
+            {item.outlet}
+          </span>
+        </div>
+      )}
+      <span className="absolute top-3.5 left-3.5 rounded-full bg-[rgba(5,6,10,0.66)] px-2.5 py-[7px] font-mono text-[10px] leading-none font-medium tracking-[0.14em] uppercase text-blue-100 backdrop-blur-[6px]">
         {item.year}
       </span>
+    </div>
+  );
+}
 
-      <span>
-        <span className="mb-3 block font-mono text-[11px] leading-none font-medium tracking-[0.14em] uppercase text-blue-400">
-          {item.outlet}
-        </span>
-        <span className="block font-grotesk text-press leading-[1.3] font-semibold tracking-[-0.02em] text-ink-900 [text-wrap:pretty]">
-          {item.headline}
-        </span>
-      </span>
+function Body({ item }: { item: PressItem }) {
+  return (
+    <div className="flex flex-1 flex-col gap-3.5 p-[clamp(16px,1.6vw,22px)]">
+      <div className="font-mono text-[10px] leading-none font-medium tracking-[0.14em] uppercase text-blue-400">
+        {item.outlet}
+      </div>
+
+      <h3 className="m-0 font-grotesk text-[clamp(15px,1.25vw,18px)] leading-[1.35] font-semibold tracking-[-0.01em] text-ink-900 [text-wrap:pretty]">
+        {item.headline}
+      </h3>
 
       {item.stats ? (
-        <span className="flex gap-[22px] font-grotesk whitespace-nowrap max-[760px]:col-start-2">
+        <div className="mt-auto flex gap-5 pt-1">
           {item.stats.map((stat) => (
             <span key={stat.label}>
-              <span className="block text-xl leading-none font-extrabold tracking-[-0.03em] text-ink-900">
+              <span className="block font-grotesk text-lg leading-none font-extrabold tracking-[-0.03em] text-ink-900">
                 {stat.value}
               </span>
-              <span className="mt-2 block font-mono text-[10px] leading-none font-medium tracking-[0.12em] uppercase text-ink-600">
+              <span className="mt-1.5 block font-mono text-[10px] leading-none font-medium tracking-[0.12em] uppercase text-ink-600">
                 {stat.label}
               </span>
             </span>
           ))}
-        </span>
+        </div>
       ) : (
-        <span className="font-mono text-[11px] leading-none font-medium tracking-[0.1em] whitespace-nowrap uppercase text-ink-600 max-[760px]:col-start-2">
-          {item.context}
-        </span>
+        <div className="mt-auto flex items-center justify-between gap-3 border-t border-ink-300 pt-3.5">
+          <span className="font-mono text-[10px] leading-none font-medium tracking-[0.12em] uppercase text-ink-600">
+            {item.context}
+          </span>
+          <span
+            aria-hidden="true"
+            className="font-grotesk text-base leading-none text-ink-550 transition-[transform,color] duration-[250ms] ease-out group-hover:translate-x-[5px] group-hover:text-blue-400"
+          >
+            →
+          </span>
+        </div>
       )}
-
-      {item.href ? (
-        <span
-          aria-hidden="true"
-          className="justify-self-end font-grotesk text-xl leading-none text-ink-550 transition-[transform,color] duration-[250ms] ease-out group-hover:translate-x-[7px] group-hover:text-blue-400 max-[760px]:hidden"
-        >
-          →
-        </span>
-      ) : (
-        <span className="max-[760px]:hidden" />
-      )}
-    </>
+    </div>
   );
 }
 
@@ -70,34 +86,29 @@ export function MediaCoverage() {
         </div>
       </Reveal>
 
-      <LinkPreview>
-        <RevealGroup>
-          {press.map((item, i) =>
+      {/* Laid out across rather than stacked — four cards, each carrying its
+          own artwork instead of a hover-up preview. */}
+      <RevealGroup className="grid grid-cols-4 items-stretch gap-[clamp(12px,1.4vw,20px)] max-[1100px]:grid-cols-2 max-[640px]:grid-cols-1">
+        {press.map((item) =>
           item.href ? (
             <a
               key={item.headline}
               href={item.href}
               target="_blank"
               rel="noopener"
-              data-preview-label={item.outlet}
-              data-preview-src={item.preview?.src}
-              className={`${ROW} text-ink-900 hover:bg-ink-100 hover:text-ink-900 ${
-                i === press.length - 1 ? "border-b" : ""
-              }`}
+              className={`${CARD} text-ink-900 hover:text-ink-900`}
             >
-              <RowBody item={item} />
+              <Media item={item} />
+              <Body item={item} />
             </a>
           ) : (
-            <div
-              key={item.headline}
-              className={`${ROW} ${i === press.length - 1 ? "border-b" : ""}`}
-            >
-              <RowBody item={item} />
+            <div key={item.headline} className={CARD}>
+              <Media item={item} />
+              <Body item={item} />
             </div>
-            ),
-          )}
-        </RevealGroup>
-      </LinkPreview>
+          ),
+        )}
+      </RevealGroup>
     </section>
   );
 }

@@ -13,8 +13,6 @@ const MAX_WAIT = 3000;
 const FLY_MS = 760;
 const OPEN_MS = 900;
 
-const SEEN_KEY = "op-intro-seen";
-
 type Phase = "hold" | "fly" | "open" | "done";
 
 /**
@@ -22,8 +20,8 @@ type Phase = "hold" | "fly" | "open" | "done";
  * settle, flies into its place in the header, then the curtain parts.
  *
  * The overlay ships in the server HTML so there is no flash of the page
- * underneath it, and CSS hides it outright when scripting is off. It runs once
- * per session, and reduced motion skips straight past it.
+ * underneath it, and CSS hides it outright when scripting is off. It plays on
+ * every load; reduced motion skips straight past it.
  */
 export function IntroCurtain() {
   const [phase, setPhase] = useState<Phase>("hold");
@@ -33,24 +31,12 @@ export function IntroCurtain() {
     setPhase("done");
     document.documentElement.removeAttribute("data-intro");
     document.body.style.overflow = "";
-    try {
-      sessionStorage.setItem(SEEN_KEY, "1");
-    } catch {
-      /* private mode — the intro simply runs again */
-    }
   }, []);
 
-  // Skip before first paint for a repeat visit or reduced motion, so neither
-  // ever sees a frame of the overlay.
+  // Skipped before first paint under reduced motion, so it never sees a frame
+  // of the overlay.
   useLayoutEffect(() => {
-    let seen = false;
-    try {
-      seen = sessionStorage.getItem(SEEN_KEY) === "1";
-    } catch {
-      /* ignore */
-    }
-
-    if (seen || prefersReducedMotion()) {
+    if (prefersReducedMotion()) {
       finish();
       return;
     }
