@@ -153,6 +153,19 @@
     scroll-margin-top: calc(var(--op-header) + 12px);
   }
 
+  /* The intro owns the mark until it lands, so the header does not show a
+     second copy mid-flight. */
+  html[data-intro="running"] [data-logo-target] {
+    opacity: 0;
+  }
+
+  /* No JS, no overlay — the page must never be left behind a curtain. */
+  @media (scripting: none) {
+    [data-intro-overlay] {
+      display: none !important;
+    }
+  }
+
   html,
   body {
     margin: 0;

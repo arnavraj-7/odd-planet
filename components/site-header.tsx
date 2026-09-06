@@ -52,6 +52,7 @@ export function SiteHeader() {
           className="group flex shrink-0 items-center gap-3"
         >
           <Image
+            data-logo-target
             src="/odd-planet-mark.png"
             alt="Odd Planet"
             width={48}

@@ -3,6 +3,7 @@ import { Contact } from "@/components/contact";
 import { CreatorCoverflow } from "@/components/creator-coverflow";
 import { ErrorBoundary } from "@/components/error-boundary";
 import { Hero } from "@/components/hero";
+import { IntroCurtain } from "@/components/intro-curtain";
 import { MediaCoverage } from "@/components/media-coverage";
 import { Services } from "@/components/services";
 import { SiteFooter } from "@/components/site-footer";
@@ -17,6 +18,7 @@ import { WorkPinned } from "@/components/work-pinned";
 export default function Home() {
   return (
     <>
+      <IntroCurtain />
       <SiteHeader />
       <main>
         <Hero />
