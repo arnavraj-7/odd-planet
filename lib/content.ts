@@ -306,60 +306,62 @@ export type Creator = {
 
 const realCreators: Creator[] = [
   {
-    name: "Siddharth Nigam",
-    role: "Actor & creator",
-    brands: "Domino's · Max Fashion",
-    socials: [], // TODO: profile URLs from the client
-    image: `${IMG}/pdf_extracted/page6_img3.jpeg`,
+    name: "Tisca Chopra",
+    role: "Actor / Creator",
+    brands: "SoTrue",
+    socials: [],
+    image: `${IMG}/reels_showcase/tisca_creator.jpg`,
   },
   {
     name: "Priyank Sharma",
-    role: "Actor & creator",
+    role: "Actor / Creator",
     brands: "Allen Solly",
-    socials: [], // TODO: profile URLs from the client
+    socials: [],
     image: `${IMG}/reels_showcase/priyank_creator.jpg`,
   },
   {
     name: "Vaibhav Arora",
-    role: "Artist & creator",
+    role: "Artist / Creator",
     brands: "Michael Kors · AJIO",
-    socials: [], // TODO: profile URLs from the client
+    socials: [],
     image: `${IMG}/reels_showcase/vaibhav_creator.jpg`,
   },
   {
-    name: "Tanvi Malhara",
-    role: "Fashion & dance",
-    brands: "POND'S · Sunsilk",
-    socials: [], // TODO: profile URLs from the client
-    image: `${IMG}/pdf_extracted/page10_img1.jpeg`,
-  },
-  {
-    name: "Tisca Chopra",
-    role: "Actor & creator",
-    brands: "SoTrue",
-    socials: [], // TODO: profile URLs from the client
-    image: `${IMG}/reels_showcase/tisca_creator.jpg`,
-  },
-  {
     name: "Mohit Chhetri",
-    role: "Lifestyle creator",
+    role: "Creator",
     brands: "Flipkart · OPPO",
-    socials: [], // TODO: profile URLs from the client
+    socials: [],
     image: `${IMG}/reels_showcase/mohit_creator.jpg`,
   },
   {
+    name: "Siddharth Nigam",
+    role: "Actor / Creator",
+    brands: "Domino's · Max Fashion",
+    socials: [],
+    image: `${IMG}/pdf_extracted/page6_img3.jpeg`,
+  },
+  {
+    name: "Tanvi Malhara",
+    role: "Fashion / Dancer",
+    brands: "POND'S · Sunsilk",
+    socials: [],
+    image: `${IMG}/pdf_extracted/page10_img1.jpeg`,
+  },
+  {
     name: "Karun & Nanku",
-    role: "Music artists",
+    role: "Music / Artists",
     brands: "Converse",
-    socials: [], // TODO: profile URLs from the client
+    socials: [],
     image: `${IMG}/pdf_extracted/page9_img1.jpeg`,
   },
   {
     name: "Ishita Arora",
-    role: "Food & lifestyle",
+    role: "Creator",
     brands: "Epigamia · Instamart",
-    socials: [], // TODO: profile URLs from the client
-    image: `${IMG}/pdf_extracted/page11_img1.jpeg`,
+    socials: [],
+    // The reference site uses page11_img1.jpeg here, but that file is an
+    // Epigamia product shot, not a portrait. Left unset so the card draws its
+    // plate until a real photo arrives.
   },
 ];
 
@@ -371,11 +373,12 @@ const realCreators: Creator[] = [
  * geometry match the real thing so the layout reads true; no campaign
  * data and no unlicensed photography is shown.
  *
- * Once the design is approved and the client supplies assets, flip
- * USE_REAL_CONTENT to true.
+ * Creators now carry the real roster and photography. Work stays on
+ * placeholders until the client signs off — flip USE_REAL_WORK to true.
  * ------------------------------------------------------------------ */
 
-export const USE_REAL_CONTENT = false;
+export const USE_REAL_WORK = false;
+export const USE_REAL_CREATORS = true;
 
 const placeholderWork: WorkCard[] = Array.from({ length: 7 }, (_, i) => ({
   index: String(i + 1).padStart(2, "0"),
@@ -395,9 +398,9 @@ const placeholderCreators: Creator[] = Array.from({ length: 8 }, (_, i) => ({
   socials: [{ label: "Instagram" }, { label: "YouTube" }],
 }));
 
-export const work: WorkCard[] = USE_REAL_CONTENT ? realWork : placeholderWork;
+export const work: WorkCard[] = USE_REAL_WORK ? realWork : placeholderWork;
 
-export const creators: Creator[] = USE_REAL_CONTENT
+export const creators: Creator[] = USE_REAL_CREATORS
   ? realCreators
   : placeholderCreators;
 
@@ -407,7 +410,7 @@ export const founder = {
   image: `${IMG}/team/oja.jpg`,
   // Icons render only for the URLs that exist. Instagram appears the moment
   // the client sends the handle.
-  instagram: "",
+  instagram: "https://www.instagram.com/ojamaduji/",
   linkedin: site.founderLinkedin,
 } as const;
 

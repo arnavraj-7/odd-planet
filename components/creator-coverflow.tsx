@@ -267,13 +267,18 @@ export function CreatorCoverflow() {
 
           <div className="mx-auto mt-[22px] w-full max-w-[340px] font-mono text-[11px] leading-none font-medium tracking-[0.06em]">
             {current.brands ? (
-              <div className="op-metric-row py-[11px]">
+              <div
+                className={`op-metric-row py-[11px] ${
+                  current.socials.length ? "" : "border-b border-ink-300"
+                }`}
+              >
                 <span>BRANDS</span>
                 <span>{current.brands}</span>
               </div>
             ) : null}
             {/* Profiles, not follower counts — the platform shows the live
                 figure, and nothing on the page goes stale. */}
+            {current.socials.length ? (
             <div className="op-metric-row border-b border-ink-300 py-[11px]">
               <span>PROFILES</span>
               <span className="flex gap-3.5">
@@ -296,6 +301,7 @@ export function CreatorCoverflow() {
                 )}
               </span>
             </div>
+            ) : null}
           </div>
         </div>
 
