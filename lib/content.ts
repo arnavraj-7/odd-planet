@@ -595,36 +595,43 @@ const realCreators: Creator[] = [
     name: "Abhishek Kumar",
     role: "Talent partnership",
     socials: [{ label: "Instagram", href: ig("aebyborntoshine") }],
+    image: "/creators/abhishek-kumar.jpg",
   },
   {
     name: "Samarth Jurel",
     role: "Talent partnership",
     socials: [{ label: "Instagram", href: ig("samarthjurel") }],
+    image: "/creators/samarth-jurel.jpg",
   },
   {
     name: "Prince Narula",
     role: "Talent partnership",
     socials: [{ label: "Instagram", href: ig("princenarula") }],
+    image: "/creators/prince-narula.jpg",
   },
   {
     name: "Yuvika Chaudhary",
     role: "Talent partnership",
     socials: [{ label: "Instagram", href: ig("yuvikachaudhary") }],
+    image: "/creators/yuvika-chaudhary.jpg",
   },
   {
     name: "Sanjay Dutt",
     role: "Talent partnership",
     socials: [],
+    image: "/creators/sanjay-dutt.jpg",
   },
   {
     name: "Sonu Sood",
     role: "Talent partnership",
     socials: [],
+    image: "/creators/sonu-sood.jpg",
   },
   {
     name: "Bella",
     role: "Talent partnership",
     socials: [],
+    image: "/creators/bella.jpg",
   },
   {
     name: "Bali",
