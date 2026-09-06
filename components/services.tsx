@@ -27,7 +27,7 @@ export function Services() {
           <article
             key={service.index}
             tabIndex={0}
-            className="group relative isolate flex aspect-[3/4] flex-col justify-end overflow-hidden rounded-lg border border-ink-300 outline-none transition-[transform,border-color] duration-[420ms] ease-brand hover:z-10 hover:scale-[1.035] hover:border-blue-500 focus-visible:z-10 focus-visible:scale-[1.035] focus-visible:border-blue-500 max-[560px]:aspect-[4/3]"
+            className="group relative isolate flex aspect-[3/4] flex-col justify-end overflow-hidden rounded-lg border border-ink-300 outline-none transition-[transform,border-color] duration-[420ms] ease-brand hover:z-10 hover:scale-[1.035] hover:border-blue-500 focus-visible:z-10 focus-visible:scale-[1.035] focus-visible:border-blue-500 max-[560px]:aspect-auto max-[560px]:min-h-[260px]"
           >
             {/* Artwork layer — blurs back on hover so the copy can sit on it */}
             <div
@@ -70,7 +70,10 @@ export function Services() {
                 {service.name}
               </h3>
 
-              <div className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-[460ms] ease-brand group-hover:grid-rows-[1fr] group-focus-visible:grid-rows-[1fr]">
+              {/* Open by default, and only collapsed where a pointer can
+                  actually reveal them again — a touch device never fires
+                  hover, so gating these on it hid the whole card's content. */}
+              <div className="grid grid-rows-[1fr] transition-[grid-template-rows] duration-[460ms] ease-brand [@media(hover:hover)]:grid-rows-[0fr] [@media(hover:hover)]:group-hover:grid-rows-[1fr] [@media(hover:hover)]:group-focus-visible:grid-rows-[1fr]">
                 <div className="overflow-hidden">
                   <ul className="mt-3.5 mb-0 flex list-none flex-col gap-2 p-0">
                     {service.bullets.map((bullet) => (
