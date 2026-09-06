@@ -110,7 +110,7 @@ export function WorkCard({ card }: { card: WorkCardData }) {
           {card.tagline}
         </p>
 
-        <p className="mt-3 mb-0 line-clamp-2 font-grotesk text-[12.5px] leading-[1.5] text-ink-600 [text-wrap:pretty]">
+        <p className="mt-3 mb-0 line-clamp-2 min-h-[38px] font-grotesk text-[12.5px] leading-[1.5] text-ink-600 [text-wrap:pretty]">
           {card.description}
         </p>
 
@@ -129,7 +129,7 @@ export function WorkCard({ card }: { card: WorkCardData }) {
                     <span className="flex size-8 items-center justify-center rounded-lg bg-ink-100 text-ink-900">
                       <Icon size={16} strokeWidth={1.7} aria-hidden="true" />
                     </span>
-                    <span className="text-center font-grotesk text-[10.5px] leading-[1.25] text-ink-600">
+                    <span className="min-h-[26px] text-center font-grotesk text-[10.5px] leading-[1.25] text-ink-600">
                       {disciplineLabels[key]}
                     </span>
                   </li>
@@ -141,7 +141,7 @@ export function WorkCard({ card }: { card: WorkCardData }) {
 
         {card.metrics.length ? (
           <>
-            <div className="mt-auto border-t border-ink-300 pt-[clamp(13px,1.5vw,18px)] font-mono text-[10px] leading-none font-medium tracking-[0.16em] uppercase text-ink-550">
+            <div className="mt-[clamp(16px,1.8vw,22px)] border-t border-ink-300 pt-[clamp(13px,1.5vw,18px)] font-mono text-[10px] leading-none font-medium tracking-[0.16em] uppercase text-ink-550">
               {card.resultsLabel ?? "Results"}
             </div>
 

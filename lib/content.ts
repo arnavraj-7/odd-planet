@@ -735,7 +735,7 @@ export type HeroTile = {
 export const heroTiles: [HeroTile[], HeroTile[]] = [
   [
     { ratio: "9 / 16", label: "Ministry of Textiles", src: "/hero/textiles-handloom.jpg" },
-    { ratio: "1645 / 1000", label: "Fixderma", src: "/hero/fixderma.jpg" },
+    { ratio: "16 / 9", label: "Fixderma", src: "/campaigns/fixderma-msjp.jpg" },
     { ratio: "9 / 16", label: "Sotrue", src: "/hero/sotrue.jpg" },
     { ratio: "17 / 10", label: "Starbucks", src: "/hero/starbucks.jpg" },
   ],
