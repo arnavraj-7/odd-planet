@@ -315,7 +315,8 @@ const yt = (handle: string) => `https://www.youtube.com/@${handle}`;
  * Display names follow whichever of the sheet's NAME / SCREEN NAME columns the
  * Instagram handle actually matches — the two columns disagree on some rows.
  * Follower counts are in the sheet but deliberately not rendered; the profile
- * links carry the live figure instead.
+ * links carry the live figure instead. Portraits are the sheet's own cell
+ * images, cropped to 3:4 and served from /public/creators.
  */
 const realCreators: Creator[] = [
   {
@@ -327,6 +328,7 @@ const realCreators: Creator[] = [
       { label: "Instagram", href: ig("afaikyouknow") },
       { label: "YouTube", href: yt("AFAIKYouKnow") },
     ],
+    image: "/creators/afaik.jpg",
   },
   {
     name: "Pho",
@@ -334,6 +336,7 @@ const realCreators: Creator[] = [
     city: "Delhi",
     language: "Hindi / English",
     socials: [{ label: "Instagram", href: ig("phomusic") }],
+    image: "/creators/pho.jpg",
   },
   {
     name: "Asmita Arora",
@@ -344,6 +347,7 @@ const realCreators: Creator[] = [
       { label: "Instagram", href: ig("Asmitarora") },
       { label: "YouTube", href: yt("Asmitarora") },
     ],
+    image: "/creators/asmita-arora.jpg",
   },
   {
     name: "Himanshi Sharma",
@@ -351,6 +355,7 @@ const realCreators: Creator[] = [
     city: "Mumbai / Delhi",
     language: "Hindi / English",
     socials: [{ label: "Instagram", href: ig("Himanshii21") }],
+    image: "/creators/himanshi-sharma.jpg",
   },
   {
     name: "Ishita Arora",
@@ -358,6 +363,7 @@ const realCreators: Creator[] = [
     city: "Delhi / Bangalore",
     language: "Hindi / English",
     socials: [{ label: "Instagram", href: ig("ishitaaroraaa") }],
+    image: "/creators/ishita-arora.jpg",
   },
   {
     name: "Kartik Vishal",
@@ -368,6 +374,7 @@ const realCreators: Creator[] = [
       { label: "Instagram", href: ig("kartikcz") },
       { label: "YouTube", href: yt("kartikcustomz") },
     ],
+    image: "/creators/kartik-vishal.jpg",
   },
   {
     name: "Karun",
@@ -378,6 +385,7 @@ const realCreators: Creator[] = [
       { label: "Instagram", href: ig("beingkarun") },
       { label: "YouTube", href: yt("beingkarun") },
     ],
+    image: "/creators/karun.jpg",
   },
 ];
 
