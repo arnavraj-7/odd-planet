@@ -276,8 +276,9 @@ export type WorkCard = {
    * Omitted on placeholder cards — the card then draws a hairline plate.
    * `fit: "contain"` shows the whole frame over a blurred copy of itself, for
    * artwork a landscape crop would destroy (a full-bleed portrait poster).
+   * `fit: "logo"` sits a mark on the plate with breathing room, no blur.
    */
-  image?: { src: string; alt: string; fit?: "cover" | "contain" };
+  image?: { src: string; alt: string; fit?: "cover" | "contain" | "logo" };
   /** Logo cards render the image contained on a hairline plate instead of a cover crop. */
   variant?: "cover" | "logo";
   metrics: WorkMetric[];
@@ -400,9 +401,9 @@ const realWork: WorkCard[] = [
       "National handloom and heritage storytelling for the Textiles Committee, delivered as creator-led reels built for reach.",
     did: ["content", "creator", "amplification"],
     image: {
-      src: "/hero/textiles-handloom.jpg",
-      alt: "Textiles Committee handloom campaign creative",
-      fit: "contain",
+      src: "/campaigns/textiles-logo.png",
+      alt: "DCHL and Ministry of Textiles",
+      fit: "logo",
     },
     metrics: [
       { label: "Reel 01", value: "423K+", href: "https://www.instagram.com/reel/DMuuOv1NrXv/" },
@@ -589,11 +590,13 @@ const realCreators: Creator[] = [
     name: "Tejasswi Prakash",
     role: "Talent partnership",
     socials: [{ label: "Instagram", href: ig("tejasswiprakash") }],
+    image: "/creators/tejasswi-prakash.jpg",
   },
   {
     name: "Aly Goni",
     role: "Talent partnership",
     socials: [{ label: "Instagram", href: ig("alygoni") }],
+    image: "/creators/aly-goni.jpg",
   },
   {
     name: "Jasmin Bhasin",

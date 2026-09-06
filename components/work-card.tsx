@@ -58,7 +58,15 @@ export function WorkCard({ card }: { card: WorkCardData }) {
       */}
       <div className="relative aspect-[16/9] shrink-0 overflow-hidden bg-ink-100">
         {card.image ? (
-          card.image.fit === "contain" ? (
+          card.image.fit === "logo" ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={card.image.src}
+              alt={card.image.alt}
+              loading="lazy"
+              className="block size-full object-contain p-[clamp(26px,3.4vw,46px)] transition-transform duration-[600ms] ease-brand group-hover:scale-[1.04]"
+            />
+          ) : card.image.fit === "contain" ? (
             <>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
