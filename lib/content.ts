@@ -415,9 +415,8 @@ const realWork: WorkCard[] = [
       fit: "logo",
     },
     metrics: [
-      { label: "Reel 01", value: "423K+", href: "https://www.instagram.com/reel/DMuuOv1NrXv/" },
-      { label: "Reel 02", value: "181K+", href: "https://www.instagram.com/reel/DM0BeCQt7H2/" },
-      { label: "Reel 03", value: "309K+", href: "https://www.instagram.com/reel/DMpJRfZJ8hr/" },
+      { label: "Pieces", value: "3+" },
+      { label: "Views", value: "1M+" },
     ],
   },
   {
@@ -432,7 +431,7 @@ const realWork: WorkCard[] = [
     resultsLabel: "The impact",
     metrics: [
       { value: "2", label: "Signature Films", note: "Capturing the store experience" },
-      { value: "195K+", label: "Total Organic Views", note: "Across both videos" },
+      { value: "200K+", label: "Total Organic Views", note: "Across both videos" },
     ],
   },
   {
@@ -467,7 +466,7 @@ const realWork: WorkCard[] = [
       src: "/campaigns/vaibhav-michael-kors.jpg",
       alt: "Vaibhav Arora for Michael Kors",
     },
-    metrics: [{ value: "710K+", label: "Views" }],
+    metrics: [{ value: "700K+", label: "Views" }],
   },
   {
     index: "11",

@@ -5,7 +5,7 @@ import { Reveal, RevealGroup } from "@/components/reveal";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { StatBand } from "@/components/stat-band";
-import { founder, site, testimonials } from "@/lib/content";
+import { founder, testimonials } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "About — Odd Planet",
@@ -41,22 +41,19 @@ export default function About() {
               className="m-0 font-grotesk text-[clamp(16px,1.5vw,20px)] leading-[1.55] text-ink-900 [text-wrap:pretty]"
             >
               Odd Planet is an influencer, content and amplification partner
-              based in New Delhi, founded in {site.founded}.
+              based in New Delhi, built for brands that want to be impossible
+              to ignore.
             </Reveal>
 
             <Reveal className="flex flex-col gap-4 font-grotesk text-[15px] leading-[1.65] text-ink-600 [text-wrap:pretty]">
               <p className="m-0">
-                We work with brands and government organisations across
-                influencer marketing, celebrity endorsements, content
-                production, digital campaigns and quick commerce — as
-                standalone engagements or as one integrated programme under a
-                single team.
+                From creators and celebrities to content, digital campaigns and
+                culture-led ideas, we bring the right people, platforms and
+                execution together under one team.
               </p>
               <p className="m-0">
-                The work runs from national handloom storytelling for the
-                Textiles Committee to a staged street movement for a men&apos;s
-                skincare launch. Different briefs, one question underneath:
-                what will people actually stop for?
+                Because attention is only valuable when it moves people — and
+                keeps moving.
               </p>
             </Reveal>
           </div>

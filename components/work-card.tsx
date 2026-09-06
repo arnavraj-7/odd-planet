@@ -52,6 +52,8 @@ const ICONS: Record<WorkDiscipline, LucideIcon> = {
 };
 
 export function WorkCard({ card }: { card: WorkCardData }) {
+  const single = card.metrics.length === 1;
+
   return (
     <article
       data-work-card
@@ -168,7 +170,12 @@ export function WorkCard({ card }: { card: WorkCardData }) {
 
         {card.metrics.length ? (
           <>
-            <div className="mt-[clamp(16px,1.8vw,22px)] border-t border-ink-300 pt-[clamp(13px,1.5vw,18px)] font-mono text-[10px] leading-none font-medium tracking-[0.16em] uppercase text-ink-550">
+            {/* A lone figure has no column to sit against, so it centres. */}
+            <div
+              className={`mt-[clamp(16px,1.8vw,22px)] border-t border-ink-300 pt-[clamp(13px,1.5vw,18px)] font-mono text-[10px] leading-none font-medium tracking-[0.16em] uppercase text-ink-550 ${
+                single ? "text-center" : ""
+              }`}
+            >
               {card.resultsLabel ?? "Results"}
             </div>
 
@@ -176,7 +183,9 @@ export function WorkCard({ card }: { card: WorkCardData }) {
               className={`mt-3 ${
                 card.metrics.length > 2
                   ? "grid grid-cols-2 gap-x-3 gap-y-3.5"
-                  : "flex items-stretch gap-3"
+                  : single
+                    ? "flex justify-center text-center"
+                    : "flex items-stretch gap-3"
               }`}
             >
               {card.metrics.map((metric, i) => {
@@ -214,7 +223,9 @@ export function WorkCard({ card }: { card: WorkCardData }) {
                         ? i % 2 === 1
                           ? "border-l border-ink-300 pl-3"
                           : ""
-                        : `flex-1 ${i > 0 ? "border-l border-ink-300 pl-3" : ""}`
+                        : single
+                          ? ""
+                          : `flex-1 ${i > 0 ? "border-l border-ink-300 pl-3" : ""}`
                     }`}
                   >
                     {metric.href ? (
