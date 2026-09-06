@@ -9,10 +9,17 @@ import { founder, site } from "@/lib/content";
 const CONTACT_MASK =
   "radial-gradient(56% 44% at 26% 46%, #000 0%, rgba(0,0,0,0.34) 40%, rgba(0,0,0,0) 66%)";
 
-const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-
-type Status = "idle" | "submitting" | "success" | "error";
-type Errors = Partial<Record<"name" | "email" | "message", string>>;
+/**
+ * Briefs arrive by email rather than through a form — the button hands the
+ * visitor's own mail client (Gmail, Outlook, Mail) a pre-addressed draft.
+ * The old form, its API route and the Sheets plumbing are still in the repo,
+ * unused, if it is ever wanted back.
+ */
+const MAIL_HREF = `mailto:${site.email}?subject=${encodeURIComponent(
+  "New brief for Odd Planet",
+)}&body=${encodeURIComponent(
+  "Hi Odd Planet,\n\nBrand:\nCategory:\nObjective:\nTimeline:\nBudget range:\n\n",
+)}`;
 
 function InstagramIcon() {
   return (
@@ -41,6 +48,24 @@ function LinkedInIcon() {
   );
 }
 
+function MailIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      className="size-[18px]"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.7"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect x="2.5" y="4.5" width="19" height="15" rx="2.5" />
+      <path d="m3.5 6.5 8.5 6 8.5-6" />
+    </svg>
+  );
+}
+
 function Clock() {
   const [time, setTime] = useState("--:--:--");
 
@@ -61,62 +86,7 @@ function Clock() {
   return <span suppressHydrationWarning>{time}</span>;
 }
 
-function validate(values: { name: string; email: string; message: string }): Errors {
-  const errors: Errors = {};
-  if (values.name.trim().length < 2) errors.name = "Please tell us your name.";
-  if (!EMAIL.test(values.email.trim()))
-    errors.email = "Enter a valid email address.";
-  if (values.message.trim().length < 20)
-    errors.message = "A little more detail helps — 20 characters minimum.";
-  return errors;
-}
-
 export function Contact() {
-  const [values, setValues] = useState({ name: "", email: "", message: "" });
-  const [errors, setErrors] = useState<Errors>({});
-  const [status, setStatus] = useState<Status>("idle");
-
-  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    const found = validate(values);
-    setErrors(found);
-    if (Object.keys(found).length) return;
-
-    // Honeypot: a real person never fills this.
-    const trap = new FormData(event.currentTarget).get("company");
-    if (typeof trap === "string" && trap.length) {
-      setStatus("success");
-      return;
-    }
-
-    setStatus("submitting");
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
-      });
-      if (!res.ok) throw new Error(String(res.status));
-      setStatus("success");
-      setValues({ name: "", email: "", message: "" });
-    } catch {
-      setStatus("error");
-    }
-  };
-
-  const field = (key: keyof typeof values) => ({
-    value: values[key],
-    onChange: (
-      e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-    ) => {
-      setValues((v) => ({ ...v, [key]: e.target.value }));
-      if (errors[key]) setErrors((prev) => ({ ...prev, [key]: undefined }));
-    },
-    "aria-invalid": errors[key] ? ("true" as const) : undefined,
-    "aria-describedby": errors[key] ? `${key}-error` : undefined,
-  });
-
   return (
     <section
       id="contact"
@@ -144,7 +114,7 @@ export function Contact() {
           </p>
 
           <div className="flex flex-col gap-3.5 font-mono text-xs leading-none font-medium tracking-[0.06em]">
-            <a href={`mailto:${site.email}`} className="text-ink-900">
+            <a href={MAIL_HREF} className="text-ink-900">
               {site.email}
             </a>
             <span className="text-ink-550">
@@ -186,7 +156,7 @@ export function Contact() {
                     target="_blank"
                     rel="noopener"
                     aria-label={`${founder.name} on LinkedIn`}
-                    className="flex size-8 items-center justify-center rounded-full border border-ink-400 text-ink-600 transition-[color,border-color,background] duration-200 ease-out hover:border-blue-500 hover:bg-ink-150 hover:text-blue-200"
+                    className="flex size-8 items-center justify-center rounded-full border border-ink-400 text-ink-600 transition-[color,border-color,background] duration-200 ease-out hover:border-blue-500 hover:text-blue-200 hover:bg-ink-150"
                   >
                     <LinkedInIcon />
                   </a>
@@ -197,116 +167,27 @@ export function Contact() {
         </Reveal>
 
         <Reveal className="w-full">
-          <form
-            onSubmit={onSubmit}
-            noValidate
-            className="flex flex-col gap-[18px] rounded-[14px] border border-ink-400 bg-[rgba(10,12,21,0.72)] p-[clamp(22px,3vw,38px)] backdrop-blur-[10px]"
-          >
-          <label className="flex flex-col gap-2.5">
-            <span className="font-mono text-[10px] leading-none font-medium tracking-[0.14em] uppercase text-ink-600">
-              Name
-            </span>
-            <input
-              type="text"
-              name="name"
-              placeholder="Your name"
-              required
-              className="op-input"
-              {...field("name")}
-            />
-            {errors.name ? (
-              <span
-                id="name-error"
-                className="font-mono text-[10px] tracking-[0.1em] uppercase text-[#ff9b9b]"
-              >
-                {errors.name}
-              </span>
-            ) : null}
-          </label>
-
-          <label className="flex flex-col gap-2.5">
-            <span className="font-mono text-[10px] leading-none font-medium tracking-[0.14em] uppercase text-ink-600">
-              Email
-            </span>
-            <input
-              type="email"
-              name="email"
-              placeholder="you@company.com"
-              required
-              className="op-input"
-              {...field("email")}
-            />
-            {errors.email ? (
-              <span
-                id="email-error"
-                className="font-mono text-[10px] tracking-[0.1em] uppercase text-[#ff9b9b]"
-              >
-                {errors.email}
-              </span>
-            ) : null}
-          </label>
-
-          <label className="flex flex-col gap-2.5">
-            <span className="font-mono text-[10px] leading-none font-medium tracking-[0.14em] uppercase text-ink-600">
-              Brief
-            </span>
-            <textarea
-              name="message"
-              rows={4}
-              placeholder="Category, objective, timeline and budget range."
-              required
-              className="op-input"
-              {...field("message")}
-            />
-            {errors.message ? (
-              <span
-                id="message-error"
-                className="font-mono text-[10px] tracking-[0.1em] uppercase text-[#ff9b9b]"
-              >
-                {errors.message}
-              </span>
-            ) : null}
-          </label>
-
-          {/* Honeypot — visually and semantically out of the way. */}
-          <input
-            type="text"
-            name="company"
-            tabIndex={-1}
-            autoComplete="off"
-            aria-hidden="true"
-            className="absolute -left-[9999px] size-px opacity-0"
-          />
-
-          <button
-            type="submit"
-            disabled={status === "submitting"}
-            className="op-btn w-full px-6 py-[18px] text-[15px]"
-          >
-            {status === "submitting"
-              ? "Sending…"
-              : status === "success"
-                ? "Brief received ✓"
-                : "Send brief"}
-          </button>
-
-          <div
-            aria-live="polite"
-            className={`text-center font-mono text-[10px] leading-[1.6] font-medium tracking-[0.1em] uppercase ${
-              status === "success"
-                ? "text-blue-200"
-                : status === "error"
-                  ? "text-[#ff9b9b]"
-                  : "text-ink-550"
-            }`}
-          >
-            {status === "success"
-              ? "Thanks — your brief is with us"
-              : status === "error"
-                ? `Something went wrong — email us at ${site.email}`
-                : ""}
+          <div className="flex flex-col rounded-[14px] border border-ink-400 bg-[rgba(10,12,21,0.72)] p-[clamp(26px,3.4vw,44px)] backdrop-blur-[10px]">
+            <div className="font-mono text-[10px] leading-none font-medium tracking-[0.14em] uppercase text-ink-600">
+              Write to us
             </div>
-          </form>
+
+            <p className="mt-5 mb-0 font-serif text-[clamp(24px,2.6vw,34px)] leading-[1.15] font-normal tracking-[-0.02em] text-ink-900 [text-wrap:pretty]">
+              Tell us what you are launching, and who it needs to reach.
+            </p>
+
+            <a
+              href={MAIL_HREF}
+              className="op-btn group mt-[clamp(24px,3vw,34px)] w-full gap-2.5 px-6 py-[18px] text-[15px] text-white"
+            >
+              <MailIcon />
+              Contact us
+            </a>
+
+            <div className="mt-5 text-center font-mono text-[10px] leading-[1.6] font-medium tracking-[0.1em] uppercase text-ink-550">
+              Opens your mail app · {site.email}
+            </div>
+          </div>
         </Reveal>
       </div>
     </section>
