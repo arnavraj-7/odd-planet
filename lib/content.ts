@@ -229,19 +229,33 @@ export type WorkDiscipline =
   | "strategy"
   | "onground"
   | "buzz"
+  | "pr"
+  | "social"
+  | "engagement"
+  | "positioning"
+  | "celebrity"
+  | "integration"
+  | "execution"
   | "commerce";
 
 export const disciplineLabels: Record<WorkDiscipline, string> = {
-  content: "Content Production",
-  influencer: "Influencer Marketing",
-  creator: "Creator Partnerships",
-  amplification: "Digital Amplification",
-  events: "Events & Experiences",
+  content: "Content",
+  influencer: "Influencer",
+  creator: "Creators",
+  amplification: "Amplification",
+  events: "Events",
   meme: "Meme Marketing",
-  ugc: "UGC Content Creation",
-  strategy: "Campaign Concept & Strategy",
-  onground: "On-Ground Activations",
-  buzz: "Buzz & Conversation Marketing",
+  ugc: "UGC Content",
+  strategy: "Strategy",
+  onground: "On-Ground",
+  buzz: "Buzz Marketing",
+  pr: "Shark Tank PR",
+  social: "Social",
+  engagement: "Engagement",
+  positioning: "Positioning",
+  celebrity: "Celebrity",
+  integration: "Integration",
+  execution: "Execution",
   commerce: "Quick Commerce",
 };
 
@@ -256,6 +270,8 @@ export type WorkCard = {
   did: WorkDiscipline[];
   /** Heading over the figures — "Results", "Impact (monthly)", and so on. */
   resultsLabel?: string;
+  /** "themes" sets the entries as titled points rather than big figures. */
+  resultsStyle?: "figures" | "themes";
   /** Omitted on placeholder cards — the card then draws a hairline plate. */
   image?: { src: string; alt: string };
   /** Logo cards render the image contained on a hairline plate instead of a cover crop. */
@@ -307,6 +323,54 @@ const realWork: WorkCard[] = [
   },
   {
     index: "03",
+    category: "Founder PR",
+    title: "Shaily Mehrotra",
+    tagline: "Building visibility beyond the pitch.",
+    description:
+      "We managed Shaily Mehrotra's digital presence around her Shark Tank journey, driving content, audience engagement and PR-led visibility across platforms.",
+    did: ["pr", "social", "strategy", "engagement", "positioning"],
+    image: { src: "/campaigns/shaily-mehrotra.jpg", alt: "Shaily Mehrotra, Fixderma" },
+    metrics: [
+      { value: "15M+", label: "Total Views" },
+      { value: "200K+", label: "Total Engagement" },
+      { value: "150+", label: "Content Deliverables" },
+    ],
+  },
+  {
+    index: "04",
+    category: "Beauty",
+    title: "Tisca Chopra × Sotrue",
+    tagline: "Celebrity-led beauty, made to stand out.",
+    description:
+      "A celebrity endorsement campaign featuring Tisca Chopra to drive awareness and desirability for Sotrue Strobe Cream.",
+    did: ["celebrity", "content", "integration"],
+    resultsLabel: "Impact",
+    image: { src: "/campaigns/tisca-sotrue.jpg", alt: "Tisca Chopra for Sotrue" },
+    metrics: [{ value: "57K+", label: "Instagram Views" }],
+  },
+  {
+    index: "05",
+    category: "Fashion",
+    title: "Priyank Sharma × Allen Solly",
+    tagline: "Everyday style, made effortless.",
+    description:
+      "We partnered with Priyank Sharma for Allen Solly to bring the brand into a natural, lifestyle-led creator narrative — blending fashion, personality and everyday moments to create an authentic brand integration.",
+    did: ["celebrity", "content", "integration", "execution"],
+    resultsLabel: "Campaign focus",
+    resultsStyle: "themes",
+    image: {
+      src: "/campaigns/priyank-allen-solly.jpg",
+      alt: "Priyank Sharma for Allen Solly",
+    },
+    metrics: [
+      { value: "Fashion & Style", label: "Elevated everyday dressing" },
+      { value: "Creator-Led Storytelling", label: "Natural brand integration" },
+      { value: "Lifestyle Appeal", label: "Part of everyday moments" },
+      { value: "Brand Visibility", label: "A young, fashion-conscious audience" },
+    ],
+  },
+  {
+    index: "06",
     category: "FMCG",
     title: "Bevzilla",
     tagline: "Creators brewing real impact.",
@@ -324,7 +388,7 @@ const realWork: WorkCard[] = [
     ],
   },
   {
-    index: "04",
+    index: "07",
     category: "Government",
     title: "Ministry of Textiles",
     tagline: "Handloom, told to a new audience.",
@@ -342,7 +406,7 @@ const realWork: WorkCard[] = [
     ],
   },
   {
-    index: "05",
+    index: "08",
     category: "Experiential",
     title: "Starbucks",
     tagline: "A store launch people turned up for.",
@@ -356,7 +420,7 @@ const realWork: WorkCard[] = [
     ],
   },
   {
-    index: "06",
+    index: "09",
     category: "Creator network",
     title: "Fit Feast",
     tagline: "Always-on creator supply.",
@@ -502,6 +566,9 @@ const realCreators: Creator[] = [
     role: "Fitness / Lifestyle / Adventure",
     city: "Delhi",
     socials: [{ label: "Instagram", href: ig("major_rs_sambyal") }, { label: "YouTube", href: yt("ferrox_4sam") }],
+    // Sat in the sheet as a floating image, not a cell image, so it was not in
+    // the row-mapped export.
+    image: "/creators/major-rishabh-singh-sambyal.jpg",
   },
   {
     name: "Karan Kundrra",
@@ -645,22 +712,22 @@ export type HeroTile = {
 };
 
 /**
- * The two vertical columns beside the hero copy. They scroll in opposite
- * directions. Artwork is unset until the client supplies campaign stills, so
- * each tile currently draws a labelled plate at its own proportion.
+ * The two vertical columns beside the hero copy, scrolling in opposite
+ * directions. Every tile is campaign artwork, and each `ratio` matches its
+ * image exactly so nothing is ever cropped in the column.
  */
 export const heroTiles: [HeroTile[], HeroTile[]] = [
   [
-    { ratio: "9 / 16", label: "Ministry of Textiles", src: "/campaigns/textiles-handloom.jpg" },
-    { ratio: "1 / 1", label: "Bevzilla", src: "/campaigns/bevzilla.jpg" },
-    { ratio: "3 / 4", label: "POCO", src: "/campaigns/poco.jpg" },
-    { ratio: "4 / 5", label: "Campaign", src: "/campaigns/campaign-b.jpg" },
+    { ratio: "9 / 16", label: "Ministry of Textiles", src: "/hero/textiles-handloom.jpg" },
+    { ratio: "1645 / 1000", label: "Fixderma", src: "/hero/fixderma.jpg" },
+    { ratio: "9 / 16", label: "Sotrue", src: "/hero/sotrue.jpg" },
+    { ratio: "17 / 10", label: "Starbucks", src: "/hero/starbucks.jpg" },
   ],
   [
-    { ratio: "3 / 4", label: "FitFeast", src: "/campaigns/fitfeast.jpg" },
-    { ratio: "9 / 14", label: "SoTrue", src: "/campaigns/sotrue.jpg" },
-    { ratio: "1 / 1", label: "Ministry of Textiles", src: "/campaigns/textiles-couple.jpg" },
-    { ratio: "3 / 4", label: "Campaign", src: "/campaigns/campaign-a.jpg" },
+    { ratio: "9 / 16", label: "Bevzilla", src: "/hero/bevzilla.jpg" },
+    { ratio: "16 / 9", label: "Maharani", src: "/hero/maharani.jpg" },
+    { ratio: "9 / 16", label: "Fit Feast", src: "/hero/fitfeast.jpg" },
+    { ratio: "16 / 9", label: "Shaily Mehrotra", src: "/hero/shaily.jpg" },
   ],
 ];
 

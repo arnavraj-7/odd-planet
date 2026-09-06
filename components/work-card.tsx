@@ -1,6 +1,12 @@
 import {
   Clapperboard,
+  Heart,
   Lightbulb,
+  Newspaper,
+  Package,
+  Rocket,
+  Share2,
+  Sparkles,
   Laugh,
   Megaphone,
   PartyPopper,
@@ -28,6 +34,13 @@ const ICONS: Record<WorkDiscipline, LucideIcon> = {
   strategy: Lightbulb,
   onground: Users,
   buzz: Megaphone,
+  pr: Newspaper,
+  social: Share2,
+  engagement: Heart,
+  positioning: Sparkles,
+  celebrity: Sparkles,
+  integration: Package,
+  execution: Rocket,
   commerce: ShoppingBag,
 };
 
@@ -82,11 +95,13 @@ export function WorkCard({ card }: { card: WorkCardData }) {
             <div className="mt-[clamp(14px,1.6vw,20px)] font-mono text-[10px] leading-none font-medium tracking-[0.16em] uppercase text-ink-550">
               What we did
             </div>
-            <ul className="mt-3 mb-0 grid list-none grid-cols-4 gap-x-1.5 p-0">
-              {card.did.slice(0, 4).map((key) => {
+            {/* Always one row: equal-width flex children, never a grid whose
+                column class has to be chosen at runtime. */}
+            <ul className="mt-3 mb-0 flex list-none items-start gap-x-1.5 p-0">
+              {card.did.slice(0, 5).map((key) => {
                 const Icon = ICONS[key];
                 return (
-                  <li key={key} className="flex flex-col items-center gap-2">
+                  <li key={key} className="flex min-w-0 flex-1 flex-col items-center gap-2">
                     <span className="flex size-8 items-center justify-center rounded-lg bg-ink-100 text-ink-900">
                       <Icon size={16} strokeWidth={1.7} aria-hidden="true" />
                     </span>
@@ -116,10 +131,20 @@ export function WorkCard({ card }: { card: WorkCardData }) {
               {card.metrics.map((metric, i) => {
                 const body = (
                   <>
-                    <span className="block font-grotesk text-[clamp(17px,1.6vw,23px)] leading-[1.05] font-medium tracking-[-0.02em] text-ink-900">
+                    <span
+                      className={
+                        card.resultsStyle === "themes"
+                          ? "block font-grotesk text-[12.5px] leading-[1.3] font-semibold text-ink-900"
+                          : "block font-grotesk text-[clamp(17px,1.6vw,23px)] leading-[1.05] font-medium tracking-[-0.02em] text-ink-900"
+                      }
+                    >
                       {metric.value}
                     </span>
-                    <span className="mt-1.5 block font-grotesk text-[10.5px] leading-[1.3] text-ink-900">
+                    <span
+                      className={`mt-1.5 block font-grotesk text-[10.5px] leading-[1.3] ${
+                        card.resultsStyle === "themes" ? "text-ink-600" : "text-ink-900"
+                      }`}
+                    >
                       {metric.label}
                     </span>
                     {metric.note ? (
