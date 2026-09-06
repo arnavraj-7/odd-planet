@@ -96,68 +96,67 @@
  * Base
  * ------------------------------------------------------------------ */
 
-html {
-  scroll-behavior: smooth;
-}
-
-/* Height of the sticky header, so the hero can fill exactly the rest of the
-   first screen. It grows when the nav wraps to its own line. */
-:root {
-  --op-header: 86px;
-}
-
-@media (max-width: 640px) {
-  :root {
-    --op-header: 122px;
+/* These belong in @layer base. Written unlayered they would outrank every
+   Tailwind utility — an unlayered `a { color }` silently beats `text-ink-900`
+   on every link on the site. */
+@layer base {
+  html {
+    scroll-behavior: smooth;
   }
-}
 
-section[id] {
-  scroll-margin-top: calc(var(--op-header) + 12px);
-}
+  /* Height of the sticky header, so the hero can fill exactly the rest of the
+     first screen. */
+  :root {
+    --op-header: 86px;
+  }
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-  background: var(--color-ink-000);
-}
+  section[id] {
+    scroll-margin-top: calc(var(--op-header) + 12px);
+  }
 
-body {
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-  color: var(--color-ink-900);
-  font-family: var(--font-grotesk);
-}
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    background: var(--color-ink-000);
+  }
 
-a {
-  color: var(--color-blue-200);
-  text-decoration: none;
-}
+  body {
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    color: var(--color-ink-900);
+    font-family: var(--font-grotesk);
+  }
 
-a:hover {
-  color: var(--color-blue-100);
-}
+  a {
+    color: var(--color-blue-200);
+    text-decoration: none;
+  }
 
-::selection {
-  background: var(--color-blue-500);
-  color: #fff;
-}
+  a:hover {
+    color: var(--color-blue-100);
+  }
 
-input,
-textarea,
-button {
-  font-family: inherit;
-}
+  ::selection {
+    background: var(--color-blue-500);
+    color: #fff;
+  }
 
-input::placeholder,
-textarea::placeholder {
-  color: var(--color-ink-500);
-}
+  input,
+  textarea,
+  button {
+    font-family: inherit;
+  }
 
-:focus-visible {
-  outline: 2px solid var(--color-blue-400);
-  outline-offset: 3px;
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--color-ink-500);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-blue-400);
+    outline-offset: 3px;
+  }
 }
 
 /* Horizontal rails hide their scrollbar but stay scrollable. */
