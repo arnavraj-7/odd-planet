@@ -117,15 +117,6 @@ export const press: PressItem[] = [
     preview: { src: "/press/tata-tele.jpg" },
     href: "https://www.linkedin.com/posts/ojamaduji_rozbanatehainnayakal-msmeday-rozbanatehainnayakal-activity-7476900293880737792-0oM1",
   },
-  {
-    year: "2024",
-    outlet: "Shark Tank India · PR mandate",
-    headline: "Shaily Mehrotra, Fixderma — founder PR programme",
-    stats: [
-      { value: "15M+", label: "Views" },
-      { value: "150+", label: "Deliverables" },
-    ],
-  },
 ];
 
 export type Service = {
@@ -214,7 +205,7 @@ const realWork: WorkCard[] = [
     category: "Music",
     title: "Maharani",
     description: "Spotify #1 viral song in India.",
-    image: { src: `${IMG}/pdf_extracted/page13_img3.jpeg`, alt: "Maharani music video" },
+    image: { src: "/work/maharani.jpg", alt: "Maharani music video" },
     metrics: [
       { label: "YOUTUBE", value: "42M+" },
       { label: "INSTAGRAM", value: "37M+" },
@@ -226,7 +217,7 @@ const realWork: WorkCard[] = [
     category: "Government",
     title: "Embassy of Sweden",
     description: "Sweden–India Gaming Day with a live influencer tournament.",
-    image: { src: `${IMG}/pdf_extracted/page18_img4.jpeg`, alt: "Sweden India Gaming Day" },
+    image: { src: "/work/embassy-of-sweden.jpg", alt: "Sweden India Gaming Day" },
     metrics: [
       { label: "ATTENDEES", value: "500+" },
       { label: "PRESS", value: "India Today" },
@@ -238,7 +229,7 @@ const realWork: WorkCard[] = [
     category: "Creator network",
     title: "Bevzilla",
     description: "Podcast, lifestyle and coffee creators activated at scale.",
-    image: { src: `${IMG}/reels_showcase/bevzilla_case.jpg`, alt: "Bevzilla campaign" },
+    image: { src: "/campaigns/bevzilla.jpg", alt: "Bevzilla campaign creative" },
     metrics: [
       { label: "CREATORS / MO", value: "250+" },
       { label: "NICHES", value: "5+" },
@@ -250,7 +241,7 @@ const realWork: WorkCard[] = [
     category: "Experiential",
     title: "Starbucks",
     description: "Store launch campaign and social resonance.",
-    image: { src: `${IMG}/pdf_extracted/page14_img4.jpeg`, alt: "Starbucks campaign" },
+    image: { src: "/work/starbucks.jpg", alt: "Starbucks campaign" },
     metrics: [
       { label: "VIEWS", value: "100K+" },
       { label: "ENGAGEMENT", value: "3.1K+" },
@@ -262,7 +253,7 @@ const realWork: WorkCard[] = [
     category: "Gaming",
     title: "College Rivals",
     description: "Gaming creators plugged into student communities nationwide.",
-    image: { src: `${IMG}/culture_collegerivals.jpg`, alt: "College Rivals" },
+    image: { src: "/work/college-rivals.jpg", alt: "College Rivals" },
     metrics: [
       { label: "VIEWS", value: "10M+" },
       { label: "LIKES", value: "80K+" },
@@ -274,7 +265,7 @@ const realWork: WorkCard[] = [
     category: "On-ground",
     title: "Comic Con India",
     description: "Booth production, brand activations and creator integrations.",
-    image: { src: `${IMG}/culture_comiccon.jpg`, alt: "Comic Con India" },
+    image: { src: "/work/comic-con.jpg", alt: "Comic Con India" },
     metrics: [
       { label: "SCOPE", value: "Build + talent" },
       { label: "FORMAT", value: "Festival" },
@@ -282,11 +273,25 @@ const realWork: WorkCard[] = [
   },
   {
     index: "07",
+    category: "Creator network",
+    title: "Fit Feast",
+    description: "Lifestyle and fitness creators activated month on month.",
+    image: { src: "/campaigns/fitfeast.jpg", alt: "Fit Feast campaign creative" },
+    metrics: [
+      { label: "MODEL", value: "Creators / month" },
+      { label: "NICHES", value: "Lifestyle · Fitness" },
+      { label: "SCOPE", value: "Always-on" },
+    ],
+  },
+  {
+    index: "08",
     category: "Government",
     title: "Ministry of Textiles",
     description: "National handloom and heritage storytelling at scale.",
-    variant: "logo",
-    image: { src: `${IMG}/brands_extracted/ministry_of_textiles.png`, alt: "Ministry of Textiles" },
+    image: {
+      src: "/campaigns/textiles-handloom.jpg",
+      alt: "Textiles Committee handloom campaign creative",
+    },
     metrics: [
       { label: "REEL 01", value: "423K+", href: "https://www.instagram.com/reel/DMuuOv1NrXv/" },
       { label: "REEL 02", value: "181K+", href: "https://www.instagram.com/reel/DM0BeCQt7H2/" },
@@ -317,7 +322,7 @@ const ig = (handle: string) => `https://www.instagram.com/${handle}/`;
 const yt = (handle: string) => `https://www.youtube.com/@${handle}`;
 
 /**
- * Top 7 of the client's creator roster sheet.
+ * The client's creator roster sheet, in full.
  *
  * Display names follow whichever of the sheet's NAME / SCREEN NAME columns the
  * Instagram handle actually matches — the two columns disagree on some rows.
@@ -326,16 +331,6 @@ const yt = (handle: string) => `https://www.youtube.com/@${handle}`;
  * images, cropped to 3:4 and served from /public/creators.
  */
 const realCreators: Creator[] = [
-  {
-    name: "Afaik",
-    role: "Music / Reaction",
-    city: "Bangalore",
-    socials: [
-      { label: "Instagram", href: ig("afaikyouknow") },
-      { label: "YouTube", href: yt("AFAIKYouKnow") },
-    ],
-    image: "/creators/afaik.jpg",
-  },
   {
     name: "Pho",
     role: "Singer",
@@ -347,15 +342,12 @@ const realCreators: Creator[] = [
     name: "Asmita Arora",
     role: "Fashion / Lifestyle",
     city: "Delhi",
-    socials: [
-      { label: "Instagram", href: ig("Asmitarora") },
-      { label: "YouTube", href: yt("Asmitarora") },
-    ],
+    socials: [{ label: "Instagram", href: ig("Asmitarora") }, { label: "YouTube", href: yt("Asmitarora") }],
     image: "/creators/asmita-arora.jpg",
   },
   {
     name: "Himanshi Sharma",
-    role: "Fashion / Lifestyle / Travel",
+    role: "Fashion / Lifestyle / Travel / Fitness",
     city: "Mumbai / Delhi",
     socials: [{ label: "Instagram", href: ig("Himanshii21") }],
     image: "/creators/himanshi-sharma.jpg",
@@ -369,23 +361,120 @@ const realCreators: Creator[] = [
   },
   {
     name: "Kartik Vishal",
-    role: "Bike / Moto / Lifestyle",
+    role: "Bike / Moto / Lifestyle / Fitness",
     city: "Delhi",
-    socials: [
-      { label: "Instagram", href: ig("kartikcz") },
-      { label: "YouTube", href: yt("kartikcustomz") },
-    ],
+    socials: [{ label: "Instagram", href: ig("kartikcz") }, { label: "YouTube", href: yt("kartikcustomz") }],
     image: "/creators/kartik-vishal.jpg",
   },
   {
     name: "Karun",
     role: "Rapper",
     city: "Delhi",
-    socials: [
-      { label: "Instagram", href: ig("beingkarun") },
-      { label: "YouTube", href: yt("beingkarun") },
-    ],
+    socials: [{ label: "Instagram", href: ig("beingkarun") }, { label: "YouTube", href: yt("beingkarun") }],
     image: "/creators/karun.jpg",
+  },
+  {
+    name: "ManjulKhattar",
+    role: "Fashion / Lifestyle",
+    city: "Delhi NCR",
+    socials: [{ label: "Instagram", href: ig("Manjullll") }, { label: "YouTube", href: yt("Manjullll") }],
+    image: "/creators/manjulkhattar.jpg",
+  },
+  {
+    name: "Mohit Chettri",
+    role: "Entertainment",
+    city: "Delhi NCR",
+    socials: [{ label: "Instagram", href: ig("Mohitchettri01") }, { label: "YouTube", href: yt("Mohit_Chettri") }],
+    image: "/creators/mohit-chettri.jpg",
+  },
+  {
+    name: "Piyush Manwani",
+    role: "Lifestyle / Actor",
+    city: "MP / Delhi / Mumbai",
+    socials: [{ label: "Instagram", href: ig("piyush") }],
+    image: "/creators/piyush-manwani.jpg",
+  },
+  {
+    name: "God Praveen",
+    role: "Gaming / Lifestyle",
+    city: "Delhi",
+    socials: [{ label: "Instagram", href: ig("godpraveenfb") }, { label: "YouTube", href: yt("godpraveenyt1") }],
+    image: "/creators/god-praveen.jpg",
+  },
+  {
+    name: "Ranvir Narula",
+    role: "Lifestyle / Entertainment",
+    city: "Delhi",
+    socials: [{ label: "Instagram", href: ig("Ranvirnarula") }],
+    image: "/creators/ranvir-narula.jpg",
+  },
+  {
+    name: "Rishabh Jaiswal",
+    role: "Actor / Lifestyle",
+    city: "Mumbai / Varanasi",
+    socials: [{ label: "Instagram", href: ig("Rishabhjaiswalll") }],
+    image: "/creators/rishabh-jaiswal.jpg",
+  },
+  {
+    name: "Simba Nagpal",
+    role: "Lifestyle / Actor",
+    city: "Delhi / Mumbai",
+    socials: [{ label: "Instagram", href: ig("simbanagpal") }],
+    image: "/creators/simba-nagpal.jpg",
+  },
+  {
+    name: "Tanvi Malhara",
+    role: "Lifestyle / Actor",
+    city: "Mumbai",
+    socials: [{ label: "Instagram", href: ig("tanvi_malhara") }],
+    image: "/creators/tanvi-malhara.jpg",
+  },
+  {
+    name: "Tanya Mehra",
+    role: "Skincare / Nutrition / Fitness / Mom",
+    city: "Gurgaon",
+    socials: [{ label: "Instagram", href: ig("tannzymommy") }],
+    image: "/creators/tanya-mehra.jpg",
+  },
+  {
+    name: "Tisca Chopra",
+    role: "Actor",
+    city: "Mumbai",
+    socials: [{ label: "Instagram", href: ig("Tiscaofficial") }],
+    image: "/creators/tisca-chopra.jpg",
+  },
+  {
+    name: "Nanku",
+    role: "Rapper",
+    city: "Delhi",
+    socials: [{ label: "Instagram", href: ig("tumharananku") }, { label: "YouTube", href: yt("TUMHARANANKU") }],
+    image: "/creators/nanku.jpg",
+  },
+  {
+    name: "Vaibhav Arora",
+    role: "Fashion / Lifestyle / Travel",
+    city: "Mumbai / Delhi",
+    socials: [{ label: "Instagram", href: ig("Vaibhav_aroraa") }],
+    image: "/creators/vaibhav-arora.jpg",
+  },
+  {
+    name: "Varun Suryavanshi",
+    role: "Fashion / Fitness / Lifestyle",
+    city: "Delhi / Mumbai",
+    socials: [{ label: "Instagram", href: ig("Varunverma") }],
+    image: "/creators/varun-suryavanshi.jpg",
+  },
+  {
+    name: "Nishu Tiwari",
+    role: "",
+    city: "Delhi",
+    socials: [{ label: "Instagram", href: ig("inishutiwari") }, { label: "YouTube", href: yt("inishutiwari") }],
+  },
+  {
+    name: "Major RS Sambyal",
+    role: "Fitness / Lifestyle / Adventure",
+    city: "Delhi",
+    socials: [{ label: "Instagram", href: ig("major_rs_sambyal") }, { label: "YouTube", href: yt("ferrox_4sam") }],
   },
 ];
 
@@ -401,7 +490,7 @@ const realCreators: Creator[] = [
  * placeholders until the client signs off — flip USE_REAL_WORK to true.
  * ------------------------------------------------------------------ */
 
-export const USE_REAL_WORK = false;
+export const USE_REAL_WORK = true;
 export const USE_REAL_CREATORS = true;
 
 const placeholderWork: WorkCard[] = Array.from({ length: 7 }, (_, i) => ({
@@ -416,7 +505,7 @@ const placeholderWork: WorkCard[] = Array.from({ length: 7 }, (_, i) => ({
   ],
 }));
 
-const placeholderCreators: Creator[] = Array.from({ length: 7 }, (_, i) => ({
+const placeholderCreators: Creator[] = Array.from({ length: 8 }, (_, i) => ({
   name: "Creator name",
   role: `Role ${String(i + 1).padStart(2, "0")}`,
   socials: [{ label: "Instagram" }, { label: "YouTube" }],
@@ -452,18 +541,16 @@ export type HeroTile = {
  */
 export const heroTiles: [HeroTile[], HeroTile[]] = [
   [
-    { ratio: "4 / 5", label: "Campaign 01" },
-    { ratio: "1 / 1", label: "Campaign 02" },
-    { ratio: "3 / 4", label: "Campaign 03" },
-    { ratio: "4 / 3", label: "Campaign 04" },
-    { ratio: "9 / 14", label: "Campaign 05" },
+    { ratio: "9 / 16", label: "Ministry of Textiles", src: "/campaigns/textiles-handloom.jpg" },
+    { ratio: "1 / 1", label: "Bevzilla", src: "/campaigns/bevzilla.jpg" },
+    { ratio: "3 / 4", label: "POCO", src: "/campaigns/poco.jpg" },
+    { ratio: "4 / 5", label: "Campaign", src: "/campaigns/campaign-b.jpg" },
   ],
   [
-    { ratio: "9 / 16", label: "Creator 01" },
-    { ratio: "4 / 3", label: "Creator 02" },
-    { ratio: "1 / 1", label: "Creator 03" },
-    { ratio: "3 / 4", label: "Creator 04" },
-    { ratio: "4 / 5", label: "Creator 05" },
+    { ratio: "3 / 4", label: "FitFeast", src: "/campaigns/fitfeast.jpg" },
+    { ratio: "9 / 14", label: "SoTrue", src: "/campaigns/sotrue.jpg" },
+    { ratio: "1 / 1", label: "Ministry of Textiles", src: "/campaigns/textiles-couple.jpg" },
+    { ratio: "3 / 4", label: "Campaign", src: "/campaigns/campaign-a.jpg" },
   ],
 ];
 

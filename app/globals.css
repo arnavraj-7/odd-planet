@@ -141,9 +141,11 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    /* Keep the scrollbar's space reserved at all times. Locking the page for
-       the intro or the mobile menu otherwise removes the scrollbar, widens the
-       viewport, and shifts the whole layout sideways when it comes back. */
+    /* `overflow-x: hidden` used to live on body, which made body's overflow —
+       not html's — propagate to the viewport, so scrollbar-gutter set on html
+       was ignored and locking the page still shifted the layout sideways.
+       Both now sit on html, which owns the viewport scrollbar. */
+    overflow-x: hidden;
     scrollbar-gutter: stable;
   }
 
@@ -179,7 +181,6 @@
 
   body {
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
     color: var(--color-ink-900);
     font-family: var(--font-grotesk);
   }
