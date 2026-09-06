@@ -20,11 +20,16 @@ export const site = {
   founderLinkedin: "https://www.linkedin.com/in/ojamaduji/",
 } as const;
 
+/**
+ * `id` items are sections on the home page and drive the scroll-spy.
+ * `href` items are pages of their own.
+ */
 export const navItems = [
-  { id: "media", label: "Media" },
   { id: "services", label: "Services" },
   { id: "work", label: "Work" },
   { id: "creators", label: "Creators" },
+  { id: "media", label: "Media" },
+  { href: "/about", label: "About" },
 ] as const;
 
 export type NavItem = (typeof navItems)[number];
@@ -313,7 +318,7 @@ const realWork: WorkCard[] = [
     title: "Fixderma",
     tagline: "#SkincareKarLeBhai — starting a new conversation.",
     description:
-      "We conceptualised and executed the launch campaign for Menskincare Janta Party by Fixderma — a buzz-led movement to make skincare a mainstream, no-judgement conversation for men. Through on-ground activations, street interviews, creator content and bold messaging, we sparked real conversations and built massive awareness for the brand launch.",
+      "The launch campaign for Menskincare Janta Party by Fixderma — a buzz-led movement making skincare a mainstream, no-judgement conversation for men.",
     did: ["strategy", "onground", "creator", "buzz"],
     image: {
       src: "/campaigns/fixderma-msjp.jpg",
@@ -359,7 +364,7 @@ const realWork: WorkCard[] = [
     title: "Priyank Sharma × Allen Solly",
     tagline: "Everyday style, made effortless.",
     description:
-      "We partnered with Priyank Sharma for Allen Solly to bring the brand into a natural, lifestyle-led creator narrative — blending fashion, personality and everyday moments to create an authentic brand integration.",
+      "A lifestyle-led creator narrative for Allen Solly with Priyank Sharma, blending fashion, personality and everyday moments into an authentic brand integration.",
     did: ["celebrity", "content", "integration", "execution"],
     resultsLabel: "Campaign focus",
     resultsStyle: "themes",
@@ -380,7 +385,7 @@ const realWork: WorkCard[] = [
     title: "Bevzilla",
     tagline: "Creators brewing real impact.",
     description:
-      "We executed large-scale influencer marketing and UGC content creation for Bevzilla, collaborating with 250+ creators every month across multiple categories to drive awareness, engagement and sales.",
+      "Large-scale influencer marketing and UGC for Bevzilla, with 250+ creators every month across multiple categories, driving awareness, engagement and sales.",
     did: ["influencer", "ugc"],
     resultsLabel: "Impact (monthly)",
     image: { src: "/campaigns/bevzilla.jpg", alt: "Bevzilla campaign creative" },
@@ -664,17 +669,6 @@ const realCreators: Creator[] = [
     socials: [],
     image: "/creators/ridhi-dogra.jpg",
   },
-  {
-    name: "Sanaya Irani",
-    role: "Talent partnership",
-    socials: [],
-  },
-  {
-    name: "Niki Walia",
-    role: "Talent partnership",
-    socials: [],
-    image: "/creators/niki-walia.jpg",
-  },
 ];
 
 /* ------------------------------------------------------------------ *
@@ -717,6 +711,28 @@ export const work: WorkCard[] = USE_REAL_WORK ? realWork : placeholderWork;
 export const creators: Creator[] = USE_REAL_CREATORS
   ? realCreators
   : placeholderCreators;
+
+/** Client testimonials, verbatim from the agency's own deck. */
+export const testimonials = [
+  {
+    quote:
+      "They understood our brand and created a campaign that went beyond our expectations. Fantastic team!",
+    name: "Aashna Sharma",
+    role: "Brand Manager, POND'S",
+  },
+  {
+    quote:
+      "From ideation to execution, Odd Planet is our go-to partner for content and influencer marketing.",
+    name: "Rohit Naik",
+    role: "Marketing Lead, Red Bull",
+  },
+  {
+    quote:
+      "Odd Planet is a strong and influencer-friendly marketing agency. They have the most innovative ideas and are definitely one of the best organisations in the industry.",
+    name: "Dr. Yashwanth A R",
+    role: "TrueRippers Esports LLP",
+  },
+] as const;
 
 export const founder = {
   name: "Tushar Goyal",
