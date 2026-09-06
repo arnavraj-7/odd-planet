@@ -56,6 +56,36 @@ function doPost(e) {
   }
 }
 
+// Read the briefs back out, for the /admin page.
+function doGet(e) {
+  try {
+    if (!SECRET || (e.parameter && e.parameter.token) !== SECRET) {
+      return json({ ok: false, error: 'unauthorized' });
+    }
+
+    const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Briefs');
+    if (!sheet || sheet.getLastRow() < 2) return json({ ok: true, rows: [] });
+
+    const values = sheet
+      .getRange(2, 1, sheet.getLastRow() - 1, HEADERS.length)
+      .getValues();
+
+    const rows = values.map(function (r) {
+      return {
+        receivedAt: r[0] instanceof Date ? r[0].toISOString() : String(r[0]),
+        name: String(r[1] || ''),
+        email: String(r[2] || ''),
+        message: String(r[3] || ''),
+        source: String(r[4] || ''),
+      };
+    });
+
+    return json({ ok: true, rows: rows });
+  } catch (err) {
+    return json({ ok: false, error: String(err) });
+  }
+}
+
 function json(payload) {
   return ContentService
     .createTextOutput(JSON.stringify(payload))
@@ -105,7 +135,21 @@ vercel env add SHEETS_WEBHOOK_TOKEN production
 Then redeploy, since environment variables are read at request time by the
 function but only picked up by a new deployment's runtime configuration.
 
-## 5. Check it
+## 5. Reading them back at /admin
+
+The `doGet` above is what the site's `/admin` page calls to list the briefs. It
+is behind the same token, and returns only the Briefs tab — never anything else
+in the spreadsheet.
+
+Set one more environment variable to unlock that page:
+
+```
+ADMIN_PASSWORD=a-long-random-password
+```
+
+Leave it unset and `/admin` stays locked for everyone, including you.
+
+## 6. Check it
 
 Submit the form on the site. A row should appear in the **Briefs** tab within a
 second or two.
@@ -126,3 +170,6 @@ pick "New version" after any change).
 - The route sends `name`, `email`, `message`, `receivedAt`, `source` and
   `token`. Add columns by extending `HEADERS` and the `appendRow` call.
 - If the sheet ever needs to be swapped, only `SHEETS_WEBHOOK_URL` changes.
+- **The sheet is the database.** The site stores nothing itself — the form
+  writes a row, `/admin` reads those rows back. Delete a row in the sheet and it
+  disappears from the panel.
