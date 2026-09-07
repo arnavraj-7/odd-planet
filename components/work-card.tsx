@@ -57,7 +57,7 @@ export function WorkCard({ card }: { card: WorkCardData }) {
   return (
     <article
       data-work-card
-      className="group flex w-[clamp(292px,29vw,404px)] shrink-0 flex-col overflow-hidden rounded-xl border border-ink-300 transition-[border-color,transform] duration-300 ease-out hover:-translate-y-1 hover:border-blue-500"
+      className="group relative flex w-[clamp(292px,29vw,404px)] shrink-0 flex-col overflow-hidden rounded-xl border border-ink-300 transition-[border-color,transform] duration-300 ease-out hover:-translate-y-1 hover:border-blue-500"
     >
       {/*
         Artwork fills the box on a top-anchored crop. A few creatives are
@@ -130,7 +130,25 @@ export function WorkCard({ card }: { card: WorkCardData }) {
         </div>
 
         <h3 className="mt-2 mb-0 font-serif text-[clamp(23px,2.1vw,29px)] leading-[1.05] font-normal tracking-[-0.02em] text-ink-900">
-          {card.title}
+          {card.href ? (
+            <a
+              href={card.href}
+              target="_blank"
+              rel="noopener"
+              className="text-ink-900 after:absolute after:inset-0 after:content-[''] hover:text-ink-900"
+            >
+              {card.title}
+              <span
+                aria-hidden="true"
+                className="ml-1.5 inline-block align-middle font-grotesk text-[0.5em] text-ink-550 opacity-0 transition-opacity duration-200 ease-out group-hover:opacity-100"
+              >
+                ↗
+              </span>
+              <span className="sr-only"> (opens the campaign)</span>
+            </a>
+          ) : (
+            card.title
+          )}
         </h3>
 
         <p className="mt-1.5 mb-0 font-grotesk text-[clamp(14px,1.2vw,17px)] leading-[1.3] text-ink-600">

@@ -284,6 +284,11 @@ export type WorkCard = {
   description: string;
   /** Drawn as the "what we did" icon row. */
   did: WorkDiscipline[];
+  /**
+   * The work itself — the reel, the track, the film. Given one, the whole card
+   * becomes a link to it.
+   */
+  href?: string;
   /** Heading over the figures — "Results", "Impact (monthly)", and so on. */
   resultsLabel?: string;
   /** "themes" sets the entries as titled points rather than big figures. */
@@ -316,6 +321,7 @@ const realWork: WorkCard[] = [
     description:
       "From content production to creator-led amplification, we helped take Maharani from release to massive digital attention.",
     did: ["content", "influencer", "creator", "amplification"],
+    href: "https://open.spotify.com/track/7unLxuzKpxbjASww1qi4br",
     image: { src: "/work/maharani.jpg", alt: "Maharani music video" },
     metrics: [
       { label: "YouTube Views", value: "42M+" },
@@ -365,6 +371,7 @@ const realWork: WorkCard[] = [
     description:
       "A celebrity endorsement campaign featuring Tisca Chopra to drive awareness and desirability for Sotrue Strobe Cream.",
     did: ["celebrity", "content", "integration"],
+    href: "https://www.instagram.com/reel/DZU1cx3JG4p/",
     resultsLabel: "Impact",
     image: { src: "/campaigns/tisca-sotrue.jpg", alt: "Tisca Chopra for Sotrue" },
     metrics: [{ value: "57K+", label: "Instagram Views" }],
@@ -377,6 +384,7 @@ const realWork: WorkCard[] = [
     description:
       "A lifestyle-led creator narrative for Allen Solly with Priyank Sharma, blending fashion, personality and everyday moments into an authentic brand integration.",
     did: ["celebrity", "content", "integration", "execution"],
+    href: "https://www.instagram.com/reel/DMsSHXMStF_/",
     resultsLabel: "Impact",
     image: {
       src: "/campaigns/priyank-allen-solly.jpg",
@@ -410,6 +418,7 @@ const realWork: WorkCard[] = [
     description:
       "Three ad films for the Ministry of Textiles promoting the Handloom Mark: India's handloom heritage, the artisans behind it, and the value of choosing authentic handloom.",
     did: ["filmconcept", "adfilm", "casting", "post"],
+    href: "https://www.instagram.com/reel/DM0BeCQt7H2/",
     image: {
       src: "/campaigns/textiles-logo.png",
       alt: "DCHL and Ministry of Textiles",
@@ -462,6 +471,7 @@ const realWork: WorkCard[] = [
     description:
       "A creator-led fashion narrative for Michael Kors with Vaibhav Arora, putting the label inside his own everyday style rather than beside it.",
     did: ["celebrity", "content", "integration"],
+    href: "https://www.instagram.com/reel/DSKeW2kjP97/",
     resultsLabel: "Impact",
     image: {
       src: "/campaigns/vaibhav-michael-kors.jpg",
@@ -492,6 +502,7 @@ const realWork: WorkCard[] = [
     description:
       "Creator-led content for Flipkart with Mohit Chettri, turning a shopping moment into something worth watching to the end.",
     did: ["creator", "content", "integration"],
+    href: "https://www.instagram.com/reel/DMrreJ4xmWD/",
     resultsLabel: "Impact",
     image: {
       src: "/campaigns/mohit-flipkart.jpg",
@@ -522,6 +533,7 @@ const realWork: WorkCard[] = [
     description:
       "A device integration for Oppo with Mohit Chettri, built around what the camera actually does rather than what the spec sheet says.",
     did: ["creator", "content", "integration"],
+    href: "https://www.instagram.com/reel/DI1LbEqSo4k/",
     resultsLabel: "Impact",
     image: {
       src: "/campaigns/mohit-oppo.jpg",
@@ -845,6 +857,7 @@ export const testimonials = [
 export const founder = {
   name: "Tushar Goyal",
   title: "Founder & CEO",
+  previously: "Former Program Manager, Meta Gaming",
   image: `${IMG}/team/oja.jpg`,
   // Icons render only for the URLs that exist. Instagram appears the moment
   // the client sends the handle.

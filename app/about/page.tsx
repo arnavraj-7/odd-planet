@@ -83,6 +83,9 @@ export default function About() {
                 <div className="font-mono text-[10px] leading-[1.4] font-medium tracking-[0.14em] uppercase text-ink-600">
                   {founder.title}
                 </div>
+                <div className="mt-2 font-mono text-[10px] leading-[1.4] font-medium tracking-[0.14em] uppercase text-ink-550">
+                  {founder.previously}
+                </div>
 
                 <div className="mt-6 flex items-center gap-2.5">
                   {founder.instagram ? (
