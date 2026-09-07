@@ -544,11 +544,11 @@ const realWork: WorkCard[] = [
   {
     // Awaiting copy, artwork and figures from the client.
     index: "15",
-    category: "Nutrition",
+    category: "Nutrition / Ad Film",
     title: "Scitron",
     tagline: "Campaign details to follow.",
     description: "Copy and figures to come from the client.",
-    did: [],
+    did: ["adfilm"],
     image: {
       src: "/campaigns/scitron.jpg",
       alt: "Scitron whey protein range",
