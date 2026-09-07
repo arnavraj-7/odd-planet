@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { Reveal, RevealGroup } from "@/components/reveal";
+import { Reveal } from "@/components/reveal";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { StatBand } from "@/components/stat-band";
-import { founder, testimonials } from "@/lib/content";
+import { founder } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "About — Odd Planet",
@@ -114,53 +114,14 @@ export default function About() {
 
             {/* His own words, set under the portrait and running the full
                 width of the card at every size. */}
-            <div className="mt-[clamp(26px,3.4vw,44px)] grid grid-cols-2 gap-[clamp(20px,3vw,52px)] border-t border-ink-300 pt-[clamp(24px,3vw,38px)] font-grotesk text-[15px] leading-[1.65] text-ink-600 [text-wrap:pretty] max-[760px]:grid-cols-1 max-[760px]:gap-4">
-              <p className="m-0">
-                I started Odd Planet because I never liked doing marketing the
-                usual way. Today, we build what people actually notice across
-                creator marketing, entertainment, and brand strategy. We spend
-                less time on rigid theory and more time navigating the messy,
-                exciting reality between a great idea and its execution.
-              </p>
-              <p className="m-0">
-                Some days it&rsquo;s building a campaign from scratch. Some
-                days it&rsquo;s chasing quick approvals or watching an idea
-                explode into something far bigger than a pitch deck ever
-                suggested.
-              </p>
-            </div>
+            <p className="mt-[clamp(26px,3.4vw,44px)] mb-0 border-t border-ink-300 pt-[clamp(24px,3vw,38px)] font-grotesk text-[15px] leading-[1.65] text-ink-600 [text-wrap:pretty]">
+              I started Odd Planet because I never liked doing marketing the
+              usual way. Today, we build what people actually notice across
+              creator marketing, entertainment, and brand strategy. We spend
+              less time on rigid theory and more time navigating the messy,
+              exciting reality between a great idea and its execution.
+            </p>
           </Reveal>
-        </section>
-
-        {/* What clients say */}
-        <section className="mx-auto max-w-[1400px] px-gutter pb-section">
-          <Reveal className="mb-[clamp(24px,3.4vw,44px)]">
-            <div className="op-eyebrow mb-5">In their words</div>
-            <h2 className="op-h2 max-w-[20ch]">
-              What the brands <em>say</em>
-            </h2>
-          </Reveal>
-
-          <RevealGroup className="grid grid-cols-3 gap-[clamp(12px,1.4vw,20px)] max-[900px]:grid-cols-1">
-            {testimonials.map((t) => (
-              <figure
-                key={t.name}
-                className="m-0 flex flex-col rounded-lg border border-ink-300 p-[clamp(20px,2.2vw,30px)]"
-              >
-                <blockquote className="m-0 font-serif text-[clamp(17px,1.6vw,22px)] leading-[1.35] font-normal tracking-[-0.01em] text-ink-900 [text-wrap:pretty]">
-                  “{t.quote}”
-                </blockquote>
-                <figcaption className="mt-auto pt-[clamp(18px,2.2vw,28px)]">
-                  <div className="font-grotesk text-sm leading-none font-semibold text-ink-900">
-                    {t.name}
-                  </div>
-                  <div className="mt-2 font-mono text-[10px] leading-[1.4] font-medium tracking-[0.12em] uppercase text-ink-550">
-                    {t.role}
-                  </div>
-                </figcaption>
-              </figure>
-            ))}
-          </RevealGroup>
         </section>
 
         {/* Close */}

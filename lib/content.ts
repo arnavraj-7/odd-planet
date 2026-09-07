@@ -103,11 +103,11 @@ export type PressItem = {
 export const press: PressItem[] = [
   {
     year: "2025",
-    outlet: "India Today Gaming",
-    headline: "Sweden–India Gaming Day unites nations in a virtual gaming spectacle",
-    context: "Embassy of Sweden",
-    preview: { src: "/press/india-today-gaming.jpg" },
-    href: "https://www.indiatodaygaming.com/amp/news/national/story/sweden-india-gaming-day-unites-nations-in-a-virtual-gaming-spectacle-3232",
+    outlet: "Tata Tele Business Services",
+    headline: "Spotlighted in the #RozBanateHainNayaKal campaign",
+    context: "MSME Day",
+    preview: { src: "/press/tata-tele.jpg" },
+    href: "https://www.linkedin.com/posts/ojamaduji_rozbanatehainnayakal-msmeday-rozbanatehainnayakal-activity-7476900293880737792-0oM1",
   },
   {
     year: "2026",
@@ -119,11 +119,11 @@ export const press: PressItem[] = [
   },
   {
     year: "2025",
-    outlet: "Tata Tele Business Services",
-    headline: "Spotlighted in the #RozBanateHainNayaKal campaign",
-    context: "MSME Day",
-    preview: { src: "/press/tata-tele.jpg" },
-    href: "https://www.linkedin.com/posts/ojamaduji_rozbanatehainnayakal-msmeday-rozbanatehainnayakal-activity-7476900293880737792-0oM1",
+    outlet: "India Today Gaming",
+    headline: "Sweden–India Gaming Day unites nations in a virtual gaming spectacle",
+    context: "Embassy of Sweden",
+    preview: { src: "/press/india-today-gaming.jpg" },
+    href: "https://www.indiatodaygaming.com/amp/news/national/story/sweden-india-gaming-day-unites-nations-in-a-virtual-gaming-spectacle-3232",
   },
   {
     year: "2024",
@@ -603,6 +603,13 @@ const yt = (handle: string) => `https://www.youtube.com/@${handle}`;
  */
 const realCreators: Creator[] = [
   {
+    name: "Tanvi Malhara",
+    role: "Lifestyle / Actor",
+    city: "Mumbai",
+    socials: [{ label: "Instagram", href: ig("tanvi_malhara") }],
+    image: "/creators/tanvi-malhara.jpg",
+  },
+  {
     name: "Asmita Arora",
     role: "Fashion / Lifestyle",
     city: "Delhi",
@@ -664,13 +671,6 @@ const realCreators: Creator[] = [
     city: "Delhi / Mumbai",
     socials: [{ label: "Instagram", href: ig("simbanagpal") }],
     image: "/creators/simba-nagpal.jpg",
-  },
-  {
-    name: "Tanvi Malhara",
-    role: "Lifestyle / Actor",
-    city: "Mumbai",
-    socials: [{ label: "Instagram", href: ig("tanvi_malhara") }],
-    image: "/creators/tanvi-malhara.jpg",
   },
   {
     name: "Tisca Chopra",
