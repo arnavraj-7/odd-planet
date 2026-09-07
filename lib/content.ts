@@ -561,8 +561,12 @@ const realWork: WorkCard[] = [
     category: "Tech",
     title: "Ranvir Narula × Oppo",
     tagline: "Campaign details to follow.",
-    description: "Copy, artwork and figures to come from the client.",
+    description: "Copy and figures to come from the client.",
     did: [],
+    image: {
+      src: "/campaigns/ranvir-oppo.jpg",
+      alt: "Ranvir Narula",
+    },
     metrics: [],
   },
 ];
