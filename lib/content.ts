@@ -546,9 +546,10 @@ const realWork: WorkCard[] = [
     index: "15",
     category: "Nutrition / Ad Film",
     title: "Scitron",
-    tagline: "Campaign details to follow.",
-    description: "Copy and figures to come from the client.",
-    did: ["adfilm"],
+    tagline: "Whey more than just protein.",
+    description:
+      "An ad film for Scitron's whey range, putting the products inside the routine they belong to rather than on a shelf.",
+    did: ["filmconcept", "adfilm", "post"],
     image: {
       src: "/campaigns/scitron.jpg",
       alt: "Scitron whey protein range",
@@ -560,9 +561,10 @@ const realWork: WorkCard[] = [
     index: "16",
     category: "Tech",
     title: "Ranvir Narula × Oppo",
-    tagline: "Campaign details to follow.",
-    description: "Copy and figures to come from the client.",
-    did: [],
+    tagline: "Everyday, on camera.",
+    description:
+      "A lifestyle-led collaboration with Ranvir Narula for Oppo, carrying the device through a day rather than around a feature list.",
+    did: ["celebrity", "content", "integration"],
     image: {
       src: "/campaigns/ranvir-oppo.jpg",
       alt: "Ranvir Narula",
@@ -760,7 +762,7 @@ const realCreators: Creator[] = [
   {
     name: "Sanjay Dutt",
     role: "Actor / Entertainment",
-    socials: [],
+    socials: [{ label: "Instagram", href: ig("duttsanjay") }],
     image: "/creators/sanjay-dutt.jpg",
   },
   {
