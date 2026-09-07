@@ -327,9 +327,9 @@ const realWork: WorkCard[] = [
     index: "02",
     category: "D2C / Personal Care",
     title: "Fixderma",
-    tagline: "#SkincareKarLeBhai — starting a new conversation.",
+    tagline: "#SkincareKarLeBhai, a new conversation.",
     description:
-      "The launch campaign for Menskincare Janta Party by Fixderma — a buzz-led movement making skincare a mainstream, no-judgement conversation for men.",
+      "The launch campaign for Menskincare Janta Party by Fixderma, a buzz-led movement making skincare a mainstream, no-judgement conversation for men.",
     did: ["strategy", "onground", "creator", "buzz"],
     image: {
       src: "/campaigns/fixderma-msjp.jpg",
@@ -408,7 +408,7 @@ const realWork: WorkCard[] = [
     title: "Ministry of Textiles",
     tagline: "Real People. Real Craft. A Stronger Tomorrow.",
     description:
-      "Three ad films for the Ministry of Textiles promoting the Handloom Mark — India's handloom heritage, the artisans behind it, and the value of choosing authentic handloom.",
+      "Three ad films for the Ministry of Textiles promoting the Handloom Mark: India's handloom heritage, the artisans behind it, and the value of choosing authentic handloom.",
     did: ["filmconcept", "adfilm", "casting", "post"],
     image: {
       src: "/campaigns/textiles-logo.png",
@@ -426,7 +426,7 @@ const realWork: WorkCard[] = [
     title: "Starbucks",
     tagline: "A store opening, told the Starbucks way.",
     description:
-      "On-ground content for the Starbucks store opening — two films showing the brand experience, the ambience and the community, bringing in-store energy to digital.",
+      "On-ground content for the Starbucks store opening. Two films showing the brand experience, the ambience and the community, bringing in-store energy to digital.",
     did: ["onground", "video"],
     image: { src: "/work/starbucks.jpg", alt: "Starbucks campaign" },
     resultsLabel: "The impact",
@@ -441,7 +441,7 @@ const realWork: WorkCard[] = [
     title: "FitFeast",
     tagline: "Real Nutrition. Real People.",
     description:
-      "Large-scale influencer marketing and UGC across fitness and lifestyle, showing how FitFeast fits real, everyday routines — from workouts to workdays.",
+      "Large-scale influencer marketing and UGC across fitness and lifestyle, showing how FitFeast fits real, everyday routines, from workouts to workdays.",
     did: ["influencer", "ugc", "content"],
     image: {
       src: "/campaigns/fitfeast.jpg",
@@ -475,12 +475,12 @@ const realWork: WorkCard[] = [
     title: "Tanvi Malhara × Pond's",
     tagline: "Skin first, everything else after.",
     description:
-      "A beauty integration for Pond's with Tanvi Malhara, shot close and kept honest — routine, not performance.",
+      "A beauty integration for Pond's with Tanvi Malhara, kept honest and everyday. Routine, not performance.",
     did: ["celebrity", "content", "integration"],
     resultsLabel: "Impact",
     image: {
       src: "/campaigns/tanvi-ponds.jpg",
-      alt: "Tanvi Malhara with Pond's",
+      alt: "Tanvi Malhara for Pond's",
     },
     metrics: [{ value: "22.6M+", label: "Views" }],
   },
@@ -528,6 +528,30 @@ const realWork: WorkCard[] = [
       alt: "Mohit Chettri for Oppo",
     },
     metrics: [{ value: "450K+", label: "Views" }],
+  },
+  {
+    // Awaiting copy, artwork and figures from the client.
+    index: "15",
+    category: "Nutrition",
+    title: "Scitron",
+    tagline: "Campaign details to follow.",
+    description: "Copy and figures to come from the client.",
+    did: [],
+    image: {
+      src: "/campaigns/scitron.jpg",
+      alt: "Scitron whey protein range",
+    },
+    metrics: [],
+  },
+  {
+    // Awaiting copy, artwork and figures from the client.
+    index: "16",
+    category: "Tech",
+    title: "Ranvir Narula × Oppo",
+    tagline: "Campaign details to follow.",
+    description: "Copy, artwork and figures to come from the client.",
+    did: [],
+    metrics: [],
   },
 ];
 

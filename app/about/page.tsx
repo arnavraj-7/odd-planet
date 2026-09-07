@@ -66,49 +66,65 @@ export default function About() {
 
         {/* Founder */}
         <section className="mx-auto max-w-[1400px] px-gutter pb-section">
-          <Reveal className="grid grid-cols-[minmax(0,0.42fr)_minmax(0,1fr)] items-center gap-[clamp(24px,4vw,64px)] rounded-lg border border-ink-300 p-[clamp(22px,3vw,44px)] max-[760px]:grid-cols-1">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-lg bg-ink-100">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={founder.image}
-                alt={founder.name}
-                className="block size-full object-cover object-top"
-              />
+          <Reveal className="rounded-lg border border-ink-300 p-[clamp(22px,3vw,44px)]">
+            <div className="grid grid-cols-[minmax(0,0.24fr)_minmax(0,1fr)] items-center gap-[clamp(24px,4vw,52px)] max-[760px]:grid-cols-1">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-lg bg-ink-100">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={founder.image}
+                  alt={founder.name}
+                  className="block size-full object-cover object-top"
+                />
+              </div>
+
+              <div>
+                <div className="op-eyebrow mb-5">Founder</div>
+                <h2 className="op-h2 mb-1">{founder.name}</h2>
+                <div className="font-mono text-[10px] leading-[1.4] font-medium tracking-[0.14em] uppercase text-ink-600">
+                  {founder.title}
+                </div>
+
+                <div className="mt-6 flex items-center gap-2.5">
+                  {founder.instagram ? (
+                    <a
+                      href={founder.instagram}
+                      target="_blank"
+                      rel="noopener"
+                      className="rounded-full border border-ink-400 px-4 py-2.5 font-mono text-[10px] leading-none font-medium tracking-[0.14em] uppercase text-ink-600 transition-[color,border-color] duration-200 ease-out hover:border-blue-500 hover:text-ink-900"
+                    >
+                      Instagram
+                    </a>
+                  ) : null}
+                  {founder.linkedin ? (
+                    <a
+                      href={founder.linkedin}
+                      target="_blank"
+                      rel="noopener"
+                      className="rounded-full border border-ink-400 px-4 py-2.5 font-mono text-[10px] leading-none font-medium tracking-[0.14em] uppercase text-ink-600 transition-[color,border-color] duration-200 ease-out hover:border-blue-500 hover:text-ink-900"
+                    >
+                      LinkedIn
+                    </a>
+                  ) : null}
+                </div>
+              </div>
             </div>
 
-            <div>
-              <div className="op-eyebrow mb-5">Founder</div>
-              <h2 className="op-h2 mb-1">{founder.name}</h2>
-              <div className="font-mono text-[10px] leading-[1.4] font-medium tracking-[0.14em] uppercase text-ink-600">
-                {founder.title}
-              </div>
-              <p className="mt-[clamp(18px,2.4vw,28px)] mb-0 max-w-[52ch] font-grotesk text-[15px] leading-[1.65] text-ink-600 [text-wrap:pretty]">
-                Tushar has managed 100+ gaming creators, built creator
-                ecosystems at scale and run digital campaigns for global brands
-                and government organisations. Odd Planet grew out of that work.
+            {/* His own words, set under the portrait and running the full
+                width of the card at every size. */}
+            <div className="mt-[clamp(26px,3.4vw,44px)] grid grid-cols-2 gap-[clamp(20px,3vw,52px)] border-t border-ink-300 pt-[clamp(24px,3vw,38px)] font-grotesk text-[15px] leading-[1.65] text-ink-600 [text-wrap:pretty] max-[760px]:grid-cols-1 max-[760px]:gap-4">
+              <p className="m-0">
+                I started Odd Planet because I never liked doing marketing the
+                usual way. Today, we build what people actually notice across
+                creator marketing, entertainment, and brand strategy. We spend
+                less time on rigid theory and more time navigating the messy,
+                exciting reality between a great idea and its execution.
               </p>
-              <div className="mt-6 flex items-center gap-2.5">
-                {founder.instagram ? (
-                  <a
-                    href={founder.instagram}
-                    target="_blank"
-                    rel="noopener"
-                    className="rounded-full border border-ink-400 px-4 py-2.5 font-mono text-[10px] leading-none font-medium tracking-[0.14em] uppercase text-ink-600 transition-[color,border-color] duration-200 ease-out hover:border-blue-500 hover:text-ink-900"
-                  >
-                    Instagram
-                  </a>
-                ) : null}
-                {founder.linkedin ? (
-                  <a
-                    href={founder.linkedin}
-                    target="_blank"
-                    rel="noopener"
-                    className="rounded-full border border-ink-400 px-4 py-2.5 font-mono text-[10px] leading-none font-medium tracking-[0.14em] uppercase text-ink-600 transition-[color,border-color] duration-200 ease-out hover:border-blue-500 hover:text-ink-900"
-                  >
-                    LinkedIn
-                  </a>
-                ) : null}
-              </div>
+              <p className="m-0">
+                Some days it&rsquo;s building a campaign from scratch. Some
+                days it&rsquo;s chasing quick approvals or watching an idea
+                explode into something far bigger than a pitch deck ever
+                suggested.
+              </p>
             </div>
           </Reveal>
         </section>
