@@ -1,21 +1,35 @@
 import { MarqueeTrack } from "@/components/marquee-track";
-import { brands } from "@/lib/content";
+import { brands, type Brand } from "@/lib/content";
+
+/*
+  Two rows travelling against each other, so the whole roster passes in about
+  half the time one row would take. The split alternates rather than cutting
+  the list in half, which would leave every recognisable mark in the top row.
+*/
+const rowA = brands.filter((_, i) => i % 2 === 0);
+const rowB = brands.filter((_, i) => i % 2 === 1);
 
 /* The client supplied these in colour, so each sits on a light plate: on the
    #05060A ground the black marks — MG, Converse, Michael Kors, Bevzilla,
    Allen Solly — would otherwise be invisible. The plate is the one place the
    brand kit's single-background rule gives way, and it is what the client's
    own reference site does. */
-function LogoRow({ hidden = false }: { hidden?: boolean }) {
+function LogoRow({
+  items,
+  hidden = false,
+}: {
+  items: readonly Brand[];
+  hidden?: boolean;
+}) {
   return (
     <div
       aria-hidden={hidden || undefined}
       className="flex items-center gap-[clamp(12px,1.3vw,20px)] pr-[clamp(12px,1.3vw,20px)]"
     >
-      {brands.map((brand) => (
+      {items.map((brand) => (
         <span
           key={`${brand.name}-${hidden ? "b" : "a"}`}
-          className="flex h-[clamp(78px,7.2vw,104px)] w-[clamp(172px,15.5vw,224px)] shrink-0 items-center justify-center rounded-xl bg-ink-900 px-6 transition-transform duration-300 ease-out hover:scale-[1.04]"
+          className="flex h-[clamp(70px,6.2vw,92px)] w-[clamp(156px,13.6vw,198px)] shrink-0 items-center justify-center rounded-xl bg-ink-900 px-6 transition-transform duration-300 ease-out hover:scale-[1.04]"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -44,10 +58,19 @@ export function BrandMarquee() {
         Brands we moved with
       </div>
 
-      <MarqueeTrack>
-        <LogoRow />
-        <LogoRow hidden />
-      </MarqueeTrack>
+      <div className="flex flex-col gap-[clamp(12px,1.3vw,20px)]">
+        {/* Each row holds half the roster, so it is half as wide — the shorter
+            duration keeps both travelling at the same speed as one long row. */}
+        <MarqueeTrack duration="26s">
+          <LogoRow items={rowA} />
+          <LogoRow items={rowA} hidden />
+        </MarqueeTrack>
+
+        <MarqueeTrack reverse duration="24s">
+          <LogoRow items={rowB} />
+          <LogoRow items={rowB} hidden />
+        </MarqueeTrack>
+      </div>
     </section>
   );
 }

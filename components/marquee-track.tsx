@@ -6,7 +6,17 @@ import { useEffect, useRef, type ReactNode } from "react";
  * The marquee is a compositor animation that would otherwise keep running for
  * the whole page. Pausing it off-screen costs nothing and frees a layer.
  */
-export function MarqueeTrack({ children }: { children: ReactNode }) {
+export function MarqueeTrack({
+  children,
+  reverse = false,
+  duration,
+}: {
+  children: ReactNode;
+  /** Runs the same keyframes backwards, so a row can travel right. */
+  reverse?: boolean;
+  /** Overrides the shared duration — a shorter track needs less time. */
+  duration?: string;
+}) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -31,7 +41,10 @@ export function MarqueeTrack({ children }: { children: ReactNode }) {
     <div
       ref={ref}
       data-marquee
-      className="flex w-max animate-marquee hover:[animation-play-state:paused]"
+      style={duration ? { animationDuration: duration } : undefined}
+      className={`flex w-max animate-marquee hover:[animation-play-state:paused] ${
+        reverse ? "[animation-direction:reverse]" : ""
+      }`}
     >
       {children}
     </div>
