@@ -795,7 +795,7 @@ const realCreators: Creator[] = [
   {
     name: "Ridhi Dogra",
     role: "Actor / Lifestyle / Fashion",
-    socials: [],
+    socials: [{ label: "Instagram", href: ig("iridhidogra") }],
     image: "/creators/ridhi-dogra.jpg",
   },
 ];
