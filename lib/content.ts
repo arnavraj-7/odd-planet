@@ -6,7 +6,6 @@
  * placeholders. Replace with client-supplied assets before launch.
  */
 
-const IMG = "https://ajaystark.github.io/odd_planet/ad-agency/img";
 
 export const site = {
   name: "Odd Planet",
@@ -864,7 +863,7 @@ export const founder = {
   name: "Tushar Goyal",
   title: "Founder & CEO",
   previously: "Former Program Manager, Meta Gaming",
-  image: `${IMG}/team/oja.jpg`,
+  image: "/team/tushar-goyal.jpg",
   // Icons render only for the URLs that exist. Instagram appears the moment
   // the client sends the handle.
   instagram: "https://www.instagram.com/ojamaduji/",

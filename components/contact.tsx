@@ -128,7 +128,7 @@ export function Contact() {
               alt={founder.name}
               width={56}
               height={56}
-              className="block size-14 rounded-full object-cover"
+              className="block size-14 rounded-full object-cover object-top"
             />
             <div>
               <div className="font-grotesk text-[15px] leading-[1.2] font-semibold text-ink-900">
