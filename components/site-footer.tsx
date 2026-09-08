@@ -24,7 +24,7 @@ export function SiteFooter() {
           />
           <p className="m-0 max-w-[30ch] font-grotesk text-sm leading-[1.65] text-ink-600 [text-wrap:pretty]">
             Founded {site.founded}. Influencer, content and amplification
-            partner for brands and government organisations.
+            partner for brands.
           </p>
         </div>
 

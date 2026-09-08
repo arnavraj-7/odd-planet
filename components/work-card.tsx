@@ -151,7 +151,7 @@ export function WorkCard({ card }: { card: WorkCardData }) {
           )}
         </h3>
 
-        <p className="mt-1.5 mb-0 font-grotesk text-[clamp(14px,1.2vw,17px)] leading-[1.3] text-ink-600">
+        <p className="mt-1.5 mb-0 min-h-[clamp(36px,3vw,44px)] font-grotesk text-[clamp(14px,1.2vw,17px)] leading-[1.3] text-ink-600">
           {card.tagline}
         </p>
 
@@ -186,8 +186,9 @@ export function WorkCard({ card }: { card: WorkCardData }) {
           </>
         ) : null}
 
-        {card.metrics.length ? (
-          <>
+        <div className="min-h-[124px]">
+          {card.metrics.length ? (
+            <>
             {/* A lone figure has no column to sit against, so it centres. */}
             <div
               className={`mt-[clamp(16px,1.8vw,22px)] border-t border-ink-300 pt-[clamp(13px,1.5vw,18px)] font-mono text-[10px] leading-none font-medium tracking-[0.16em] uppercase text-ink-550 ${
@@ -199,7 +200,7 @@ export function WorkCard({ card }: { card: WorkCardData }) {
 
             <div
               className={`mt-3 ${
-                card.metrics.length > 2
+                card.metrics.length > 3
                   ? "grid grid-cols-2 gap-x-3 gap-y-3.5"
                   : single
                     ? "flex justify-center text-center"
@@ -237,7 +238,7 @@ export function WorkCard({ card }: { card: WorkCardData }) {
                   <div
                     key={`${metric.label}-${i}`}
                     className={`min-w-0 ${
-                      card.metrics.length > 2
+                      card.metrics.length > 3
                         ? i % 2 === 1
                           ? "border-l border-ink-300 pl-3"
                           : ""
@@ -262,8 +263,9 @@ export function WorkCard({ card }: { card: WorkCardData }) {
                 );
               })}
             </div>
-          </>
-        ) : null}
+            </>
+          ) : null}
+        </div>
       </div>
     </article>
   );

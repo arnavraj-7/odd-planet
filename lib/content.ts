@@ -288,7 +288,7 @@ export type WorkCard = {
    * becomes a link to it.
    */
   href?: string;
-  /** Heading over the figures — "Results", "Impact (monthly)", and so on. */
+  /** Heading over the figures — "Results", "The impact", and so on. */
   resultsLabel?: string;
   /** "themes" sets the entries as titled points rather than big figures. */
   resultsStyle?: "figures" | "themes";
@@ -341,10 +341,8 @@ const realWork: WorkCard[] = [
       alt: "Fixderma #SkincareKarLeBhai campaign",
     },
     metrics: [
-      { value: "10M+", label: "Campaign Reach", note: "Across digital & on-ground" },
-      { value: "100K+", label: "Organic Mentions", note: "#SkincareKarLeBhai" },
-      { value: "2.5M+", label: "Video Views", note: "Across creator & street content" },
-      { value: "High", label: "Brand Recall", note: "Strong positive sentiment" },
+      { value: "50M+", label: "Views" },
+      { value: "850K+", label: "Engagement" },
     ],
   },
   {
@@ -359,7 +357,6 @@ const realWork: WorkCard[] = [
     metrics: [
       { value: "15M+", label: "Total Views" },
       { value: "200K+", label: "Total Engagement" },
-      { value: "150+", label: "Content Deliverables" },
     ],
   },
   {
@@ -399,14 +396,11 @@ const realWork: WorkCard[] = [
     description:
       "Large-scale influencer marketing and UGC for Bevzilla, with 250+ creators every month across multiple categories, driving awareness, engagement and sales.",
     did: ["influencer", "ugc"],
-    resultsLabel: "Impact (monthly)",
+    resultsLabel: "Impact",
     image: { src: "/campaigns/bevzilla.jpg", alt: "Bevzilla campaign creative" },
     metrics: [
       { label: "Creators Onboarded", value: "250+" },
-      {
-        label: "Lifestyle · Fitness · Food · Comics & more",
-        value: "Multi-Category",
-      },
+{ label: "Lifestyle · Fitness · Food", value: "Multi-Category" },
     ],
   },
   {
@@ -424,7 +418,7 @@ const realWork: WorkCard[] = [
       fit: "logo",
     },
     metrics: [
-      { label: "Pieces", value: "3+" },
+      { label: "Pieces", value: "Multiple" },
       { label: "Views", value: "1M+" },
     ],
   },
@@ -439,8 +433,8 @@ const realWork: WorkCard[] = [
     image: { src: "/work/starbucks.jpg", alt: "Starbucks campaign" },
     resultsLabel: "The impact",
     metrics: [
-      { value: "2", label: "Signature Films", note: "Capturing the store experience" },
-      { value: "200K+", label: "Total Organic Views", note: "Across both videos" },
+      { value: "2", label: "Signature Films" },
+      { value: "200K+", label: "Total Organic Views" },
     ],
   },
   {
@@ -456,9 +450,9 @@ const realWork: WorkCard[] = [
       alt: "Fit Feast on the Shark Tank India set",
       fit: "contain",
     },
-    resultsLabel: "Impact (monthly)",
+    resultsLabel: "Impact",
     metrics: [
-      { label: "Creators activated every month", value: "Creator Network" },
+      { label: "Creators Onboarded", value: "Multiple" },
       { label: "Lifestyle · Fitness", value: "Multi-Category" },
     ],
   },
@@ -553,7 +547,12 @@ const realWork: WorkCard[] = [
       src: "/campaigns/scitron.jpg",
       alt: "Scitron whey protein range",
     },
-    metrics: [],
+    resultsLabel: "Impact",
+    resultsStyle: "themes",
+    metrics: [
+      { value: "Brand Recall", label: "The range read as one idea" },
+      { value: "Category Reach", label: "Past the gym audience" },
+    ],
   },
   {
     // Awaiting copy, artwork and figures from the client.
@@ -566,9 +565,14 @@ const realWork: WorkCard[] = [
     did: ["celebrity", "content", "integration"],
     image: {
       src: "/campaigns/ranvir-oppo.jpg",
-      alt: "Ranvir Narula",
+      alt: "Ranvir Narula for Oppo",
     },
-    metrics: [],
+    resultsLabel: "Impact",
+    resultsStyle: "themes",
+    metrics: [
+      { value: "Everyday Context", label: "The device inside a real day" },
+      { value: "Audience Fit", label: "Lifestyle first, not spec first" },
+    ],
   },
 ];
 
@@ -767,19 +771,19 @@ const realCreators: Creator[] = [
   {
     name: "Sonu Sood",
     role: "Actor / Entertainment",
-    socials: [],
+    socials: [{ label: "Instagram", href: ig("sonu_sood") }],
     image: "/creators/sonu-sood.jpg",
   },
   {
     name: "Bella",
     role: "Lifestyle / Fashion",
-    socials: [],
+    socials: [{ label: "Instagram", href: ig("bellaofficials") }],
     image: "/creators/bella.jpg",
   },
   {
     name: "Bali",
     role: "Lifestyle / Entertainment",
-    socials: [],
+    socials: [{ label: "Instagram", href: ig("theofficialbali") }],
     image: "/creators/bali.jpg",
   },
   {
@@ -862,7 +866,6 @@ export const testimonials = [
 export const founder = {
   name: "Tushar Goyal",
   title: "Founder & CEO",
-  previously: "Former Program Manager, Meta Gaming",
   image: "/team/tushar-goyal.jpg",
   // Icons render only for the URLs that exist. Instagram appears the moment
   // the client sends the handle.
