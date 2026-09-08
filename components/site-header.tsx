@@ -36,14 +36,24 @@ export function SiteHeader() {
   }, []);
 
   return (
-    <header
-      className={`sticky top-0 z-80 transition-[background-color] duration-300 ease-out ${
-        scrolled
-          ? "bg-[rgba(5,6,10,0.62)] backdrop-blur-[16px]"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-5 px-gutter py-4">
+    <header className="sticky top-0 z-80">
+      {/*
+        The frost lives on its own layer rather than on <header>. An element
+        with a backdrop-filter becomes the containing block for every
+        descendant, `position: fixed` included — with it on the header, the
+        mobile menu's full-screen sheet collapsed to the header's own box the
+        moment the frost switched on below the hero.
+      */}
+      <div
+        aria-hidden="true"
+        className={`absolute inset-0 -z-1 transition-[background-color] duration-300 ease-out ${
+          scrolled
+            ? "bg-[rgba(5,6,10,0.62)] backdrop-blur-[16px]"
+            : "bg-transparent"
+        }`}
+      />
+
+      <div className="relative mx-auto flex max-w-[1400px] items-center justify-between gap-5 px-gutter py-4">
         {/* Root-relative hashes so every link works from /privacy too, where a
             bare "#media" would only append a fragment that does not exist. */}
         <Link
